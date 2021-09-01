@@ -1,0 +1,5 @@
+*.pyc
+__pycache__
+canadian_palette.txt
+app_test.py
+.vscode
