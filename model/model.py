@@ -14,9 +14,9 @@ class Model:
 
     def check_which_slide(self, obj):
         slides_and_pages = {
-            'btn_home': 0,
-            'btn_widgets': 1,
-            'btn_new': 2
+            'btn_hub': 1,
+            'btn_statistic': 2,
+            'btn_plot': 3
         }
         slidename = obj.objectName()
         return slides_and_pages[slidename]
@@ -25,6 +25,6 @@ class Model:
 
     #value of pressbuttonstyle
     pressedbuttonstyle = """
-    border-left: 22px solid qlineargradient(spread:pad, x1:0.034, y1:0, x2:0.216, y2:0, stop:0.499 #ff9ff3, stop:0.5 rgba(85, 170, 255, 0));
+    border-left: 18px solid qlineargradient(spread:pad, x1:0.034, y1:0, x2:0.216, y2:0, stop:0.499 #ff9ff3, stop:0.5 rgba(85, 170, 255, 0));
     background-color: #2f3542;
     """

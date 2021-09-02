@@ -22,13 +22,15 @@ class Controller:
         self._view.ui.minimizeButton.clicked.connect(self._view.showMinimized)
         
     def _constantSettings(self):
-        self._view.enable_shadow_effect(self._view.ui.LeftMenuFrame,50,10,5)
+        self._view.enable_shadow_effect(self._view.ui.LeftMenuFrame,50,10,5,80)
         self._view.ui.titleframe.mouseMoveEvent = self.moveWindow
         self._view.splashscreen.sp.main_frame.mouseMoveEvent = self._view.splashscreen.moveWindow
         self._view.replaceWidgetsToCustom()
-        self._view.enable_shadow_effect(self._view.ui.background,10,5,5)
-        self._view.enable_shadow_effect(self._view.splashscreen,10,5,5)
-        self._view.enable_shadow_effect(self._view.splashscreen.sp.progressBar,10,5,5)
+        self._view.enable_shadow_effect(self._view.ui.background,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.splashscreen,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.splashscreen.sp.progressBar,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.select_conn_frame,10,5,5,80)
+        
         
         
     def _applybuttonspage(self):

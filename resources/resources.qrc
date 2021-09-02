@@ -1,5 +1,10 @@
 <RCC>
   <qresource prefix="icons">
+    <file>icons/chip.png</file>
+    <file>icons/statistics.png</file>
+    <file>icons/graph.png</file>
+    <file>icons/graph2.png</file>
+    <file>icons/graph3.png</file>
     <file>icons/cil-3d.png</file>
     <file>icons/cil-4k.png</file>
     <file>icons/cil-account-logout.png</file>

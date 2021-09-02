@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainDAAcoS.ui'
+## Form generated from reading UI file 'mainVYotTr.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -96,7 +96,7 @@ class Ui_MainWindow(object):
 "	background-position: left center;\n"
 "    background-repeat: no-repeat;\n"
 "	border: none;\n"
-"	border-left: 22px solid transparent;\n"
+"	border-left: 15px solid transparent;\n"
 "	background-color: transparent;\n"
 "	text-align: left;\n"
 "	padding-left: 44px;\n"
@@ -104,7 +104,7 @@ class Ui_MainWindow(object):
                         "}\n"
 "#buttonsframe .QPushButton:hover{\n"
 "	background-color: #2f3542;\n"
-"	border-left: 26px solid transparent;\n"
+"	border-left: 20px solid transparent;\n"
 "}\n"
 "#buttonsframe .QPushButton:pressed {	\n"
 "	background-color:  #48dbfb;\n"
@@ -196,11 +196,13 @@ class Ui_MainWindow(object):
 ""
                         "}\n"
 "\n"
-"/*########## STACKEDWIDGET PAGES ################### */\n"
-"#title_page_content QLabel{\n"
-"   font: 700 72pt \"Segoe UI\";\n"
-"   color: #54a0ff;\n"
+"\n"
+"#hub_page_content QLabel{\n"
+"font: 700 11pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);\n"
 "}\n"
+"\n"
+"\n"
 "/*############# EXTRA LEFT MENU #####################*/\n"
 "#extralefttext{\n"
 "	background:transparent;\n"
@@ -272,46 +274,46 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.btn_home = QPushButton(self.buttonsframe)
-        self.btn_home.setObjectName(u"btn_home")
-        sizePolicy.setHeightForWidth(self.btn_home.sizePolicy().hasHeightForWidth())
-        self.btn_home.setSizePolicy(sizePolicy)
-        self.btn_home.setMinimumSize(QSize(0, 60))
+        self.btn_hub = QPushButton(self.buttonsframe)
+        self.btn_hub.setObjectName(u"btn_hub")
+        sizePolicy.setHeightForWidth(self.btn_hub.sizePolicy().hasHeightForWidth())
+        self.btn_hub.setSizePolicy(sizePolicy)
+        self.btn_hub.setMinimumSize(QSize(0, 60))
         font = QFont()
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        self.btn_home.setFont(font)
-        self.btn_home.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_home.setLayoutDirection(Qt.LeftToRight)
-        self.btn_home.setStyleSheet(u"background-image: url(:/icons/icons/cil-house.png);\n"
+        self.btn_hub.setFont(font)
+        self.btn_hub.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_hub.setLayoutDirection(Qt.LeftToRight)
+        self.btn_hub.setStyleSheet(u"background-image: url(:/icons/icons/chip.png);\n"
 "")
 
-        self.verticalLayout_6.addWidget(self.btn_home)
+        self.verticalLayout_6.addWidget(self.btn_hub)
 
-        self.btn_widgets = QPushButton(self.buttonsframe)
-        self.btn_widgets.setObjectName(u"btn_widgets")
-        sizePolicy.setHeightForWidth(self.btn_widgets.sizePolicy().hasHeightForWidth())
-        self.btn_widgets.setSizePolicy(sizePolicy)
-        self.btn_widgets.setMinimumSize(QSize(0, 60))
-        self.btn_widgets.setFont(font)
-        self.btn_widgets.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_widgets.setLayoutDirection(Qt.LeftToRight)
-        self.btn_widgets.setStyleSheet(u"background-image: url(:/icons/icons/cil-cloud-upload.png);")
+        self.btn_statistic = QPushButton(self.buttonsframe)
+        self.btn_statistic.setObjectName(u"btn_statistic")
+        sizePolicy.setHeightForWidth(self.btn_statistic.sizePolicy().hasHeightForWidth())
+        self.btn_statistic.setSizePolicy(sizePolicy)
+        self.btn_statistic.setMinimumSize(QSize(0, 60))
+        self.btn_statistic.setFont(font)
+        self.btn_statistic.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_statistic.setLayoutDirection(Qt.LeftToRight)
+        self.btn_statistic.setStyleSheet(u"background-image: url(:/icons/icons/statistics.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_widgets)
+        self.verticalLayout_6.addWidget(self.btn_statistic)
 
-        self.btn_new = QPushButton(self.buttonsframe)
-        self.btn_new.setObjectName(u"btn_new")
-        sizePolicy.setHeightForWidth(self.btn_new.sizePolicy().hasHeightForWidth())
-        self.btn_new.setSizePolicy(sizePolicy)
-        self.btn_new.setMinimumSize(QSize(0, 60))
-        self.btn_new.setFont(font)
-        self.btn_new.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_new.setLayoutDirection(Qt.LeftToRight)
-        self.btn_new.setStyleSheet(u"background-image: url(:/icons/icons/cil-pencil.png);")
+        self.btn_plot = QPushButton(self.buttonsframe)
+        self.btn_plot.setObjectName(u"btn_plot")
+        sizePolicy.setHeightForWidth(self.btn_plot.sizePolicy().hasHeightForWidth())
+        self.btn_plot.setSizePolicy(sizePolicy)
+        self.btn_plot.setMinimumSize(QSize(0, 60))
+        self.btn_plot.setFont(font)
+        self.btn_plot.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_plot.setLayoutDirection(Qt.LeftToRight)
+        self.btn_plot.setStyleSheet(u"background-image: url(:/icons/icons/graph2.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_new)
+        self.verticalLayout_6.addWidget(self.btn_plot)
 
         self.btn_save = QPushButton(self.buttonsframe)
         self.btn_save.setObjectName(u"btn_save")
@@ -531,33 +533,60 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.centralframe)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setStyleSheet(u"background-color: transparent;")
-        self.title_page = QWidget()
-        self.title_page.setObjectName(u"title_page")
-        self.verticalLayout = QVBoxLayout(self.title_page)
+        self.statistic_page = QWidget()
+        self.statistic_page.setObjectName(u"statistic_page")
+        self.verticalLayout = QVBoxLayout(self.statistic_page)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.title_page_content = QFrame(self.title_page)
-        self.title_page_content.setObjectName(u"title_page_content")
-        self.title_page_content.setFrameShape(QFrame.StyledPanel)
-        self.title_page_content.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_17 = QVBoxLayout(self.title_page_content)
+        self.statistic_page_content = QFrame(self.statistic_page)
+        self.statistic_page_content.setObjectName(u"statistic_page_content")
+        self.statistic_page_content.setFrameShape(QFrame.StyledPanel)
+        self.statistic_page_content.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_17 = QVBoxLayout(self.statistic_page_content)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_3 = QLabel(self.title_page_content)
+        self.label_3 = QLabel(self.statistic_page_content)
         self.label_3.setObjectName(u"label_3")
-        self.label_3.setStyleSheet(u"")
+        self.label_3.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
+"color: rgb(255, 170, 255);")
         self.label_3.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_17.addWidget(self.label_3)
 
 
-        self.verticalLayout.addWidget(self.title_page_content)
+        self.verticalLayout.addWidget(self.statistic_page_content)
 
-        self.stackedWidget.addWidget(self.title_page)
+        self.stackedWidget.addWidget(self.statistic_page)
+        self.graph_page = QWidget()
+        self.graph_page.setObjectName(u"graph_page")
+        self.verticalLayout_19 = QVBoxLayout(self.graph_page)
+        self.verticalLayout_19.setObjectName(u"verticalLayout_19")
+        self.graph_page_content = QFrame(self.graph_page)
+        self.graph_page_content.setObjectName(u"graph_page_content")
+        self.graph_page_content.setFrameShape(QFrame.StyledPanel)
+        self.graph_page_content.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_20 = QVBoxLayout(self.graph_page_content)
+        self.verticalLayout_20.setObjectName(u"verticalLayout_20")
+        self.label_4 = QLabel(self.graph_page_content)
+        self.label_4.setObjectName(u"label_4")
+        self.label_4.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
+"color: rgb(85, 170, 255);")
+        self.label_4.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_20.addWidget(self.label_4)
+
+
+        self.verticalLayout_19.addWidget(self.graph_page_content)
+
+        self.stackedWidget.addWidget(self.graph_page)
         self.home_page = QWidget()
         self.home_page.setObjectName(u"home_page")
         self.verticalLayout_11 = QVBoxLayout(self.home_page)
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.main_home_page = QFrame(self.home_page)
         self.main_home_page.setObjectName(u"main_home_page")
+        self.main_home_page.setStyleSheet(u"background-image: url(:/images/images/nica.png);\n"
+"background-repeat :none;\n"
+"background-position: center;\n"
+"")
         self.main_home_page.setFrameShape(QFrame.StyledPanel)
         self.main_home_page.setFrameShadow(QFrame.Raised)
         self.verticalLayout_14 = QVBoxLayout(self.main_home_page)
@@ -565,37 +594,81 @@ class Ui_MainWindow(object):
         self.textEdit = QTextEdit(self.main_home_page)
         self.textEdit.setObjectName(u"textEdit")
         self.textEdit.setMinimumSize(QSize(222, 0))
-        self.textEdit.setStyleSheet(u"background: transparent;")
+        self.textEdit.setStyleSheet(u"background: transparent;\n"
+"")
         self.textEdit.setFrameShape(QFrame.NoFrame)
         self.textEdit.setReadOnly(True)
 
         self.verticalLayout_14.addWidget(self.textEdit)
 
+        self.textEdit_2 = QTextEdit(self.main_home_page)
+        self.textEdit_2.setObjectName(u"textEdit_2")
+        self.textEdit_2.setMinimumSize(QSize(222, 0))
+        self.textEdit_2.setStyleSheet(u"background: transparent;\n"
+"")
+        self.textEdit_2.setFrameShape(QFrame.NoFrame)
+        self.textEdit_2.setReadOnly(True)
+
+        self.verticalLayout_14.addWidget(self.textEdit_2)
+
 
         self.verticalLayout_11.addWidget(self.main_home_page)
 
         self.stackedWidget.addWidget(self.home_page)
-        self.next_page = QWidget()
-        self.next_page.setObjectName(u"next_page")
-        self.verticalLayout_15 = QVBoxLayout(self.next_page)
+        self.hub_page = QWidget()
+        self.hub_page.setObjectName(u"hub_page")
+        self.verticalLayout_15 = QVBoxLayout(self.hub_page)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.content_next_page = QFrame(self.next_page)
-        self.content_next_page.setObjectName(u"content_next_page")
-        self.content_next_page.setFrameShape(QFrame.StyledPanel)
-        self.content_next_page.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_16 = QVBoxLayout(self.content_next_page)
+        self.hub_page_content = QFrame(self.hub_page)
+        self.hub_page_content.setObjectName(u"hub_page_content")
+        self.hub_page_content.setFrameShape(QFrame.StyledPanel)
+        self.hub_page_content.setFrameShadow(QFrame.Raised)
+        self.select_conn_frame = QFrame(self.hub_page_content)
+        self.select_conn_frame.setObjectName(u"select_conn_frame")
+        self.select_conn_frame.setGeometry(QRect(20, 10, 301, 161))
+        self.select_conn_frame.setFrameShape(QFrame.NoFrame)
+        self.select_conn_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
+        self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.label_2 = QLabel(self.content_next_page)
-        self.label_2.setObjectName(u"label_2")
-        self.label_2.setStyleSheet(u"font: 700 72pt \"Segoe UI\";")
-        self.label_2.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.Connection_label_frame = QFrame(self.select_conn_frame)
+        self.Connection_label_frame.setObjectName(u"Connection_label_frame")
+        self.Connection_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.Connection_label_frame.setStyleSheet(u"background-color: #01a3a4;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Connection_label_frame.setFrameShape(QFrame.NoFrame)
+        self.Connection_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_21 = QVBoxLayout(self.Connection_label_frame)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.Connection_label = QLabel(self.Connection_label_frame)
+        self.Connection_label.setObjectName(u"Connection_label")
+        self.Connection_label.setMaximumSize(QSize(16777215, 50))
+        self.Connection_label.setStyleSheet(u"")
+        self.Connection_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_16.addWidget(self.label_2)
+        self.verticalLayout_21.addWidget(self.Connection_label)
 
 
-        self.verticalLayout_15.addWidget(self.content_next_page)
+        self.verticalLayout_16.addWidget(self.Connection_label_frame)
 
-        self.stackedWidget.addWidget(self.next_page)
+        self.connection_body = QFrame(self.select_conn_frame)
+        self.connection_body.setObjectName(u"connection_body")
+        self.connection_body.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"")
+        self.connection_body.setFrameShape(QFrame.StyledPanel)
+        self.connection_body.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_16.addWidget(self.connection_body)
+
+
+        self.verticalLayout_15.addWidget(self.hub_page_content)
+
+        self.stackedWidget.addWidget(self.hub_page)
 
         self.verticalLayout_13.addWidget(self.stackedWidget)
 
@@ -655,7 +728,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -664,13 +737,13 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.ToggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
-        self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
-        self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Widgets", None))
-        self.btn_new.setText(QCoreApplication.translate("MainWindow", u"New", None))
+        self.btn_hub.setText(QCoreApplication.translate("MainWindow", u"     Hub Management", None))
+        self.btn_statistic.setText(QCoreApplication.translate("MainWindow", u"     SiMP's Info", None))
+        self.btn_plot.setText(QCoreApplication.translate("MainWindow", u"     Graph", None))
         self.btn_save.setText("")
         self.btn_exit.setText("")
         self.SettingsButton.setText("")
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Kruksik Layout App - Default layout for future projects", None))
+        self.label.setText(QCoreApplication.translate("MainWindow", u"MCORD GUI Application", None))
 #if QT_CONFIG(tooltip)
         self.minimizeButton.setToolTip(QCoreApplication.translate("MainWindow", u"Minimize", None))
 #endif // QT_CONFIG(tooltip)
@@ -706,25 +779,34 @@ class Ui_MainWindow(object):
                         "t-indent:0px; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">diplay information about GUI</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Next Page", None))
+        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Will be information about all \n"
+"working SiPM's here", None))
+        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Will be graph here", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;\"><br /></p>\n"
-"<p align=\"center\" style=\""
-                        "-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#2bd6df;\">Kruksik Layout</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0"
-                        "px;\"><span style=\" color:#ffffff;\">Main page of layout</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt; color:#2bd6df;\">Graphical User Interface for MCORD HUB management</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#ffffff;\">The program was created to facilitate the "
+                        "work and servicing of hubs and AFEs located on the boards of the MCORD system</span></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#bd93f9;\">Created by: kruksik</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Next Page", None))
-        self.credits.setText(QCoreApplication.translate("MainWindow", u"Layout created by kruks ", None))
+        self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-"
+                        "top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">To start using this software, please click   </span><img src=\":/icons/icons/icon_menu.png\" />  <span style=\" font-size:12pt; color:#ffffff;\"> icon on the top right corner and then select an option from the menu </span></p></body></html>", None))
+        self.Connection_label.setText(QCoreApplication.translate("MainWindow", u"Select connection ", None))
+        self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi
 

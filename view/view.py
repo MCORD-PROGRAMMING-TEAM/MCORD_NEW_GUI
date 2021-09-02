@@ -27,7 +27,7 @@ class View(QMainWindow):
 
         if self.sender().objectName() == 'ToggleButton':
             layout = self.ui.LeftMenuFrame
-            maxExtend = 160
+            maxExtend = 200
             standard = 60
         else:
             layout = self.ui.ExtraLeftMenuFrame
@@ -49,13 +49,14 @@ class View(QMainWindow):
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
 
-    def enable_shadow_effect(self, widget, blur, xoff, yoff):
+    def enable_shadow_effect(self, widget, blur, xoff, yoff,opa):
         shadow = QGraphicsDropShadowEffect(self)
         shadow.setBlurRadius(blur)
         shadow.setXOffset(xoff)
         shadow.setYOffset(yoff)
-        shadow.setColor(QColor(0, 0, 0, 80))
+        shadow.setColor(QColor(0, 0, 0, opa))
         widget.setGraphicsEffect(shadow)
+        print(f'Shadow effect added to: {widget.objectName()}')
 
     ###### Event func #####
 
@@ -81,13 +82,15 @@ class View(QMainWindow):
         self.dragPos = event.globalPos()
 
     def replaceWidgetsToCustom(self):
+        #replace stackedwidget with custom 
         self.ui.stackedWidget.deleteLater()
         self.ui.stackedWidget = SlidingStackedWidget()
         self.ui.stackedWidget.setObjectName(u"stackedWidget")
         self.ui.verticalLayout_13.addWidget(self.ui.stackedWidget)
         self.ui.stackedWidget.addWidget(self.ui.home_page)
-        self.ui.stackedWidget.addWidget(self.ui.next_page)
-        self.ui.stackedWidget.addWidget(self.ui.title_page)
+        self.ui.stackedWidget.addWidget(self.ui.hub_page)
+        self.ui.stackedWidget.addWidget(self.ui.statistic_page)
+        self.ui.stackedWidget.addWidget(self.ui.graph_page)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.home_page)
         

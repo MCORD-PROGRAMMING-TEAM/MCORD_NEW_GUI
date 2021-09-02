@@ -96,14 +96,14 @@ QToolTip {
 	background-position: left center;
     background-repeat: no-repeat;
 	border: none;
-	border-left: 22px solid transparent;
+	border-left: 15px solid transparent;
 	background-color: transparent;
 	text-align: left;
 	padding-left: 44px;
 }
 #buttonsframe .QPushButton:hover{
 	background-color: #2f3542;
-	border-left: 26px solid transparent;
+	border-left: 20px solid transparent;
 }
 #buttonsframe .QPushButton:pressed {	
 	background-color:  #48dbfb;
@@ -193,11 +193,13 @@ QToolTip {
 	border-top: 4px solid #202c3b;
 }
 
-/*########## STACKEDWIDGET PAGES ################### */
-#title_page_content QLabel{
-   font: 700 72pt &quot;Segoe UI&quot;;
-   color: #54a0ff;
+
+#hub_page_content QLabel{
+font: 700 11pt &quot;Segoe UI&quot;;
+color: rgb(255, 255, 255);
 }
+
+
 /*############# EXTRA LEFT MENU #####################*/
 #extralefttext{
 	background:transparent;
@@ -397,7 +399,7 @@ QToolTip {
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QPushButton" name="btn_home">
+                 <widget class="QPushButton" name="btn_hub">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -424,16 +426,16 @@ QToolTip {
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/icons/cil-house.png);
+                   <string notr="true">background-image: url(:/icons/icons/chip.png);
 </string>
                   </property>
                   <property name="text">
-                   <string>Home</string>
+                   <string>     Hub Management</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_widgets">
+                 <widget class="QPushButton" name="btn_statistic">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -460,15 +462,15 @@ QToolTip {
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/icons/cil-cloud-upload.png);</string>
+                   <string notr="true">background-image: url(:/icons/icons/statistics.png);</string>
                   </property>
                   <property name="text">
-                   <string>Widgets</string>
+                   <string>     SiMP's Info</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_new">
+                 <widget class="QPushButton" name="btn_plot">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -495,10 +497,10 @@ QToolTip {
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/icons/cil-pencil.png);</string>
+                   <string notr="true">background-image: url(:/icons/icons/graph2.png);</string>
                   </property>
                   <property name="text">
-                   <string>New</string>
+                   <string>     Graph</string>
                   </property>
                  </widget>
                 </item>
@@ -536,7 +538,7 @@ QToolTip {
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>Save</string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -574,7 +576,7 @@ QToolTip {
                    <string notr="true"/>
                   </property>
                   <property name="text">
-                   <string>Exit</string>
+                   <string/>
                   </property>
                  </widget>
                 </item>
@@ -785,7 +787,7 @@ QToolTip {
                    </size>
                   </property>
                   <property name="text">
-                   <string>Kruksik Layout App - Default layout for future projects</string>
+                   <string>MCORD GUI Application</string>
                   </property>
                  </widget>
                 </item>
@@ -1057,12 +1059,12 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background-color: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>3</number>
                      </property>
-                     <widget class="QWidget" name="title_page">
+                     <widget class="QWidget" name="statistic_page">
                       <layout class="QVBoxLayout" name="verticalLayout">
                        <item>
-                        <widget class="QFrame" name="title_page_content">
+                        <widget class="QFrame" name="statistic_page_content">
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -1073,10 +1075,42 @@ p, li { white-space: pre-wrap; }
                           <item>
                            <widget class="QLabel" name="label_3">
                             <property name="styleSheet">
-                             <string notr="true"/>
+                             <string notr="true">font: 700 36pt &quot;Segoe UI&quot;;
+color: rgb(255, 170, 255);</string>
                             </property>
                             <property name="text">
-                             <string>Next Page</string>
+                             <string>Will be information about all 
+working SiPM's here</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                     <widget class="QWidget" name="graph_page">
+                      <layout class="QVBoxLayout" name="verticalLayout_19">
+                       <item>
+                        <widget class="QFrame" name="graph_page_content">
+                         <property name="frameShape">
+                          <enum>QFrame::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_20">
+                          <item>
+                           <widget class="QLabel" name="label_4">
+                            <property name="styleSheet">
+                             <string notr="true">font: 700 36pt &quot;Segoe UI&quot;;
+color: rgb(85, 170, 255);</string>
+                            </property>
+                            <property name="text">
+                             <string>Will be graph here</string>
                             </property>
                             <property name="alignment">
                              <set>Qt::AlignCenter</set>
@@ -1092,6 +1126,12 @@ p, li { white-space: pre-wrap; }
                       <layout class="QVBoxLayout" name="verticalLayout_11">
                        <item>
                         <widget class="QFrame" name="main_home_page">
+                         <property name="styleSheet">
+                          <string notr="true">background-image: url(:/images/images/nica.png);
+background-repeat :none;
+background-position: center;
+</string>
+                         </property>
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
@@ -1108,7 +1148,8 @@ p, li { white-space: pre-wrap; }
                              </size>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">background: transparent;</string>
+                             <string notr="true">background: transparent;
+</string>
                             </property>
                             <property name="frameShape">
                              <enum>QFrame::NoFrame</enum>
@@ -1122,15 +1163,44 @@ p, li { white-space: pre-wrap; }
 p, li { white-space: pre-wrap; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#2bd6df;&quot;&gt;Kruksik Layout&lt;/span&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;Main page of layout&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:24pt; color:#2bd6df;&quot;&gt;Graphical User Interface for MCORD HUB management&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:14pt; color:#ffffff;&quot;&gt;The program was created to facilitate the work and servicing of hubs and AFEs located on the boards of the MCORD system&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#bd93f9;&quot;&gt;Created by: kruksik&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QTextEdit" name="textEdit_2">
+                            <property name="minimumSize">
+                             <size>
+                              <width>222</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">background: transparent;
+</string>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::NoFrame</enum>
+                            </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
+                            </property>
+                            <property name="html">
+                             <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt;To start using this software, please click   &lt;/span&gt;&lt;img src=&quot;:/icons/icons/icon_menu.png&quot; /&gt;  &lt;span style=&quot; font-size:12pt; color:#ffffff;&quot;&gt; icon on the top right corner and then select an option from the menu &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                             </property>
                            </widget>
                           </item>
@@ -1139,31 +1209,108 @@ p, li { white-space: pre-wrap; }
                        </item>
                       </layout>
                      </widget>
-                     <widget class="QWidget" name="next_page">
+                     <widget class="QWidget" name="hub_page">
                       <layout class="QVBoxLayout" name="verticalLayout_15">
                        <item>
-                        <widget class="QFrame" name="content_next_page">
+                        <widget class="QFrame" name="hub_page_content">
                          <property name="frameShape">
                           <enum>QFrame::StyledPanel</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_16">
-                          <item>
-                           <widget class="QLabel" name="label_2">
-                            <property name="styleSheet">
-                             <string notr="true">font: 700 72pt &quot;Segoe UI&quot;;</string>
-                            </property>
-                            <property name="text">
-                             <string>Next Page</string>
-                            </property>
-                            <property name="alignment">
-                             <set>Qt::AlignCenter</set>
-                            </property>
-                           </widget>
-                          </item>
-                         </layout>
+                         <widget class="QFrame" name="select_conn_frame">
+                          <property name="geometry">
+                           <rect>
+                            <x>20</x>
+                            <y>10</y>
+                            <width>301</width>
+                            <height>161</height>
+                           </rect>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::NoFrame</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_16">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="Connection_label_frame">
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>50</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: #01a3a4;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::NoFrame</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_21">
+                              <item>
+                               <widget class="QLabel" name="Connection_label">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="text">
+                                 <string>Select connection </string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="connection_body">
+                             <property name="styleSheet">
+                              <string notr="true">background-color: rgb(68, 75, 89);
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
                         </widget>
                        </item>
                       </layout>
@@ -1212,7 +1359,7 @@ p, li { white-space: pre-wrap; }
                       </size>
                      </property>
                      <property name="text">
-                      <string>Layout created by kruks </string>
+                      <string/>
                      </property>
                     </widget>
                    </item>
