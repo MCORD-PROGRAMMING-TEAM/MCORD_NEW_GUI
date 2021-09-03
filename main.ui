@@ -352,6 +352,9 @@ color: rgb(255, 255, 255);
           </item>
           <item>
            <widget class="QFrame" name="mainbuttonsframe">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="frameShape">
              <enum>QFrame::NoFrame</enum>
             </property>
@@ -376,6 +379,9 @@ color: rgb(255, 255, 255);
              </property>
              <item>
               <widget class="QFrame" name="buttonsframe">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
                <property name="frameShape">
                 <enum>QFrame::NoFrame</enum>
                </property>
@@ -1214,7 +1220,7 @@ p, li { white-space: pre-wrap; }
                        <item>
                         <widget class="QFrame" name="hub_page_content">
                          <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                          <enum>QFrame::NoFrame</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
@@ -1222,10 +1228,10 @@ p, li { white-space: pre-wrap; }
                          <widget class="QFrame" name="select_conn_frame">
                           <property name="geometry">
                            <rect>
-                            <x>20</x>
-                            <y>10</y>
-                            <width>301</width>
-                            <height>161</height>
+                            <x>30</x>
+                            <y>20</y>
+                            <width>311</width>
+                            <height>171</height>
                            </rect>
                           </property>
                           <property name="frameShape">
@@ -1297,8 +1303,6 @@ border-top-right-radius:5px;
                             <widget class="QFrame" name="connection_body">
                              <property name="styleSheet">
                               <string notr="true">background-color: rgb(68, 75, 89);
-border-bottom-left-radius:5px;
-border-bottom-right-radius:5px;
 </string>
                              </property>
                              <property name="frameShape">
@@ -1307,6 +1311,220 @@ border-bottom-right-radius:5px;
                              <property name="frameShadow">
                               <enum>QFrame::Raised</enum>
                              </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_7">
+                              <property name="spacing">
+                               <number>2</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="label_2">
+                                <property name="text">
+                                 <string>USB</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QPushButton" name="pushre1">
+                                <property name="text">
+                                 <string>PushButton</string>
+                                </property>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QLabel" name="label_5">
+                                <property name="text">
+                                 <string>LAN</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="connection_selection">
+                             <property name="styleSheet">
+                              <string notr="true">#connection_selection{
+background-color: rgb(68, 75, 89);
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+}</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QHBoxLayout" name="horizontalLayout_10">
+                              <item>
+                               <widget class="QFrame" name="connection_selection_usb">
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::NoFrame</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_8">
+                                 <property name="spacing">
+                                  <number>10</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLabel" name="label_6">
+                                   <property name="text">
+                                    <string>Select COM port: </string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QComboBox" name="connection_combox">
+                                   <property name="styleSheet">
+                                    <string notr="true">QComboBox{
+	border-radius: 5px;
+	border: 1px solid rgb(33, 37, 43);
+	padding: 5px;
+	padding-left: 10px;
+	background-color: #444b59;
+}
+QComboBox:hover{
+	border: 2px solid #018888;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 25px; 
+	border-left-width: 3px;
+	
+	border-left-color: rgb(1, 163, 164);
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;	
+	background-image: url(:/icons/icons/cil-chevron-double-down.png);
+	background-position: center;
+	background-repeat: no-reperat;
+ }
+QComboBox QAbstractItemView {
+	color: #01bfbf;
+	background-color: #2f3542;
+	padding: 10px;
+}</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                              <item>
+                               <widget class="QFrame" name="connection_selection_lan">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>0</width>
+                                  <height>16777215</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::StyledPanel</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QHBoxLayout" name="horizontalLayout_9">
+                                 <property name="spacing">
+                                  <number>10</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>6</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <item>
+                                  <widget class="QLabel" name="label_7">
+                                   <property name="text">
+                                    <string>Enter IP address:</string>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                 <item>
+                                  <widget class="QLineEdit" name="connection_edit">
+                                   <property name="minimumSize">
+                                    <size>
+                                     <width>0</width>
+                                     <height>28</height>
+                                    </size>
+                                   </property>
+                                   <property name="styleSheet">
+                                    <string notr="true">QLineEdit {
+border-radius:5px;
+border: 2px solid #363c47;
+padding-left: 10px;
+padding-right: 10px;
+color: #fff;
+background-color: #444b59;
+}
+QLineEdit:focus {
+border: 2px solid   #018888;
+background-color: #2f3542;
+}</string>
+                                   </property>
+                                   <property name="text">
+                                    <string/>
+                                   </property>
+                                   <property name="alignment">
+                                    <set>Qt::AlignCenter</set>
+                                   </property>
+                                   <property name="placeholderText">
+                                    <string>eg. 10.2.31.2</string>
+                                   </property>
+                                   <property name="clearButtonEnabled">
+                                    <bool>false</bool>
+                                   </property>
+                                  </widget>
+                                 </item>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
                             </widget>
                            </item>
                           </layout>

@@ -1,15 +1,20 @@
 
 from functools import partial
 from PySide6.QtCore import Qt
+from controller.usb_controller import USBController
+from controller.lan_controller import LanController
 
 class Controller:
     def __init__(self,view,model) -> None:
         self._view = view
         self._model = model
-        self._connectToggle()
+        self.usbcontroller = USBController(view,model)
+        self.lancontroller = LanController(view,model)
         self._constantSettings()
+        self._connectToggle()
         self._applybuttonspage()
         self._runtimerfromsp()
+        
         
         
         
@@ -20,6 +25,9 @@ class Controller:
         self._view.ui.maximizeButton.clicked.connect(self._view.maximize_windowsize)
         self._view.ui.closeButton.clicked.connect(self._view.close)
         self._view.ui.minimizeButton.clicked.connect(self._view.showMinimized)
+        self._view.ui.usb_lan_button.stateChanged.connect(self._view.changeUSB_IP)
+        self._view.ui.connection_combox.currentIndexChanged.connect(self.usbcontroller.set_current_device)
+        self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.allowed_only_lan)
         
     def _constantSettings(self):
         self._view.enable_shadow_effect(self._view.ui.LeftMenuFrame,50,10,5,80)
@@ -30,6 +38,7 @@ class Controller:
         self._view.enable_shadow_effect(self._view.splashscreen,10,5,5,80)
         self._view.enable_shadow_effect(self._view.splashscreen.sp.progressBar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.select_conn_frame,10,5,5,80)
+        
         
         
         
@@ -49,7 +58,6 @@ class Controller:
             self._view.dragPos = event.globalPos()
             event.accept()
             
-    
         
     
         

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainVYotTr.ui'
+## Form generated from reading UI file 'mainmMePrs.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -260,6 +260,7 @@ class Ui_MainWindow(object):
 
         self.mainbuttonsframe = QFrame(self.LeftMenuFrame)
         self.mainbuttonsframe.setObjectName(u"mainbuttonsframe")
+        self.mainbuttonsframe.setStyleSheet(u"")
         self.mainbuttonsframe.setFrameShape(QFrame.NoFrame)
         self.mainbuttonsframe.setFrameShadow(QFrame.Raised)
         self.verticalLayout_3 = QVBoxLayout(self.mainbuttonsframe)
@@ -268,6 +269,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.buttonsframe = QFrame(self.mainbuttonsframe)
         self.buttonsframe.setObjectName(u"buttonsframe")
+        self.buttonsframe.setStyleSheet(u"")
         self.buttonsframe.setFrameShape(QFrame.NoFrame)
         self.buttonsframe.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.buttonsframe)
@@ -621,11 +623,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.hub_page_content = QFrame(self.hub_page)
         self.hub_page_content.setObjectName(u"hub_page_content")
-        self.hub_page_content.setFrameShape(QFrame.StyledPanel)
+        self.hub_page_content.setFrameShape(QFrame.NoFrame)
         self.hub_page_content.setFrameShadow(QFrame.Raised)
         self.select_conn_frame = QFrame(self.hub_page_content)
         self.select_conn_frame.setObjectName(u"select_conn_frame")
-        self.select_conn_frame.setGeometry(QRect(20, 10, 301, 161))
+        self.select_conn_frame.setGeometry(QRect(30, 20, 311, 171))
         self.select_conn_frame.setFrameShape(QFrame.NoFrame)
         self.select_conn_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
@@ -657,13 +659,135 @@ class Ui_MainWindow(object):
         self.connection_body = QFrame(self.select_conn_frame)
         self.connection_body.setObjectName(u"connection_body")
         self.connection_body.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
-"border-bottom-left-radius:5px;\n"
-"border-bottom-right-radius:5px;\n"
 "")
         self.connection_body.setFrameShape(QFrame.StyledPanel)
         self.connection_body.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_7 = QHBoxLayout(self.connection_body)
+        self.horizontalLayout_7.setSpacing(2)
+        self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.label_2 = QLabel(self.connection_body)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_7.addWidget(self.label_2)
+
+        self.pushre1 = QPushButton(self.connection_body)
+        self.pushre1.setObjectName(u"pushre1")
+
+        self.horizontalLayout_7.addWidget(self.pushre1)
+
+        self.label_5 = QLabel(self.connection_body)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_7.addWidget(self.label_5)
+
 
         self.verticalLayout_16.addWidget(self.connection_body)
+
+        self.connection_selection = QFrame(self.select_conn_frame)
+        self.connection_selection.setObjectName(u"connection_selection")
+        self.connection_selection.setStyleSheet(u"#connection_selection{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"}")
+        self.connection_selection.setFrameShape(QFrame.StyledPanel)
+        self.connection_selection.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_10 = QHBoxLayout(self.connection_selection)
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.connection_selection_usb = QFrame(self.connection_selection)
+        self.connection_selection_usb.setObjectName(u"connection_selection_usb")
+        self.connection_selection_usb.setStyleSheet(u"")
+        self.connection_selection_usb.setFrameShape(QFrame.NoFrame)
+        self.connection_selection_usb.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_8 = QHBoxLayout(self.connection_selection_usb)
+        self.horizontalLayout_8.setSpacing(10)
+        self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
+        self.horizontalLayout_8.setContentsMargins(6, 0, 6, 0)
+        self.label_6 = QLabel(self.connection_selection_usb)
+        self.label_6.setObjectName(u"label_6")
+
+        self.horizontalLayout_8.addWidget(self.label_6)
+
+        self.connection_combox = QComboBox(self.connection_selection_usb)
+        self.connection_combox.setObjectName(u"connection_combox")
+        self.connection_combox.setStyleSheet(u"QComboBox{\n"
+"	border-radius: 5px;\n"
+"	border: 1px solid rgb(33, 37, 43);\n"
+"	padding: 5px;\n"
+"	padding-left: 10px;\n"
+"	background-color: #444b59;\n"
+"}\n"
+"QComboBox:hover{\n"
+"	border: 2px solid #018888;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"	subcontrol-origin: padding;\n"
+"	subcontrol-position: top right;\n"
+"	width: 25px; \n"
+"	border-left-width: 3px;\n"
+"	\n"
+"	border-left-color: rgb(1, 163, 164);\n"
+"	border-left-style: solid;\n"
+"	border-top-right-radius: 3px;\n"
+"	border-bottom-right-radius: 3px;	\n"
+"	background-image: url(:/icons/icons/cil-chevron-double-down.png);\n"
+"	background-position: center;\n"
+"	background-repeat: no-reperat;\n"
+" }\n"
+"QComboBox QAbstractItemView {\n"
+"	color: #01bfbf;\n"
+"	background-color: #2f3542;\n"
+"	padding: 10px;\n"
+"}")
+
+        self.horizontalLayout_8.addWidget(self.connection_combox)
+
+
+        self.horizontalLayout_10.addWidget(self.connection_selection_usb)
+
+        self.connection_selection_lan = QFrame(self.connection_selection)
+        self.connection_selection_lan.setObjectName(u"connection_selection_lan")
+        self.connection_selection_lan.setMaximumSize(QSize(0, 16777215))
+        self.connection_selection_lan.setStyleSheet(u"")
+        self.connection_selection_lan.setFrameShape(QFrame.StyledPanel)
+        self.connection_selection_lan.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_9 = QHBoxLayout(self.connection_selection_lan)
+        self.horizontalLayout_9.setSpacing(10)
+        self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.horizontalLayout_9.setContentsMargins(6, 0, 6, 0)
+        self.label_7 = QLabel(self.connection_selection_lan)
+        self.label_7.setObjectName(u"label_7")
+
+        self.horizontalLayout_9.addWidget(self.label_7)
+
+        self.connection_edit = QLineEdit(self.connection_selection_lan)
+        self.connection_edit.setObjectName(u"connection_edit")
+        self.connection_edit.setMinimumSize(QSize(0, 28))
+        self.connection_edit.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid   #018888;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.connection_edit.setAlignment(Qt.AlignCenter)
+        self.connection_edit.setClearButtonEnabled(False)
+
+        self.horizontalLayout_9.addWidget(self.connection_edit)
+
+
+        self.horizontalLayout_10.addWidget(self.connection_selection_lan)
+
+
+        self.verticalLayout_16.addWidget(self.connection_selection)
 
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
@@ -806,6 +930,13 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">To start using this software, please click   </span><img src=\":/icons/icons/icon_menu.png\" />  <span style=\" font-size:12pt; color:#ffffff;\"> icon on the top right corner and then select an option from the menu </span></p></body></html>", None))
         self.Connection_label.setText(QCoreApplication.translate("MainWindow", u"Select connection ", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"USB", None))
+        self.pushre1.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"LAN", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"Select COM port: ", None))
+        self.label_7.setText(QCoreApplication.translate("MainWindow", u"Enter IP address:", None))
+        self.connection_edit.setText("")
+        self.connection_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 10.2.31.2", None))
         self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi

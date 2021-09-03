@@ -1,9 +1,8 @@
-
 from view.ui_main import Ui_MainWindow
 from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Qt
 from PySide6.QtGui import QColor, QIcon
-from view.custom_modules import SlidingStackedWidget, Splashscreen
+from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton
 
 
 class View(QMainWindow):
@@ -56,7 +55,7 @@ class View(QMainWindow):
         shadow.setYOffset(yoff)
         shadow.setColor(QColor(0, 0, 0, opa))
         widget.setGraphicsEffect(shadow)
-        print(f'Shadow effect added to: {widget.objectName()}')
+       
 
     ###### Event func #####
 
@@ -94,6 +93,12 @@ class View(QMainWindow):
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.home_page)
         
+        #replace buttons to slidebuttons
+        self.ui.pushre1.deleteLater()
+        self.ui.usb_lan_button = QtCustomSlideButton(None,80,None,'#48dbfb','#1dd1a1','#f7f7f7')
+        self.ui.horizontalLayout_7.insertWidget(1,self.ui.usb_lan_button)
+        
+        
     def change_clicked_button_layout(self,buttonstyle):
         new_layout = buttonstyle + self.model.pressedbuttonstyle
         return new_layout
@@ -118,3 +123,49 @@ class View(QMainWindow):
         self.reset_clicked_style(button)
         self.select_clicked_style(button)
         self.ui.stackedWidget.slidetowidget(slideto)
+        
+    
+    def changeUSB_IP(self,status):
+            self.animationusb = QPropertyAnimation(self.ui.connection_selection_usb, b"maximumWidth")
+            self.animationusb.setDuration(200)
+            self.animationusb.setEasingCurve(QEasingCurve.InElastic)
+            
+            self.animationlan = QPropertyAnimation(self.ui.connection_selection_lan, b"maximumWidth")
+            self.animationlan.setDuration(200)
+            self.animationusb.setEasingCurve(QEasingCurve.InOutQuart)
+            self.model.validcommunication(status)
+            
+            
+
+            if status:
+                self.animationusb.setStartValue(400)
+                self.animationusb.setEndValue(0)
+                self.animationusb.start()
+                
+                self.animationlan.setStartValue(0)
+                self.animationlan.setEndValue(400)
+                self.animationlan.start()
+                
+                
+            else:
+                self.animationusb.setStartValue(0)
+                self.animationusb.setEndValue(400)
+                self.animationusb.start()
+                
+                self.animationlan.setStartValue(400)
+                self.animationlan.setEndValue(0)
+                self.animationlan.start()
+    
+    def change_if_ip_reponse(self, response):
+        from win10toast import ToastNotifier
+        if not response:
+            toaster = ToastNotifier()
+            toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
+            self.ui.connection_edit.clear()
+            
+
+   
+                
+        
+    
+            
