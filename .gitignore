@@ -3,3 +3,4 @@ __pycache__
 canadian_palette.txt
 app_test.py
 .vscode
+.qt_for_python
