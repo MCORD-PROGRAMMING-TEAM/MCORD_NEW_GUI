@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainmMePrs.ui'
+## Form generated from reading UI file 'mainhLFFKQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,7 +12,7 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
-from .rc_icons import *
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -317,18 +317,18 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.btn_plot)
 
-        self.btn_save = QPushButton(self.buttonsframe)
-        self.btn_save.setObjectName(u"btn_save")
-        self.btn_save.setEnabled(False)
-        sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
-        self.btn_save.setSizePolicy(sizePolicy)
-        self.btn_save.setMinimumSize(QSize(0, 60))
-        self.btn_save.setFont(font)
-        self.btn_save.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_save.setLayoutDirection(Qt.LeftToRight)
-        self.btn_save.setStyleSheet(u"")
+        self.btn_diagnostic = QPushButton(self.buttonsframe)
+        self.btn_diagnostic.setObjectName(u"btn_diagnostic")
+        self.btn_diagnostic.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.btn_diagnostic.sizePolicy().hasHeightForWidth())
+        self.btn_diagnostic.setSizePolicy(sizePolicy)
+        self.btn_diagnostic.setMinimumSize(QSize(0, 60))
+        self.btn_diagnostic.setFont(font)
+        self.btn_diagnostic.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_diagnostic.setLayoutDirection(Qt.LeftToRight)
+        self.btn_diagnostic.setStyleSheet(u"background-image: url(:/icons/icons/diagnostic.png);")
 
-        self.verticalLayout_6.addWidget(self.btn_save)
+        self.verticalLayout_6.addWidget(self.btn_diagnostic)
 
         self.btn_exit = QPushButton(self.buttonsframe)
         self.btn_exit.setObjectName(u"btn_exit")
@@ -512,6 +512,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName(u"verticalLayout_18")
         self.extralefttext = QTextEdit(self.ExtraLeftMenuFrame)
         self.extralefttext.setObjectName(u"extralefttext")
+        self.extralefttext.setFrameShape(QFrame.NoFrame)
 
         self.verticalLayout_18.addWidget(self.extralefttext)
 
@@ -557,6 +558,28 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.statistic_page_content)
 
         self.stackedWidget.addWidget(self.statistic_page)
+        self.diagnostic_page = QWidget()
+        self.diagnostic_page.setObjectName(u"diagnostic_page")
+        self.verticalLayout_24 = QVBoxLayout(self.diagnostic_page)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.diagnostic_page_content = QFrame(self.diagnostic_page)
+        self.diagnostic_page_content.setObjectName(u"diagnostic_page_content")
+        self.diagnostic_page_content.setFrameShape(QFrame.StyledPanel)
+        self.diagnostic_page_content.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.diagnostic_page_content)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_16 = QLabel(self.diagnostic_page_content)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
+"color: rgb(11, 255, 161);")
+        self.label_16.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_25.addWidget(self.label_16)
+
+
+        self.verticalLayout_24.addWidget(self.diagnostic_page_content)
+
+        self.stackedWidget.addWidget(self.diagnostic_page)
         self.graph_page = QWidget()
         self.graph_page.setObjectName(u"graph_page")
         self.verticalLayout_19 = QVBoxLayout(self.graph_page)
@@ -627,7 +650,7 @@ class Ui_MainWindow(object):
         self.hub_page_content.setFrameShadow(QFrame.Raised)
         self.select_conn_frame = QFrame(self.hub_page_content)
         self.select_conn_frame.setObjectName(u"select_conn_frame")
-        self.select_conn_frame.setGeometry(QRect(30, 20, 311, 171))
+        self.select_conn_frame.setGeometry(QRect(0, 0, 311, 171))
         self.select_conn_frame.setFrameShape(QFrame.NoFrame)
         self.select_conn_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
@@ -672,10 +695,10 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_7.addWidget(self.label_2)
 
-        self.pushre1 = QPushButton(self.connection_body)
-        self.pushre1.setObjectName(u"pushre1")
+        self.pushre_1 = QPushButton(self.connection_body)
+        self.pushre_1.setObjectName(u"pushre_1")
 
-        self.horizontalLayout_7.addWidget(self.pushre1)
+        self.horizontalLayout_7.addWidget(self.pushre_1)
 
         self.label_5 = QLabel(self.connection_body)
         self.label_5.setObjectName(u"label_5")
@@ -789,6 +812,456 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addWidget(self.connection_selection)
 
+        self.PowerSupply_frame = QFrame(self.hub_page_content)
+        self.PowerSupply_frame.setObjectName(u"PowerSupply_frame")
+        self.PowerSupply_frame.setGeometry(QRect(0, 190, 311, 361))
+        self.PowerSupply_frame.setFrameShape(QFrame.NoFrame)
+        self.PowerSupply_frame.setFrameShadow(QFrame.Raised)
+        self.PowerSupply_layout = QVBoxLayout(self.PowerSupply_frame)
+        self.PowerSupply_layout.setSpacing(0)
+        self.PowerSupply_layout.setObjectName(u"PowerSupply_layout")
+        self.PowerSupply_layout.setContentsMargins(0, 0, 0, 0)
+        self.PowerButton_label_frame = QFrame(self.PowerSupply_frame)
+        self.PowerButton_label_frame.setObjectName(u"PowerButton_label_frame")
+        self.PowerButton_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.PowerButton_label_frame.setStyleSheet(u"background-color: #d5aaff;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.PowerButton_label_frame.setFrameShape(QFrame.NoFrame)
+        self.PowerButton_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_22 = QVBoxLayout(self.PowerButton_label_frame)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.PowerButton_label = QLabel(self.PowerButton_label_frame)
+        self.PowerButton_label.setObjectName(u"PowerButton_label")
+        self.PowerButton_label.setMaximumSize(QSize(16777215, 50))
+        self.PowerButton_label.setStyleSheet(u"")
+        self.PowerButton_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_22.addWidget(self.PowerButton_label)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_label_frame)
+
+        self.PowerButton_progressframe = QFrame(self.PowerSupply_frame)
+        self.PowerButton_progressframe.setObjectName(u"PowerButton_progressframe")
+        self.PowerButton_progressframe.setMaximumSize(QSize(16777215, 0))
+        self.PowerButton_progressframe.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"")
+        self.PowerButton_progressframe.setFrameShape(QFrame.NoFrame)
+        self.PowerButton_progressframe.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.PowerButton_progressframe)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.progressBar = QProgressBar(self.PowerButton_progressframe)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setMaximumSize(QSize(16777215, 21))
+        self.progressBar.setStyleSheet(u"QProgressBar{\n"
+"background-color:#748699;\n"
+"color:#fff;\n"
+"border-style:none;\n"
+"border-radius:10px;\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk{\n"
+"	border-radius:10px;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0.551, x2:1, y2:0.539773, stop:0.346591 rgba(226, 178, 229, 255), stop:0.897727 rgba(194, 137, 242, 255));\n"
+"}")
+        self.progressBar.setValue(24)
+
+        self.verticalLayout_23.addWidget(self.progressBar)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_progressframe)
+
+        self.PowerButton_body = QFrame(self.PowerSupply_frame)
+        self.PowerButton_body.setObjectName(u"PowerButton_body")
+        self.PowerButton_body.setStyleSheet(u"#PowerButton_body{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"}")
+        self.PowerButton_body.setFrameShape(QFrame.StyledPanel)
+        self.PowerButton_body.setFrameShadow(QFrame.Raised)
+        self.PowerButton_layout = QVBoxLayout(self.PowerButton_body)
+        self.PowerButton_layout.setSpacing(0)
+        self.PowerButton_layout.setObjectName(u"PowerButton_layout")
+        self.PowerButton_layout.setContentsMargins(0, 0, 0, 0)
+        self.button_frame_1 = QFrame(self.PowerButton_body)
+        self.button_frame_1.setObjectName(u"button_frame_1")
+        self.button_frame_1.setStyleSheet(u"")
+        self.button_frame_1.setFrameShape(QFrame.NoFrame)
+        self.button_frame_1.setFrameShadow(QFrame.Raised)
+        self.button_layout_1 = QHBoxLayout(self.button_frame_1)
+        self.button_layout_1.setSpacing(30)
+        self.button_layout_1.setObjectName(u"button_layout_1")
+        self.button_layout_1.setContentsMargins(15, 0, 15, 0)
+        self.label_8 = QLabel(self.button_frame_1)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_1.addWidget(self.label_8)
+
+        self.button_edit_1 = QLineEdit(self.button_frame_1)
+        self.button_edit_1.setObjectName(u"button_edit_1")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
+        self.button_edit_1.setSizePolicy(sizePolicy2)
+        self.button_edit_1.setMaximumSize(QSize(100, 25))
+        self.button_edit_1.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_1.setAlignment(Qt.AlignCenter)
+        self.button_edit_1.setPlaceholderText(u"Board Nr.")
+        self.button_edit_1.setClearButtonEnabled(False)
+
+        self.button_layout_1.addWidget(self.button_edit_1)
+
+        self.pushre_2 = QPushButton(self.button_frame_1)
+        self.pushre_2.setObjectName(u"pushre_2")
+
+        self.button_layout_1.addWidget(self.pushre_2)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_1)
+
+        self.button_frame_2 = QFrame(self.PowerButton_body)
+        self.button_frame_2.setObjectName(u"button_frame_2")
+        self.button_frame_2.setStyleSheet(u"")
+        self.button_frame_2.setFrameShape(QFrame.NoFrame)
+        self.button_frame_2.setFrameShadow(QFrame.Raised)
+        self.button_layout_2 = QHBoxLayout(self.button_frame_2)
+        self.button_layout_2.setSpacing(30)
+        self.button_layout_2.setObjectName(u"button_layout_2")
+        self.button_layout_2.setContentsMargins(15, 0, 15, 0)
+        self.label_9 = QLabel(self.button_frame_2)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_2.addWidget(self.label_9)
+
+        self.button_edit_2 = QLineEdit(self.button_frame_2)
+        self.button_edit_2.setObjectName(u"button_edit_2")
+        sizePolicy2.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
+        self.button_edit_2.setSizePolicy(sizePolicy2)
+        self.button_edit_2.setMaximumSize(QSize(100, 25))
+        self.button_edit_2.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_2.setAlignment(Qt.AlignCenter)
+        self.button_edit_2.setClearButtonEnabled(False)
+
+        self.button_layout_2.addWidget(self.button_edit_2)
+
+        self.pushre_3 = QPushButton(self.button_frame_2)
+        self.pushre_3.setObjectName(u"pushre_3")
+
+        self.button_layout_2.addWidget(self.pushre_3)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_2)
+
+        self.button_frame_3 = QFrame(self.PowerButton_body)
+        self.button_frame_3.setObjectName(u"button_frame_3")
+        self.button_frame_3.setStyleSheet(u"")
+        self.button_frame_3.setFrameShape(QFrame.NoFrame)
+        self.button_frame_3.setFrameShadow(QFrame.Raised)
+        self.button_layout_3 = QHBoxLayout(self.button_frame_3)
+        self.button_layout_3.setSpacing(30)
+        self.button_layout_3.setObjectName(u"button_layout_3")
+        self.button_layout_3.setContentsMargins(15, 0, 15, 0)
+        self.label_10 = QLabel(self.button_frame_3)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_3.addWidget(self.label_10)
+
+        self.button_edit_3 = QLineEdit(self.button_frame_3)
+        self.button_edit_3.setObjectName(u"button_edit_3")
+        sizePolicy2.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
+        self.button_edit_3.setSizePolicy(sizePolicy2)
+        self.button_edit_3.setMaximumSize(QSize(100, 25))
+        self.button_edit_3.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_3.setAlignment(Qt.AlignCenter)
+        self.button_edit_3.setClearButtonEnabled(False)
+
+        self.button_layout_3.addWidget(self.button_edit_3)
+
+        self.pushre_4 = QPushButton(self.button_frame_3)
+        self.pushre_4.setObjectName(u"pushre_4")
+
+        self.button_layout_3.addWidget(self.pushre_4)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_3)
+
+        self.button_frame_4 = QFrame(self.PowerButton_body)
+        self.button_frame_4.setObjectName(u"button_frame_4")
+        self.button_frame_4.setStyleSheet(u"")
+        self.button_frame_4.setFrameShape(QFrame.NoFrame)
+        self.button_frame_4.setFrameShadow(QFrame.Raised)
+        self.button_layout_4 = QHBoxLayout(self.button_frame_4)
+        self.button_layout_4.setSpacing(30)
+        self.button_layout_4.setObjectName(u"button_layout_4")
+        self.button_layout_4.setContentsMargins(15, 0, 15, 0)
+        self.label_11 = QLabel(self.button_frame_4)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_4.addWidget(self.label_11)
+
+        self.button_edit_4 = QLineEdit(self.button_frame_4)
+        self.button_edit_4.setObjectName(u"button_edit_4")
+        sizePolicy2.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
+        self.button_edit_4.setSizePolicy(sizePolicy2)
+        self.button_edit_4.setMaximumSize(QSize(100, 25))
+        self.button_edit_4.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_4.setAlignment(Qt.AlignCenter)
+        self.button_edit_4.setClearButtonEnabled(False)
+
+        self.button_layout_4.addWidget(self.button_edit_4)
+
+        self.pushre_5 = QPushButton(self.button_frame_4)
+        self.pushre_5.setObjectName(u"pushre_5")
+
+        self.button_layout_4.addWidget(self.pushre_5)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_4)
+
+        self.button_frame_5 = QFrame(self.PowerButton_body)
+        self.button_frame_5.setObjectName(u"button_frame_5")
+        self.button_frame_5.setStyleSheet(u"")
+        self.button_frame_5.setFrameShape(QFrame.NoFrame)
+        self.button_frame_5.setFrameShadow(QFrame.Raised)
+        self.button_layout_5 = QHBoxLayout(self.button_frame_5)
+        self.button_layout_5.setSpacing(30)
+        self.button_layout_5.setObjectName(u"button_layout_5")
+        self.button_layout_5.setContentsMargins(15, 0, 15, 0)
+        self.label_12 = QLabel(self.button_frame_5)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_5.addWidget(self.label_12)
+
+        self.button_edit_5 = QLineEdit(self.button_frame_5)
+        self.button_edit_5.setObjectName(u"button_edit_5")
+        sizePolicy2.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
+        self.button_edit_5.setSizePolicy(sizePolicy2)
+        self.button_edit_5.setMaximumSize(QSize(100, 25))
+        self.button_edit_5.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_5.setAlignment(Qt.AlignCenter)
+        self.button_edit_5.setClearButtonEnabled(False)
+
+        self.button_layout_5.addWidget(self.button_edit_5)
+
+        self.pushre_6 = QPushButton(self.button_frame_5)
+        self.pushre_6.setObjectName(u"pushre_6")
+
+        self.button_layout_5.addWidget(self.pushre_6)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_5)
+
+        self.button_frame_6 = QFrame(self.PowerButton_body)
+        self.button_frame_6.setObjectName(u"button_frame_6")
+        self.button_frame_6.setStyleSheet(u"")
+        self.button_frame_6.setFrameShape(QFrame.NoFrame)
+        self.button_frame_6.setFrameShadow(QFrame.Raised)
+        self.button_layout_6 = QHBoxLayout(self.button_frame_6)
+        self.button_layout_6.setSpacing(30)
+        self.button_layout_6.setObjectName(u"button_layout_6")
+        self.button_layout_6.setContentsMargins(15, 0, 15, 0)
+        self.label_13 = QLabel(self.button_frame_6)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_6.addWidget(self.label_13)
+
+        self.button_edit_6 = QLineEdit(self.button_frame_6)
+        self.button_edit_6.setObjectName(u"button_edit_6")
+        sizePolicy2.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
+        self.button_edit_6.setSizePolicy(sizePolicy2)
+        self.button_edit_6.setMaximumSize(QSize(100, 25))
+        self.button_edit_6.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_6.setAlignment(Qt.AlignCenter)
+        self.button_edit_6.setClearButtonEnabled(False)
+
+        self.button_layout_6.addWidget(self.button_edit_6)
+
+        self.pushre_7 = QPushButton(self.button_frame_6)
+        self.pushre_7.setObjectName(u"pushre_7")
+
+        self.button_layout_6.addWidget(self.pushre_7)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_6)
+
+        self.button_frame_7 = QFrame(self.PowerButton_body)
+        self.button_frame_7.setObjectName(u"button_frame_7")
+        self.button_frame_7.setStyleSheet(u"")
+        self.button_frame_7.setFrameShape(QFrame.NoFrame)
+        self.button_frame_7.setFrameShadow(QFrame.Raised)
+        self.button_layout_7 = QHBoxLayout(self.button_frame_7)
+        self.button_layout_7.setSpacing(30)
+        self.button_layout_7.setObjectName(u"button_layout_7")
+        self.button_layout_7.setContentsMargins(15, 0, 15, 0)
+        self.label_14 = QLabel(self.button_frame_7)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_7.addWidget(self.label_14)
+
+        self.button_edit_7 = QLineEdit(self.button_frame_7)
+        self.button_edit_7.setObjectName(u"button_edit_7")
+        sizePolicy2.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
+        self.button_edit_7.setSizePolicy(sizePolicy2)
+        self.button_edit_7.setMaximumSize(QSize(100, 25))
+        self.button_edit_7.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_7.setAlignment(Qt.AlignCenter)
+        self.button_edit_7.setClearButtonEnabled(False)
+
+        self.button_layout_7.addWidget(self.button_edit_7)
+
+        self.pushre_8 = QPushButton(self.button_frame_7)
+        self.pushre_8.setObjectName(u"pushre_8")
+
+        self.button_layout_7.addWidget(self.pushre_8)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_7)
+
+        self.button_frame_8 = QFrame(self.PowerButton_body)
+        self.button_frame_8.setObjectName(u"button_frame_8")
+        self.button_frame_8.setStyleSheet(u"")
+        self.button_frame_8.setFrameShape(QFrame.NoFrame)
+        self.button_frame_8.setFrameShadow(QFrame.Raised)
+        self.button_layout_8 = QHBoxLayout(self.button_frame_8)
+        self.button_layout_8.setSpacing(30)
+        self.button_layout_8.setObjectName(u"button_layout_8")
+        self.button_layout_8.setContentsMargins(15, 0, 15, 0)
+        self.label_15 = QLabel(self.button_frame_8)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_8.addWidget(self.label_15)
+
+        self.button_edit_8 = QLineEdit(self.button_frame_8)
+        self.button_edit_8.setObjectName(u"button_edit_8")
+        sizePolicy2.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
+        self.button_edit_8.setSizePolicy(sizePolicy2)
+        self.button_edit_8.setMaximumSize(QSize(100, 25))
+        self.button_edit_8.setStyleSheet(u"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.button_edit_8.setAlignment(Qt.AlignCenter)
+        self.button_edit_8.setClearButtonEnabled(False)
+
+        self.button_layout_8.addWidget(self.button_edit_8)
+
+        self.pushre_9 = QPushButton(self.button_frame_8)
+        self.pushre_9.setObjectName(u"pushre_9")
+
+        self.button_layout_8.addWidget(self.pushre_9)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_8)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_body)
+
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
 
@@ -852,7 +1325,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -864,7 +1337,7 @@ class Ui_MainWindow(object):
         self.btn_hub.setText(QCoreApplication.translate("MainWindow", u"     Hub Management", None))
         self.btn_statistic.setText(QCoreApplication.translate("MainWindow", u"     SiMP's Info", None))
         self.btn_plot.setText(QCoreApplication.translate("MainWindow", u"     Graph", None))
-        self.btn_save.setText("")
+        self.btn_diagnostic.setText(QCoreApplication.translate("MainWindow", u"     Diagnostics", None))
         self.btn_exit.setText("")
         self.SettingsButton.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"MCORD GUI Application", None))
@@ -892,19 +1365,15 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An application created by</span><span style=\" color:#ffaaff;\"> kruksik </span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right"
+                        ":0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">for the management and servicing of AFE</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:"
-                        "#ffaaff;\">Additional</span> <span style=\" color:#ffffff;\">setting page </span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffffff;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Can u use for some setting </span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffffff;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">or </span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; tex"
-                        "t-indent:0px; color:#ffffff;\"><br /></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">diplay information about GUI</span></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Additional software settings may </span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">appear in this panel in the future</span></p></body></html>", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Will be information about all \n"
 "working SiPM's here", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Will be diagnostic page here", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Will be graph here", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -931,12 +1400,44 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">To start using this software, please click   </span><img src=\":/icons/icons/icon_menu.png\" />  <span style=\" font-size:12pt; color:#ffffff;\"> icon on the top right corner and then select an option from the menu </span></p></body></html>", None))
         self.Connection_label.setText(QCoreApplication.translate("MainWindow", u"Select connection ", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"USB", None))
-        self.pushre1.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushre_1.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"LAN", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"Select COM port: ", None))
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Enter IP address:", None))
         self.connection_edit.setText("")
         self.connection_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 10.2.31.2", None))
+        self.PowerButton_label.setText(QCoreApplication.translate("MainWindow", u"Power Supply", None))
+        self.label_8.setText(QCoreApplication.translate("MainWindow", u"Port 1 :", None))
+        self.button_edit_1.setText("")
+        self.pushre_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_9.setText(QCoreApplication.translate("MainWindow", u"Port 2 :", None))
+        self.button_edit_2.setText("")
+        self.button_edit_2.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"Port 3 :", None))
+        self.button_edit_3.setText("")
+        self.button_edit_3.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_4.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Port 4 :", None))
+        self.button_edit_4.setText("")
+        self.button_edit_4.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_5.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Port 5 :", None))
+        self.button_edit_5.setText("")
+        self.button_edit_5.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_6.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"Port 6 :", None))
+        self.button_edit_6.setText("")
+        self.button_edit_6.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_7.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Port 7 :", None))
+        self.button_edit_7.setText("")
+        self.button_edit_7.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_8.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Port 8 :", None))
+        self.button_edit_8.setText("")
+        self.button_edit_8.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
+        self.pushre_9.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi

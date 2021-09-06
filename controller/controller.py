@@ -1,6 +1,7 @@
 
 from functools import partial
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtWidgets import QCheckBox
 from controller.usb_controller import USBController
 from controller.lan_controller import LanController
 
@@ -13,7 +14,8 @@ class Controller:
         self._constantSettings()
         self._connectToggle()
         self._applybuttonspage()
-        self._runtimerfromsp()
+        self._runtimer()
+        self._powerbuttonslogic()
         
         
         
@@ -28,27 +30,34 @@ class Controller:
         self._view.ui.usb_lan_button.stateChanged.connect(self._view.changeUSB_IP)
         self._view.ui.connection_combox.currentIndexChanged.connect(self.usbcontroller.set_current_device)
         self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.allowed_only_lan)
+        self._model.up_or_down_progressBar_frame.connect(self._view.animated_ProgressBar_frame)
         
     def _constantSettings(self):
         self._view.enable_shadow_effect(self._view.ui.LeftMenuFrame,50,10,5,80)
         self._view.ui.titleframe.mouseMoveEvent = self.moveWindow
         self._view.splashscreen.sp.main_frame.mouseMoveEvent = self._view.splashscreen.moveWindow
         self._view.replaceWidgetsToCustom()
+        self._view.Allow_Qt_timers()
         self._view.enable_shadow_effect(self._view.ui.background,10,5,5,80)
         self._view.enable_shadow_effect(self._view.splashscreen,10,5,5,80)
         self._view.enable_shadow_effect(self._view.splashscreen.sp.progressBar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.select_conn_frame,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.PowerSupply_frame,10,5,5,80)
         
-        
-        
+    def _powerbuttonslogic(self):
+        for button in self._model.all_power_buttons.values():
+            button.stateChanged.connect(self._view.PowerButtonsProgressbar)
+            button.stateChanged.connect(self._view.animated_ProgressBar_frame)
         
     def _applybuttonspage(self):
         self._model.get_all_menu_buttons(self._view.ui.buttonsframe)
         for button in self._model.all_menu_buttons:
             button.clicked.connect(partial(self._view.changePage,button))
             
-    def _runtimerfromsp(self):
+    def _runtimer(self):
         self._view.splashscreen.timer.timeout.connect(self._view.splashscreen.progress)
+        self._view.ui.powerbuttons_timer.timeout.connect(self._view.PowerButtons_ProgressBar_Update)
+       
         
         
     def moveWindow(self,event):
@@ -57,6 +66,8 @@ class Controller:
             self._view.move(self._view.pos() + event.globalPos() - self._view.dragPos)
             self._view.dragPos = event.globalPos()
             event.accept()
+            
+  
             
         
     

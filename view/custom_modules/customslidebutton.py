@@ -8,6 +8,7 @@ class QtCustomSlideButton(QCheckBox):
    
     def __init__(
         self,
+        objectName = None,
         parent=None,
         witdh = 60,
         idn = None,
@@ -22,6 +23,7 @@ class QtCustomSlideButton(QCheckBox):
         self.setFixedSize(witdh,28)
         self.setCursor(Qt.PointingHandCursor)
         #COLORS OF BUTTON
+        self._objectName = objectName
         self._bg_color = bg_color
         self._circle_color = circle_color
         self._active_color = active_color
@@ -42,6 +44,9 @@ class QtCustomSlideButton(QCheckBox):
     def circle_position(self,pos):
         self._circle_position = pos
         self.update()
+        
+    def objectName(self) -> str:
+        return self._objectName
 
     def start_transition(self,value):
         self.animation.stop()

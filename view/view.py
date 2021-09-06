@@ -1,6 +1,7 @@
+from signal import SIGABRT
 from view.ui_main import Ui_MainWindow
-from PySide6.QtWidgets import QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
-from PySide6.QtCore import QPropertyAnimation, QEasingCurve, Qt
+from PySide6.QtWidgets import QCheckBox, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt, Slot, Signal
 from PySide6.QtGui import QColor, QIcon
 from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton
 
@@ -90,14 +91,24 @@ class View(QMainWindow):
         self.ui.stackedWidget.addWidget(self.ui.hub_page)
         self.ui.stackedWidget.addWidget(self.ui.statistic_page)
         self.ui.stackedWidget.addWidget(self.ui.graph_page)
+        self.ui.stackedWidget.addWidget(self.ui.diagnostic_page)
 
         self.ui.stackedWidget.setCurrentWidget(self.ui.home_page)
         
         #replace buttons to slidebuttons
-        self.ui.pushre1.deleteLater()
-        self.ui.usb_lan_button = QtCustomSlideButton(None,80,None,'#48dbfb','#1dd1a1','#f7f7f7')
+        self.ui.pushre_1.deleteLater()
+        self.ui.usb_lan_button = QtCustomSlideButton("Usb_Lan_Button",None,80,None,'#48dbfb','#1dd1a1','#f7f7f7')
         self.ui.horizontalLayout_7.insertWidget(1,self.ui.usb_lan_button)
         
+        #replace buttons to powersupplyframe
+        for number,button in enumerate(self.ui.PowerButton_body.findChildren(QPushButton),start=1):
+            button.deleteLater()
+            exec(f"self.ui.powerbutton_{number} = QtCustomSlideButton('PowerButton_{number}',None,60,None,'#1dd1a1','#ff6b6b','#c8d6e5')")
+            layout = button.parentWidget().layout().objectName()
+            exec(f"self.ui.{layout}.insertWidget(2,self.ui.powerbutton_{number})")
+            # Add buttons to dict in model 
+            self.model.storage_power_buttons(button.parentWidget().findChildren(QCheckBox))
+
         
     def change_clicked_button_layout(self,buttonstyle):
         new_layout = buttonstyle + self.model.pressedbuttonstyle
@@ -133,28 +144,17 @@ class View(QMainWindow):
             self.animationlan = QPropertyAnimation(self.ui.connection_selection_lan, b"maximumWidth")
             self.animationlan.setDuration(200)
             self.animationusb.setEasingCurve(QEasingCurve.InOutQuart)
-            self.model.validcommunication(status)
-            
-            
+            start,end = self.model.validcommunication(status)
 
-            if status:
-                self.animationusb.setStartValue(400)
-                self.animationusb.setEndValue(0)
-                self.animationusb.start()
-                
-                self.animationlan.setStartValue(0)
-                self.animationlan.setEndValue(400)
-                self.animationlan.start()
-                
-                
-            else:
-                self.animationusb.setStartValue(0)
-                self.animationusb.setEndValue(400)
-                self.animationusb.start()
-                
-                self.animationlan.setStartValue(400)
-                self.animationlan.setEndValue(0)
-                self.animationlan.start()
+            self.animationusb.setStartValue(end)
+            self.animationusb.setEndValue(start)
+            self.animationusb.start()
+            
+            self.animationlan.setStartValue(start)
+            self.animationlan.setEndValue(end)
+            self.animationlan.start()
+
+           
     
     def change_if_ip_reponse(self, response):
         from win10toast import ToastNotifier
@@ -162,6 +162,40 @@ class View(QMainWindow):
             toaster = ToastNotifier()
             toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
             self.ui.connection_edit.clear()
+            
+    def Allow_Qt_timers(self):
+        self.ui.powerbuttons_timer = QTimer()
+        
+            
+    def PowerButtonsProgressbar(self):
+        self.ui.powerbuttons_timer.start(15)
+        self.ui.PB_progress_value = 0
+        
+  
+    def PowerButtons_ProgressBar_Update(self):
+        if self.ui.PB_progress_value >= 100:
+            self.ui.powerbuttons_timer.stop()
+            self.ui.PB_progress_value = 0
+            self.model.up_or_down_progressBar_frame.emit("PB_finished")
+        self.ui.progressBar.setValue(self.ui.PB_progress_value)
+        self.ui.PB_progress_value += 1
+        
+        
+    def animated_ProgressBar_frame(self,state):
+        start,end = self.model.valid_Qtimer_sender(state)
+            
+        self.animationprogressbar = QPropertyAnimation(self.ui.PowerButton_progressframe, b"maximumHeight")
+        self.animationprogressbar.setDuration(200)
+        self.animationprogressbar.setEasingCurve(QEasingCurve.InOutQuart)
+        self.animationprogressbar.setStartValue(start)
+        self.animationprogressbar.setEndValue(end)
+        self.animationprogressbar.start()
+
+            
+        
+        
+                
+    
             
 
    
