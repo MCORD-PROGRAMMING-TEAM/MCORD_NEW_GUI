@@ -1,6 +1,6 @@
 from signal import SIGABRT
 from view.ui_main import Ui_MainWindow
-from PySide6.QtWidgets import QCheckBox, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
+from PySide6.QtWidgets import QCheckBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt, Slot, Signal
 from PySide6.QtGui import QColor, QIcon
 from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton
@@ -107,7 +107,8 @@ class View(QMainWindow):
             layout = button.parentWidget().layout().objectName()
             exec(f"self.ui.{layout}.insertWidget(2,self.ui.powerbutton_{number})")
             # Add buttons to dict in model 
-            self.model.storage_power_buttons(button.parentWidget().findChildren(QCheckBox))
+            self.model.storage_power_buttons(button.parentWidget().findChildren(QCheckBox),button.parentWidget().findChildren(QLineEdit))
+         
 
         
     def change_clicked_button_layout(self,buttonstyle):
@@ -157,10 +158,7 @@ class View(QMainWindow):
            
     
     def change_if_ip_reponse(self, response):
-        from win10toast import ToastNotifier
         if not response:
-            toaster = ToastNotifier()
-            toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
             self.ui.connection_edit.clear()
             
     def Allow_Qt_timers(self):
@@ -191,6 +189,50 @@ class View(QMainWindow):
         self.animationprogressbar.setEndValue(end)
         self.animationprogressbar.start()
 
+
+    def update_board_comlist(self):
+        self.ui.board_combo.clear()
+        self.ui.board_combo.addItems(self.model.board_comlist)
+        self.ui.board_combo.setCurrentIndex(-1)
+
+    def update_simp_comlist(self):
+        self.ui.simp_combo.addItems(['Master','Slave','Both'])
+        self.ui.simp_combo.setCurrentIndex(-1)
+        
+        
+    def animated_voltage_panels(self):
+        checkifanyactive = self.model.check_if_any_simp_settings_is_active(self.ui.Setting_frame)
+        framename = self.model.valid_which_frame()
+        frame = self.ui.Setting_frame.findChild(QFrame,framename)
+        
+        if checkifanyactive:
+            self.prevanimationframesettings = QPropertyAnimation(checkifanyactive, b"maximumHeight")
+            self.prevanimationframesettings.setDuration(200)
+            self.prevanimationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
+            self.prevanimationframesettings.setStartValue(50)
+            self.prevanimationframesettings.setEndValue(0)
+            self.prevanimationframesettings.start()
+            
+        if self.model.settingstriggerd:
+            self.animationframesettings = QPropertyAnimation(self.ui.Setting_frame, b"minimumHeight")
+            self.animationframesettings.setDuration(200)
+            self.animationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
+            self.animationframesettings.setStartValue(self.ui.Setting_frame.height())
+            self.animationframesettings.setEndValue(self.ui.Setting_frame.height() + 50)
+            self.animationframesettings.start()
+       
+        self.animationframe = QPropertyAnimation(frame, b"maximumHeight")
+        self.animationframe.setDuration(200)
+        self.animationframe.setEasingCurve(QEasingCurve.InOutQuart)
+        self.animationframe.setStartValue(0)
+        self.animationframe.setEndValue(50)
+        self.animationframe.start()
+        
+      
+        
+        
+
+    
             
         
         

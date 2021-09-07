@@ -1,3 +1,6 @@
+from PySide6.QtWidgets import QLineEdit
+
+
 class USBController:
     def __init__(self,view,model) -> None:
         self._view = view
@@ -18,4 +21,5 @@ class USBController:
         comport = self._view.ui.connection_combox.currentText()
         self._model.comport = comport
         
+
         

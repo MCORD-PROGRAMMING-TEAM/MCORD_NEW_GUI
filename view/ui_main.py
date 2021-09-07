@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainhLFFKQ.ui'
+## Form generated from reading UI file 'mainraybTQ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1064, 730)
+        MainWindow.resize(1269, 750)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -646,6 +646,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.hub_page_content = QFrame(self.hub_page)
         self.hub_page_content.setObjectName(u"hub_page_content")
+        self.hub_page_content.setStyleSheet(u"")
         self.hub_page_content.setFrameShape(QFrame.NoFrame)
         self.hub_page_content.setFrameShadow(QFrame.Raised)
         self.select_conn_frame = QFrame(self.hub_page_content)
@@ -824,7 +825,7 @@ class Ui_MainWindow(object):
         self.PowerButton_label_frame = QFrame(self.PowerSupply_frame)
         self.PowerButton_label_frame.setObjectName(u"PowerButton_label_frame")
         self.PowerButton_label_frame.setMaximumSize(QSize(16777215, 50))
-        self.PowerButton_label_frame.setStyleSheet(u"background-color: #d5aaff;\n"
+        self.PowerButton_label_frame.setStyleSheet(u"background-color: #c59dec;\n"
 "border-top-left-radius:5px;\n"
 "border-top-right-radius:5px;\n"
 "")
@@ -880,6 +881,20 @@ class Ui_MainWindow(object):
 "background-color: rgb(68, 75, 89);\n"
 "border-bottom-left-radius:5px;\n"
 "border-bottom-right-radius:5px;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
 "}")
         self.PowerButton_body.setFrameShape(QFrame.StyledPanel)
         self.PowerButton_body.setFrameShadow(QFrame.Raised)
@@ -910,19 +925,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
         self.button_edit_1.setSizePolicy(sizePolicy2)
         self.button_edit_1.setMaximumSize(QSize(100, 25))
-        self.button_edit_1.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_1.setStyleSheet(u"")
         self.button_edit_1.setAlignment(Qt.AlignCenter)
         self.button_edit_1.setPlaceholderText(u"Board Nr.")
         self.button_edit_1.setClearButtonEnabled(False)
@@ -957,19 +960,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
         self.button_edit_2.setSizePolicy(sizePolicy2)
         self.button_edit_2.setMaximumSize(QSize(100, 25))
-        self.button_edit_2.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_2.setStyleSheet(u"")
         self.button_edit_2.setAlignment(Qt.AlignCenter)
         self.button_edit_2.setClearButtonEnabled(False)
 
@@ -1003,19 +994,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
         self.button_edit_3.setSizePolicy(sizePolicy2)
         self.button_edit_3.setMaximumSize(QSize(100, 25))
-        self.button_edit_3.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_3.setStyleSheet(u"")
         self.button_edit_3.setAlignment(Qt.AlignCenter)
         self.button_edit_3.setClearButtonEnabled(False)
 
@@ -1049,19 +1028,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
         self.button_edit_4.setSizePolicy(sizePolicy2)
         self.button_edit_4.setMaximumSize(QSize(100, 25))
-        self.button_edit_4.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_4.setStyleSheet(u"")
         self.button_edit_4.setAlignment(Qt.AlignCenter)
         self.button_edit_4.setClearButtonEnabled(False)
 
@@ -1095,19 +1062,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
         self.button_edit_5.setSizePolicy(sizePolicy2)
         self.button_edit_5.setMaximumSize(QSize(100, 25))
-        self.button_edit_5.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_5.setStyleSheet(u"")
         self.button_edit_5.setAlignment(Qt.AlignCenter)
         self.button_edit_5.setClearButtonEnabled(False)
 
@@ -1141,19 +1096,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
         self.button_edit_6.setSizePolicy(sizePolicy2)
         self.button_edit_6.setMaximumSize(QSize(100, 25))
-        self.button_edit_6.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_6.setStyleSheet(u"")
         self.button_edit_6.setAlignment(Qt.AlignCenter)
         self.button_edit_6.setClearButtonEnabled(False)
 
@@ -1187,19 +1130,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
         self.button_edit_7.setSizePolicy(sizePolicy2)
         self.button_edit_7.setMaximumSize(QSize(100, 25))
-        self.button_edit_7.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_7.setStyleSheet(u"")
         self.button_edit_7.setAlignment(Qt.AlignCenter)
         self.button_edit_7.setClearButtonEnabled(False)
 
@@ -1233,19 +1164,7 @@ class Ui_MainWindow(object):
         sizePolicy2.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
         self.button_edit_8.setSizePolicy(sizePolicy2)
         self.button_edit_8.setMaximumSize(QSize(100, 25))
-        self.button_edit_8.setStyleSheet(u"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
+        self.button_edit_8.setStyleSheet(u"")
         self.button_edit_8.setAlignment(Qt.AlignCenter)
         self.button_edit_8.setClearButtonEnabled(False)
 
@@ -1261,6 +1180,324 @@ class Ui_MainWindow(object):
 
 
         self.PowerSupply_layout.addWidget(self.PowerButton_body)
+
+        self.Setting_frame = QFrame(self.hub_page_content)
+        self.Setting_frame.setObjectName(u"Setting_frame")
+        self.Setting_frame.setGeometry(QRect(340, 0, 671, 101))
+        self.Setting_frame.setStyleSheet(u"QComboBox{\n"
+"	border-radius: 5px;\n"
+"	border: 1px solid rgb(33, 37, 43);\n"
+"	padding: 5px;\n"
+"	padding-left: 10px;\n"
+"	background-color: #444b59;\n"
+"}\n"
+"QComboBox:hover{\n"
+"	border: 2px solid #3bb6cf;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"	subcontrol-origin: padding;\n"
+"	subcontrol-position: top right;\n"
+"	width: 25px; \n"
+"	border-left-width: 3px;\n"
+"	\n"
+"	border-left-color: #3bb6cf;\n"
+"	border-left-style: solid;\n"
+"	border-top-right-radius: 3px;\n"
+"	border-bottom-right-radius: 3px;	\n"
+"	background-image: url(:/icons/icons/cil-chevron-double-down.png);\n"
+"	background-position: center;\n"
+"	background-repeat: no-reperat;\n"
+" }\n"
+"QComboBox QAbstractItemView {\n"
+"	color: #3bb6cf;\n"
+"	background-color: #2f3542;\n"
+"	padding: 10px;\n"
+"}\n"
+"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #39afc7;\n"
+"background-color: #2f3542;\n"
+"}\n"
+"")
+        self.Setting_frame.setFrameShape(QFrame.StyledPanel)
+        self.Setting_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_27 = QVBoxLayout(self.Setting_frame)
+        self.verticalLayout_27.setSpacing(0)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.verticalLayout_27.setContentsMargins(0, 0, 0, 0)
+        self.Settings_label_frame = QFrame(self.Setting_frame)
+        self.Settings_label_frame.setObjectName(u"Settings_label_frame")
+        self.Settings_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.Settings_label_frame.setStyleSheet(u"background-color: #42cce8;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Settings_label_frame.setFrameShape(QFrame.NoFrame)
+        self.Settings_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_26 = QVBoxLayout(self.Settings_label_frame)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.Settings_label = QLabel(self.Settings_label_frame)
+        self.Settings_label.setObjectName(u"Settings_label")
+        self.Settings_label.setMaximumSize(QSize(16777215, 50))
+        self.Settings_label.setStyleSheet(u"")
+        self.Settings_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_26.addWidget(self.Settings_label)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_label_frame)
+
+        self.Setting_choice_frame = QFrame(self.Setting_frame)
+        self.Setting_choice_frame.setObjectName(u"Setting_choice_frame")
+        self.Setting_choice_frame.setMaximumSize(QSize(16777215, 50))
+        self.Setting_choice_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Setting_choice_frame.setFrameShape(QFrame.StyledPanel)
+        self.Setting_choice_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.Setting_choice_frame)
+        self.horizontalLayout_11.setSpacing(15)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.label_17 = QLabel(self.Setting_choice_frame)
+        self.label_17.setObjectName(u"label_17")
+
+        self.horizontalLayout_11.addWidget(self.label_17)
+
+        self.board_combo = QComboBox(self.Setting_choice_frame)
+        self.board_combo.setObjectName(u"board_combo")
+        self.board_combo.setStyleSheet(u"")
+
+        self.horizontalLayout_11.addWidget(self.board_combo)
+
+        self.label_18 = QLabel(self.Setting_choice_frame)
+        self.label_18.setObjectName(u"label_18")
+
+        self.horizontalLayout_11.addWidget(self.label_18)
+
+        self.simp_combo = QComboBox(self.Setting_choice_frame)
+        self.simp_combo.setObjectName(u"simp_combo")
+
+        self.horizontalLayout_11.addWidget(self.simp_combo)
+
+        self.pushButton = QPushButton(self.Setting_choice_frame)
+        self.pushButton.setObjectName(u"pushButton")
+
+        self.horizontalLayout_11.addWidget(self.pushButton)
+
+
+        self.verticalLayout_27.addWidget(self.Setting_choice_frame)
+
+        self.Settings_set_master_frame = QFrame(self.Setting_frame)
+        self.Settings_set_master_frame.setObjectName(u"Settings_set_master_frame")
+        self.Settings_set_master_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_set_master_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_master_frame.setFrameShape(QFrame.NoFrame)
+        self.Settings_set_master_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_12 = QHBoxLayout(self.Settings_set_master_frame)
+        self.horizontalLayout_12.setSpacing(20)
+        self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
+        self.horizontalLayout_12.setContentsMargins(20, 0, 9, 0)
+        self.label_19 = QLabel(self.Settings_set_master_frame)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.horizontalLayout_12.addWidget(self.label_19)
+
+        self.settings_master_linedit = QLineEdit(self.Settings_set_master_frame)
+        self.settings_master_linedit.setObjectName(u"settings_master_linedit")
+        self.settings_master_linedit.setMaximumSize(QSize(80, 16777215))
+        self.settings_master_linedit.setStyleSheet(u"")
+        self.settings_master_linedit.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_12.addWidget(self.settings_master_linedit)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_set_master_frame)
+
+        self.Settings_set_slave_frame = QFrame(self.Setting_frame)
+        self.Settings_set_slave_frame.setObjectName(u"Settings_set_slave_frame")
+        self.Settings_set_slave_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_set_slave_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.Settings_set_slave_frame)
+        self.horizontalLayout_13.setSpacing(20)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(20, 0, -1, 0)
+        self.label_20 = QLabel(self.Settings_set_slave_frame)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.horizontalLayout_13.addWidget(self.label_20)
+
+        self.settings_slave_linedit = QLineEdit(self.Settings_set_slave_frame)
+        self.settings_slave_linedit.setObjectName(u"settings_slave_linedit")
+        self.settings_slave_linedit.setMaximumSize(QSize(80, 16777215))
+        self.settings_slave_linedit.setStyleSheet(u"")
+        self.settings_slave_linedit.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_13.addWidget(self.settings_slave_linedit)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_set_slave_frame)
+
+        self.Settings_set_both_master_slave_frame = QFrame(self.Setting_frame)
+        self.Settings_set_both_master_slave_frame.setObjectName(u"Settings_set_both_master_slave_frame")
+        self.Settings_set_both_master_slave_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_set_both_master_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_both_master_slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_set_both_master_slave_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_14 = QHBoxLayout(self.Settings_set_both_master_slave_frame)
+        self.horizontalLayout_14.setSpacing(0)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.horizontalLayout_14.setContentsMargins(-1, 0, -1, 0)
+        self.label_21 = QLabel(self.Settings_set_both_master_slave_frame)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_14.addWidget(self.label_21)
+
+        self.settings_set_both_master_editline = QLineEdit(self.Settings_set_both_master_slave_frame)
+        self.settings_set_both_master_editline.setObjectName(u"settings_set_both_master_editline")
+        self.settings_set_both_master_editline.setMaximumSize(QSize(80, 16777215))
+        self.settings_set_both_master_editline.setStyleSheet(u"")
+        self.settings_set_both_master_editline.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_14.addWidget(self.settings_set_both_master_editline)
+
+        self.label_22 = QLabel(self.Settings_set_both_master_slave_frame)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_14.addWidget(self.label_22)
+
+        self.settings_set_both_slave_editline = QLineEdit(self.Settings_set_both_master_slave_frame)
+        self.settings_set_both_slave_editline.setObjectName(u"settings_set_both_slave_editline")
+        self.settings_set_both_slave_editline.setMaximumSize(QSize(80, 16777215))
+        self.settings_set_both_slave_editline.setStyleSheet(u"")
+        self.settings_set_both_slave_editline.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_14.addWidget(self.settings_set_both_slave_editline)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_set_both_master_slave_frame)
+
+        self.Settings_preview_frame = QFrame(self.Setting_frame)
+        self.Settings_preview_frame.setObjectName(u"Settings_preview_frame")
+        self.Settings_preview_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_preview_frame.setStyleSheet(u"#Settings_preview_frame{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"}")
+        self.Settings_preview_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_preview_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.Settings_preview_frame)
+        self.horizontalLayout_15.setSpacing(0)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
+        self.Master_frame = QFrame(self.Settings_preview_frame)
+        self.Master_frame.setObjectName(u"Master_frame")
+        self.Master_frame.setFrameShape(QFrame.StyledPanel)
+        self.Master_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.Master_frame)
+        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.label_23 = QLabel(self.Master_frame)
+        self.label_23.setObjectName(u"label_23")
+        self.label_23.setMinimumSize(QSize(0, 31))
+        self.label_23.setMaximumSize(QSize(16777215, 31))
+        self.label_23.setStyleSheet(u"background-color: #f368e0;")
+        self.label_23.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_29.addWidget(self.label_23)
+
+        self.Master_circ_frame = QFrame(self.Master_frame)
+        self.Master_circ_frame.setObjectName(u"Master_circ_frame")
+        self.Master_circ_frame.setMinimumSize(QSize(0, 150))
+        self.Master_circ_frame.setFrameShape(QFrame.NoFrame)
+        self.Master_circ_frame.setFrameShadow(QFrame.Raised)
+        self.master_layout = QVBoxLayout(self.Master_circ_frame)
+        self.master_layout.setSpacing(0)
+        self.master_layout.setObjectName(u"master_layout")
+        self.master_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_29.addWidget(self.Master_circ_frame)
+
+
+        self.horizontalLayout_15.addWidget(self.Master_frame)
+
+        self.Slave_frame = QFrame(self.Settings_preview_frame)
+        self.Slave_frame.setObjectName(u"Slave_frame")
+        self.Slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Slave_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_30 = QVBoxLayout(self.Slave_frame)
+        self.verticalLayout_30.setSpacing(0)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.verticalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.label_24 = QLabel(self.Slave_frame)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setMinimumSize(QSize(0, 31))
+        self.label_24.setMaximumSize(QSize(16777215, 31))
+        self.label_24.setStyleSheet(u"background-color: #54a0ff;")
+        self.label_24.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_30.addWidget(self.label_24)
+
+        self.Slave_circ_frame = QFrame(self.Slave_frame)
+        self.Slave_circ_frame.setObjectName(u"Slave_circ_frame")
+        self.Slave_circ_frame.setMinimumSize(QSize(0, 150))
+        self.Slave_circ_frame.setFrameShape(QFrame.NoFrame)
+        self.Slave_circ_frame.setFrameShadow(QFrame.Raised)
+        self.slave_layout = QVBoxLayout(self.Slave_circ_frame)
+        self.slave_layout.setSpacing(0)
+        self.slave_layout.setObjectName(u"slave_layout")
+        self.slave_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_30.addWidget(self.Slave_circ_frame)
+
+
+        self.horizontalLayout_15.addWidget(self.Slave_frame)
+
+        self.Temperature_frame = QFrame(self.Settings_preview_frame)
+        self.Temperature_frame.setObjectName(u"Temperature_frame")
+        self.Temperature_frame.setFrameShape(QFrame.StyledPanel)
+        self.Temperature_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_31 = QVBoxLayout(self.Temperature_frame)
+        self.verticalLayout_31.setSpacing(0)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.verticalLayout_31.setContentsMargins(0, 0, 0, 0)
+        self.label_25 = QLabel(self.Temperature_frame)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setMinimumSize(QSize(0, 31))
+        self.label_25.setMaximumSize(QSize(16777215, 31))
+        self.label_25.setStyleSheet(u"background-color: #1dd1a1;")
+        self.label_25.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_31.addWidget(self.label_25)
+
+        self.Temperature_circ_frame = QFrame(self.Temperature_frame)
+        self.Temperature_circ_frame.setObjectName(u"Temperature_circ_frame")
+        self.Temperature_circ_frame.setMinimumSize(QSize(0, 150))
+        self.Temperature_circ_frame.setFrameShape(QFrame.NoFrame)
+        self.Temperature_circ_frame.setFrameShadow(QFrame.Raised)
+        self.slave_layout_2 = QVBoxLayout(self.Temperature_circ_frame)
+        self.slave_layout_2.setSpacing(0)
+        self.slave_layout_2.setObjectName(u"slave_layout_2")
+        self.slave_layout_2.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_31.addWidget(self.Temperature_circ_frame)
+
+
+        self.horizontalLayout_15.addWidget(self.Temperature_frame)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_preview_frame)
 
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
@@ -1438,6 +1675,21 @@ class Ui_MainWindow(object):
         self.button_edit_8.setText("")
         self.button_edit_8.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
         self.pushre_9.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.Settings_label.setText(QCoreApplication.translate("MainWindow", u"Settings ", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Select SiPM: ", None))
+        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Master SiPM:", None))
+        self.settings_master_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
+        self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage: ", None))
+        self.settings_set_both_master_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage: ", None))
+        self.settings_set_both_slave_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_23.setText(QCoreApplication.translate("MainWindow", u"Master SiMP voltage", None))
+        self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi
