@@ -1,5 +1,5 @@
 
-from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame
+from PySide6.QtWidgets import  QCheckBox, QComboBox, QLineEdit, QPushButton, QFrame
 from PySide6.QtCore import QObject,Signal
 from PySide6.QtGui import QIntValidator
 from win10toast import ToastNotifier
@@ -24,7 +24,8 @@ class Model(QObject):
             'Slave' : 'Settings_set_slave_frame',
             'Both' : 'Settings_set_both_master_slave_frame'
         }
-        self.settingstriggerd = True
+        self.settingstriggerd = False
+        self.preview_settings_frametrigged = False
       
 
     def get_all_menu_buttons(self, obj):
@@ -100,7 +101,10 @@ class Model(QObject):
                 return motherframe.findChild(QFrame,framename)
     
     def check_if_settings_has_been_ran(self):
-        self.settingstriggerd = False        
+        if isinstance(self.sender(),QComboBox):
+            self.settingstriggerd = True
+        if isinstance(self.sender(),QPushButton):
+            self.preview_settings_frametrigged = True     
 
         
             

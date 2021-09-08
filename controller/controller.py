@@ -48,6 +48,8 @@ class Controller:
         self._view.enable_shadow_effect(self._view.ui.select_conn_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.PowerSupply_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Setting_frame,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.Parameters_frame,10,5,5,80)
+        
         self._view.update_simp_comlist()
         
     def _powerbuttonslogic(self):
@@ -62,6 +64,8 @@ class Controller:
     def _simpframesettingslogic(self):
         self._view.ui.simp_combo.currentIndexChanged.connect(self._view.animated_voltage_panels)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.check_if_settings_has_been_ran)
+        self._view.ui.settings_button.clicked.connect(self._view.animated_preview_settings)
+        self._view.ui.settings_button.clicked.connect(self._model.check_if_settings_has_been_ran)
            
 
             
@@ -74,7 +78,7 @@ class Controller:
     def _runtimer(self):
         self._view.splashscreen.timer.timeout.connect(self._view.splashscreen.progress)
         self._view.ui.powerbuttons_timer.timeout.connect(self._view.PowerButtons_ProgressBar_Update)
-       
+               
         
         
     def moveWindow(self,event):

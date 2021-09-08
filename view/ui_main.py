@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainraybTQ.ui'
+## Form generated from reading UI file 'mainMwonpW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1269, 750)
+        MainWindow.resize(1561, 786)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -815,7 +815,8 @@ class Ui_MainWindow(object):
 
         self.PowerSupply_frame = QFrame(self.hub_page_content)
         self.PowerSupply_frame.setObjectName(u"PowerSupply_frame")
-        self.PowerSupply_frame.setGeometry(QRect(0, 190, 311, 361))
+        self.PowerSupply_frame.setGeometry(QRect(0, 200, 311, 431))
+        self.PowerSupply_frame.setStyleSheet(u"")
         self.PowerSupply_frame.setFrameShape(QFrame.NoFrame)
         self.PowerSupply_frame.setFrameShadow(QFrame.Raised)
         self.PowerSupply_layout = QVBoxLayout(self.PowerSupply_frame)
@@ -1183,7 +1184,7 @@ class Ui_MainWindow(object):
 
         self.Setting_frame = QFrame(self.hub_page_content)
         self.Setting_frame.setObjectName(u"Setting_frame")
-        self.Setting_frame.setGeometry(QRect(340, 0, 671, 101))
+        self.Setting_frame.setGeometry(QRect(330, 0, 551, 111))
         self.Setting_frame.setStyleSheet(u"QComboBox{\n"
 "	border-radius: 5px;\n"
 "	border: 1px solid rgb(33, 37, 43);\n"
@@ -1255,38 +1256,41 @@ class Ui_MainWindow(object):
 
         self.Setting_choice_frame = QFrame(self.Setting_frame)
         self.Setting_choice_frame.setObjectName(u"Setting_choice_frame")
-        self.Setting_choice_frame.setMaximumSize(QSize(16777215, 50))
+        self.Setting_choice_frame.setMaximumSize(QSize(16777215, 60))
         self.Setting_choice_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
-        self.Setting_choice_frame.setFrameShape(QFrame.StyledPanel)
+        self.Setting_choice_frame.setFrameShape(QFrame.NoFrame)
         self.Setting_choice_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_11 = QHBoxLayout(self.Setting_choice_frame)
-        self.horizontalLayout_11.setSpacing(15)
-        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.settings_choice_layout = QHBoxLayout(self.Setting_choice_frame)
+        self.settings_choice_layout.setSpacing(15)
+        self.settings_choice_layout.setObjectName(u"settings_choice_layout")
         self.label_17 = QLabel(self.Setting_choice_frame)
         self.label_17.setObjectName(u"label_17")
 
-        self.horizontalLayout_11.addWidget(self.label_17)
+        self.settings_choice_layout.addWidget(self.label_17)
 
         self.board_combo = QComboBox(self.Setting_choice_frame)
         self.board_combo.setObjectName(u"board_combo")
         self.board_combo.setStyleSheet(u"")
 
-        self.horizontalLayout_11.addWidget(self.board_combo)
+        self.settings_choice_layout.addWidget(self.board_combo)
 
         self.label_18 = QLabel(self.Setting_choice_frame)
         self.label_18.setObjectName(u"label_18")
 
-        self.horizontalLayout_11.addWidget(self.label_18)
+        self.settings_choice_layout.addWidget(self.label_18)
 
         self.simp_combo = QComboBox(self.Setting_choice_frame)
         self.simp_combo.setObjectName(u"simp_combo")
 
-        self.horizontalLayout_11.addWidget(self.simp_combo)
+        self.settings_choice_layout.addWidget(self.simp_combo)
 
-        self.pushButton = QPushButton(self.Setting_choice_frame)
-        self.pushButton.setObjectName(u"pushButton")
+        self.settings_button = QPushButton(self.Setting_choice_frame)
+        self.settings_button.setObjectName(u"settings_button")
+        self.settings_button.setStyleSheet(u"QPushButton:pressed{\n"
+"	background-color: rgb(170, 255, 0);\n"
+"}")
 
-        self.horizontalLayout_11.addWidget(self.pushButton)
+        self.settings_choice_layout.addWidget(self.settings_button)
 
 
         self.verticalLayout_27.addWidget(self.Setting_choice_frame)
@@ -1294,13 +1298,15 @@ class Ui_MainWindow(object):
         self.Settings_set_master_frame = QFrame(self.Setting_frame)
         self.Settings_set_master_frame.setObjectName(u"Settings_set_master_frame")
         self.Settings_set_master_frame.setMaximumSize(QSize(16777215, 0))
-        self.Settings_set_master_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_master_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;")
         self.Settings_set_master_frame.setFrameShape(QFrame.NoFrame)
         self.Settings_set_master_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_12 = QHBoxLayout(self.Settings_set_master_frame)
         self.horizontalLayout_12.setSpacing(20)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.horizontalLayout_12.setContentsMargins(20, 0, 9, 0)
+        self.horizontalLayout_12.setContentsMargins(9, 0, 30, 0)
         self.label_19 = QLabel(self.Settings_set_master_frame)
         self.label_19.setObjectName(u"label_19")
         self.label_19.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1321,13 +1327,15 @@ class Ui_MainWindow(object):
         self.Settings_set_slave_frame = QFrame(self.Setting_frame)
         self.Settings_set_slave_frame.setObjectName(u"Settings_set_slave_frame")
         self.Settings_set_slave_frame.setMaximumSize(QSize(16777215, 0))
-        self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;")
         self.Settings_set_slave_frame.setFrameShape(QFrame.StyledPanel)
         self.Settings_set_slave_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_13 = QHBoxLayout(self.Settings_set_slave_frame)
         self.horizontalLayout_13.setSpacing(20)
         self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.horizontalLayout_13.setContentsMargins(20, 0, -1, 0)
+        self.horizontalLayout_13.setContentsMargins(9, 0, 30, 0)
         self.label_20 = QLabel(self.Settings_set_slave_frame)
         self.label_20.setObjectName(u"label_20")
         self.label_20.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
@@ -1348,13 +1356,15 @@ class Ui_MainWindow(object):
         self.Settings_set_both_master_slave_frame = QFrame(self.Setting_frame)
         self.Settings_set_both_master_slave_frame.setObjectName(u"Settings_set_both_master_slave_frame")
         self.Settings_set_both_master_slave_frame.setMaximumSize(QSize(16777215, 0))
-        self.Settings_set_both_master_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_set_both_master_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;")
         self.Settings_set_both_master_slave_frame.setFrameShape(QFrame.StyledPanel)
         self.Settings_set_both_master_slave_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.Settings_set_both_master_slave_frame)
         self.horizontalLayout_14.setSpacing(0)
         self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.horizontalLayout_14.setContentsMargins(-1, 0, -1, 0)
+        self.horizontalLayout_14.setContentsMargins(-1, 0, 30, 0)
         self.label_21 = QLabel(self.Settings_set_both_master_slave_frame)
         self.label_21.setObjectName(u"label_21")
         self.label_21.setAlignment(Qt.AlignCenter)
@@ -1368,6 +1378,10 @@ class Ui_MainWindow(object):
         self.settings_set_both_master_editline.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_14.addWidget(self.settings_set_both_master_editline)
+
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer)
 
         self.label_22 = QLabel(self.Settings_set_both_master_slave_frame)
         self.label_22.setObjectName(u"label_22")
@@ -1386,53 +1400,182 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addWidget(self.Settings_set_both_master_slave_frame)
 
-        self.Settings_preview_frame = QFrame(self.Setting_frame)
-        self.Settings_preview_frame.setObjectName(u"Settings_preview_frame")
-        self.Settings_preview_frame.setMaximumSize(QSize(16777215, 0))
-        self.Settings_preview_frame.setStyleSheet(u"#Settings_preview_frame{\n"
+        self.Parameters_frame = QFrame(self.hub_page_content)
+        self.Parameters_frame.setObjectName(u"Parameters_frame")
+        self.Parameters_frame.setGeometry(QRect(330, 200, 1021, 51))
+        self.Parameters_frame.setStyleSheet(u"QComboBox{\n"
+"	border-radius: 5px;\n"
+"	border: 1px solid rgb(33, 37, 43);\n"
+"	padding: 5px;\n"
+"	padding-left: 10px;\n"
+"	background-color: #444b59;\n"
+"}\n"
+"QComboBox:hover{\n"
+"	border: 2px solid #ee5253;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"	subcontrol-origin: padding;\n"
+"	subcontrol-position: top right;\n"
+"	width: 25px; \n"
+"	border-left-width: 3px;\n"
+"	\n"
+"	border-left-color: #ee5253;\n"
+"	border-left-style: solid;\n"
+"	border-top-right-radius: 3px;\n"
+"	border-bottom-right-radius: 3px;	\n"
+"	background-image: url(:/icons/icons/cil-chevron-double-down.png);\n"
+"	background-position: center;\n"
+"	background-repeat: no-reperat;\n"
+" }\n"
+"QComboBox QAbstractItemView {\n"
+"	color: #ee5253;\n"
+"	background-color: #2f3542;\n"
+"	padding: 10px;\n"
+"}\n"
+"#Parameters_body_frame{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"}\n"
+"")
+        self.Parameters_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameters_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_29 = QVBoxLayout(self.Parameters_frame)
+        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.Parameters_label_frame = QFrame(self.Parameters_frame)
+        self.Parameters_label_frame.setObjectName(u"Parameters_label_frame")
+        self.Parameters_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.Parameters_label_frame.setStyleSheet(u"background-color: #ff6b6b;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Parameters_label_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameters_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_28 = QVBoxLayout(self.Parameters_label_frame)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.Parameters_label = QLabel(self.Parameters_label_frame)
+        self.Parameters_label.setObjectName(u"Parameters_label")
+        self.Parameters_label.setMaximumSize(QSize(16777215, 50))
+        self.Parameters_label.setStyleSheet(u"")
+        self.Parameters_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_28.addWidget(self.Parameters_label)
+
+
+        self.verticalLayout_29.addWidget(self.Parameters_label_frame)
+
+        self.Parameters_body_frame = QFrame(self.Parameters_frame)
+        self.Parameters_body_frame.setObjectName(u"Parameters_body_frame")
+        self.Parameters_body_frame.setMaximumSize(QSize(16777215, 0))
+        self.Parameters_body_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameters_body_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_34 = QVBoxLayout(self.Parameters_body_frame)
+        self.verticalLayout_34.setSpacing(0)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.Parameters_dashinfo = QFrame(self.Parameters_body_frame)
+        self.Parameters_dashinfo.setObjectName(u"Parameters_dashinfo")
+        self.Parameters_dashinfo.setMaximumSize(QSize(16777215, 60))
+        self.Parameters_dashinfo.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Parameters_dashinfo.setFrameShape(QFrame.StyledPanel)
+        self.Parameters_dashinfo.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_15 = QHBoxLayout(self.Parameters_dashinfo)
+        self.horizontalLayout_15.setSpacing(50)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.horizontalLayout_15.setContentsMargins(150, 0, 150, 0)
+        self.Parameters_select_board_frame = QFrame(self.Parameters_dashinfo)
+        self.Parameters_select_board_frame.setObjectName(u"Parameters_select_board_frame")
+        self.Parameters_select_board_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameters_select_board_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.Parameters_select_board_frame)
+        self.horizontalLayout_16.setSpacing(0)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.label_23 = QLabel(self.Parameters_select_board_frame)
+        self.label_23.setObjectName(u"label_23")
+
+        self.horizontalLayout_16.addWidget(self.label_23)
+
+        self.parameters_board_combo = QComboBox(self.Parameters_select_board_frame)
+        self.parameters_board_combo.setObjectName(u"parameters_board_combo")
+        self.parameters_board_combo.setStyleSheet(u"")
+
+        self.horizontalLayout_16.addWidget(self.parameters_board_combo)
+
+
+        self.horizontalLayout_15.addWidget(self.Parameters_select_board_frame)
+
+        self.Parameters_select_simp_frame = QFrame(self.Parameters_dashinfo)
+        self.Parameters_select_simp_frame.setObjectName(u"Parameters_select_simp_frame")
+        self.Parameters_select_simp_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameters_select_simp_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_17 = QHBoxLayout(self.Parameters_select_simp_frame)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.label_28 = QLabel(self.Parameters_select_simp_frame)
+        self.label_28.setObjectName(u"label_28")
+
+        self.horizontalLayout_17.addWidget(self.label_28)
+
+        self.parameters_simp_combo = QComboBox(self.Parameters_select_simp_frame)
+        self.parameters_simp_combo.setObjectName(u"parameters_simp_combo")
+
+        self.horizontalLayout_17.addWidget(self.parameters_simp_combo)
+
+
+        self.horizontalLayout_15.addWidget(self.Parameters_select_simp_frame)
+
+
+        self.verticalLayout_34.addWidget(self.Parameters_dashinfo)
+
+        self.Parameter_preview_frame = QFrame(self.Parameters_body_frame)
+        self.Parameter_preview_frame.setObjectName(u"Parameter_preview_frame")
+        self.Parameter_preview_frame.setMaximumSize(QSize(16777215, 400))
+        self.Parameter_preview_frame.setStyleSheet(u"#Settings_preview_frame{\n"
 "background-color: rgb(68, 75, 89);\n"
 "border-bottom-left-radius:5px;\n"
 "border-bottom-right-radius:5px;\n"
 "}")
-        self.Settings_preview_frame.setFrameShape(QFrame.StyledPanel)
-        self.Settings_preview_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_15 = QHBoxLayout(self.Settings_preview_frame)
-        self.horizontalLayout_15.setSpacing(0)
-        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
-        self.Master_frame = QFrame(self.Settings_preview_frame)
+        self.Parameter_preview_frame.setFrameShape(QFrame.NoFrame)
+        self.Parameter_preview_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_11 = QHBoxLayout(self.Parameter_preview_frame)
+        self.horizontalLayout_11.setSpacing(0)
+        self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
+        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.Master_frame = QFrame(self.Parameter_preview_frame)
         self.Master_frame.setObjectName(u"Master_frame")
         self.Master_frame.setFrameShape(QFrame.StyledPanel)
         self.Master_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_29 = QVBoxLayout(self.Master_frame)
-        self.verticalLayout_29.setSpacing(0)
-        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
-        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
-        self.label_23 = QLabel(self.Master_frame)
-        self.label_23.setObjectName(u"label_23")
-        self.label_23.setMinimumSize(QSize(0, 31))
-        self.label_23.setMaximumSize(QSize(16777215, 31))
-        self.label_23.setStyleSheet(u"background-color: #f368e0;")
-        self.label_23.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_33 = QVBoxLayout(self.Master_frame)
+        self.verticalLayout_33.setSpacing(0)
+        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
+        self.verticalLayout_33.setContentsMargins(0, 0, 0, 0)
+        self.label_27 = QLabel(self.Master_frame)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setMinimumSize(QSize(0, 31))
+        self.label_27.setMaximumSize(QSize(16777215, 31))
+        self.label_27.setStyleSheet(u"background-color: #f368e0;")
+        self.label_27.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_29.addWidget(self.label_23)
+        self.verticalLayout_33.addWidget(self.label_27)
 
-        self.Master_circ_frame = QFrame(self.Master_frame)
-        self.Master_circ_frame.setObjectName(u"Master_circ_frame")
-        self.Master_circ_frame.setMinimumSize(QSize(0, 150))
-        self.Master_circ_frame.setFrameShape(QFrame.NoFrame)
-        self.Master_circ_frame.setFrameShadow(QFrame.Raised)
-        self.master_layout = QVBoxLayout(self.Master_circ_frame)
+        self.master_circ_frame = QFrame(self.Master_frame)
+        self.master_circ_frame.setObjectName(u"master_circ_frame")
+        self.master_circ_frame.setMinimumSize(QSize(0, 150))
+        self.master_circ_frame.setFrameShape(QFrame.NoFrame)
+        self.master_circ_frame.setFrameShadow(QFrame.Raised)
+        self.master_layout = QVBoxLayout(self.master_circ_frame)
         self.master_layout.setSpacing(0)
         self.master_layout.setObjectName(u"master_layout")
         self.master_layout.setContentsMargins(0, 0, 0, 0)
 
-        self.verticalLayout_29.addWidget(self.Master_circ_frame)
+        self.verticalLayout_33.addWidget(self.master_circ_frame)
 
 
-        self.horizontalLayout_15.addWidget(self.Master_frame)
+        self.horizontalLayout_11.addWidget(self.Master_frame)
 
-        self.Slave_frame = QFrame(self.Settings_preview_frame)
+        self.Slave_frame = QFrame(self.Parameter_preview_frame)
         self.Slave_frame.setObjectName(u"Slave_frame")
         self.Slave_frame.setFrameShape(QFrame.StyledPanel)
         self.Slave_frame.setFrameShadow(QFrame.Raised)
@@ -1462,9 +1605,9 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.addWidget(self.Slave_circ_frame)
 
 
-        self.horizontalLayout_15.addWidget(self.Slave_frame)
+        self.horizontalLayout_11.addWidget(self.Slave_frame)
 
-        self.Temperature_frame = QFrame(self.Settings_preview_frame)
+        self.Temperature_frame = QFrame(self.Parameter_preview_frame)
         self.Temperature_frame.setObjectName(u"Temperature_frame")
         self.Temperature_frame.setFrameShape(QFrame.StyledPanel)
         self.Temperature_frame.setFrameShadow(QFrame.Raised)
@@ -1486,18 +1629,21 @@ class Ui_MainWindow(object):
         self.Temperature_circ_frame.setMinimumSize(QSize(0, 150))
         self.Temperature_circ_frame.setFrameShape(QFrame.NoFrame)
         self.Temperature_circ_frame.setFrameShadow(QFrame.Raised)
-        self.slave_layout_2 = QVBoxLayout(self.Temperature_circ_frame)
-        self.slave_layout_2.setSpacing(0)
-        self.slave_layout_2.setObjectName(u"slave_layout_2")
-        self.slave_layout_2.setContentsMargins(0, 0, 0, 0)
+        self.temperature_layout = QVBoxLayout(self.Temperature_circ_frame)
+        self.temperature_layout.setSpacing(0)
+        self.temperature_layout.setObjectName(u"temperature_layout")
+        self.temperature_layout.setContentsMargins(0, 0, 0, 0)
 
         self.verticalLayout_31.addWidget(self.Temperature_circ_frame)
 
 
-        self.horizontalLayout_15.addWidget(self.Temperature_frame)
+        self.horizontalLayout_11.addWidget(self.Temperature_frame)
 
 
-        self.verticalLayout_27.addWidget(self.Settings_preview_frame)
+        self.verticalLayout_34.addWidget(self.Parameter_preview_frame)
+
+
+        self.verticalLayout_29.addWidget(self.Parameters_body_frame)
 
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
@@ -1678,16 +1824,19 @@ class Ui_MainWindow(object):
         self.Settings_label.setText(QCoreApplication.translate("MainWindow", u"Settings ", None))
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
         self.label_18.setText(QCoreApplication.translate("MainWindow", u"Select SiPM: ", None))
-        self.pushButton.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.settings_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Master SiPM:", None))
         self.settings_master_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
         self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage: ", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage:     ", None))
         self.settings_set_both_master_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage: ", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage:     ", None))
         self.settings_set_both_slave_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_23.setText(QCoreApplication.translate("MainWindow", u"Master SiMP voltage", None))
+        self.Parameters_label.setText(QCoreApplication.translate("MainWindow", u"Parameters", None))
+        self.label_23.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"Select SiPM:", None))
+        self.label_27.setText(QCoreApplication.translate("MainWindow", u"Master SiMP voltage", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.credits.setText("")

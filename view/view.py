@@ -3,7 +3,7 @@ from view.ui_main import Ui_MainWindow
 from PySide6.QtWidgets import QCheckBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt, Slot, Signal
 from PySide6.QtGui import QColor, QIcon
-from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton
+from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton
 
 
 class View(QMainWindow):
@@ -108,6 +108,11 @@ class View(QMainWindow):
             exec(f"self.ui.{layout}.insertWidget(2,self.ui.powerbutton_{number})")
             # Add buttons to dict in model 
             self.model.storage_power_buttons(button.parentWidget().findChildren(QCheckBox),button.parentWidget().findChildren(QLineEdit))
+            
+        #replace pushbutton to hover button
+        self.ui.settings_button.deleteLater()
+        self.ui.settings_button = HoverButton("Set Voltage")
+        self.ui.settings_choice_layout.insertWidget(4,self.ui.settings_button)
          
 
         
@@ -198,6 +203,14 @@ class View(QMainWindow):
     def update_simp_comlist(self):
         self.ui.simp_combo.addItems(['Master','Slave','Both'])
         self.ui.simp_combo.setCurrentIndex(-1)
+    
+    def animated_settings_frame(self,frame,value):
+        self.animationframesettings = QPropertyAnimation(frame, b"minimumHeight")
+        self.animationframesettings.setDuration(200)
+        self.animationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
+        self.animationframesettings.setStartValue(frame.height())
+        self.animationframesettings.setEndValue(frame.height() + value)
+        self.animationframesettings.start()
         
         
     def animated_voltage_panels(self):
@@ -213,13 +226,8 @@ class View(QMainWindow):
             self.prevanimationframesettings.setEndValue(0)
             self.prevanimationframesettings.start()
             
-        if self.model.settingstriggerd:
-            self.animationframesettings = QPropertyAnimation(self.ui.Setting_frame, b"minimumHeight")
-            self.animationframesettings.setDuration(200)
-            self.animationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animationframesettings.setStartValue(self.ui.Setting_frame.height())
-            self.animationframesettings.setEndValue(self.ui.Setting_frame.height() + 50)
-            self.animationframesettings.start()
+        if not self.model.settingstriggerd:
+            self.animated_settings_frame(self.ui.Setting_frame,50)
        
         self.animationframe = QPropertyAnimation(frame, b"maximumHeight")
         self.animationframe.setDuration(200)
@@ -227,6 +235,18 @@ class View(QMainWindow):
         self.animationframe.setStartValue(0)
         self.animationframe.setEndValue(50)
         self.animationframe.start()
+        
+        
+    def animated_preview_settings(self):
+        if not self.model.preview_settings_frametrigged:
+            self.previewanimation = QPropertyAnimation(self.ui.Parameters_body_frame, b"maximumHeight")
+            self.previewanimation.setDuration(200)
+            self.previewanimation.setEasingCurve(QEasingCurve.InOutQuart)
+            self.previewanimation.setStartValue(0)
+            self.previewanimation.setEndValue(381)
+            self.previewanimation.start()
+            
+            self.animated_settings_frame(self.ui.Parameters_frame,381)
         
       
         

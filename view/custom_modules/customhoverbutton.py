@@ -6,16 +6,20 @@ from ..rc_icons import *
 
 
 class HoverButton(QPushButton):
-    def __init__(self, parent=None, color1="#48dbfb", color2="#2e86de"):
+    def __init__(self,text="Button", parent=None, color1="#48dbfb", color2="#2e86de",):
         super().__init__(parent)
         
         #colors 
         self.color1 = QColor(color1)
         self.color2 = QColor(color2)
+        self.buttonText = text
+        
+        # Add text to button
+        self.setText(self.buttonText)
         
         #basic stylesheet
         self.qss = """
-            font: 75 10pt;
+            font: 75 9pt;
             font-weight: bold;
             color: #fff;
             border-style: solid;
@@ -31,10 +35,13 @@ class HoverButton(QPushButton):
             duration=250
         )
         
+        # Add text to button
         
         
         #Run _animate when value of animation has been changed
         self._animation.valueChanged.connect(self._animate)
+        
+       
         
         #Set default qss
         self.setStyleSheet(self.qss)
@@ -48,6 +55,7 @@ class HoverButton(QPushButton):
         )
         self.qss += grad 
         self.setStyleSheet(self.qss)
+        
         
         
     def enterEvent(self, event:QEnterEvent) -> None:
