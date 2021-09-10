@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainMwonpW.ui'
+## Form generated from reading UI file 'mainCobgAD.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1561, 786)
+        MainWindow.resize(1479, 781)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -1184,7 +1184,7 @@ class Ui_MainWindow(object):
 
         self.Setting_frame = QFrame(self.hub_page_content)
         self.Setting_frame.setObjectName(u"Setting_frame")
-        self.Setting_frame.setGeometry(QRect(330, 0, 551, 111))
+        self.Setting_frame.setGeometry(QRect(330, 0, 551, 101))
         self.Setting_frame.setStyleSheet(u"QComboBox{\n"
 "	border-radius: 5px;\n"
 "	border: 1px solid rgb(33, 37, 43);\n"
@@ -1402,7 +1402,7 @@ class Ui_MainWindow(object):
 
         self.Parameters_frame = QFrame(self.hub_page_content)
         self.Parameters_frame.setObjectName(u"Parameters_frame")
-        self.Parameters_frame.setGeometry(QRect(330, 200, 1021, 51))
+        self.Parameters_frame.setGeometry(QRect(330, 200, 1011, 51))
         self.Parameters_frame.setStyleSheet(u"QComboBox{\n"
 "	border-radius: 5px;\n"
 "	border: 1px solid rgb(33, 37, 43);\n"
@@ -1531,7 +1531,6 @@ class Ui_MainWindow(object):
 
         self.Parameter_preview_frame = QFrame(self.Parameters_body_frame)
         self.Parameter_preview_frame.setObjectName(u"Parameter_preview_frame")
-        self.Parameter_preview_frame.setMaximumSize(QSize(16777215, 400))
         self.Parameter_preview_frame.setStyleSheet(u"#Settings_preview_frame{\n"
 "background-color: rgb(68, 75, 89);\n"
 "border-bottom-left-radius:5px;\n"
@@ -1562,13 +1561,12 @@ class Ui_MainWindow(object):
 
         self.master_circ_frame = QFrame(self.Master_frame)
         self.master_circ_frame.setObjectName(u"master_circ_frame")
-        self.master_circ_frame.setMinimumSize(QSize(0, 150))
         self.master_circ_frame.setFrameShape(QFrame.NoFrame)
         self.master_circ_frame.setFrameShadow(QFrame.Raised)
         self.master_layout = QVBoxLayout(self.master_circ_frame)
         self.master_layout.setSpacing(0)
         self.master_layout.setObjectName(u"master_layout")
-        self.master_layout.setContentsMargins(0, 0, 0, 0)
+        self.master_layout.setContentsMargins(30, 10, 30, 10)
 
         self.verticalLayout_33.addWidget(self.master_circ_frame)
 
@@ -1594,13 +1592,12 @@ class Ui_MainWindow(object):
 
         self.Slave_circ_frame = QFrame(self.Slave_frame)
         self.Slave_circ_frame.setObjectName(u"Slave_circ_frame")
-        self.Slave_circ_frame.setMinimumSize(QSize(0, 150))
         self.Slave_circ_frame.setFrameShape(QFrame.NoFrame)
         self.Slave_circ_frame.setFrameShadow(QFrame.Raised)
         self.slave_layout = QVBoxLayout(self.Slave_circ_frame)
         self.slave_layout.setSpacing(0)
         self.slave_layout.setObjectName(u"slave_layout")
-        self.slave_layout.setContentsMargins(0, 0, 0, 0)
+        self.slave_layout.setContentsMargins(30, 10, 30, 10)
 
         self.verticalLayout_30.addWidget(self.Slave_circ_frame)
 
@@ -1626,13 +1623,12 @@ class Ui_MainWindow(object):
 
         self.Temperature_circ_frame = QFrame(self.Temperature_frame)
         self.Temperature_circ_frame.setObjectName(u"Temperature_circ_frame")
-        self.Temperature_circ_frame.setMinimumSize(QSize(0, 150))
         self.Temperature_circ_frame.setFrameShape(QFrame.NoFrame)
         self.Temperature_circ_frame.setFrameShadow(QFrame.Raised)
         self.temperature_layout = QVBoxLayout(self.Temperature_circ_frame)
         self.temperature_layout.setSpacing(0)
         self.temperature_layout.setObjectName(u"temperature_layout")
-        self.temperature_layout.setContentsMargins(0, 0, 0, 0)
+        self.temperature_layout.setContentsMargins(35, 15, 35, 10)
 
         self.verticalLayout_31.addWidget(self.Temperature_circ_frame)
 
@@ -1644,6 +1640,65 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_29.addWidget(self.Parameters_body_frame)
+
+        self.Console_frame = QFrame(self.hub_page_content)
+        self.Console_frame.setObjectName(u"Console_frame")
+        self.Console_frame.setGeometry(QRect(900, 0, 431, 181))
+        self.Console_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_36 = QVBoxLayout(self.Console_frame)
+        self.verticalLayout_36.setSpacing(0)
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
+        self.Console_label_frame = QFrame(self.Console_frame)
+        self.Console_label_frame.setObjectName(u"Console_label_frame")
+        self.Console_label_frame.setMinimumSize(QSize(0, 50))
+        self.Console_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.Console_label_frame.setStyleSheet(u"background-color: #ff9f43;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Console_label_frame.setFrameShape(QFrame.NoFrame)
+        self.Console_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_32 = QVBoxLayout(self.Console_label_frame)
+        self.verticalLayout_32.setSpacing(0)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.Consol_label = QLabel(self.Console_label_frame)
+        self.Consol_label.setObjectName(u"Consol_label")
+        self.Consol_label.setMaximumSize(QSize(16777215, 50))
+        self.Consol_label.setStyleSheet(u"")
+        self.Consol_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_32.addWidget(self.Consol_label)
+
+
+        self.verticalLayout_36.addWidget(self.Console_label_frame)
+
+        self.Console_body_frame = QFrame(self.Console_frame)
+        self.Console_body_frame.setObjectName(u"Console_body_frame")
+        self.Console_body_frame.setStyleSheet(u"#Console_body_frame{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"font: 700 12pt \"Terminal\";\n"
+"}")
+        self.Console_body_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_body_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_35 = QVBoxLayout(self.Console_body_frame)
+        self.verticalLayout_35.setSpacing(0)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(1, 0, 0, 0)
+        self.console = QTextBrowser(self.Console_body_frame)
+        self.console.setObjectName(u"console")
+        self.console.setStyleSheet(u"border: None;\n"
+"background:transparent;")
+        self.console.setFrameShape(QFrame.NoFrame)
+        self.console.setLineWrapMode(QTextEdit.WidgetWidth)
+
+        self.verticalLayout_35.addWidget(self.console)
+
+
+        self.verticalLayout_36.addWidget(self.Console_body_frame)
 
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
@@ -1839,6 +1894,12 @@ class Ui_MainWindow(object):
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"Master SiMP voltage", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
+        self.Consol_label.setText(QCoreApplication.translate("MainWindow", u"Console", None))
+        self.console.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt;&gt; Text will be here</p></body></html>", None))
         self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi

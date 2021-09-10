@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1561</width>
-    <height>786</height>
+    <width>1479</width>
+    <height>781</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -2391,7 +2391,7 @@ background-color: #2f3542;
                             <x>330</x>
                             <y>0</y>
                             <width>551</width>
-                            <height>111</height>
+                            <height>101</height>
                            </rect>
                           </property>
                           <property name="styleSheet">
@@ -2809,8 +2809,8 @@ border-bottom-right-radius:5px;</string>
                            <rect>
                             <x>330</x>
                             <y>200</y>
-                            <width>1021</width>
-                            <height>51</height>
+                            <width>1011</width>
+                            <height>431</height>
                            </rect>
                           </property>
                           <property name="styleSheet">
@@ -2920,7 +2920,7 @@ border-top-right-radius:5px;
                              <property name="maximumSize">
                               <size>
                                <width>16777215</width>
-                               <height>0</height>
+                               <height>500</height>
                               </size>
                              </property>
                              <property name="frameShape">
@@ -2979,66 +2979,17 @@ border-top-right-radius:5px;
                                   <number>0</number>
                                  </property>
                                  <item>
-                                  <widget class="QFrame" name="Parameters_select_board_frame">
-                                   <property name="frameShape">
-                                    <enum>QFrame::NoFrame</enum>
+                                  <widget class="QLabel" name="label_23">
+                                   <property name="text">
+                                    <string>Select Board:</string>
                                    </property>
-                                   <property name="frameShadow">
-                                    <enum>QFrame::Raised</enum>
-                                   </property>
-                                   <layout class="QHBoxLayout" name="horizontalLayout_16">
-                                    <property name="spacing">
-                                     <number>0</number>
-                                    </property>
-                                    <property name="leftMargin">
-                                     <number>0</number>
-                                    </property>
-                                    <property name="topMargin">
-                                     <number>0</number>
-                                    </property>
-                                    <property name="rightMargin">
-                                     <number>0</number>
-                                    </property>
-                                    <property name="bottomMargin">
-                                     <number>0</number>
-                                    </property>
-                                    <item>
-                                     <widget class="QLabel" name="label_23">
-                                      <property name="text">
-                                       <string>Select Board:</string>
-                                      </property>
-                                     </widget>
-                                    </item>
-                                    <item>
-                                     <widget class="QComboBox" name="parameters_board_combo">
-                                      <property name="styleSheet">
-                                       <string notr="true"/>
-                                      </property>
-                                     </widget>
-                                    </item>
-                                   </layout>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QFrame" name="Parameters_select_simp_frame">
-                                   <property name="frameShape">
-                                    <enum>QFrame::NoFrame</enum>
+                                  <widget class="QComboBox" name="parameters_board_combo">
+                                   <property name="styleSheet">
+                                    <string notr="true"/>
                                    </property>
-                                   <property name="frameShadow">
-                                    <enum>QFrame::Raised</enum>
-                                   </property>
-                                   <layout class="QHBoxLayout" name="horizontalLayout_17">
-                                    <item>
-                                     <widget class="QLabel" name="label_28">
-                                      <property name="text">
-                                       <string>Select SiPM:</string>
-                                      </property>
-                                     </widget>
-                                    </item>
-                                    <item>
-                                     <widget class="QComboBox" name="parameters_simp_combo"/>
-                                    </item>
-                                   </layout>
                                   </widget>
                                  </item>
                                 </layout>
@@ -3046,12 +2997,6 @@ border-top-right-radius:5px;
                               </item>
                               <item>
                                <widget class="QFrame" name="Parameter_preview_frame">
-                                <property name="maximumSize">
-                                 <size>
-                                  <width>16777215</width>
-                                  <height>400</height>
-                                 </size>
-                                </property>
                                 <property name="styleSheet">
                                  <string notr="true">#Settings_preview_frame{
 background-color: rgb(68, 75, 89);
@@ -3132,12 +3077,6 @@ border-bottom-right-radius:5px;
                                     </item>
                                     <item>
                                      <widget class="QFrame" name="master_circ_frame">
-                                      <property name="minimumSize">
-                                       <size>
-                                        <width>0</width>
-                                        <height>150</height>
-                                       </size>
-                                      </property>
                                       <property name="frameShape">
                                        <enum>QFrame::NoFrame</enum>
                                       </property>
@@ -3149,16 +3088,16 @@ border-bottom-right-radius:5px;
                                         <number>0</number>
                                        </property>
                                        <property name="leftMargin">
-                                        <number>0</number>
+                                        <number>30</number>
                                        </property>
                                        <property name="topMargin">
-                                        <number>0</number>
+                                        <number>10</number>
                                        </property>
                                        <property name="rightMargin">
-                                        <number>0</number>
+                                        <number>30</number>
                                        </property>
                                        <property name="bottomMargin">
-                                        <number>0</number>
+                                        <number>10</number>
                                        </property>
                                       </layout>
                                      </widget>
@@ -3217,12 +3156,6 @@ border-bottom-right-radius:5px;
                                     </item>
                                     <item>
                                      <widget class="QFrame" name="Slave_circ_frame">
-                                      <property name="minimumSize">
-                                       <size>
-                                        <width>0</width>
-                                        <height>150</height>
-                                       </size>
-                                      </property>
                                       <property name="frameShape">
                                        <enum>QFrame::NoFrame</enum>
                                       </property>
@@ -3234,16 +3167,16 @@ border-bottom-right-radius:5px;
                                         <number>0</number>
                                        </property>
                                        <property name="leftMargin">
-                                        <number>0</number>
+                                        <number>30</number>
                                        </property>
                                        <property name="topMargin">
-                                        <number>0</number>
+                                        <number>10</number>
                                        </property>
                                        <property name="rightMargin">
-                                        <number>0</number>
+                                        <number>30</number>
                                        </property>
                                        <property name="bottomMargin">
-                                        <number>0</number>
+                                        <number>10</number>
                                        </property>
                                       </layout>
                                      </widget>
@@ -3302,12 +3235,6 @@ border-bottom-right-radius:5px;
                                     </item>
                                     <item>
                                      <widget class="QFrame" name="Temperature_circ_frame">
-                                      <property name="minimumSize">
-                                       <size>
-                                        <width>0</width>
-                                        <height>150</height>
-                                       </size>
-                                      </property>
                                       <property name="frameShape">
                                        <enum>QFrame::NoFrame</enum>
                                       </property>
@@ -3319,16 +3246,16 @@ border-bottom-right-radius:5px;
                                         <number>0</number>
                                        </property>
                                        <property name="leftMargin">
-                                        <number>0</number>
+                                        <number>35</number>
                                        </property>
                                        <property name="topMargin">
-                                        <number>0</number>
+                                        <number>15</number>
                                        </property>
                                        <property name="rightMargin">
-                                        <number>0</number>
+                                        <number>35</number>
                                        </property>
                                        <property name="bottomMargin">
-                                        <number>0</number>
+                                        <number>10</number>
                                        </property>
                                       </layout>
                                      </widget>
@@ -3337,6 +3264,147 @@ border-bottom-right-radius:5px;
                                   </widget>
                                  </item>
                                 </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                          </layout>
+                         </widget>
+                         <widget class="QFrame" name="Console_frame">
+                          <property name="geometry">
+                           <rect>
+                            <x>900</x>
+                            <y>0</y>
+                            <width>431</width>
+                            <height>181</height>
+                           </rect>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                          <layout class="QVBoxLayout" name="verticalLayout_36">
+                           <property name="spacing">
+                            <number>0</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>0</number>
+                           </property>
+                           <item>
+                            <widget class="QFrame" name="Console_label_frame">
+                             <property name="minimumSize">
+                              <size>
+                               <width>0</width>
+                               <height>50</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>50</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">background-color: #ff9f43;
+border-top-left-radius:5px;
+border-top-right-radius:5px;
+</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::NoFrame</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_32">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QLabel" name="Consol_label">
+                                <property name="maximumSize">
+                                 <size>
+                                  <width>16777215</width>
+                                  <height>50</height>
+                                 </size>
+                                </property>
+                                <property name="styleSheet">
+                                 <string notr="true"/>
+                                </property>
+                                <property name="text">
+                                 <string>Console</string>
+                                </property>
+                                <property name="alignment">
+                                 <set>Qt::AlignCenter</set>
+                                </property>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="QFrame" name="Console_body_frame">
+                             <property name="styleSheet">
+                              <string notr="true">#Console_body_frame{
+background-color: rgb(68, 75, 89);
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;
+font: 700 12pt &quot;Terminal&quot;;
+}</string>
+                             </property>
+                             <property name="frameShape">
+                              <enum>QFrame::StyledPanel</enum>
+                             </property>
+                             <property name="frameShadow">
+                              <enum>QFrame::Raised</enum>
+                             </property>
+                             <layout class="QVBoxLayout" name="verticalLayout_35">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>1</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>0</number>
+                              </property>
+                              <item>
+                               <widget class="QTextBrowser" name="console">
+                                <property name="styleSheet">
+                                 <string notr="true">border: None;
+background:transparent;</string>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::NoFrame</enum>
+                                </property>
+                                <property name="lineWrapMode">
+                                 <enum>QTextEdit::WidgetWidth</enum>
+                                </property>
+                                <property name="html">
+                                 <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;gt;&amp;gt;&amp;gt; Text will be here&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                                </property>
                                </widget>
                               </item>
                              </layout>

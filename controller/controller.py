@@ -34,6 +34,7 @@ class Controller:
         self._model.up_or_down_progressBar_frame.connect(self._view.animated_ProgressBar_frame)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.set_current_simp_and_board)
         self._view.ui.board_combo.currentIndexChanged.connect(self._model.set_current_simp_and_board)
+     
         
     def _constantSettings(self):
         self._view.enable_shadow_effect(self._view.ui.LeftMenuFrame,50,10,5,80)
@@ -49,6 +50,7 @@ class Controller:
         self._view.enable_shadow_effect(self._view.ui.PowerSupply_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Setting_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Parameters_frame,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.Console_frame,10,5,5,80)
         
         self._view.update_simp_comlist()
         
@@ -66,6 +68,7 @@ class Controller:
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.check_if_settings_has_been_ran)
         self._view.ui.settings_button.clicked.connect(self._view.animated_preview_settings)
         self._view.ui.settings_button.clicked.connect(self._model.check_if_settings_has_been_ran)
+        
            
 
             

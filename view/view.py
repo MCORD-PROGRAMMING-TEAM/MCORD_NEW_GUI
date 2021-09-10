@@ -1,9 +1,8 @@
-from signal import SIGABRT
 from view.ui_main import Ui_MainWindow
 from PySide6.QtWidgets import QCheckBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
-from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt, Slot, Signal
+from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
 from PySide6.QtGui import QColor, QIcon
-from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton
+from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress
 
 
 class View(QMainWindow):
@@ -113,7 +112,20 @@ class View(QMainWindow):
         self.ui.settings_button.deleteLater()
         self.ui.settings_button = HoverButton("Set Voltage")
         self.ui.settings_choice_layout.insertWidget(4,self.ui.settings_button)
-         
+        
+        
+        # Add progressbars to frames
+        self.ui.master_progressbar = QtCustomCirculateProgress(progress_color='#f368e0',max_value=65,suffix=' V')
+        self.ui.master_layout.addWidget(self.ui.master_progressbar)
+        
+        self.ui.slave_progressbar = QtCustomCirculateProgress(progress_color='#54a0ff',max_value=65,suffix=' V')
+        self.ui.slave_layout.addWidget(self.ui.slave_progressbar)
+        
+        self.ui.temperature_progressbar = QtCustomCirculateProgress(progress_color='#1dd1a1',max_value=40,suffix=' °C',value=25)
+        self.ui.temperature_layout.addWidget(self.ui.temperature_progressbar)
+        
+        
+   
 
         
     def change_clicked_button_layout(self,buttonstyle):
@@ -222,18 +234,18 @@ class View(QMainWindow):
             self.prevanimationframesettings = QPropertyAnimation(checkifanyactive, b"maximumHeight")
             self.prevanimationframesettings.setDuration(200)
             self.prevanimationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
-            self.prevanimationframesettings.setStartValue(50)
+            self.prevanimationframesettings.setStartValue(67)
             self.prevanimationframesettings.setEndValue(0)
             self.prevanimationframesettings.start()
             
         if not self.model.settingstriggerd:
-            self.animated_settings_frame(self.ui.Setting_frame,50)
+            self.animated_settings_frame(self.ui.Setting_frame,67)
        
         self.animationframe = QPropertyAnimation(frame, b"maximumHeight")
         self.animationframe.setDuration(200)
         self.animationframe.setEasingCurve(QEasingCurve.InOutQuart)
         self.animationframe.setStartValue(0)
-        self.animationframe.setEndValue(50)
+        self.animationframe.setEndValue(67)
         self.animationframe.start()
         
         
