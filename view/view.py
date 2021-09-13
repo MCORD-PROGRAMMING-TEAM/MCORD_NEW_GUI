@@ -67,6 +67,9 @@ class View(QMainWindow):
             self.ui.maximizeButton.setIcon(
                 QIcon(u":/icons/icons/icon_restore.png"))
             self.ui.resizeicon.hide()
+            
+            
+            
 
         else:
             self.showNormal()
@@ -76,6 +79,10 @@ class View(QMainWindow):
             self.ui.maximizeButton.setIcon(
                 QIcon(u":/icons/icons/icon_maximize.png"))
             self.ui.resizeicon.show()
+            
+        self.ui.master_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.master_progressbar))
+        self.ui.slave_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.slave_progressbar))
+        self.ui.temperature_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.temperature_progressbar))
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
@@ -156,11 +163,11 @@ class View(QMainWindow):
     
     def changeUSB_IP(self,status):
             self.animationusb = QPropertyAnimation(self.ui.connection_selection_usb, b"maximumWidth")
-            self.animationusb.setDuration(200)
+            self.animationusb.setDuration(400)
             self.animationusb.setEasingCurve(QEasingCurve.InElastic)
             
             self.animationlan = QPropertyAnimation(self.ui.connection_selection_lan, b"maximumWidth")
-            self.animationlan.setDuration(200)
+            self.animationlan.setDuration(400)
             self.animationusb.setEasingCurve(QEasingCurve.InOutQuart)
             start,end = self.model.validcommunication(status)
 
@@ -218,7 +225,7 @@ class View(QMainWindow):
     
     def animated_settings_frame(self,frame,value):
         self.animationframesettings = QPropertyAnimation(frame, b"minimumHeight")
-        self.animationframesettings.setDuration(200)
+        self.animationframesettings.setDuration(100)
         self.animationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
         self.animationframesettings.setStartValue(frame.height())
         self.animationframesettings.setEndValue(frame.height() + value)
@@ -230,22 +237,24 @@ class View(QMainWindow):
         framename = self.model.valid_which_frame()
         frame = self.ui.Setting_frame.findChild(QFrame,framename)
         
+        
         if checkifanyactive:
             self.prevanimationframesettings = QPropertyAnimation(checkifanyactive, b"maximumHeight")
-            self.prevanimationframesettings.setDuration(200)
+            self.prevanimationframesettings.setDuration(100)
             self.prevanimationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
-            self.prevanimationframesettings.setStartValue(67)
+            self.prevanimationframesettings.setStartValue(self.ui.Up_frame.width())
             self.prevanimationframesettings.setEndValue(0)
             self.prevanimationframesettings.start()
             
         if not self.model.settingstriggerd:
-            self.animated_settings_frame(self.ui.Setting_frame,67)
+            self.ui.frame.deleteLater()
+            #self.animated_settings_frame(self.ui.Setting_frame,67)
        
         self.animationframe = QPropertyAnimation(frame, b"maximumHeight")
-        self.animationframe.setDuration(200)
+        self.animationframe.setDuration(100)
         self.animationframe.setEasingCurve(QEasingCurve.InOutQuart)
         self.animationframe.setStartValue(0)
-        self.animationframe.setEndValue(67)
+        self.animationframe.setEndValue(self.ui.Up_frame.width())
         self.animationframe.start()
         
         

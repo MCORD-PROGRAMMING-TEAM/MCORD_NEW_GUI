@@ -1,7 +1,7 @@
 
 from functools import partial
 from PySide6.QtCore import Qt, Signal
-from PySide6.QtWidgets import QCheckBox
+from PySide6.QtWidgets import QCheckBox, QLineEdit
 from controller.usb_controller import USBController
 from controller.lan_controller import LanController
 
@@ -43,6 +43,7 @@ class Controller:
         self._view.replaceWidgetsToCustom()
         self._view.Allow_Qt_timers()
         self._model.valid_board_number_asNumber()
+        self._model.valid_voltage_asNumber(self._view.ui.Setting_frame)
         self._view.enable_shadow_effect(self._view.ui.background,10,5,5,80)
         self._view.enable_shadow_effect(self._view.splashscreen,10,5,5,80)
         self._view.enable_shadow_effect(self._view.splashscreen.sp.progressBar,10,5,5,80)
@@ -66,13 +67,13 @@ class Controller:
     def _simpframesettingslogic(self):
         self._view.ui.simp_combo.currentIndexChanged.connect(self._view.animated_voltage_panels)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.check_if_settings_has_been_ran)
-        self._view.ui.settings_button.clicked.connect(self._view.animated_preview_settings)
-        self._view.ui.settings_button.clicked.connect(self._model.check_if_settings_has_been_ran)
-        
-           
-
+        #self._view.ui.settings_button.clicked.connect(self._view.animated_preview_settings)
+        #self._view.ui.settings_button.clicked.connect(self._model.check_if_settings_has_been_ran)
+        for lineedit in self._model.all_editline_simpframe:
+            lineedit.editingFinished.connect(self._model.valid_voltage_range)
             
-        
+
+
     def _applybuttonspage(self):
         self._model.get_all_menu_buttons(self._view.ui.buttonsframe)
         for button in self._model.all_menu_buttons:
@@ -85,11 +86,13 @@ class Controller:
         
         
     def moveWindow(self,event):
-        if self._view.isMaximized(): self._view.maximize_restore()
+        if self._view.isMaximized(): 
+            self._view.maximize_restore()
         if event.buttons() == Qt.LeftButton:
             self._view.move(self._view.pos() + event.globalPos() - self._view.dragPos)
             self._view.dragPos = event.globalPos()
             event.accept()
+    
             
   
             

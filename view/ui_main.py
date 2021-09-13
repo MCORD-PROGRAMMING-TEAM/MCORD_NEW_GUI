@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainCobgAD.ui'
+## Form generated from reading UI file 'mainBczAed.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1479, 781)
+        MainWindow.resize(1374, 824)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -649,9 +649,21 @@ class Ui_MainWindow(object):
         self.hub_page_content.setStyleSheet(u"")
         self.hub_page_content.setFrameShape(QFrame.NoFrame)
         self.hub_page_content.setFrameShadow(QFrame.Raised)
-        self.select_conn_frame = QFrame(self.hub_page_content)
+        self.verticalLayout_37 = QVBoxLayout(self.hub_page_content)
+        self.verticalLayout_37.setSpacing(25)
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.verticalLayout_37.setContentsMargins(0, 0, 0, 0)
+        self.Up_frame = QFrame(self.hub_page_content)
+        self.Up_frame.setObjectName(u"Up_frame")
+        self.Up_frame.setMaximumSize(QSize(16777215, 200))
+        self.Up_frame.setFrameShape(QFrame.NoFrame)
+        self.Up_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.Up_frame)
+        self.horizontalLayout_16.setSpacing(45)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.horizontalLayout_16.setContentsMargins(9, 0, 9, 10)
+        self.select_conn_frame = QFrame(self.Up_frame)
         self.select_conn_frame.setObjectName(u"select_conn_frame")
-        self.select_conn_frame.setGeometry(QRect(0, 0, 311, 171))
         self.select_conn_frame.setFrameShape(QFrame.NoFrame)
         self.select_conn_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
@@ -813,378 +825,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_16.addWidget(self.connection_selection)
 
-        self.PowerSupply_frame = QFrame(self.hub_page_content)
-        self.PowerSupply_frame.setObjectName(u"PowerSupply_frame")
-        self.PowerSupply_frame.setGeometry(QRect(0, 200, 311, 431))
-        self.PowerSupply_frame.setStyleSheet(u"")
-        self.PowerSupply_frame.setFrameShape(QFrame.NoFrame)
-        self.PowerSupply_frame.setFrameShadow(QFrame.Raised)
-        self.PowerSupply_layout = QVBoxLayout(self.PowerSupply_frame)
-        self.PowerSupply_layout.setSpacing(0)
-        self.PowerSupply_layout.setObjectName(u"PowerSupply_layout")
-        self.PowerSupply_layout.setContentsMargins(0, 0, 0, 0)
-        self.PowerButton_label_frame = QFrame(self.PowerSupply_frame)
-        self.PowerButton_label_frame.setObjectName(u"PowerButton_label_frame")
-        self.PowerButton_label_frame.setMaximumSize(QSize(16777215, 50))
-        self.PowerButton_label_frame.setStyleSheet(u"background-color: #c59dec;\n"
-"border-top-left-radius:5px;\n"
-"border-top-right-radius:5px;\n"
-"")
-        self.PowerButton_label_frame.setFrameShape(QFrame.NoFrame)
-        self.PowerButton_label_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_22 = QVBoxLayout(self.PowerButton_label_frame)
-        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.PowerButton_label = QLabel(self.PowerButton_label_frame)
-        self.PowerButton_label.setObjectName(u"PowerButton_label")
-        self.PowerButton_label.setMaximumSize(QSize(16777215, 50))
-        self.PowerButton_label.setStyleSheet(u"")
-        self.PowerButton_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_22.addWidget(self.PowerButton_label)
+        self.horizontalLayout_16.addWidget(self.select_conn_frame)
 
-
-        self.PowerSupply_layout.addWidget(self.PowerButton_label_frame)
-
-        self.PowerButton_progressframe = QFrame(self.PowerSupply_frame)
-        self.PowerButton_progressframe.setObjectName(u"PowerButton_progressframe")
-        self.PowerButton_progressframe.setMaximumSize(QSize(16777215, 0))
-        self.PowerButton_progressframe.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
-"")
-        self.PowerButton_progressframe.setFrameShape(QFrame.NoFrame)
-        self.PowerButton_progressframe.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_23 = QVBoxLayout(self.PowerButton_progressframe)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.progressBar = QProgressBar(self.PowerButton_progressframe)
-        self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setMaximumSize(QSize(16777215, 21))
-        self.progressBar.setStyleSheet(u"QProgressBar{\n"
-"background-color:#748699;\n"
-"color:#fff;\n"
-"border-style:none;\n"
-"border-radius:10px;\n"
-"text-align:center;\n"
-"}\n"
-"\n"
-"QProgressBar::chunk{\n"
-"	border-radius:10px;\n"
-"	background-color: qlineargradient(spread:pad, x1:0, y1:0.551, x2:1, y2:0.539773, stop:0.346591 rgba(226, 178, 229, 255), stop:0.897727 rgba(194, 137, 242, 255));\n"
-"}")
-        self.progressBar.setValue(24)
-
-        self.verticalLayout_23.addWidget(self.progressBar)
-
-
-        self.PowerSupply_layout.addWidget(self.PowerButton_progressframe)
-
-        self.PowerButton_body = QFrame(self.PowerSupply_frame)
-        self.PowerButton_body.setObjectName(u"PowerButton_body")
-        self.PowerButton_body.setStyleSheet(u"#PowerButton_body{\n"
-"background-color: rgb(68, 75, 89);\n"
-"border-bottom-left-radius:5px;\n"
-"border-bottom-right-radius:5px;\n"
-"}\n"
-"\n"
-"QLineEdit {\n"
-"border-radius:5px;\n"
-"border: 2px solid #363c47;\n"
-"padding-left: 10px;\n"
-"padding-right: 10px;\n"
-"color: #fff;\n"
-"background-color: #444b59;\n"
-"font: italic 8pt;\n"
-"}\n"
-"QLineEdit:focus {\n"
-"border: 2px solid #b793dc;\n"
-"background-color: #2f3542;\n"
-"}")
-        self.PowerButton_body.setFrameShape(QFrame.StyledPanel)
-        self.PowerButton_body.setFrameShadow(QFrame.Raised)
-        self.PowerButton_layout = QVBoxLayout(self.PowerButton_body)
-        self.PowerButton_layout.setSpacing(0)
-        self.PowerButton_layout.setObjectName(u"PowerButton_layout")
-        self.PowerButton_layout.setContentsMargins(0, 0, 0, 0)
-        self.button_frame_1 = QFrame(self.PowerButton_body)
-        self.button_frame_1.setObjectName(u"button_frame_1")
-        self.button_frame_1.setStyleSheet(u"")
-        self.button_frame_1.setFrameShape(QFrame.NoFrame)
-        self.button_frame_1.setFrameShadow(QFrame.Raised)
-        self.button_layout_1 = QHBoxLayout(self.button_frame_1)
-        self.button_layout_1.setSpacing(30)
-        self.button_layout_1.setObjectName(u"button_layout_1")
-        self.button_layout_1.setContentsMargins(15, 0, 15, 0)
-        self.label_8 = QLabel(self.button_frame_1)
-        self.label_8.setObjectName(u"label_8")
-        self.label_8.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_1.addWidget(self.label_8)
-
-        self.button_edit_1 = QLineEdit(self.button_frame_1)
-        self.button_edit_1.setObjectName(u"button_edit_1")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
-        self.button_edit_1.setSizePolicy(sizePolicy2)
-        self.button_edit_1.setMaximumSize(QSize(100, 25))
-        self.button_edit_1.setStyleSheet(u"")
-        self.button_edit_1.setAlignment(Qt.AlignCenter)
-        self.button_edit_1.setPlaceholderText(u"Board Nr.")
-        self.button_edit_1.setClearButtonEnabled(False)
-
-        self.button_layout_1.addWidget(self.button_edit_1)
-
-        self.pushre_2 = QPushButton(self.button_frame_1)
-        self.pushre_2.setObjectName(u"pushre_2")
-
-        self.button_layout_1.addWidget(self.pushre_2)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_1)
-
-        self.button_frame_2 = QFrame(self.PowerButton_body)
-        self.button_frame_2.setObjectName(u"button_frame_2")
-        self.button_frame_2.setStyleSheet(u"")
-        self.button_frame_2.setFrameShape(QFrame.NoFrame)
-        self.button_frame_2.setFrameShadow(QFrame.Raised)
-        self.button_layout_2 = QHBoxLayout(self.button_frame_2)
-        self.button_layout_2.setSpacing(30)
-        self.button_layout_2.setObjectName(u"button_layout_2")
-        self.button_layout_2.setContentsMargins(15, 0, 15, 0)
-        self.label_9 = QLabel(self.button_frame_2)
-        self.label_9.setObjectName(u"label_9")
-        self.label_9.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_2.addWidget(self.label_9)
-
-        self.button_edit_2 = QLineEdit(self.button_frame_2)
-        self.button_edit_2.setObjectName(u"button_edit_2")
-        sizePolicy2.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
-        self.button_edit_2.setSizePolicy(sizePolicy2)
-        self.button_edit_2.setMaximumSize(QSize(100, 25))
-        self.button_edit_2.setStyleSheet(u"")
-        self.button_edit_2.setAlignment(Qt.AlignCenter)
-        self.button_edit_2.setClearButtonEnabled(False)
-
-        self.button_layout_2.addWidget(self.button_edit_2)
-
-        self.pushre_3 = QPushButton(self.button_frame_2)
-        self.pushre_3.setObjectName(u"pushre_3")
-
-        self.button_layout_2.addWidget(self.pushre_3)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_2)
-
-        self.button_frame_3 = QFrame(self.PowerButton_body)
-        self.button_frame_3.setObjectName(u"button_frame_3")
-        self.button_frame_3.setStyleSheet(u"")
-        self.button_frame_3.setFrameShape(QFrame.NoFrame)
-        self.button_frame_3.setFrameShadow(QFrame.Raised)
-        self.button_layout_3 = QHBoxLayout(self.button_frame_3)
-        self.button_layout_3.setSpacing(30)
-        self.button_layout_3.setObjectName(u"button_layout_3")
-        self.button_layout_3.setContentsMargins(15, 0, 15, 0)
-        self.label_10 = QLabel(self.button_frame_3)
-        self.label_10.setObjectName(u"label_10")
-        self.label_10.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_3.addWidget(self.label_10)
-
-        self.button_edit_3 = QLineEdit(self.button_frame_3)
-        self.button_edit_3.setObjectName(u"button_edit_3")
-        sizePolicy2.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
-        self.button_edit_3.setSizePolicy(sizePolicy2)
-        self.button_edit_3.setMaximumSize(QSize(100, 25))
-        self.button_edit_3.setStyleSheet(u"")
-        self.button_edit_3.setAlignment(Qt.AlignCenter)
-        self.button_edit_3.setClearButtonEnabled(False)
-
-        self.button_layout_3.addWidget(self.button_edit_3)
-
-        self.pushre_4 = QPushButton(self.button_frame_3)
-        self.pushre_4.setObjectName(u"pushre_4")
-
-        self.button_layout_3.addWidget(self.pushre_4)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_3)
-
-        self.button_frame_4 = QFrame(self.PowerButton_body)
-        self.button_frame_4.setObjectName(u"button_frame_4")
-        self.button_frame_4.setStyleSheet(u"")
-        self.button_frame_4.setFrameShape(QFrame.NoFrame)
-        self.button_frame_4.setFrameShadow(QFrame.Raised)
-        self.button_layout_4 = QHBoxLayout(self.button_frame_4)
-        self.button_layout_4.setSpacing(30)
-        self.button_layout_4.setObjectName(u"button_layout_4")
-        self.button_layout_4.setContentsMargins(15, 0, 15, 0)
-        self.label_11 = QLabel(self.button_frame_4)
-        self.label_11.setObjectName(u"label_11")
-        self.label_11.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_4.addWidget(self.label_11)
-
-        self.button_edit_4 = QLineEdit(self.button_frame_4)
-        self.button_edit_4.setObjectName(u"button_edit_4")
-        sizePolicy2.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
-        self.button_edit_4.setSizePolicy(sizePolicy2)
-        self.button_edit_4.setMaximumSize(QSize(100, 25))
-        self.button_edit_4.setStyleSheet(u"")
-        self.button_edit_4.setAlignment(Qt.AlignCenter)
-        self.button_edit_4.setClearButtonEnabled(False)
-
-        self.button_layout_4.addWidget(self.button_edit_4)
-
-        self.pushre_5 = QPushButton(self.button_frame_4)
-        self.pushre_5.setObjectName(u"pushre_5")
-
-        self.button_layout_4.addWidget(self.pushre_5)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_4)
-
-        self.button_frame_5 = QFrame(self.PowerButton_body)
-        self.button_frame_5.setObjectName(u"button_frame_5")
-        self.button_frame_5.setStyleSheet(u"")
-        self.button_frame_5.setFrameShape(QFrame.NoFrame)
-        self.button_frame_5.setFrameShadow(QFrame.Raised)
-        self.button_layout_5 = QHBoxLayout(self.button_frame_5)
-        self.button_layout_5.setSpacing(30)
-        self.button_layout_5.setObjectName(u"button_layout_5")
-        self.button_layout_5.setContentsMargins(15, 0, 15, 0)
-        self.label_12 = QLabel(self.button_frame_5)
-        self.label_12.setObjectName(u"label_12")
-        self.label_12.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_5.addWidget(self.label_12)
-
-        self.button_edit_5 = QLineEdit(self.button_frame_5)
-        self.button_edit_5.setObjectName(u"button_edit_5")
-        sizePolicy2.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
-        self.button_edit_5.setSizePolicy(sizePolicy2)
-        self.button_edit_5.setMaximumSize(QSize(100, 25))
-        self.button_edit_5.setStyleSheet(u"")
-        self.button_edit_5.setAlignment(Qt.AlignCenter)
-        self.button_edit_5.setClearButtonEnabled(False)
-
-        self.button_layout_5.addWidget(self.button_edit_5)
-
-        self.pushre_6 = QPushButton(self.button_frame_5)
-        self.pushre_6.setObjectName(u"pushre_6")
-
-        self.button_layout_5.addWidget(self.pushre_6)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_5)
-
-        self.button_frame_6 = QFrame(self.PowerButton_body)
-        self.button_frame_6.setObjectName(u"button_frame_6")
-        self.button_frame_6.setStyleSheet(u"")
-        self.button_frame_6.setFrameShape(QFrame.NoFrame)
-        self.button_frame_6.setFrameShadow(QFrame.Raised)
-        self.button_layout_6 = QHBoxLayout(self.button_frame_6)
-        self.button_layout_6.setSpacing(30)
-        self.button_layout_6.setObjectName(u"button_layout_6")
-        self.button_layout_6.setContentsMargins(15, 0, 15, 0)
-        self.label_13 = QLabel(self.button_frame_6)
-        self.label_13.setObjectName(u"label_13")
-        self.label_13.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_6.addWidget(self.label_13)
-
-        self.button_edit_6 = QLineEdit(self.button_frame_6)
-        self.button_edit_6.setObjectName(u"button_edit_6")
-        sizePolicy2.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
-        self.button_edit_6.setSizePolicy(sizePolicy2)
-        self.button_edit_6.setMaximumSize(QSize(100, 25))
-        self.button_edit_6.setStyleSheet(u"")
-        self.button_edit_6.setAlignment(Qt.AlignCenter)
-        self.button_edit_6.setClearButtonEnabled(False)
-
-        self.button_layout_6.addWidget(self.button_edit_6)
-
-        self.pushre_7 = QPushButton(self.button_frame_6)
-        self.pushre_7.setObjectName(u"pushre_7")
-
-        self.button_layout_6.addWidget(self.pushre_7)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_6)
-
-        self.button_frame_7 = QFrame(self.PowerButton_body)
-        self.button_frame_7.setObjectName(u"button_frame_7")
-        self.button_frame_7.setStyleSheet(u"")
-        self.button_frame_7.setFrameShape(QFrame.NoFrame)
-        self.button_frame_7.setFrameShadow(QFrame.Raised)
-        self.button_layout_7 = QHBoxLayout(self.button_frame_7)
-        self.button_layout_7.setSpacing(30)
-        self.button_layout_7.setObjectName(u"button_layout_7")
-        self.button_layout_7.setContentsMargins(15, 0, 15, 0)
-        self.label_14 = QLabel(self.button_frame_7)
-        self.label_14.setObjectName(u"label_14")
-        self.label_14.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_7.addWidget(self.label_14)
-
-        self.button_edit_7 = QLineEdit(self.button_frame_7)
-        self.button_edit_7.setObjectName(u"button_edit_7")
-        sizePolicy2.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
-        self.button_edit_7.setSizePolicy(sizePolicy2)
-        self.button_edit_7.setMaximumSize(QSize(100, 25))
-        self.button_edit_7.setStyleSheet(u"")
-        self.button_edit_7.setAlignment(Qt.AlignCenter)
-        self.button_edit_7.setClearButtonEnabled(False)
-
-        self.button_layout_7.addWidget(self.button_edit_7)
-
-        self.pushre_8 = QPushButton(self.button_frame_7)
-        self.pushre_8.setObjectName(u"pushre_8")
-
-        self.button_layout_7.addWidget(self.pushre_8)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_7)
-
-        self.button_frame_8 = QFrame(self.PowerButton_body)
-        self.button_frame_8.setObjectName(u"button_frame_8")
-        self.button_frame_8.setStyleSheet(u"")
-        self.button_frame_8.setFrameShape(QFrame.NoFrame)
-        self.button_frame_8.setFrameShadow(QFrame.Raised)
-        self.button_layout_8 = QHBoxLayout(self.button_frame_8)
-        self.button_layout_8.setSpacing(30)
-        self.button_layout_8.setObjectName(u"button_layout_8")
-        self.button_layout_8.setContentsMargins(15, 0, 15, 0)
-        self.label_15 = QLabel(self.button_frame_8)
-        self.label_15.setObjectName(u"label_15")
-        self.label_15.setMaximumSize(QSize(60, 16777215))
-
-        self.button_layout_8.addWidget(self.label_15)
-
-        self.button_edit_8 = QLineEdit(self.button_frame_8)
-        self.button_edit_8.setObjectName(u"button_edit_8")
-        sizePolicy2.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
-        self.button_edit_8.setSizePolicy(sizePolicy2)
-        self.button_edit_8.setMaximumSize(QSize(100, 25))
-        self.button_edit_8.setStyleSheet(u"")
-        self.button_edit_8.setAlignment(Qt.AlignCenter)
-        self.button_edit_8.setClearButtonEnabled(False)
-
-        self.button_layout_8.addWidget(self.button_edit_8)
-
-        self.pushre_9 = QPushButton(self.button_frame_8)
-        self.pushre_9.setObjectName(u"pushre_9")
-
-        self.button_layout_8.addWidget(self.pushre_9)
-
-
-        self.PowerButton_layout.addWidget(self.button_frame_8)
-
-
-        self.PowerSupply_layout.addWidget(self.PowerButton_body)
-
-        self.Setting_frame = QFrame(self.hub_page_content)
+        self.Setting_frame = QFrame(self.Up_frame)
         self.Setting_frame.setObjectName(u"Setting_frame")
-        self.Setting_frame.setGeometry(QRect(330, 0, 551, 101))
         self.Setting_frame.setStyleSheet(u"QComboBox{\n"
 "	border-radius: 5px;\n"
 "	border: 1px solid rgb(33, 37, 43);\n"
@@ -1295,6 +940,13 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addWidget(self.Setting_choice_frame)
 
+        self.frame = QFrame(self.Setting_frame)
+        self.frame.setObjectName(u"frame")
+        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_27.addWidget(self.frame)
+
         self.Settings_set_master_frame = QFrame(self.Setting_frame)
         self.Settings_set_master_frame.setObjectName(u"Settings_set_master_frame")
         self.Settings_set_master_frame.setMaximumSize(QSize(16777215, 0))
@@ -1400,9 +1052,462 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addWidget(self.Settings_set_both_master_slave_frame)
 
-        self.Parameters_frame = QFrame(self.hub_page_content)
+
+        self.horizontalLayout_16.addWidget(self.Setting_frame)
+
+        self.Console_frame = QFrame(self.Up_frame)
+        self.Console_frame.setObjectName(u"Console_frame")
+        self.Console_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_36 = QVBoxLayout(self.Console_frame)
+        self.verticalLayout_36.setSpacing(0)
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
+        self.Console_label_frame = QFrame(self.Console_frame)
+        self.Console_label_frame.setObjectName(u"Console_label_frame")
+        self.Console_label_frame.setMinimumSize(QSize(0, 50))
+        self.Console_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.Console_label_frame.setStyleSheet(u"background-color: #ff9f43;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Console_label_frame.setFrameShape(QFrame.NoFrame)
+        self.Console_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_32 = QVBoxLayout(self.Console_label_frame)
+        self.verticalLayout_32.setSpacing(0)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.Consol_label = QLabel(self.Console_label_frame)
+        self.Consol_label.setObjectName(u"Consol_label")
+        self.Consol_label.setMaximumSize(QSize(16777215, 50))
+        self.Consol_label.setStyleSheet(u"")
+        self.Consol_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_32.addWidget(self.Consol_label)
+
+
+        self.verticalLayout_36.addWidget(self.Console_label_frame)
+
+        self.Console_body_frame = QFrame(self.Console_frame)
+        self.Console_body_frame.setObjectName(u"Console_body_frame")
+        self.Console_body_frame.setStyleSheet(u"#Console_body_frame{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"font: 700 12pt \"Terminal\";\n"
+"}")
+        self.Console_body_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_body_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_35 = QVBoxLayout(self.Console_body_frame)
+        self.verticalLayout_35.setSpacing(0)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(1, 0, 0, 0)
+        self.console = QTextBrowser(self.Console_body_frame)
+        self.console.setObjectName(u"console")
+        self.console.setStyleSheet(u"border: None;\n"
+"background:transparent;")
+        self.console.setFrameShape(QFrame.NoFrame)
+        self.console.setLineWrapMode(QTextEdit.WidgetWidth)
+
+        self.verticalLayout_35.addWidget(self.console)
+
+
+        self.verticalLayout_36.addWidget(self.Console_body_frame)
+
+
+        self.horizontalLayout_16.addWidget(self.Console_frame)
+
+
+        self.verticalLayout_37.addWidget(self.Up_frame)
+
+        self.Down_frame = QFrame(self.hub_page_content)
+        self.Down_frame.setObjectName(u"Down_frame")
+        self.Down_frame.setFrameShape(QFrame.NoFrame)
+        self.Down_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_17 = QHBoxLayout(self.Down_frame)
+        self.horizontalLayout_17.setSpacing(45)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.horizontalLayout_17.setContentsMargins(9, 0, 9, 10)
+        self.PowerSupply_frame = QFrame(self.Down_frame)
+        self.PowerSupply_frame.setObjectName(u"PowerSupply_frame")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.PowerSupply_frame.sizePolicy().hasHeightForWidth())
+        self.PowerSupply_frame.setSizePolicy(sizePolicy2)
+        self.PowerSupply_frame.setStyleSheet(u"")
+        self.PowerSupply_frame.setFrameShape(QFrame.NoFrame)
+        self.PowerSupply_frame.setFrameShadow(QFrame.Raised)
+        self.PowerSupply_layout = QVBoxLayout(self.PowerSupply_frame)
+        self.PowerSupply_layout.setSpacing(0)
+        self.PowerSupply_layout.setObjectName(u"PowerSupply_layout")
+        self.PowerSupply_layout.setContentsMargins(0, 0, 0, 0)
+        self.PowerButton_label_frame = QFrame(self.PowerSupply_frame)
+        self.PowerButton_label_frame.setObjectName(u"PowerButton_label_frame")
+        self.PowerButton_label_frame.setMaximumSize(QSize(16777215, 50))
+        self.PowerButton_label_frame.setStyleSheet(u"background-color: #c59dec;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.PowerButton_label_frame.setFrameShape(QFrame.NoFrame)
+        self.PowerButton_label_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_22 = QVBoxLayout(self.PowerButton_label_frame)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.PowerButton_label = QLabel(self.PowerButton_label_frame)
+        self.PowerButton_label.setObjectName(u"PowerButton_label")
+        self.PowerButton_label.setMaximumSize(QSize(16777215, 50))
+        self.PowerButton_label.setStyleSheet(u"")
+        self.PowerButton_label.setAlignment(Qt.AlignCenter)
+
+        self.verticalLayout_22.addWidget(self.PowerButton_label)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_label_frame)
+
+        self.PowerButton_progressframe = QFrame(self.PowerSupply_frame)
+        self.PowerButton_progressframe.setObjectName(u"PowerButton_progressframe")
+        self.PowerButton_progressframe.setMaximumSize(QSize(16777215, 0))
+        self.PowerButton_progressframe.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"")
+        self.PowerButton_progressframe.setFrameShape(QFrame.NoFrame)
+        self.PowerButton_progressframe.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.PowerButton_progressframe)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.progressBar = QProgressBar(self.PowerButton_progressframe)
+        self.progressBar.setObjectName(u"progressBar")
+        self.progressBar.setMaximumSize(QSize(16777215, 21))
+        self.progressBar.setStyleSheet(u"QProgressBar{\n"
+"background-color:#748699;\n"
+"color:#fff;\n"
+"border-style:none;\n"
+"border-radius:10px;\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk{\n"
+"	border-radius:10px;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0.551, x2:1, y2:0.539773, stop:0.346591 rgba(226, 178, 229, 255), stop:0.897727 rgba(194, 137, 242, 255));\n"
+"}")
+        self.progressBar.setValue(24)
+
+        self.verticalLayout_23.addWidget(self.progressBar)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_progressframe)
+
+        self.PowerButton_body = QFrame(self.PowerSupply_frame)
+        self.PowerButton_body.setObjectName(u"PowerButton_body")
+        self.PowerButton_body.setStyleSheet(u"#PowerButton_body{\n"
+"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;\n"
+"}\n"
+"\n"
+"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"background-color: #444b59;\n"
+"font: italic 8pt;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #b793dc;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.PowerButton_body.setFrameShape(QFrame.StyledPanel)
+        self.PowerButton_body.setFrameShadow(QFrame.Raised)
+        self.PowerButton_layout = QVBoxLayout(self.PowerButton_body)
+        self.PowerButton_layout.setSpacing(0)
+        self.PowerButton_layout.setObjectName(u"PowerButton_layout")
+        self.PowerButton_layout.setContentsMargins(0, 0, 0, 0)
+        self.button_frame_1 = QFrame(self.PowerButton_body)
+        self.button_frame_1.setObjectName(u"button_frame_1")
+        self.button_frame_1.setStyleSheet(u"")
+        self.button_frame_1.setFrameShape(QFrame.NoFrame)
+        self.button_frame_1.setFrameShadow(QFrame.Raised)
+        self.button_layout_1 = QHBoxLayout(self.button_frame_1)
+        self.button_layout_1.setSpacing(30)
+        self.button_layout_1.setObjectName(u"button_layout_1")
+        self.button_layout_1.setContentsMargins(15, 0, 15, 0)
+        self.label_8 = QLabel(self.button_frame_1)
+        self.label_8.setObjectName(u"label_8")
+        self.label_8.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_1.addWidget(self.label_8)
+
+        self.button_edit_1 = QLineEdit(self.button_frame_1)
+        self.button_edit_1.setObjectName(u"button_edit_1")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
+        self.button_edit_1.setSizePolicy(sizePolicy3)
+        self.button_edit_1.setMaximumSize(QSize(100, 25))
+        self.button_edit_1.setStyleSheet(u"")
+        self.button_edit_1.setAlignment(Qt.AlignCenter)
+        self.button_edit_1.setPlaceholderText(u"Board Nr.")
+        self.button_edit_1.setClearButtonEnabled(False)
+
+        self.button_layout_1.addWidget(self.button_edit_1)
+
+        self.pushre_2 = QPushButton(self.button_frame_1)
+        self.pushre_2.setObjectName(u"pushre_2")
+
+        self.button_layout_1.addWidget(self.pushre_2)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_1)
+
+        self.button_frame_2 = QFrame(self.PowerButton_body)
+        self.button_frame_2.setObjectName(u"button_frame_2")
+        self.button_frame_2.setStyleSheet(u"")
+        self.button_frame_2.setFrameShape(QFrame.NoFrame)
+        self.button_frame_2.setFrameShadow(QFrame.Raised)
+        self.button_layout_2 = QHBoxLayout(self.button_frame_2)
+        self.button_layout_2.setSpacing(30)
+        self.button_layout_2.setObjectName(u"button_layout_2")
+        self.button_layout_2.setContentsMargins(15, 0, 15, 0)
+        self.label_9 = QLabel(self.button_frame_2)
+        self.label_9.setObjectName(u"label_9")
+        self.label_9.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_2.addWidget(self.label_9)
+
+        self.button_edit_2 = QLineEdit(self.button_frame_2)
+        self.button_edit_2.setObjectName(u"button_edit_2")
+        sizePolicy3.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
+        self.button_edit_2.setSizePolicy(sizePolicy3)
+        self.button_edit_2.setMaximumSize(QSize(100, 25))
+        self.button_edit_2.setStyleSheet(u"")
+        self.button_edit_2.setAlignment(Qt.AlignCenter)
+        self.button_edit_2.setClearButtonEnabled(False)
+
+        self.button_layout_2.addWidget(self.button_edit_2)
+
+        self.pushre_3 = QPushButton(self.button_frame_2)
+        self.pushre_3.setObjectName(u"pushre_3")
+
+        self.button_layout_2.addWidget(self.pushre_3)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_2)
+
+        self.button_frame_3 = QFrame(self.PowerButton_body)
+        self.button_frame_3.setObjectName(u"button_frame_3")
+        self.button_frame_3.setStyleSheet(u"")
+        self.button_frame_3.setFrameShape(QFrame.NoFrame)
+        self.button_frame_3.setFrameShadow(QFrame.Raised)
+        self.button_layout_3 = QHBoxLayout(self.button_frame_3)
+        self.button_layout_3.setSpacing(30)
+        self.button_layout_3.setObjectName(u"button_layout_3")
+        self.button_layout_3.setContentsMargins(15, 0, 15, 0)
+        self.label_10 = QLabel(self.button_frame_3)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_3.addWidget(self.label_10)
+
+        self.button_edit_3 = QLineEdit(self.button_frame_3)
+        self.button_edit_3.setObjectName(u"button_edit_3")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
+        self.button_edit_3.setSizePolicy(sizePolicy4)
+        self.button_edit_3.setMaximumSize(QSize(100, 25))
+        self.button_edit_3.setStyleSheet(u"")
+        self.button_edit_3.setAlignment(Qt.AlignCenter)
+        self.button_edit_3.setClearButtonEnabled(False)
+
+        self.button_layout_3.addWidget(self.button_edit_3)
+
+        self.pushre_4 = QPushButton(self.button_frame_3)
+        self.pushre_4.setObjectName(u"pushre_4")
+
+        self.button_layout_3.addWidget(self.pushre_4)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_3)
+
+        self.button_frame_4 = QFrame(self.PowerButton_body)
+        self.button_frame_4.setObjectName(u"button_frame_4")
+        self.button_frame_4.setStyleSheet(u"")
+        self.button_frame_4.setFrameShape(QFrame.NoFrame)
+        self.button_frame_4.setFrameShadow(QFrame.Raised)
+        self.button_layout_4 = QHBoxLayout(self.button_frame_4)
+        self.button_layout_4.setSpacing(30)
+        self.button_layout_4.setObjectName(u"button_layout_4")
+        self.button_layout_4.setContentsMargins(15, 0, 15, 0)
+        self.label_11 = QLabel(self.button_frame_4)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_4.addWidget(self.label_11)
+
+        self.button_edit_4 = QLineEdit(self.button_frame_4)
+        self.button_edit_4.setObjectName(u"button_edit_4")
+        sizePolicy4.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
+        self.button_edit_4.setSizePolicy(sizePolicy4)
+        self.button_edit_4.setMaximumSize(QSize(100, 25))
+        self.button_edit_4.setStyleSheet(u"")
+        self.button_edit_4.setAlignment(Qt.AlignCenter)
+        self.button_edit_4.setClearButtonEnabled(False)
+
+        self.button_layout_4.addWidget(self.button_edit_4)
+
+        self.pushre_5 = QPushButton(self.button_frame_4)
+        self.pushre_5.setObjectName(u"pushre_5")
+
+        self.button_layout_4.addWidget(self.pushre_5)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_4)
+
+        self.button_frame_5 = QFrame(self.PowerButton_body)
+        self.button_frame_5.setObjectName(u"button_frame_5")
+        self.button_frame_5.setStyleSheet(u"")
+        self.button_frame_5.setFrameShape(QFrame.NoFrame)
+        self.button_frame_5.setFrameShadow(QFrame.Raised)
+        self.button_layout_5 = QHBoxLayout(self.button_frame_5)
+        self.button_layout_5.setSpacing(30)
+        self.button_layout_5.setObjectName(u"button_layout_5")
+        self.button_layout_5.setContentsMargins(15, 0, 15, 0)
+        self.label_12 = QLabel(self.button_frame_5)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_5.addWidget(self.label_12)
+
+        self.button_edit_5 = QLineEdit(self.button_frame_5)
+        self.button_edit_5.setObjectName(u"button_edit_5")
+        sizePolicy4.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
+        self.button_edit_5.setSizePolicy(sizePolicy4)
+        self.button_edit_5.setMaximumSize(QSize(100, 25))
+        self.button_edit_5.setStyleSheet(u"")
+        self.button_edit_5.setAlignment(Qt.AlignCenter)
+        self.button_edit_5.setClearButtonEnabled(False)
+
+        self.button_layout_5.addWidget(self.button_edit_5)
+
+        self.pushre_6 = QPushButton(self.button_frame_5)
+        self.pushre_6.setObjectName(u"pushre_6")
+
+        self.button_layout_5.addWidget(self.pushre_6)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_5)
+
+        self.button_frame_6 = QFrame(self.PowerButton_body)
+        self.button_frame_6.setObjectName(u"button_frame_6")
+        self.button_frame_6.setStyleSheet(u"")
+        self.button_frame_6.setFrameShape(QFrame.NoFrame)
+        self.button_frame_6.setFrameShadow(QFrame.Raised)
+        self.button_layout_6 = QHBoxLayout(self.button_frame_6)
+        self.button_layout_6.setSpacing(30)
+        self.button_layout_6.setObjectName(u"button_layout_6")
+        self.button_layout_6.setContentsMargins(15, 0, 15, 0)
+        self.label_13 = QLabel(self.button_frame_6)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_6.addWidget(self.label_13)
+
+        self.button_edit_6 = QLineEdit(self.button_frame_6)
+        self.button_edit_6.setObjectName(u"button_edit_6")
+        sizePolicy4.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
+        self.button_edit_6.setSizePolicy(sizePolicy4)
+        self.button_edit_6.setMaximumSize(QSize(100, 25))
+        self.button_edit_6.setStyleSheet(u"")
+        self.button_edit_6.setAlignment(Qt.AlignCenter)
+        self.button_edit_6.setClearButtonEnabled(False)
+
+        self.button_layout_6.addWidget(self.button_edit_6)
+
+        self.pushre_7 = QPushButton(self.button_frame_6)
+        self.pushre_7.setObjectName(u"pushre_7")
+
+        self.button_layout_6.addWidget(self.pushre_7)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_6)
+
+        self.button_frame_7 = QFrame(self.PowerButton_body)
+        self.button_frame_7.setObjectName(u"button_frame_7")
+        self.button_frame_7.setStyleSheet(u"")
+        self.button_frame_7.setFrameShape(QFrame.NoFrame)
+        self.button_frame_7.setFrameShadow(QFrame.Raised)
+        self.button_layout_7 = QHBoxLayout(self.button_frame_7)
+        self.button_layout_7.setSpacing(30)
+        self.button_layout_7.setObjectName(u"button_layout_7")
+        self.button_layout_7.setContentsMargins(15, 0, 15, 0)
+        self.label_14 = QLabel(self.button_frame_7)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_7.addWidget(self.label_14)
+
+        self.button_edit_7 = QLineEdit(self.button_frame_7)
+        self.button_edit_7.setObjectName(u"button_edit_7")
+        sizePolicy4.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
+        self.button_edit_7.setSizePolicy(sizePolicy4)
+        self.button_edit_7.setMaximumSize(QSize(100, 25))
+        self.button_edit_7.setStyleSheet(u"")
+        self.button_edit_7.setAlignment(Qt.AlignCenter)
+        self.button_edit_7.setClearButtonEnabled(False)
+
+        self.button_layout_7.addWidget(self.button_edit_7)
+
+        self.pushre_8 = QPushButton(self.button_frame_7)
+        self.pushre_8.setObjectName(u"pushre_8")
+
+        self.button_layout_7.addWidget(self.pushre_8)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_7)
+
+        self.button_frame_8 = QFrame(self.PowerButton_body)
+        self.button_frame_8.setObjectName(u"button_frame_8")
+        self.button_frame_8.setStyleSheet(u"")
+        self.button_frame_8.setFrameShape(QFrame.NoFrame)
+        self.button_frame_8.setFrameShadow(QFrame.Raised)
+        self.button_layout_8 = QHBoxLayout(self.button_frame_8)
+        self.button_layout_8.setSpacing(30)
+        self.button_layout_8.setObjectName(u"button_layout_8")
+        self.button_layout_8.setContentsMargins(15, 0, 15, 0)
+        self.label_15 = QLabel(self.button_frame_8)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setMaximumSize(QSize(60, 16777215))
+
+        self.button_layout_8.addWidget(self.label_15)
+
+        self.button_edit_8 = QLineEdit(self.button_frame_8)
+        self.button_edit_8.setObjectName(u"button_edit_8")
+        sizePolicy4.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
+        self.button_edit_8.setSizePolicy(sizePolicy4)
+        self.button_edit_8.setMaximumSize(QSize(100, 25))
+        self.button_edit_8.setStyleSheet(u"")
+        self.button_edit_8.setAlignment(Qt.AlignCenter)
+        self.button_edit_8.setClearButtonEnabled(False)
+
+        self.button_layout_8.addWidget(self.button_edit_8)
+
+        self.pushre_9 = QPushButton(self.button_frame_8)
+        self.pushre_9.setObjectName(u"pushre_9")
+
+        self.button_layout_8.addWidget(self.pushre_9)
+
+
+        self.PowerButton_layout.addWidget(self.button_frame_8)
+
+
+        self.PowerSupply_layout.addWidget(self.PowerButton_body)
+
+
+        self.horizontalLayout_17.addWidget(self.PowerSupply_frame)
+
+        self.Parameters_frame = QFrame(self.Down_frame)
         self.Parameters_frame.setObjectName(u"Parameters_frame")
-        self.Parameters_frame.setGeometry(QRect(330, 200, 1011, 51))
         self.Parameters_frame.setStyleSheet(u"QComboBox{\n"
 "	border-radius: 5px;\n"
 "	border: 1px solid rgb(33, 37, 43);\n"
@@ -1468,7 +1573,6 @@ class Ui_MainWindow(object):
 
         self.Parameters_body_frame = QFrame(self.Parameters_frame)
         self.Parameters_body_frame.setObjectName(u"Parameters_body_frame")
-        self.Parameters_body_frame.setMaximumSize(QSize(16777215, 0))
         self.Parameters_body_frame.setFrameShape(QFrame.NoFrame)
         self.Parameters_body_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_34 = QVBoxLayout(self.Parameters_body_frame)
@@ -1485,46 +1589,16 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setSpacing(50)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.horizontalLayout_15.setContentsMargins(150, 0, 150, 0)
-        self.Parameters_select_board_frame = QFrame(self.Parameters_dashinfo)
-        self.Parameters_select_board_frame.setObjectName(u"Parameters_select_board_frame")
-        self.Parameters_select_board_frame.setFrameShape(QFrame.NoFrame)
-        self.Parameters_select_board_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_16 = QHBoxLayout(self.Parameters_select_board_frame)
-        self.horizontalLayout_16.setSpacing(0)
-        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.horizontalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.label_23 = QLabel(self.Parameters_select_board_frame)
+        self.label_23 = QLabel(self.Parameters_dashinfo)
         self.label_23.setObjectName(u"label_23")
 
-        self.horizontalLayout_16.addWidget(self.label_23)
+        self.horizontalLayout_15.addWidget(self.label_23)
 
-        self.parameters_board_combo = QComboBox(self.Parameters_select_board_frame)
+        self.parameters_board_combo = QComboBox(self.Parameters_dashinfo)
         self.parameters_board_combo.setObjectName(u"parameters_board_combo")
         self.parameters_board_combo.setStyleSheet(u"")
 
-        self.horizontalLayout_16.addWidget(self.parameters_board_combo)
-
-
-        self.horizontalLayout_15.addWidget(self.Parameters_select_board_frame)
-
-        self.Parameters_select_simp_frame = QFrame(self.Parameters_dashinfo)
-        self.Parameters_select_simp_frame.setObjectName(u"Parameters_select_simp_frame")
-        self.Parameters_select_simp_frame.setFrameShape(QFrame.NoFrame)
-        self.Parameters_select_simp_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_17 = QHBoxLayout(self.Parameters_select_simp_frame)
-        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
-        self.label_28 = QLabel(self.Parameters_select_simp_frame)
-        self.label_28.setObjectName(u"label_28")
-
-        self.horizontalLayout_17.addWidget(self.label_28)
-
-        self.parameters_simp_combo = QComboBox(self.Parameters_select_simp_frame)
-        self.parameters_simp_combo.setObjectName(u"parameters_simp_combo")
-
-        self.horizontalLayout_17.addWidget(self.parameters_simp_combo)
-
-
-        self.horizontalLayout_15.addWidget(self.Parameters_select_simp_frame)
+        self.horizontalLayout_15.addWidget(self.parameters_board_combo)
 
 
         self.verticalLayout_34.addWidget(self.Parameters_dashinfo)
@@ -1566,7 +1640,7 @@ class Ui_MainWindow(object):
         self.master_layout = QVBoxLayout(self.master_circ_frame)
         self.master_layout.setSpacing(0)
         self.master_layout.setObjectName(u"master_layout")
-        self.master_layout.setContentsMargins(30, 10, 30, 10)
+        self.master_layout.setContentsMargins(40, 40, 40, 40)
 
         self.verticalLayout_33.addWidget(self.master_circ_frame)
 
@@ -1597,7 +1671,7 @@ class Ui_MainWindow(object):
         self.slave_layout = QVBoxLayout(self.Slave_circ_frame)
         self.slave_layout.setSpacing(0)
         self.slave_layout.setObjectName(u"slave_layout")
-        self.slave_layout.setContentsMargins(30, 10, 30, 10)
+        self.slave_layout.setContentsMargins(40, 40, 40, 40)
 
         self.verticalLayout_30.addWidget(self.Slave_circ_frame)
 
@@ -1628,7 +1702,7 @@ class Ui_MainWindow(object):
         self.temperature_layout = QVBoxLayout(self.Temperature_circ_frame)
         self.temperature_layout.setSpacing(0)
         self.temperature_layout.setObjectName(u"temperature_layout")
-        self.temperature_layout.setContentsMargins(35, 15, 35, 10)
+        self.temperature_layout.setContentsMargins(40, 40, 40, 40)
 
         self.verticalLayout_31.addWidget(self.Temperature_circ_frame)
 
@@ -1641,64 +1715,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_29.addWidget(self.Parameters_body_frame)
 
-        self.Console_frame = QFrame(self.hub_page_content)
-        self.Console_frame.setObjectName(u"Console_frame")
-        self.Console_frame.setGeometry(QRect(900, 0, 431, 181))
-        self.Console_frame.setFrameShape(QFrame.StyledPanel)
-        self.Console_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_36 = QVBoxLayout(self.Console_frame)
-        self.verticalLayout_36.setSpacing(0)
-        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
-        self.verticalLayout_36.setContentsMargins(0, 0, 0, 0)
-        self.Console_label_frame = QFrame(self.Console_frame)
-        self.Console_label_frame.setObjectName(u"Console_label_frame")
-        self.Console_label_frame.setMinimumSize(QSize(0, 50))
-        self.Console_label_frame.setMaximumSize(QSize(16777215, 50))
-        self.Console_label_frame.setStyleSheet(u"background-color: #ff9f43;\n"
-"border-top-left-radius:5px;\n"
-"border-top-right-radius:5px;\n"
-"")
-        self.Console_label_frame.setFrameShape(QFrame.NoFrame)
-        self.Console_label_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_32 = QVBoxLayout(self.Console_label_frame)
-        self.verticalLayout_32.setSpacing(0)
-        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
-        self.Consol_label = QLabel(self.Console_label_frame)
-        self.Consol_label.setObjectName(u"Consol_label")
-        self.Consol_label.setMaximumSize(QSize(16777215, 50))
-        self.Consol_label.setStyleSheet(u"")
-        self.Consol_label.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_32.addWidget(self.Consol_label)
+        self.horizontalLayout_17.addWidget(self.Parameters_frame)
 
 
-        self.verticalLayout_36.addWidget(self.Console_label_frame)
-
-        self.Console_body_frame = QFrame(self.Console_frame)
-        self.Console_body_frame.setObjectName(u"Console_body_frame")
-        self.Console_body_frame.setStyleSheet(u"#Console_body_frame{\n"
-"background-color: rgb(68, 75, 89);\n"
-"border-bottom-left-radius:5px;\n"
-"border-bottom-right-radius:5px;\n"
-"font: 700 12pt \"Terminal\";\n"
-"}")
-        self.Console_body_frame.setFrameShape(QFrame.StyledPanel)
-        self.Console_body_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_35 = QVBoxLayout(self.Console_body_frame)
-        self.verticalLayout_35.setSpacing(0)
-        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
-        self.verticalLayout_35.setContentsMargins(1, 0, 0, 0)
-        self.console = QTextBrowser(self.Console_body_frame)
-        self.console.setObjectName(u"console")
-        self.console.setStyleSheet(u"border: None;\n"
-"background:transparent;")
-        self.console.setFrameShape(QFrame.NoFrame)
-        self.console.setLineWrapMode(QTextEdit.WidgetWidth)
-
-        self.verticalLayout_35.addWidget(self.console)
-
-
-        self.verticalLayout_36.addWidget(self.Console_body_frame)
+        self.verticalLayout_37.addWidget(self.Down_frame)
 
 
         self.verticalLayout_15.addWidget(self.hub_page_content)
@@ -1760,6 +1781,46 @@ class Ui_MainWindow(object):
         self.CentralAppMargins.addWidget(self.background)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        QWidget.setTabOrder(self.btn_statistic, self.btn_plot)
+        QWidget.setTabOrder(self.btn_plot, self.connection_edit)
+        QWidget.setTabOrder(self.connection_edit, self.btn_diagnostic)
+        QWidget.setTabOrder(self.btn_diagnostic, self.board_combo)
+        QWidget.setTabOrder(self.board_combo, self.btn_exit)
+        QWidget.setTabOrder(self.btn_exit, self.SettingsButton)
+        QWidget.setTabOrder(self.SettingsButton, self.minimizeButton)
+        QWidget.setTabOrder(self.minimizeButton, self.maximizeButton)
+        QWidget.setTabOrder(self.maximizeButton, self.closeButton)
+        QWidget.setTabOrder(self.closeButton, self.extralefttext)
+        QWidget.setTabOrder(self.extralefttext, self.textEdit)
+        QWidget.setTabOrder(self.textEdit, self.textEdit_2)
+        QWidget.setTabOrder(self.textEdit_2, self.pushre_1)
+        QWidget.setTabOrder(self.pushre_1, self.connection_combox)
+        QWidget.setTabOrder(self.connection_combox, self.ToggleButton)
+        QWidget.setTabOrder(self.ToggleButton, self.button_edit_1)
+        QWidget.setTabOrder(self.button_edit_1, self.pushre_2)
+        QWidget.setTabOrder(self.pushre_2, self.button_edit_2)
+        QWidget.setTabOrder(self.button_edit_2, self.pushre_3)
+        QWidget.setTabOrder(self.pushre_3, self.button_edit_3)
+        QWidget.setTabOrder(self.button_edit_3, self.pushre_4)
+        QWidget.setTabOrder(self.pushre_4, self.button_edit_4)
+        QWidget.setTabOrder(self.button_edit_4, self.pushre_5)
+        QWidget.setTabOrder(self.pushre_5, self.button_edit_5)
+        QWidget.setTabOrder(self.button_edit_5, self.pushre_6)
+        QWidget.setTabOrder(self.pushre_6, self.button_edit_6)
+        QWidget.setTabOrder(self.button_edit_6, self.pushre_7)
+        QWidget.setTabOrder(self.pushre_7, self.button_edit_7)
+        QWidget.setTabOrder(self.button_edit_7, self.pushre_8)
+        QWidget.setTabOrder(self.pushre_8, self.button_edit_8)
+        QWidget.setTabOrder(self.button_edit_8, self.pushre_9)
+        QWidget.setTabOrder(self.pushre_9, self.btn_hub)
+        QWidget.setTabOrder(self.btn_hub, self.simp_combo)
+        QWidget.setTabOrder(self.simp_combo, self.settings_button)
+        QWidget.setTabOrder(self.settings_button, self.settings_master_linedit)
+        QWidget.setTabOrder(self.settings_master_linedit, self.settings_slave_linedit)
+        QWidget.setTabOrder(self.settings_slave_linedit, self.settings_set_both_master_editline)
+        QWidget.setTabOrder(self.settings_set_both_master_editline, self.settings_set_both_slave_editline)
+        QWidget.setTabOrder(self.settings_set_both_slave_editline, self.parameters_board_combo)
+        QWidget.setTabOrder(self.parameters_board_combo, self.console)
 
         self.retranslateUi(MainWindow)
 
@@ -1844,6 +1905,24 @@ class Ui_MainWindow(object):
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"Enter IP address:", None))
         self.connection_edit.setText("")
         self.connection_edit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 10.2.31.2", None))
+        self.Settings_label.setText(QCoreApplication.translate("MainWindow", u"Settings ", None))
+        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Select SiPM: ", None))
+        self.settings_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Master SiPM:", None))
+        self.settings_master_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
+        self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage:     ", None))
+        self.settings_set_both_master_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage:     ", None))
+        self.settings_set_both_slave_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.Consol_label.setText(QCoreApplication.translate("MainWindow", u"Console", None))
+        self.console.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt;&gt; Text will be here</p></body></html>", None))
         self.PowerButton_label.setText(QCoreApplication.translate("MainWindow", u"Power Supply", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Port 1 :", None))
         self.button_edit_1.setText("")
@@ -1876,30 +1955,11 @@ class Ui_MainWindow(object):
         self.button_edit_8.setText("")
         self.button_edit_8.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Board Nr.", None))
         self.pushre_9.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.Settings_label.setText(QCoreApplication.translate("MainWindow", u"Settings ", None))
-        self.label_17.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
-        self.label_18.setText(QCoreApplication.translate("MainWindow", u"Select SiPM: ", None))
-        self.settings_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.label_19.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Master SiPM:", None))
-        self.settings_master_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
-        self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage:     ", None))
-        self.settings_set_both_master_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage:     ", None))
-        self.settings_set_both_slave_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.Parameters_label.setText(QCoreApplication.translate("MainWindow", u"Parameters", None))
         self.label_23.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
-        self.label_28.setText(QCoreApplication.translate("MainWindow", u"Select SiPM:", None))
         self.label_27.setText(QCoreApplication.translate("MainWindow", u"Master SiMP voltage", None))
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
-        self.Consol_label.setText(QCoreApplication.translate("MainWindow", u"Console", None))
-        self.console.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt;&gt; Text will be here</p></body></html>", None))
         self.credits.setText("")
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
     # retranslateUi

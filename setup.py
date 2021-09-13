@@ -1,13 +1,13 @@
 import sys
 import os 
-from cx_Freeze import executable, setup, Executable
+from cx_Freeze import  setup, Executable
 
-files = ['main.ico']
+files = ['resources/main.ico']
 
 target = Executable(
     script="app.py",
     base = "WIN32GUI",
-    icon="main.ico"
+    icon="resources/main.ico"
 )
 
 

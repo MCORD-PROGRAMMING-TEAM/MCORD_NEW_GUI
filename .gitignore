@@ -1,6 +1,7 @@
 *.pyc
 __pycache__
 canadian_palette.txt
-app_test.py
+test_app.py
 .vscode
 .qt_for_python
+build

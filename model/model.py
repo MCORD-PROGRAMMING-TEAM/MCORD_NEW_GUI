@@ -1,7 +1,7 @@
 
 from PySide6.QtWidgets import  QCheckBox, QComboBox, QLineEdit, QPushButton, QFrame
-from PySide6.QtCore import QObject,Signal
-from PySide6.QtGui import QIntValidator
+from PySide6.QtCore import QObject,Signal,QMargins,QRegularExpression
+from PySide6.QtGui import QIntValidator,QDoubleValidator,QRegularExpressionValidator
 from win10toast import ToastNotifier
 import ipaddress
 
@@ -15,6 +15,7 @@ class Model(QObject):
         super().__init__()
         self.all_menu_buttons = []
         self.all_power_buttons = {}
+        self.all_editline_simpframe = []
         self.board_comlist = []
         self.comport = 'COM3'
         self.ip = 'None'
@@ -65,12 +66,16 @@ class Model(QObject):
             self.sender().parentWidget().findChild(QLineEdit).clear()
 
     def valid_board_number_asNumber(self):
-        self.onlyInt = QIntValidator()
+        onlyInt = QIntValidator()
         for _ , editline in self.all_power_buttons.values():
-            editline.setValidator(self.onlyInt)
-        
-             
+            editline.setValidator(onlyInt)
             
+    def valid_voltage_asNumber(self,frame):
+        onlyInt_fromRange = QRegularExpressionValidator(QRegularExpression("([5-6][0-9]?\.[0-9]+)|(65\.0+)"))
+        for combo in frame.findChildren(QLineEdit):
+            combo.setValidator(onlyInt_fromRange)
+            self.all_editline_simpframe.append(combo)
+           
     def valid_ipaddress(self,text):
         try:
             ipaddress.ip_address(text)
@@ -104,11 +109,42 @@ class Model(QObject):
         if isinstance(self.sender(),QComboBox):
             self.settingstriggerd = True
         if isinstance(self.sender(),QPushButton):
-            self.preview_settings_frametrigged = True     
+            self.preview_settings_frametrigged = True
+            
+    def check_size_frame_to_fit_circ_progressbars(self,window,circ):
+        if window.isMaximized():
+            circ.font_size = 18
+            return QMargins(60,80,60,80)
+        else:
+            circ.font_size = 12
+            return QMargins(40,40,40,40)  
 
         
             
+    def valid_voltage_range(self):
+        def valid_simp(value):   
+            line_edit={
+                'settings_master_linedit': 1, 
+                'settings_slave_linedit': 0,
+                'settings_set_both_slave_editline': 0,
+                'settings_set_both_master_editline': 1,
+            }
+            if line_edit[self.sender().objectName()]:
+                self.active_master_voltage = value
+            else:
+                self.active_slave_voltage = value
         
+        value = float(self.sender().text())
+        if min(53.00, 65.00) < value < max(53.00, 65.00):
+            valid_simp(value)
+        else:
+            toaster = ToastNotifier()
+            toaster.show_toast("Voltage value not in work range","Minimum voltage value (53.00 V) will be set ",threaded=True,duration=3)
+            self.sender().clear()
+            valid_simp(53)
+
+        
+      
         
             
         
