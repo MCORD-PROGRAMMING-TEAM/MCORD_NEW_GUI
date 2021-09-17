@@ -1,7 +1,7 @@
 from PySide6.QtCore import Qt,QRect,QTimer
 from PySide6.QtWidgets import QWidget,QGraphicsDropShadowEffect
 from PySide6.QtGui import QColor,QPainter,QPen,QFont
-from decimal import Decimal
+
 
 class QtCustomCirculateProgress(QWidget):
     def __init__(
@@ -53,11 +53,16 @@ class QtCustomCirculateProgress(QWidget):
         self.progress_timer.start()
         self.new_value = value
         
+
+        
         
     def set_new_value(self):
+
         if self.new_value >= self.value:
             if self.value < self.new_value:
-                self.value = round(self.value + 0.01,2)
+                if self.new_value -self.value >= 1 : step = 1
+                else: step = 0.01
+                self.value = round(self.value + step,2)
                 
                 self.repaint()
             else:
@@ -65,7 +70,9 @@ class QtCustomCirculateProgress(QWidget):
                 
         else:
             if self.value > self.new_value:
-                self.value = round(self.value - 0.01,2)
+                if self.value - self.new_value >= 1 : step = 1
+                else: step = 0.01
+                self.value = round(self.value - step,2)
                
                 self.repaint()
             else:

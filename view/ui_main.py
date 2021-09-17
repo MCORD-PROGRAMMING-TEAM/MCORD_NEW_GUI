@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainBczAed.ui'
+## Form generated from reading UI file 'mainKHIjLG.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -13,12 +13,11 @@ from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1374, 824)
+        MainWindow.resize(1317, 767)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -56,16 +55,16 @@ class Ui_MainWindow(object):
 "/* ######### BACKGROUND ############ */\n"
 "#background {\n"
 "	background-color:  #2f3542;\n"
-"	border: 1px solid #202c3b;\n"
+"	\n"
 "		\n"
 "}\n"
 "\n"
 "/* ######### LEFT MENU ############ */\n"
 "#LeftMenuFrame {\n"
-"	background-color:"
-                        "  #57606f;\n"
+"	background-color:  #57606f;\n"
 "}\n"
-"/* ######### LEFT MENU HIDDEN ############ */\n"
+"/* ##"
+                        "####### LEFT MENU HIDDEN ############ */\n"
 "#ExtraLeftMenuFrame {\n"
 "	background-color:  #227093;\n"
 "    border-top: 4px solid #202c3b;\n"
@@ -100,9 +99,9 @@ class Ui_MainWindow(object):
 "	background-color: transparent;\n"
 "	text-align: left;\n"
 "	padding-left: 44px;\n"
-""
-                        "}\n"
-"#buttonsframe .QPushButton:hover{\n"
+"}\n"
+"#buttonsframe .Q"
+                        "PushButton:hover{\n"
 "	background-color: #2f3542;\n"
 "	border-left: 20px solid transparent;\n"
 "}\n"
@@ -145,9 +144,9 @@ class Ui_MainWindow(object):
 "   background-color: #feca57;\n"
 "}\n"
 "\n"
-"#minimizeButton:"
-                        "hover{\n"
-"   background-color: #1dd1a1;\n"
+"#minimizeButton:hover{\n"
+"   backgrou"
+                        "nd-color: #1dd1a1;\n"
 "}\n"
 "\n"
 "#closebuttonframe .QPushButton:pressed{ \n"
@@ -193,11 +192,11 @@ class Ui_MainWindow(object):
 "/* ######### CENTRALFRAME ############ */\n"
 "#centralframe {\n"
 "	border-top: 4px solid #202c3b;\n"
-""
-                        "}\n"
+"}\n"
 "\n"
 "\n"
-"#hub_page_content QLabel{\n"
+"#hub_"
+                        "page_content QLabel{\n"
 "font: 700 11pt \"Segoe UI\";\n"
 "color: rgb(255, 255, 255);\n"
 "}\n"
@@ -342,6 +341,19 @@ class Ui_MainWindow(object):
         self.btn_exit.setStyleSheet(u"")
 
         self.verticalLayout_6.addWidget(self.btn_exit)
+
+        self.btn_exit_2 = QPushButton(self.buttonsframe)
+        self.btn_exit_2.setObjectName(u"btn_exit_2")
+        self.btn_exit_2.setEnabled(False)
+        sizePolicy.setHeightForWidth(self.btn_exit_2.sizePolicy().hasHeightForWidth())
+        self.btn_exit_2.setSizePolicy(sizePolicy)
+        self.btn_exit_2.setMinimumSize(QSize(0, 60))
+        self.btn_exit_2.setFont(font)
+        self.btn_exit_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_exit_2.setLayoutDirection(Qt.LeftToRight)
+        self.btn_exit_2.setStyleSheet(u"")
+
+        self.verticalLayout_6.addWidget(self.btn_exit_2)
 
 
         self.verticalLayout_3.addWidget(self.buttonsframe)
@@ -535,6 +547,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.stackedWidget = QStackedWidget(self.centralframe)
         self.stackedWidget.setObjectName(u"stackedWidget")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.stackedWidget.sizePolicy().hasHeightForWidth())
+        self.stackedWidget.setSizePolicy(sizePolicy2)
         self.stackedWidget.setStyleSheet(u"background-color: transparent;")
         self.statistic_page = QWidget()
         self.statistic_page.setObjectName(u"statistic_page")
@@ -646,29 +663,36 @@ class Ui_MainWindow(object):
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
         self.hub_page_content = QFrame(self.hub_page)
         self.hub_page_content.setObjectName(u"hub_page_content")
+        sizePolicy2.setHeightForWidth(self.hub_page_content.sizePolicy().hasHeightForWidth())
+        self.hub_page_content.setSizePolicy(sizePolicy2)
         self.hub_page_content.setStyleSheet(u"")
         self.hub_page_content.setFrameShape(QFrame.NoFrame)
         self.hub_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_37 = QVBoxLayout(self.hub_page_content)
-        self.verticalLayout_37.setSpacing(25)
+        self.verticalLayout_37.setSpacing(0)
         self.verticalLayout_37.setObjectName(u"verticalLayout_37")
         self.verticalLayout_37.setContentsMargins(0, 0, 0, 0)
         self.Up_frame = QFrame(self.hub_page_content)
         self.Up_frame.setObjectName(u"Up_frame")
+        sizePolicy2.setHeightForWidth(self.Up_frame.sizePolicy().hasHeightForWidth())
+        self.Up_frame.setSizePolicy(sizePolicy2)
         self.Up_frame.setMaximumSize(QSize(16777215, 200))
         self.Up_frame.setFrameShape(QFrame.NoFrame)
         self.Up_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_16 = QHBoxLayout(self.Up_frame)
         self.horizontalLayout_16.setSpacing(45)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.horizontalLayout_16.setContentsMargins(9, 0, 9, 10)
+        self.horizontalLayout_16.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalLayout_16.setContentsMargins(9, 0, 10, 20)
         self.select_conn_frame = QFrame(self.Up_frame)
         self.select_conn_frame.setObjectName(u"select_conn_frame")
+        self.select_conn_frame.setMaximumSize(QSize(400, 16777215))
         self.select_conn_frame.setFrameShape(QFrame.NoFrame)
         self.select_conn_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
         self.verticalLayout_16.setSpacing(0)
         self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.verticalLayout_16.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
         self.Connection_label_frame = QFrame(self.select_conn_frame)
         self.Connection_label_frame.setObjectName(u"Connection_label_frame")
@@ -1116,11 +1140,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_16.addWidget(self.Console_frame)
 
+        self.Setting_frame.raise_()
+        self.Console_frame.raise_()
+        self.select_conn_frame.raise_()
 
         self.verticalLayout_37.addWidget(self.Up_frame)
 
         self.Down_frame = QFrame(self.hub_page_content)
         self.Down_frame.setObjectName(u"Down_frame")
+        sizePolicy2.setHeightForWidth(self.Down_frame.sizePolicy().hasHeightForWidth())
+        self.Down_frame.setSizePolicy(sizePolicy2)
         self.Down_frame.setFrameShape(QFrame.NoFrame)
         self.Down_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_17 = QHBoxLayout(self.Down_frame)
@@ -1129,11 +1158,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_17.setContentsMargins(9, 0, 9, 10)
         self.PowerSupply_frame = QFrame(self.Down_frame)
         self.PowerSupply_frame.setObjectName(u"PowerSupply_frame")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.PowerSupply_frame.sizePolicy().hasHeightForWidth())
-        self.PowerSupply_frame.setSizePolicy(sizePolicy2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.PowerSupply_frame.sizePolicy().hasHeightForWidth())
+        self.PowerSupply_frame.setSizePolicy(sizePolicy3)
         self.PowerSupply_frame.setStyleSheet(u"")
         self.PowerSupply_frame.setFrameShape(QFrame.NoFrame)
         self.PowerSupply_frame.setFrameShadow(QFrame.Raised)
@@ -1238,11 +1267,11 @@ class Ui_MainWindow(object):
 
         self.button_edit_1 = QLineEdit(self.button_frame_1)
         self.button_edit_1.setObjectName(u"button_edit_1")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
-        self.button_edit_1.setSizePolicy(sizePolicy3)
+        sizePolicy4 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.button_edit_1.sizePolicy().hasHeightForWidth())
+        self.button_edit_1.setSizePolicy(sizePolicy4)
         self.button_edit_1.setMaximumSize(QSize(100, 25))
         self.button_edit_1.setStyleSheet(u"")
         self.button_edit_1.setAlignment(Qt.AlignCenter)
@@ -1276,8 +1305,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_2 = QLineEdit(self.button_frame_2)
         self.button_edit_2.setObjectName(u"button_edit_2")
-        sizePolicy3.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
-        self.button_edit_2.setSizePolicy(sizePolicy3)
+        sizePolicy4.setHeightForWidth(self.button_edit_2.sizePolicy().hasHeightForWidth())
+        self.button_edit_2.setSizePolicy(sizePolicy4)
         self.button_edit_2.setMaximumSize(QSize(100, 25))
         self.button_edit_2.setStyleSheet(u"")
         self.button_edit_2.setAlignment(Qt.AlignCenter)
@@ -1310,11 +1339,11 @@ class Ui_MainWindow(object):
 
         self.button_edit_3 = QLineEdit(self.button_frame_3)
         self.button_edit_3.setObjectName(u"button_edit_3")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
-        self.button_edit_3.setSizePolicy(sizePolicy4)
+        sizePolicy5 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Fixed)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.button_edit_3.sizePolicy().hasHeightForWidth())
+        self.button_edit_3.setSizePolicy(sizePolicy5)
         self.button_edit_3.setMaximumSize(QSize(100, 25))
         self.button_edit_3.setStyleSheet(u"")
         self.button_edit_3.setAlignment(Qt.AlignCenter)
@@ -1347,8 +1376,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_4 = QLineEdit(self.button_frame_4)
         self.button_edit_4.setObjectName(u"button_edit_4")
-        sizePolicy4.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
-        self.button_edit_4.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.button_edit_4.sizePolicy().hasHeightForWidth())
+        self.button_edit_4.setSizePolicy(sizePolicy5)
         self.button_edit_4.setMaximumSize(QSize(100, 25))
         self.button_edit_4.setStyleSheet(u"")
         self.button_edit_4.setAlignment(Qt.AlignCenter)
@@ -1381,8 +1410,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_5 = QLineEdit(self.button_frame_5)
         self.button_edit_5.setObjectName(u"button_edit_5")
-        sizePolicy4.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
-        self.button_edit_5.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.button_edit_5.sizePolicy().hasHeightForWidth())
+        self.button_edit_5.setSizePolicy(sizePolicy5)
         self.button_edit_5.setMaximumSize(QSize(100, 25))
         self.button_edit_5.setStyleSheet(u"")
         self.button_edit_5.setAlignment(Qt.AlignCenter)
@@ -1415,8 +1444,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_6 = QLineEdit(self.button_frame_6)
         self.button_edit_6.setObjectName(u"button_edit_6")
-        sizePolicy4.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
-        self.button_edit_6.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.button_edit_6.sizePolicy().hasHeightForWidth())
+        self.button_edit_6.setSizePolicy(sizePolicy5)
         self.button_edit_6.setMaximumSize(QSize(100, 25))
         self.button_edit_6.setStyleSheet(u"")
         self.button_edit_6.setAlignment(Qt.AlignCenter)
@@ -1449,8 +1478,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_7 = QLineEdit(self.button_frame_7)
         self.button_edit_7.setObjectName(u"button_edit_7")
-        sizePolicy4.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
-        self.button_edit_7.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.button_edit_7.sizePolicy().hasHeightForWidth())
+        self.button_edit_7.setSizePolicy(sizePolicy5)
         self.button_edit_7.setMaximumSize(QSize(100, 25))
         self.button_edit_7.setStyleSheet(u"")
         self.button_edit_7.setAlignment(Qt.AlignCenter)
@@ -1483,8 +1512,8 @@ class Ui_MainWindow(object):
 
         self.button_edit_8 = QLineEdit(self.button_frame_8)
         self.button_edit_8.setObjectName(u"button_edit_8")
-        sizePolicy4.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
-        self.button_edit_8.setSizePolicy(sizePolicy4)
+        sizePolicy5.setHeightForWidth(self.button_edit_8.sizePolicy().hasHeightForWidth())
+        self.button_edit_8.setSizePolicy(sizePolicy5)
         self.button_edit_8.setMaximumSize(QSize(100, 25))
         self.button_edit_8.setStyleSheet(u"")
         self.button_edit_8.setAlignment(Qt.AlignCenter)
@@ -1838,6 +1867,7 @@ class Ui_MainWindow(object):
         self.btn_plot.setText(QCoreApplication.translate("MainWindow", u"     Graph", None))
         self.btn_diagnostic.setText(QCoreApplication.translate("MainWindow", u"     Diagnostics", None))
         self.btn_exit.setText("")
+        self.btn_exit_2.setText("")
         self.SettingsButton.setText("")
         self.label.setText(QCoreApplication.translate("MainWindow", u"MCORD GUI Application", None))
 #if QT_CONFIG(tooltip)

@@ -67,10 +67,6 @@ class View(QMainWindow):
             self.ui.maximizeButton.setIcon(
                 QIcon(u":/icons/icons/icon_restore.png"))
             self.ui.resizeicon.hide()
-            
-            
-            
-
         else:
             self.showNormal()
             self.resize(self.width()+1, self.height()+1)
@@ -79,10 +75,6 @@ class View(QMainWindow):
             self.ui.maximizeButton.setIcon(
                 QIcon(u":/icons/icons/icon_maximize.png"))
             self.ui.resizeicon.show()
-            
-        self.ui.master_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.master_progressbar))
-        self.ui.slave_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.slave_progressbar))
-        self.ui.temperature_layout.setContentsMargins(self.model.check_size_frame_to_fit_circ_progressbars(self,self.ui.temperature_progressbar))
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPos()
@@ -113,7 +105,7 @@ class View(QMainWindow):
             layout = button.parentWidget().layout().objectName()
             exec(f"self.ui.{layout}.insertWidget(2,self.ui.powerbutton_{number})")
             # Add buttons to dict in model 
-            self.model.storage_power_buttons(button.parentWidget().findChildren(QCheckBox),button.parentWidget().findChildren(QLineEdit))
+            self.model.get_all_power_buttons(button.parentWidget().findChildren(QCheckBox),button.parentWidget().findChildren(QLineEdit))
             
         #replace pushbutton to hover button
         self.ui.settings_button.deleteLater()
@@ -122,17 +114,26 @@ class View(QMainWindow):
         
         
         # Add progressbars to frames
-        self.ui.master_progressbar = QtCustomCirculateProgress(progress_color='#f368e0',max_value=65,suffix=' V')
+        self.ui.master_progressbar = QtCustomCirculateProgress(progress_color='#f368e0',max_value=100,suffix=' V',value=0)
         self.ui.master_layout.addWidget(self.ui.master_progressbar)
         
-        self.ui.slave_progressbar = QtCustomCirculateProgress(progress_color='#54a0ff',max_value=65,suffix=' V')
+        self.ui.slave_progressbar = QtCustomCirculateProgress(progress_color='#54a0ff',max_value=100,suffix=' V',value=0)
         self.ui.slave_layout.addWidget(self.ui.slave_progressbar)
         
-        self.ui.temperature_progressbar = QtCustomCirculateProgress(progress_color='#1dd1a1',max_value=40,suffix=' °C',value=25)
+        self.ui.temperature_progressbar = QtCustomCirculateProgress(progress_color='#1dd1a1',max_value=100,suffix=' °C',value=0)
         self.ui.temperature_layout.addWidget(self.ui.temperature_progressbar)
         
         
-   
+        
+    def resize_circ_progress_bars(self):
+        proper_size, font_size = self.model.valid_windows_size(self.isMaximized())
+        self.ui.master_layout.setContentsMargins(proper_size)
+        self.ui.slave_layout.setContentsMargins(proper_size)
+        self.ui.temperature_layout.setContentsMargins(proper_size)
+        
+        self.ui.master_progressbar.font_size = font_size
+        self.ui.slave_progressbar.font_size = font_size
+        self.ui.temperature_progressbar.font_size = font_size
 
         
     def change_clicked_button_layout(self,buttonstyle):
@@ -155,30 +156,10 @@ class View(QMainWindow):
     
     
     def changePage(self, button):
-        slideto = self.model.check_which_slide(button)
+        slideto = self.model.valid_wheretoSlide(button)
         self.reset_clicked_style(button)
         self.select_clicked_style(button)
         self.ui.stackedWidget.slidetowidget(slideto)
-        
-    
-    def changeUSB_IP(self,status):
-            self.animationusb = QPropertyAnimation(self.ui.connection_selection_usb, b"maximumWidth")
-            self.animationusb.setDuration(400)
-            self.animationusb.setEasingCurve(QEasingCurve.InElastic)
-            
-            self.animationlan = QPropertyAnimation(self.ui.connection_selection_lan, b"maximumWidth")
-            self.animationlan.setDuration(400)
-            self.animationusb.setEasingCurve(QEasingCurve.InOutQuart)
-            start,end = self.model.validcommunication(status)
-
-            self.animationusb.setStartValue(end)
-            self.animationusb.setEndValue(start)
-            self.animationusb.start()
-            
-            self.animationlan.setStartValue(start)
-            self.animationlan.setEndValue(end)
-            self.animationlan.start()
-
            
     
     def change_if_ip_reponse(self, response):
@@ -202,72 +183,98 @@ class View(QMainWindow):
         self.ui.progressBar.setValue(self.ui.PB_progress_value)
         self.ui.PB_progress_value += 1
         
-        
-    def animated_ProgressBar_frame(self,state):
-        start,end = self.model.valid_Qtimer_sender(state)
-            
-        self.animationprogressbar = QPropertyAnimation(self.ui.PowerButton_progressframe, b"maximumHeight")
-        self.animationprogressbar.setDuration(200)
-        self.animationprogressbar.setEasingCurve(QEasingCurve.InOutQuart)
-        self.animationprogressbar.setStartValue(start)
-        self.animationprogressbar.setEndValue(end)
-        self.animationprogressbar.start()
 
 
     def update_board_comlist(self):
         self.ui.board_combo.clear()
+        self.ui.parameters_board_combo.clear()
         self.ui.board_combo.addItems(self.model.board_comlist)
+        self.ui.parameters_board_combo.addItems(self.model.board_comlist)
         self.ui.board_combo.setCurrentIndex(-1)
+        self.ui.parameters_board_combo.setCurrentIndex(-1)
+        
+    def clear_board_comlist(self,status):
+        if not status:
+            try:
+                board_number = self.sender().parentWidget().findChild(QLineEdit).text()
+                self.board_comlist.remove(board_number)
+                self.sender().parentWidget().findChild(QLineEdit).clear()
+            except:
+                pass
 
     def update_simp_comlist(self):
         self.ui.simp_combo.addItems(['Master','Slave','Both'])
         self.ui.simp_combo.setCurrentIndex(-1)
-    
-    def animated_settings_frame(self,frame,value):
-        self.animationframesettings = QPropertyAnimation(frame, b"minimumHeight")
-        self.animationframesettings.setDuration(100)
-        self.animationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
-        self.animationframesettings.setStartValue(frame.height())
-        self.animationframesettings.setEndValue(frame.height() + value)
-        self.animationframesettings.start()
+        
+        
+    def apply_animation(self,obj,attribute,time,start,end):
+        animation = QPropertyAnimation(obj,attribute)
+        animation.setDuration(time)
+        animation.setEasingCurve(QEasingCurve.InOutQuart)
+        animation.setStartValue(start)
+        animation.setEndValue(end)
+        animation.start()
+        return animation    
+        
+        
+    def animated_ProgressBar_frame(self,state):
+        start,end = self.model.valid_Qtimer_sender(state)
+        self.animationprogressbar = self.apply_animation(self.ui.PowerButton_progressframe,b"maximumHeight",200,start,end)
         
         
     def animated_voltage_panels(self):
-        checkifanyactive = self.model.check_if_any_simp_settings_is_active(self.ui.Setting_frame)
+        checkifanyactive = self.model.valid_any_simp_settings_is_active(self.ui.Setting_frame)
         framename = self.model.valid_which_frame()
         frame = self.ui.Setting_frame.findChild(QFrame,framename)
         
-        
         if checkifanyactive:
-            self.prevanimationframesettings = QPropertyAnimation(checkifanyactive, b"maximumHeight")
-            self.prevanimationframesettings.setDuration(100)
-            self.prevanimationframesettings.setEasingCurve(QEasingCurve.InOutQuart)
-            self.prevanimationframesettings.setStartValue(self.ui.Up_frame.width())
-            self.prevanimationframesettings.setEndValue(0)
-            self.prevanimationframesettings.start()
-            
+            self.prev_animation_settings_frame = self.apply_animation(checkifanyactive,b"maximumHeight",200,self.ui.Up_frame.width(),0)
+    
         if not self.model.settingstriggerd:
             self.ui.frame.deleteLater()
-            #self.animated_settings_frame(self.ui.Setting_frame,67)
-       
-        self.animationframe = QPropertyAnimation(frame, b"maximumHeight")
-        self.animationframe.setDuration(100)
-        self.animationframe.setEasingCurve(QEasingCurve.InOutQuart)
-        self.animationframe.setStartValue(0)
-        self.animationframe.setEndValue(self.ui.Up_frame.width())
-        self.animationframe.start()
-        
-        
-    def animated_preview_settings(self):
-        if not self.model.preview_settings_frametrigged:
-            self.previewanimation = QPropertyAnimation(self.ui.Parameters_body_frame, b"maximumHeight")
-            self.previewanimation.setDuration(200)
-            self.previewanimation.setEasingCurve(QEasingCurve.InOutQuart)
-            self.previewanimation.setStartValue(0)
-            self.previewanimation.setEndValue(381)
-            self.previewanimation.start()
             
-            self.animated_settings_frame(self.ui.Parameters_frame,381)
+        self.animation_settings_frame = self.apply_animation(frame,b"maximumHeight",200,0,self.ui.Up_frame.width())
+        
+        
+    def animated_changeUSB_IP(self,status):
+        start,end = self.model.valid_communicationWay(status)
+        self.animationusb = self.apply_animation(self.ui.connection_selection_usb,b"maximumWidth",400,end,start)
+        self.animationlan = self.apply_animation(self.ui.connection_selection_lan,b"maximumWidth",400,start,end)
+           
+        
+    def hide_frames(self):
+        for frame in [self.ui.PowerSupply_frame,self.ui.Setting_frame,self.ui.Console_frame,self.ui.Parameters_frame]:
+            frame.hide()
+            
+            
+    def expend_frames(self):
+        frames = self.model.valid_expending_frame(self.sender().parentWidget().objectName())
+        for frame in frames:
+            exec(f"{frame}.showNormal()")
+        
+    
+    def update_progress_circ(self):
+        board_combo = self.ui.parameters_board_combo.currentText()
+        error = False
+        for value, pb in enumerate(self.ui.Parameter_preview_frame.findChildren(QtCustomCirculateProgress)):
+            try: 
+                pb.set_value(self.model.simp_work_params[board_combo][value])
+            except:
+                error = True
+                pb.set_value(0)
+        if error: self.model.error_no_voltage_set()
+            
+                
+           
+           
+
+        
+       
+   
+        
+        
+        
+
         
       
         
