@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainKHIjLG.ui'
+## Form generated from reading UI file 'mainZnHzlG.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -87,7 +87,6 @@ class Ui_MainWindow(object):
 "\n"
 "#SettingsButton:pressed, #ToggleButton:pressed {	\n"
 "	background-color:  #f368e0;\n"
-"	color: #000;\n"
 "}\n"
 "\n"
 "/* ######### BUTTONS  MENU LEFT SIDE ############ */\n"
@@ -100,9 +99,9 @@ class Ui_MainWindow(object):
 "	text-align: left;\n"
 "	padding-left: 44px;\n"
 "}\n"
-"#buttonsframe .Q"
-                        "PushButton:hover{\n"
-"	background-color: #2f3542;\n"
+"#buttonsframe .QPushButton:hover{\n"
+""
+                        "	background-color: #2f3542;\n"
 "	border-left: 20px solid transparent;\n"
 "}\n"
 "#buttonsframe .QPushButton:pressed {	\n"
@@ -145,9 +144,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "#minimizeButton:hover{\n"
-"   backgrou"
-                        "nd-color: #1dd1a1;\n"
-"}\n"
+"   background-color: #1dd1a1;\n"
+""
+                        "}\n"
 "\n"
 "#closebuttonframe .QPushButton:pressed{ \n"
 "   border-style: solid; \n"
@@ -195,9 +194,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "\n"
-"#hub_"
-                        "page_content QLabel{\n"
-"font: 700 11pt \"Segoe UI\";\n"
+"#hub_page_content QLabel{\n"
+""
+                        "font: 700 11pt \"Segoe UI\";\n"
 "color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -286,6 +285,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         self.btn_hub.setFont(font)
         self.btn_hub.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_hub.setFocusPolicy(Qt.TabFocus)
         self.btn_hub.setLayoutDirection(Qt.LeftToRight)
         self.btn_hub.setStyleSheet(u"background-image: url(:/icons/icons/chip.png);\n"
 "")
@@ -689,11 +689,10 @@ class Ui_MainWindow(object):
         self.select_conn_frame.setMaximumSize(QSize(400, 16777215))
         self.select_conn_frame.setFrameShape(QFrame.NoFrame)
         self.select_conn_frame.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_16 = QVBoxLayout(self.select_conn_frame)
-        self.verticalLayout_16.setSpacing(0)
-        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
-        self.verticalLayout_16.setSizeConstraint(QLayout.SetDefaultConstraint)
-        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_40 = QVBoxLayout(self.select_conn_frame)
+        self.verticalLayout_40.setSpacing(0)
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.verticalLayout_40.setContentsMargins(0, 0, 0, 0)
         self.Connection_label_frame = QFrame(self.select_conn_frame)
         self.Connection_label_frame.setObjectName(u"Connection_label_frame")
         self.Connection_label_frame.setMaximumSize(QSize(16777215, 50))
@@ -714,7 +713,42 @@ class Ui_MainWindow(object):
         self.verticalLayout_21.addWidget(self.Connection_label)
 
 
-        self.verticalLayout_16.addWidget(self.Connection_label_frame)
+        self.verticalLayout_40.addWidget(self.Connection_label_frame)
+
+        self.connection_progressbar_frame = QFrame(self.select_conn_frame)
+        self.connection_progressbar_frame.setObjectName(u"connection_progressbar_frame")
+        self.connection_progressbar_frame.setMaximumSize(QSize(16777215, 0))
+        self.connection_progressbar_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"")
+        self.connection_progressbar_frame.setFrameShape(QFrame.StyledPanel)
+        self.connection_progressbar_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_16 = QVBoxLayout(self.connection_progressbar_frame)
+        self.verticalLayout_16.setSpacing(0)
+        self.verticalLayout_16.setObjectName(u"verticalLayout_16")
+        self.verticalLayout_16.setContentsMargins(30, 0, 30, 0)
+        self.connection_progressbar = QProgressBar(self.connection_progressbar_frame)
+        self.connection_progressbar.setObjectName(u"connection_progressbar")
+        self.connection_progressbar.setMaximumSize(QSize(16777215, 21))
+        self.connection_progressbar.setStyleSheet(u"QProgressBar{\n"
+"background-color:#748699;\n"
+"color:#fff;\n"
+"border-style:none;\n"
+"border-radius:10px;\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk{\n"
+"	border-radius:10px;\n"
+"	background-color: \n"
+"qlineargradient(spread:pad, x1:0, y1:0.483, x2:0.948864, y2:0.489, stop:0 rgba(1, 103, 103, 255), stop:1 rgba(1, 185, 185, 255));\n"
+"}\n"
+"")
+        self.connection_progressbar.setValue(24)
+
+        self.verticalLayout_16.addWidget(self.connection_progressbar)
+
+
+        self.verticalLayout_40.addWidget(self.connection_progressbar_frame)
 
         self.connection_body = QFrame(self.select_conn_frame)
         self.connection_body.setObjectName(u"connection_body")
@@ -744,7 +778,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.label_5)
 
 
-        self.verticalLayout_16.addWidget(self.connection_body)
+        self.verticalLayout_40.addWidget(self.connection_body)
 
         self.connection_selection = QFrame(self.select_conn_frame)
         self.connection_selection.setObjectName(u"connection_selection")
@@ -847,7 +881,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_10.addWidget(self.connection_selection_lan)
 
 
-        self.verticalLayout_16.addWidget(self.connection_selection)
+        self.verticalLayout_40.addWidget(self.connection_selection)
 
 
         self.horizontalLayout_16.addWidget(self.select_conn_frame)
@@ -971,6 +1005,38 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_27.addWidget(self.frame)
 
+        self.Settings_progress_bar_frame = QFrame(self.Setting_frame)
+        self.Settings_progress_bar_frame.setObjectName(u"Settings_progress_bar_frame")
+        self.Settings_progress_bar_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_progress_bar_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Settings_progress_bar_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_progress_bar_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_38 = QVBoxLayout(self.Settings_progress_bar_frame)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.verticalLayout_38.setContentsMargins(50, 5, 50, 5)
+        self.Settings_progess_bar = QProgressBar(self.Settings_progress_bar_frame)
+        self.Settings_progess_bar.setObjectName(u"Settings_progess_bar")
+        self.Settings_progess_bar.setMaximumSize(QSize(16777215, 21))
+        self.Settings_progess_bar.setStyleSheet(u"QProgressBar{\n"
+"background-color:#748699;\n"
+"color:#fff;\n"
+"border-style:none;\n"
+"border-radius:10px;\n"
+"text-align:center;\n"
+"}\n"
+"\n"
+"QProgressBar::chunk{\n"
+"	border-radius:10px;\n"
+"	background-color: qlineargradient(spread:pad, x1:0.00564972, y1:0.943, x2:0.99435, y2:0.943, stop:0 rgba(33, 107, 118, 255), stop:1 rgba(73, 225, 255, 255));\n"
+"}\n"
+"")
+        self.Settings_progess_bar.setValue(24)
+
+        self.verticalLayout_38.addWidget(self.Settings_progess_bar)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_progress_bar_frame)
+
         self.Settings_set_master_frame = QFrame(self.Setting_frame)
         self.Settings_set_master_frame.setObjectName(u"Settings_set_master_frame")
         self.Settings_set_master_frame.setMaximumSize(QSize(16777215, 0))
@@ -999,35 +1065,6 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_27.addWidget(self.Settings_set_master_frame)
-
-        self.Settings_set_slave_frame = QFrame(self.Setting_frame)
-        self.Settings_set_slave_frame.setObjectName(u"Settings_set_slave_frame")
-        self.Settings_set_slave_frame.setMaximumSize(QSize(16777215, 0))
-        self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
-"border-bottom-left-radius:5px;\n"
-"border-bottom-right-radius:5px;")
-        self.Settings_set_slave_frame.setFrameShape(QFrame.StyledPanel)
-        self.Settings_set_slave_frame.setFrameShadow(QFrame.Raised)
-        self.horizontalLayout_13 = QHBoxLayout(self.Settings_set_slave_frame)
-        self.horizontalLayout_13.setSpacing(20)
-        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
-        self.horizontalLayout_13.setContentsMargins(9, 0, 30, 0)
-        self.label_20 = QLabel(self.Settings_set_slave_frame)
-        self.label_20.setObjectName(u"label_20")
-        self.label_20.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
-
-        self.horizontalLayout_13.addWidget(self.label_20)
-
-        self.settings_slave_linedit = QLineEdit(self.Settings_set_slave_frame)
-        self.settings_slave_linedit.setObjectName(u"settings_slave_linedit")
-        self.settings_slave_linedit.setMaximumSize(QSize(80, 16777215))
-        self.settings_slave_linedit.setStyleSheet(u"")
-        self.settings_slave_linedit.setAlignment(Qt.AlignCenter)
-
-        self.horizontalLayout_13.addWidget(self.settings_slave_linedit)
-
-
-        self.verticalLayout_27.addWidget(self.Settings_set_slave_frame)
 
         self.Settings_set_both_master_slave_frame = QFrame(self.Setting_frame)
         self.Settings_set_both_master_slave_frame.setObjectName(u"Settings_set_both_master_slave_frame")
@@ -1075,6 +1112,35 @@ class Ui_MainWindow(object):
 
 
         self.verticalLayout_27.addWidget(self.Settings_set_both_master_slave_frame)
+
+        self.Settings_set_slave_frame = QFrame(self.Setting_frame)
+        self.Settings_set_slave_frame.setObjectName(u"Settings_set_slave_frame")
+        self.Settings_set_slave_frame.setMaximumSize(QSize(16777215, 0))
+        self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
+"border-bottom-left-radius:5px;\n"
+"border-bottom-right-radius:5px;")
+        self.Settings_set_slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_set_slave_frame.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_13 = QHBoxLayout(self.Settings_set_slave_frame)
+        self.horizontalLayout_13.setSpacing(20)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(9, 0, 30, 0)
+        self.label_20 = QLabel(self.Settings_set_slave_frame)
+        self.label_20.setObjectName(u"label_20")
+        self.label_20.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.horizontalLayout_13.addWidget(self.label_20)
+
+        self.settings_slave_linedit = QLineEdit(self.Settings_set_slave_frame)
+        self.settings_slave_linedit.setObjectName(u"settings_slave_linedit")
+        self.settings_slave_linedit.setMaximumSize(QSize(80, 16777215))
+        self.settings_slave_linedit.setStyleSheet(u"")
+        self.settings_slave_linedit.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_13.addWidget(self.settings_slave_linedit)
+
+
+        self.verticalLayout_27.addWidget(self.Settings_set_slave_frame)
 
 
         self.horizontalLayout_16.addWidget(self.Setting_frame)
@@ -1201,10 +1267,10 @@ class Ui_MainWindow(object):
         self.PowerButton_progressframe.setFrameShadow(QFrame.Raised)
         self.verticalLayout_23 = QVBoxLayout(self.PowerButton_progressframe)
         self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.progressBar = QProgressBar(self.PowerButton_progressframe)
-        self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setMaximumSize(QSize(16777215, 21))
-        self.progressBar.setStyleSheet(u"QProgressBar{\n"
+        self.powersupply_progressbar = QProgressBar(self.PowerButton_progressframe)
+        self.powersupply_progressbar.setObjectName(u"powersupply_progressbar")
+        self.powersupply_progressbar.setMaximumSize(QSize(16777215, 21))
+        self.powersupply_progressbar.setStyleSheet(u"QProgressBar{\n"
 "background-color:#748699;\n"
 "color:#fff;\n"
 "border-style:none;\n"
@@ -1216,9 +1282,9 @@ class Ui_MainWindow(object):
 "	border-radius:10px;\n"
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0.551, x2:1, y2:0.539773, stop:0.346591 rgba(226, 178, 229, 255), stop:0.897727 rgba(194, 137, 242, 255));\n"
 "}")
-        self.progressBar.setValue(24)
+        self.powersupply_progressbar.setValue(24)
 
-        self.verticalLayout_23.addWidget(self.progressBar)
+        self.verticalLayout_23.addWidget(self.powersupply_progressbar)
 
 
         self.PowerSupply_layout.addWidget(self.PowerButton_progressframe)
@@ -1941,12 +2007,12 @@ class Ui_MainWindow(object):
         self.settings_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.label_19.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Master SiPM:", None))
         self.settings_master_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
-        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
-        self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.label_21.setText(QCoreApplication.translate("MainWindow", u"Master voltage:     ", None))
         self.settings_set_both_master_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.label_22.setText(QCoreApplication.translate("MainWindow", u"Slave voltage:     ", None))
         self.settings_set_both_slave_editline.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Set voltage at Slave SiPM:", None))
+        self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.Consol_label.setText(QCoreApplication.translate("MainWindow", u"Console", None))
         self.console.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"

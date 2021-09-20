@@ -88,7 +88,6 @@ QToolTip {
 
 #SettingsButton:pressed, #ToggleButton:pressed {	
 	background-color:  #f368e0;
-	color: #000;
 }
 
 /* ######### BUTTONS  MENU LEFT SIDE ############ */
@@ -427,6 +426,9 @@ color: rgb(255, 255, 255);
                   </property>
                   <property name="cursor">
                    <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::TabFocus</enum>
                   </property>
                   <property name="layoutDirection">
                    <enum>Qt::LeftToRight</enum>
@@ -1376,12 +1378,9 @@ p, li { white-space: pre-wrap; }
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
                                </property>
-                               <layout class="QVBoxLayout" name="verticalLayout_16">
+                               <layout class="QVBoxLayout" name="verticalLayout_40">
                                 <property name="spacing">
                                  <number>0</number>
-                                </property>
-                                <property name="sizeConstraint">
-                                 <enum>QLayout::SetDefaultConstraint</enum>
                                 </property>
                                 <property name="leftMargin">
                                  <number>0</number>
@@ -1432,6 +1431,72 @@ border-top-right-radius:5px;
                                      </property>
                                      <property name="alignment">
                                       <set>Qt::AlignCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QFrame" name="connection_progressbar_frame">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>16777215</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: rgb(68, 75, 89);
+</string>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                                   <property name="spacing">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>30</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>30</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QProgressBar" name="connection_progressbar">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>16777215</width>
+                                       <height>21</height>
+                                      </size>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">QProgressBar{
+background-color:#748699;
+color:#fff;
+border-style:none;
+border-radius:10px;
+text-align:center;
+}
+
+QProgressBar::chunk{
+	border-radius:10px;
+	background-color: 
+qlineargradient(spread:pad, x1:0, y1:0.483, x2:0.948864, y2:0.489, stop:0 rgba(1, 103, 103, 255), stop:1 rgba(1, 185, 185, 255));
+}
+</string>
+                                     </property>
+                                     <property name="value">
+                                      <number>24</number>
                                      </property>
                                     </widget>
                                    </item>
@@ -1850,6 +1915,67 @@ border-top-right-radius:5px;
                                  </widget>
                                 </item>
                                 <item>
+                                 <widget class="QFrame" name="Settings_progress_bar_frame">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>16777215</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: rgb(68, 75, 89);</string>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QVBoxLayout" name="verticalLayout_38">
+                                   <property name="leftMargin">
+                                    <number>50</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>5</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>50</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>5</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QProgressBar" name="Settings_progess_bar">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>16777215</width>
+                                       <height>21</height>
+                                      </size>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true">QProgressBar{
+background-color:#748699;
+color:#fff;
+border-style:none;
+border-radius:10px;
+text-align:center;
+}
+
+QProgressBar::chunk{
+	border-radius:10px;
+	background-color: qlineargradient(spread:pad, x1:0.00564972, y1:0.943, x2:0.99435, y2:0.943, stop:0 rgba(33, 107, 118, 255), stop:1 rgba(73, 225, 255, 255));
+}
+</string>
+                                     </property>
+                                     <property name="value">
+                                      <number>24</number>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item>
                                  <widget class="QFrame" name="Settings_set_master_frame">
                                   <property name="maximumSize">
                                    <size>
@@ -1896,73 +2022,6 @@ border-bottom-right-radius:5px;</string>
                                    </item>
                                    <item>
                                     <widget class="QLineEdit" name="settings_master_linedit">
-                                     <property name="maximumSize">
-                                      <size>
-                                       <width>80</width>
-                                       <height>16777215</height>
-                                      </size>
-                                     </property>
-                                     <property name="styleSheet">
-                                      <string notr="true"/>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignCenter</set>
-                                     </property>
-                                     <property name="placeholderText">
-                                      <string>eg. 58.5</string>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                  </layout>
-                                 </widget>
-                                </item>
-                                <item>
-                                 <widget class="QFrame" name="Settings_set_slave_frame">
-                                  <property name="maximumSize">
-                                   <size>
-                                    <width>16777215</width>
-                                    <height>0</height>
-                                   </size>
-                                  </property>
-                                  <property name="styleSheet">
-                                   <string notr="true">background-color: rgb(68, 75, 89);
-border-bottom-left-radius:5px;
-border-bottom-right-radius:5px;</string>
-                                  </property>
-                                  <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
-                                  </property>
-                                  <property name="frameShadow">
-                                   <enum>QFrame::Raised</enum>
-                                  </property>
-                                  <layout class="QHBoxLayout" name="horizontalLayout_13">
-                                   <property name="spacing">
-                                    <number>20</number>
-                                   </property>
-                                   <property name="leftMargin">
-                                    <number>9</number>
-                                   </property>
-                                   <property name="topMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <property name="rightMargin">
-                                    <number>30</number>
-                                   </property>
-                                   <property name="bottomMargin">
-                                    <number>0</number>
-                                   </property>
-                                   <item>
-                                    <widget class="QLabel" name="label_20">
-                                     <property name="text">
-                                      <string>Set voltage at Slave SiPM:</string>
-                                     </property>
-                                     <property name="alignment">
-                                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                                     </property>
-                                    </widget>
-                                   </item>
-                                   <item>
-                                    <widget class="QLineEdit" name="settings_slave_linedit">
                                      <property name="maximumSize">
                                       <size>
                                        <width>80</width>
@@ -2069,6 +2128,73 @@ border-bottom-right-radius:5px;</string>
                                    </item>
                                    <item>
                                     <widget class="QLineEdit" name="settings_set_both_slave_editline">
+                                     <property name="maximumSize">
+                                      <size>
+                                       <width>80</width>
+                                       <height>16777215</height>
+                                      </size>
+                                     </property>
+                                     <property name="styleSheet">
+                                      <string notr="true"/>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignCenter</set>
+                                     </property>
+                                     <property name="placeholderText">
+                                      <string>eg. 58.5</string>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                  </layout>
+                                 </widget>
+                                </item>
+                                <item>
+                                 <widget class="QFrame" name="Settings_set_slave_frame">
+                                  <property name="maximumSize">
+                                   <size>
+                                    <width>16777215</width>
+                                    <height>0</height>
+                                   </size>
+                                  </property>
+                                  <property name="styleSheet">
+                                   <string notr="true">background-color: rgb(68, 75, 89);
+border-bottom-left-radius:5px;
+border-bottom-right-radius:5px;</string>
+                                  </property>
+                                  <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                                  </property>
+                                  <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                                  </property>
+                                  <layout class="QHBoxLayout" name="horizontalLayout_13">
+                                   <property name="spacing">
+                                    <number>20</number>
+                                   </property>
+                                   <property name="leftMargin">
+                                    <number>9</number>
+                                   </property>
+                                   <property name="topMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <property name="rightMargin">
+                                    <number>30</number>
+                                   </property>
+                                   <property name="bottomMargin">
+                                    <number>0</number>
+                                   </property>
+                                   <item>
+                                    <widget class="QLabel" name="label_20">
+                                     <property name="text">
+                                      <string>Set voltage at Slave SiPM:</string>
+                                     </property>
+                                     <property name="alignment">
+                                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                                     </property>
+                                    </widget>
+                                   </item>
+                                   <item>
+                                    <widget class="QLineEdit" name="settings_slave_linedit">
                                      <property name="maximumSize">
                                       <size>
                                        <width>80</width>
@@ -2359,7 +2485,7 @@ border-top-right-radius:5px;
                                   </property>
                                   <layout class="QVBoxLayout" name="verticalLayout_23">
                                    <item>
-                                    <widget class="QProgressBar" name="progressBar">
+                                    <widget class="QProgressBar" name="powersupply_progressbar">
                                      <property name="maximumSize">
                                       <size>
                                        <width>16777215</width>

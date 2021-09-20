@@ -17,6 +17,7 @@ class Controller:
         self._simpframesettingslogic()
         self._parameterslogic()
         self._frames_animation()
+        self._connectionlogic()
         self._enable_shadow_effect()
     
         
@@ -34,7 +35,9 @@ class Controller:
         self._view.ui.usb_lan_button.stateChanged.connect(self._view.animated_changeUSB_IP)
         self._view.ui.connection_combox.currentIndexChanged.connect(self.usbcontroller.set_current_device)
         self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.allowed_only_lan)
-        self._model.up_or_down_progressBar_frame.connect(self._view.animated_ProgressBar_frame)
+        self._model.up_or_down_powersupply_progressBar_frame.connect(self._view.animated_ProgressBar_PowerSuply_frame)
+        self._model.up_or_down_settings_progressBar_frame.connect(self._view.animated_ProgressBar_Settings_frame)
+        self._model.up_or_down_connection_progressBar_frame.connect(self._view.animated_ProgressBar_Connection_frame)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.get_current_simp_and_board)
         self._view.ui.board_combo.currentIndexChanged.connect(self._model.get_current_simp_and_board)
      
@@ -59,14 +62,23 @@ class Controller:
         self._view.enable_shadow_effect(self._view.ui.Setting_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Parameters_frame,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Console_frame,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.powersupply_progressbar,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.Settings_progess_bar,10,5,5,80)
+        self._view.enable_shadow_effect(self._view.ui.connection_progressbar,10,5,5,80)
     
   
+    def _connectionlogic(self):
+        self._view.ui.connection_combox.currentIndexChanged.connect(self._view.PowerButtonsProgressbar)
+        self._view.ui.connection_combox.currentIndexChanged.connect(self._view.animated_ProgressBar_Connection_frame)
+        
+        self._view.ui.connection_edit.editingFinished.connect(self._view.PowerButtonsProgressbar)
+        self._view.ui.connection_edit.editingFinished.connect(self._view.animated_ProgressBar_Connection_frame)
         
         
     def _powerbuttonslogic(self):
         for button, linedit in self._model.all_power_buttons.values():
             button.stateChanged.connect(self._view.PowerButtonsProgressbar)
-            button.stateChanged.connect(self._view.animated_ProgressBar_frame)
+            button.stateChanged.connect(self._view.animated_ProgressBar_PowerSuply_frame)
             linedit.editingFinished.connect(self._model.get_all_boards)
             linedit.editingFinished.connect(self._model.get_work_params)
         
@@ -74,11 +86,16 @@ class Controller:
             button.stateChanged.connect(self._view.update_board_comlist)
     
     def _simpframesettingslogic(self):
+        self._view.ui.board_combo.currentIndexChanged.connect(self._model.get_changed_board)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._view.animated_voltage_panels)
         self._view.ui.simp_combo.currentIndexChanged.connect(self._model.get_settings_trigger)
+        self._view.ui.simp_combo.currentIndexChanged.connect(self._view.unlocked_settings_button)
         for lineedit in self._model.all_editline_simpframe:
             lineedit.editingFinished.connect(self._model.set_voltage_range)
         self._view.ui.settings_button.clicked.connect(self._model.set_working_values)
+        self._view.ui.settings_button.clicked.connect(self._view.PowerButtonsProgressbar)
+        self._view.ui.settings_button.clicked.connect(self._view.animated_ProgressBar_Settings_frame)
+        self._view.ui.settings_button.clicked.connect(self._view.update_progress_circ)
         
     def _parameterslogic(self):
         self._view.ui.parameters_board_combo.activated.connect(self._view.update_progress_circ)
@@ -92,13 +109,17 @@ class Controller:
     def _runtimer(self):
         self._view.splashscreen.timer.timeout.connect(self._view.splashscreen.progress)
         self._view.ui.powerbuttons_timer.timeout.connect(self._view.PowerButtons_ProgressBar_Update)
+        self._view.ui.settings_timer.timeout.connect(self._view.PowerButtons_ProgressBar_Update)
+        self._view.ui.connection_timer.timeout.connect(self._view.PowerButtons_ProgressBar_Update)
         
     
     def _frames_animation(self):
-        self._view.ui.connection_combox.currentIndexChanged.connect(self._view.expend_frames)
-        self._view.ui.connection_edit.editingFinished.connect(self._view.expend_frames)
-        for button, _ in self._model.all_power_buttons.values(): button.stateChanged.connect(self._view.expend_frames)
-        self._view.ui.settings_button.clicked.connect(self._view.expend_frames)
+        self._model.up_or_down_connection_progressBar_frame.connect(self._view.expend_frames_PowerSupply)
+        self._model.up_or_down_powersupply_progressBar_frame.connect(self._view.expend_frames_Settings)
+        self._model.up_or_down_settings_progressBar_frame.connect(self._view.expend_frames_Parameters)
+        
+        #for button, _ in self._model.all_power_buttons.values(): button.stateChanged.connect(self._view.expend_frames)
+        #self._view.ui.settings_button.clicked.connect(self._view.expend_frames)
                
         
         

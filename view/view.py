@@ -1,5 +1,6 @@
+from shiboken6.Shiboken import Object
 from view.ui_main import Ui_MainWindow
-from PySide6.QtWidgets import QCheckBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
+from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
 from PySide6.QtGui import QColor, QIcon
 from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress
@@ -110,6 +111,7 @@ class View(QMainWindow):
         #replace pushbutton to hover button
         self.ui.settings_button.deleteLater()
         self.ui.settings_button = HoverButton("Set Voltage")
+        self.ui.settings_button.setEnabled(False)
         self.ui.settings_choice_layout.insertWidget(4,self.ui.settings_button)
         
         
@@ -168,19 +170,34 @@ class View(QMainWindow):
             
     def Allow_Qt_timers(self):
         self.ui.powerbuttons_timer = QTimer()
+        self.ui.powerbuttons_timer.setObjectName("Power")
+        self.ui.settings_timer = QTimer()
+        self.ui.settings_timer.setObjectName("Settings")
+        self.ui.connection_timer = QTimer(ObjectName="Connection")
+        #self.ui.connection_timer.setObjectName("Connection")
+        
         
             
     def PowerButtonsProgressbar(self):
-        self.ui.powerbuttons_timer.start(15)
+        if isinstance(self.sender(),HoverButton):
+            self.ui.settings_timer.start(15)
+        elif isinstance(self.sender(),QComboBox) or isinstance(self.sender(),QLineEdit):
+            self.ui.connection_timer.start(15)
+        else:
+            self.ui.powerbuttons_timer.start(15)
         self.ui.PB_progress_value = 0
+        
+    
         
   
     def PowerButtons_ProgressBar_Update(self):
+        progressbar, timer_name = self.model.valid_trigged_progressbar(self,self.sender().objectName())
+        emitter = self.model.valid_which_signal(timer_name)
         if self.ui.PB_progress_value >= 100:
-            self.ui.powerbuttons_timer.stop()
+            self.sender().stop()
             self.ui.PB_progress_value = 0
-            self.model.up_or_down_progressBar_frame.emit("PB_finished")
-        self.ui.progressBar.setValue(self.ui.PB_progress_value)
+            emitter.emit("PB_finished")
+        progressbar.setValue(self.ui.PB_progress_value)
         self.ui.PB_progress_value += 1
         
 
@@ -217,10 +234,24 @@ class View(QMainWindow):
         return animation    
         
         
-    def animated_ProgressBar_frame(self,state):
+    def animated_ProgressBar_PowerSuply_frame(self,state):
         start,end = self.model.valid_Qtimer_sender(state)
-        self.animationprogressbar = self.apply_animation(self.ui.PowerButton_progressframe,b"maximumHeight",200,start,end)
+        self.animationprogressbarpowersupply = self.apply_animation(self.ui.PowerButton_progressframe,b"maximumHeight",200,start,end)
         
+    def animated_ProgressBar_Settings_frame(self,state):
+        start,end = self.model.valid_Qtimer_sender(state)
+        self.animationprogressbarsettings = self.apply_animation(self.ui.Settings_progress_bar_frame,b"maximumHeight",200,start,end)
+        
+    def animated_ProgressBar_Connection_frame(self,*state):
+        if not any(state): state = self.model.ip_passed_status
+        start,end = self.model.valid_Qtimer_sender(state[0])
+        self.animationprogressbarconnection = self.apply_animation(self.ui.connection_progressbar_frame,b"maximumHeight",200,start,end)
+        
+    
+    def unlocked_settings_button(self):
+        board_status = self.model.board_changed
+        if board_status:
+            self.ui.settings_button.setEnabled(True)
         
     def animated_voltage_panels(self):
         checkifanyactive = self.model.valid_any_simp_settings_is_active(self.ui.Setting_frame)
@@ -247,14 +278,25 @@ class View(QMainWindow):
             frame.hide()
             
             
-    def expend_frames(self):
-        frames = self.model.valid_expending_frame(self.sender().parentWidget().objectName())
-        for frame in frames:
-            exec(f"{frame}.showNormal()")
+    ##### => extend block (split into 3 coz signal emit class Model)
+    def expend_frames_Settings(self):
+        self.ui.Setting_frame.showNormal()
+        self.ui.Console_frame.showNormal()
+        
+    def expend_frames_Parameters(self):
+        self.ui.Parameters_frame.showNormal()
+        
+    def expend_frames_PowerSupply(self):
+        self.ui.PowerSupply_frame.showNormal()
+        
+           
         
     
     def update_progress_circ(self):
+    
         board_combo = self.ui.parameters_board_combo.currentText()
+        if board_combo == '':
+            board_combo = self.ui.board_combo.currentText()
         error = False
         for value, pb in enumerate(self.ui.Parameter_preview_frame.findChildren(QtCustomCirculateProgress)):
             try: 

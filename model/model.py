@@ -1,4 +1,5 @@
 
+from os import name
 from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame
 from PySide6.QtCore import QObject,Signal,QMargins,QRegularExpression
 from PySide6.QtGui import QIntValidator,QRegularExpressionValidator
@@ -9,7 +10,10 @@ import ipaddress
 
 class Model(QObject):
     #Signals
-    up_or_down_progressBar_frame = Signal(str)
+    up_or_down_powersupply_progressBar_frame = Signal(str)
+    up_or_down_settings_progressBar_frame = Signal(str)
+    up_or_down_connection_progressBar_frame = Signal(str)
+    
     
     #value of pressbuttonstyle
     pressedbuttonstyle = """
@@ -34,6 +38,10 @@ class Model(QObject):
         }
         self.settingstriggerd = False
         self.preview_settings_frametrigged = False
+        self.ip_passed_status = (0,0)
+        self.board_changed, self.simp_voltage_changed = False, False
+    
+        
         
         
     #### => Get Section (Storage as model attributes)
@@ -77,6 +85,10 @@ class Model(QObject):
     def get_work_params(self):
         key = self.sender().text()
         self.simp_work_params[key] = []
+        
+    def get_changed_board(self):
+        self.board_changed = True
+
         
 
     
@@ -129,17 +141,34 @@ class Model(QObject):
             return QMargins(40,40,40,40), 12
         
     def valid_expending_frame(self,obj):
+        
         if "button_frame" in obj:
             obj = "button"
         
         whichframe = {
             "connection_selection_usb" : ["self.ui.PowerSupply_frame"],
+            "connection_selection_lan" : ["self.ui.PowerSupply_frame"],
             "button" : ["self.ui.Setting_frame", "self.ui.Console_frame"],
             "Setting_choice_frame":["self.ui.Parameters_frame"]
         }
         
         return whichframe[obj]
     
+    def valid_trigged_progressbar(self,view,obj):
+        progress_bar_dict ={
+            'Power' : view.ui.powersupply_progressbar,
+            'Settings': view.ui.Settings_progess_bar,
+            'Connection': view.ui.connection_progressbar
+        }
+        return progress_bar_dict[obj],obj
+
+    def valid_which_signal(self,obj):
+        if obj == "Power":
+            return self.up_or_down_powersupply_progressBar_frame
+        elif obj == "Settings":
+            return self.up_or_down_settings_progressBar_frame
+        else:
+            return self.up_or_down_connection_progressBar_frame
     
     #### => Set section (semi valid and set sth)
     def set_board_number_asNumber(self):
@@ -161,10 +190,11 @@ class Model(QObject):
             toaster = ToastNotifier()
             toaster.show_toast("Voltage value not in work range","Minimum voltage value (53.00 V) will be set ",threaded=True,duration=3)
             self.sender().clear()
-            self.get_simp_status(value)
+            self.get_simp_status(53.00)
         
     def set_working_values(self):
         self.simp_work_params[self.active_board] = [self.active_master_voltage,self.active_slave_voltage,self.active_temp]
+
     
     
             
