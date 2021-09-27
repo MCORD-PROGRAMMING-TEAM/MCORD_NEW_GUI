@@ -1,6 +1,6 @@
 from shiboken6.Shiboken import Object
 from view.ui_main import Ui_MainWindow
-from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip
+from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip, QTableWidgetItem
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
 from PySide6.QtGui import QColor, QIcon
 from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress
@@ -178,7 +178,7 @@ class View(QMainWindow):
         
         
             
-    def PowerButtonsProgressbar(self):
+    def Timers_start(self):
         if isinstance(self.sender(),HoverButton):
             self.ui.settings_timer.start(15)
         elif isinstance(self.sender(),QComboBox) or isinstance(self.sender(),QLineEdit):
@@ -190,7 +190,7 @@ class View(QMainWindow):
     
         
   
-    def PowerButtons_ProgressBar_Update(self):
+    def Progress_bars_update(self):
         progressbar, timer_name = self.model.valid_trigged_progressbar(self,self.sender().objectName())
         emitter = self.model.valid_which_signal(timer_name)
         if self.ui.PB_progress_value >= 100:
@@ -201,7 +201,6 @@ class View(QMainWindow):
         self.ui.PB_progress_value += 1
         
 
-
     def update_board_comlist(self):
         self.ui.board_combo.clear()
         self.ui.parameters_board_combo.clear()
@@ -209,6 +208,7 @@ class View(QMainWindow):
         self.ui.parameters_board_combo.addItems(self.model.board_comlist)
         self.ui.board_combo.setCurrentIndex(-1)
         self.ui.parameters_board_combo.setCurrentIndex(-1)
+        
         
     def clear_board_comlist(self,status):
         if not status:
@@ -290,10 +290,8 @@ class View(QMainWindow):
         self.ui.PowerSupply_frame.showNormal()
         
            
-        
     
     def update_progress_circ(self):
-    
         board_combo = self.ui.parameters_board_combo.currentText()
         if board_combo == '':
             board_combo = self.ui.board_combo.currentText()
@@ -305,7 +303,65 @@ class View(QMainWindow):
                 error = True
                 pb.set_value(0)
         if error: self.model.error_no_voltage_set()
+        
+        
+    def update_temp_circ(self):
+        board_combo = self.ui.parameters_board_combo.currentText()
+        self.ui.temperature_progressbar.set_value(self.model.simp_work_params[board_combo][2])
+        
+        
+    def update_console(self,text):
+        self.ui.console.insertPlainText(f'>>> {text}\n')
+        
+    
+    def update_params_table(self,params):
+        self.found = False
+        tableitems = self.model.simp_work_update_params[params[0]]
+        voltage = 0
+        if params[1][0] == 'Master':
+            voltage = tableitems[0]
+        elif params[1][0] == 'Slave':
+            voltage = tableitems[1]
             
+        
+        rdy_table_params = [params[0],params[1][0],'Running',voltage,tableitems[2]]
+            
+        where = self.ui.SIMP_details_table.findItems(params[0],Qt.MatchExactly)
+        if bool(where) :
+           
+            for whererow in where:
+                if self.ui.SIMP_details_table.item(whererow.row(),1).text() == params[1][0]:
+                    itemv = QTableWidgetItem(str(voltage))
+                    itemv.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    itemt = QTableWidgetItem(str(tableitems[2]))
+                    itemt.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    self.ui.SIMP_details_table.setItem(whererow.row(),3,itemv)
+                    self.ui.SIMP_details_table.setItem(whererow.row(),4,itemt)
+                    self.found = True
+                    
+            if not self.found:
+                rowcounts = self.ui.SIMP_details_table.rowCount()
+                self.ui.SIMP_details_table.insertRow(rowcounts)
+        
+                for i, value in enumerate(rdy_table_params):
+                    item = QTableWidgetItem(str(value))
+                    item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+                self.found = False
+                
+                    
+        else:
+            rowcounts = self.ui.SIMP_details_table.rowCount()
+            self.ui.SIMP_details_table.insertRow(rowcounts)
+        
+            for i, value in enumerate(rdy_table_params):
+                item = QTableWidgetItem(str(value))
+                item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+            
+        
+    
+    
                 
            
            

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainZnHzlG.ui'
+## Form generated from reading UI file 'mainfShcvf.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,6 +12,7 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
+\
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -165,6 +166,127 @@ class Ui_MainWindow(object):
 "   background-color: #159472;\n"
 "}\n"
 "\n"
+"/*############# QTABEL #####################*/\n"
+"QTableWidget {	\n"
+"	background-color:  #2f3542;\n"
+"	padding: 10px;\n"
+"	border-radius: 5px;\n"
+"	gridline-color: rgb(44, 49, 58);\n"
+"	border-bottom: 1px solid rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::item{\n"
+"	border-color: rgb(44, 49, 60);\n"
+"	padding-left: 5px;\n"
+"	padding-right: 5px;\n"
+"	gridline-color: rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::item:selected{\n"
+"	background-color: rgb(189, 147, 249);\n"
+"}\n"
+"QHeaderView::section{\n"
+"	background-color: rgb(33, 37, 43);\n"
+"	max-width: 30px;\n"
+"	border: 1px solid rgb(44, 49, 58);\n"
+"	border-style: none;\n"
+"    border-bottom: 1px solid rgb(44, 49, 60);\n"
+"    "
+                        "border-right: 1px solid rgb(44, 49, 60);\n"
+"}\n"
+"QTableWidget::horizontalHeader {	\n"
+"	background-color:  #2f3542;\n"
+"}\n"
+"QHeaderView::section:horizontal\n"
+"{\n"
+"    border: 1px solid rgb(33, 37, 43);\n"
+"	background-color: rgb(33, 37, 43);\n"
+"	padding: 3px;\n"
+"	border-top-left-radius: 7px;\n"
+"    border-top-right-radius: 7px;\n"
+"}\n"
+"QHeaderView::section:vertical\n"
+"{\n"
+"    border: 1px solid rgb(44, 49, 60);\n"
+"}\n"
+"/*############# SCROLLBAR #####################*/\n"
+"\n"
+"QScrollBar:horizontal {\n"
+"    border: none;\n"
+"    background: rgb(52, 59, 72);\n"
+"    height: 8px;\n"
+"    margin: 0px 21px 0 21px;\n"
+"	border-radius: 0px;\n"
+"}\n"
+"QScrollBar::handle:horizontal {\n"
+"    background: rgb(189, 147, 249);\n"
+"    min-width: 25px;\n"
+"	border-radius: 4px\n"
+"}\n"
+"QScrollBar::add-line:horizontal {\n"
+"    border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"    width: 20px;\n"
+"	border-top-right-radius: 4px;\n"
+"    border-bottom-right-radius: 4px;\n"
+"    subcontrol-position: right"
+                        ";\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::sub-line:horizontal {\n"
+"    border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"    width: 20px;\n"
+"	border-top-left-radius: 4px;\n"
+"    border-bottom-left-radius: 4px;\n"
+"    subcontrol-position: left;\n"
+"    subcontrol-origin: margin;\n"
+"}\n"
+"QScrollBar::up-arrow:horizontal, QScrollBar::down-arrow:horizontal\n"
+"{\n"
+"     background: none;\n"
+"}\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal\n"
+"{\n"
+"     background: none;\n"
+"}\n"
+" QScrollBar:vertical {\n"
+"	border: none;\n"
+"    background: rgb(52, 59, 72);\n"
+"    width: 8px;\n"
+"    margin: 21px 0 21px 0;\n"
+"	border-radius: 0px;\n"
+" }\n"
+" QScrollBar::handle:vertical {	\n"
+"	background: rgb(189, 147, 249);\n"
+"    min-height: 25px;\n"
+"	border-radius: 4px\n"
+" }\n"
+" QScrollBar::add-line:vertical {\n"
+"     border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"     height: 20px;\n"
+"	border-bottom-left-radius: 4px;\n"
+"    border-bottom-right-radius: 4px;\n"
+""
+                        "     subcontrol-position: bottom;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+" QScrollBar::sub-line:vertical {\n"
+"	border: none;\n"
+"    background: rgb(55, 63, 77);\n"
+"     height: 20px;\n"
+"	border-top-left-radius: 4px;\n"
+"    border-top-right-radius: 4px;\n"
+"     subcontrol-position: top;\n"
+"     subcontrol-origin: margin;\n"
+" }\n"
+" QScrollBar::up-arrow:vertical, QScrollBar::down-arrow:vertical {\n"
+"     background: none;\n"
+" }\n"
+"\n"
+" QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical {\n"
+"     background: none;\n"
+" }\n"
+"\n"
 "\n"
 "\n"
 "/* ######### FOOTER ############ */\n"
@@ -184,7 +306,8 @@ class Ui_MainWindow(object):
 "	border: none;\n"
 "	border-left: 10px solid transparent;\n"
 "	border-top: 8px solid transparent;\n"
-"	background-color: transparent;\n"
+""
+                        "	background-color: transparent;\n"
 "	text-align: left;\n"
 "}\n"
 "\n"
@@ -195,8 +318,7 @@ class Ui_MainWindow(object):
 "\n"
 "\n"
 "#hub_page_content QLabel{\n"
-""
-                        "font: 700 11pt \"Segoe UI\";\n"
+"font: 700 11pt \"Segoe UI\";\n"
 "color: rgb(255, 255, 255);\n"
 "}\n"
 "\n"
@@ -563,13 +685,46 @@ class Ui_MainWindow(object):
         self.statistic_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.statistic_page_content)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
-        self.label_3 = QLabel(self.statistic_page_content)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
-"color: rgb(255, 170, 255);")
-        self.label_3.setAlignment(Qt.AlignCenter)
+        self.SIMP_details_table = QTableWidget(self.statistic_page_content)
+        if (self.SIMP_details_table.columnCount() < 5):
+            self.SIMP_details_table.setColumnCount(5)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.SIMP_details_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.SIMP_details_table.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.SIMP_details_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.SIMP_details_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.SIMP_details_table.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        self.SIMP_details_table.setObjectName(u"SIMP_details_table")
+        sizePolicy2.setHeightForWidth(self.SIMP_details_table.sizePolicy().hasHeightForWidth())
+        self.SIMP_details_table.setSizePolicy(sizePolicy2)
+        self.SIMP_details_table.setStyleSheet(u"background-color:  #2f3542;")
+        self.SIMP_details_table.setFrameShape(QFrame.NoFrame)
+        self.SIMP_details_table.setFrameShadow(QFrame.Raised)
+        self.SIMP_details_table.setVerticalScrollBarPolicy(Qt.ScrollBarAsNeeded)
+        self.SIMP_details_table.setSizeAdjustPolicy(QAbstractScrollArea.AdjustToContents)
+        self.SIMP_details_table.setEditTriggers(QAbstractItemView.AnyKeyPressed|QAbstractItemView.EditKeyPressed)
+        self.SIMP_details_table.setTabKeyNavigation(True)
+        self.SIMP_details_table.setProperty("showDropIndicator", True)
+        self.SIMP_details_table.setSelectionMode(QAbstractItemView.ExtendedSelection)
+        self.SIMP_details_table.setSelectionBehavior(QAbstractItemView.SelectItems)
+        self.SIMP_details_table.setShowGrid(True)
+        self.SIMP_details_table.setGridStyle(Qt.CustomDashLine)
+        self.SIMP_details_table.setSortingEnabled(False)
+        self.SIMP_details_table.horizontalHeader().setVisible(True)
+        self.SIMP_details_table.horizontalHeader().setDefaultSectionSize(200)
+        self.SIMP_details_table.horizontalHeader().setHighlightSections(True)
+        self.SIMP_details_table.horizontalHeader().setProperty("showSortIndicator", True)
+        self.SIMP_details_table.horizontalHeader().setStretchLastSection(True)
+        self.SIMP_details_table.verticalHeader().setVisible(False)
+        self.SIMP_details_table.verticalHeader().setCascadingSectionResizes(True)
+        self.SIMP_details_table.verticalHeader().setProperty("showSortIndicator", False)
+        self.SIMP_details_table.verticalHeader().setStretchLastSection(False)
 
-        self.verticalLayout_17.addWidget(self.label_3)
+        self.verticalLayout_17.addWidget(self.SIMP_details_table)
 
 
         self.verticalLayout.addWidget(self.statistic_page_content)
@@ -1919,7 +2074,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1966,8 +2121,16 @@ class Ui_MainWindow(object):
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Additional software settings may </span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">appear in this panel in the future</span></p></body></html>", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"Will be information about all \n"
-"working SiPM's here", None))
+        ___qtablewidgetitem = self.SIMP_details_table.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Board Number", None));
+        ___qtablewidgetitem1 = self.SIMP_details_table.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"SiPM", None));
+        ___qtablewidgetitem2 = self.SIMP_details_table.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        ___qtablewidgetitem3 = self.SIMP_details_table.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Voltage", None));
+        ___qtablewidgetitem4 = self.SIMP_details_table.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Will be diagnostic page here", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Will be graph here", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -2018,7 +2181,7 @@ class Ui_MainWindow(object):
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">&gt;&gt;&gt; Text will be here</p></body></html>", None))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.PowerButton_label.setText(QCoreApplication.translate("MainWindow", u"Power Supply", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"Port 1 :", None))
         self.button_edit_1.setText("")

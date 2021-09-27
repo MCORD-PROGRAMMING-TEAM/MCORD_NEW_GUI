@@ -26,6 +26,7 @@ class Model(QObject):
         self.all_menu_buttons = []
         self.all_power_buttons = {}
         self.simp_work_params = {}
+        self.simp_work_update_params = {}
         self.board_comlist = []
         self.all_editline_simpframe = []
         self.comport = 'COM3'
@@ -194,6 +195,11 @@ class Model(QObject):
         
     def set_working_values(self):
         self.simp_work_params[self.active_board] = [self.active_master_voltage,self.active_slave_voltage,self.active_temp]
+        
+    def set_update_working_values(self,parameters):
+        self.simp_work_params[parameters[0]][2] = parameters[3]
+        self.simp_work_update_params[parameters[0]] = [parameters[1],parameters[2],parameters[3]]
+
 
     
     
