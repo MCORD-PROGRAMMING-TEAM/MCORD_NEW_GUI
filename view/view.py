@@ -1,4 +1,4 @@
-from shiboken6.Shiboken import Object
+
 from view.ui_main import Ui_MainWindow
 from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip, QTableWidgetItem
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
@@ -193,10 +193,13 @@ class View(QMainWindow):
     def Progress_bars_update(self):
         progressbar, timer_name = self.model.valid_trigged_progressbar(self,self.sender().objectName())
         emitter = self.model.valid_which_signal(timer_name)
+        
         if self.ui.PB_progress_value >= 100:
             self.sender().stop()
             self.ui.PB_progress_value = 0
             emitter.emit("PB_finished")
+            
+        
         progressbar.setValue(self.ui.PB_progress_value)
         self.ui.PB_progress_value += 1
         
@@ -214,7 +217,7 @@ class View(QMainWindow):
         if not status:
             try:
                 board_number = self.sender().parentWidget().findChild(QLineEdit).text()
-                self.board_comlist.remove(board_number)
+                self.model.board_comlist.remove(board_number)
                 self.sender().parentWidget().findChild(QLineEdit).clear()
             except:
                 pass

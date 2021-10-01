@@ -1,11 +1,17 @@
 from PySide6.QtCore import QThread, Signal, QWaitCondition, QMutex
-import random, time
+
+import socket
+import json
+import time
+import csv
+from datetime import datetime, timedelta
 
 
 class LanController:
     def __init__(self,view,model) -> None:
         self._view = view 
         self._model = model
+        self.LAN = None
     
         
         
@@ -16,61 +22,94 @@ class LanController:
         if result:
             self._model.ip = text
         self._view.change_if_ip_reponse(result)
+         
+    
+    def create_lan_client(self):
+        self.LAN = LanClient()
+        self.lan_send_connect()
         
-    ###### = > Test Thread update
- 
-    def check_if_thread_works(self):
-        self._view.ui.worker = TestThread(self._view.ui.board_combo.currentText())
-        self._view.ui.worker.start()
-        self._view.ui.worker.setTerminationEnabled(True)
-        self._view.ui.worker.finished.connect(self.stop_thead)
-        self._view.ui.worker.update_test.connect(self._model.set_update_working_values)
-        self._view.ui.worker.update_circ_test.connect(self._view.update_temp_circ)
-        self._view.ui.worker.update_table.connect(self._view.update_params_table)
-        self._view.ui.worker.update_text.connect(self._view.update_console)
+    
+    def json_parser(self,obj):
+        res = f'{obj[0]} : {obj[1:]}'
+        self._view.update_console(res)
     
     
-    def stop_thead(self):
-        if self._view.ui.worker.isRunning():
-            print("Thread has been stoped")
-            self._view.ui.worker.quit()
+    def lan_send_connect(self):
+        self.lan_worker = LanThread(self.LAN,'connect',(self._model.ip, 5555))
+        self.lan_worker.start()
+        self.lan_worker.connection_response.connect(self._view.update_console)
+        self.lan_worker.finished.connect(self.lan_worker.quit)
+        
+    def lan_send_start(self,status):
+        if status:
+            self.lan_worker = LanThread(self.LAN,'start',int(self._model.board_comlist[-1]))
+            self.lan_worker.start()
+            self.lan_worker.start_response.connect(self.json_parser)
+            self.lan_worker.finished.connect(self.lan_worker.quit)
+           
+    
+
+        
+
+class LanClient:
+    def __init__(self):
+        self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        
+    def connect(self,args):
+        self.sock.connect((args))
+        return self.sock.recv(1024)
+        
+    
+    def do_cmd(self, obj):
+        self.sock.sendall((json.dumps(obj)).encode("utf8"))
+        res = self.sock.recv(1024)
+        if res:
+            res = json.loads(res)
+            return res
+        else:
+            pass
+        
+    def __del__(self):
+        self.sock.sendall((json.dumps(['!disconnect']).encode("utf8")))
+        print("Disconnect from AFE")
             
-        
+            
+            
 
-
-class TestThread(QThread):
+class LanThread(QThread):
+    connection_response = Signal(str)
+    start_response = Signal(list)
+    progress = Signal(int)
     
-    update_test = Signal(list)
-    update_circ_test = Signal(int)
-    update_table = Signal(list)
-    update_text = Signal(str)
-    
-    waitCondition =QWaitCondition()
-    mutex =QMutex()
-
-    def __init__(self,board_number=9) -> None:
+    def __init__(self, client, func, command) -> None:
         super().__init__()
-        self.board_number = board_number
-        self.running = True
-        
+        self.client = client
+        self.command = command
+        self.func = func
         
     def run(self):
-        while self.running:
-            self.sleep(10)
-            a = round(random.uniform(53.00, 65.00), 2)
-            b = round(random.uniform(53.00, 65.00), 2)
-            c = round(random.uniform(25.00, 40.00), 2)
-            site = random.choices(['Master','Slave'],weights=[2,1],k=1)
-            result = [self.board_number,a,b,c]
-            self.update_test.emit(result)
-            self.update_table.emit([self.board_number,site])
-            self.update_text.emit(f'Parameters has been updated')
-            self.update_circ_test.emit(0)
-      
+        if self.func == 'connect':
+            res = self.client.connect(self.command)
+            res = res.decode('utf-8')
+     
+            self.connection_response.emit(res)
         
-    def stop(self):
-        self.running = False
+        elif self.func == 'start':
+            
+            res = self.client.do_cmd(['init',int(self.command)])
+        
+            self.start_response.emit(res)
+            res = self.client.do_cmd(['hvon',int(self.command)])
+         
+            self.start_response.emit(res)
+        
             
             
+            
+        
+        
+    
+    
+
     
 

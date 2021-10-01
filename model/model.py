@@ -29,9 +29,10 @@ class Model(QObject):
         self.simp_work_update_params = {}
         self.board_comlist = []
         self.all_editline_simpframe = []
+        self.active_source = None
         self.comport = 'COM3'
         self.ip = 'None'
-        self.active_board, self.active_simp, self.active_master_voltage, self.active_slave_voltage, self.active_temp = [0,0,0,0,0]
+        self.active_board, self.active_simp, self.active_master_voltage, self.active_slave_voltage, self.active_temp = 0,0,0,0,0
         self.simpsettings ={
             'Master' : 'Settings_set_master_frame',
             'Slave' : 'Settings_set_slave_frame',
@@ -41,11 +42,18 @@ class Model(QObject):
         self.preview_settings_frametrigged = False
         self.ip_passed_status = (0,0)
         self.board_changed, self.simp_voltage_changed = False, False
+  
+        
+
     
         
         
         
     #### => Get Section (Storage as model attributes)
+    def get_active_connection_source(self):
+        pass
+
+    
     def get_all_menu_buttons(self, obj):
         for button in obj.findChildren(QPushButton):
             self.all_menu_buttons.append(button)
@@ -57,7 +65,8 @@ class Model(QObject):
         board_number = self.sender().text()
         if not self.sender().parentWidget().findChild(QCheckBox).checkState():
             self.board_comlist.append(board_number)
-            
+            self.active_board = board_number
+                    
     def get_current_simp_and_board(self):
         if self.sender().objectName() == "simp_combo":
             self.active_simp = self.sender().currentText() 
@@ -195,6 +204,7 @@ class Model(QObject):
         
     def set_working_values(self):
         self.simp_work_params[self.active_board] = [self.active_master_voltage,self.active_slave_voltage,self.active_temp]
+        
         
     def set_update_working_values(self,parameters):
         self.simp_work_params[parameters[0]][2] = parameters[3]

@@ -19,6 +19,7 @@ class Controller:
         self._frames_animation()
         self._connectionlogic()
         self._enable_shadow_effect()
+        self._lan_logic()
         self._quit_software()
     
         
@@ -83,6 +84,7 @@ class Controller:
             button.stateChanged.connect(self._view.animated_ProgressBar_PowerSuply_frame)
             linedit.editingFinished.connect(self._model.get_all_boards)
             linedit.editingFinished.connect(self._model.get_work_params)
+       
         
             button.stateChanged.connect(self._view.clear_board_comlist)
             button.stateChanged.connect(self._view.update_board_comlist)
@@ -100,8 +102,6 @@ class Controller:
         
         
         
-        #test Thread
-        self._view.ui.settings_button.clicked.connect(self.lancontroller.check_if_thread_works)
         
     def _parameterslogic(self):
         self._view.ui.parameters_board_combo.activated.connect(self._view.update_progress_circ)
@@ -124,11 +124,16 @@ class Controller:
         self._model.up_or_down_powersupply_progressBar_frame.connect(self._view.expend_frames_Settings)
         self._model.up_or_down_settings_progressBar_frame.connect(self._view.expend_frames_Parameters)
         
-    
+    def _lan_logic(self):
+        self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.create_lan_client)
+        for button, _ in self._model.all_power_buttons.values():
+            button.stateChanged.connect(self.lancontroller.lan_send_start)
+     
+        
         
     
     def _quit_software(self):
-        self._view.ui.closeButton.clicked.connect(self.lancontroller.stop_thead)
+        del self.lancontroller.LAN
         
                
         
