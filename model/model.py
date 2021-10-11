@@ -1,6 +1,5 @@
 
-from os import name
-from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame
+from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame,QComboBox
 from PySide6.QtCore import QObject,Signal,QMargins,QRegularExpression
 from PySide6.QtGui import QIntValidator,QRegularExpressionValidator
 from win10toast import ToastNotifier
@@ -42,6 +41,7 @@ class Model(QObject):
         self.preview_settings_frametrigged = False
         self.ip_passed_status = (0,0)
         self.board_changed, self.simp_voltage_changed = False, False
+   
   
         
 
@@ -51,9 +51,14 @@ class Model(QObject):
         
     #### => Get Section (Storage as model attributes)
     def get_active_connection_source(self):
-        pass
+        
+        if isinstance(self.sender(),QComboBox):
+            self.active_source == 'USB'
+        elif isinstance(self.sender(),QLineEdit):
+            self.active_source == 'LAN'
+        else:
+            self.connection_error()
 
-    
     def get_all_menu_buttons(self, obj):
         for button in obj.findChildren(QPushButton):
             self.all_menu_buttons.append(button)
@@ -179,6 +184,25 @@ class Model(QObject):
             return self.up_or_down_settings_progressBar_frame
         else:
             return self.up_or_down_connection_progressBar_frame
+        
+        
+    def valid_temperature_from_raw_to_celc(self,temp):
+        if not isinstance(temp,float):
+            temp = float(temp)
+        a0 = 1.161337
+        a1 = 0.1158778
+        a2 = -0.000065
+        return round(a0 + a1*temp + a2*temp**2,2)
+    
+    def valid_voltage_from_raw(self,voltage):
+        if not isinstance(voltage,int):
+            voltage = int(voltage)
+        
+        a = 0.018392205
+        b = 1.828380024
+        return round(a*voltage+b,2)
+    
+    
     
     #### => Set section (semi valid and set sth)
     def set_board_number_asNumber(self):
@@ -218,6 +242,10 @@ class Model(QObject):
     def error_no_voltage_set(self):
         toaster = ToastNotifier()
         toaster.show_toast("No voltage has been set","Please set a voltage value once again",threaded=True,duration=3)
+        
+    def connection_error(self):
+        toaster = ToastNotifier()
+        toaster.show_toast("Sth went wrong with connection to device","Please try again",threaded=True,duration=3)
         
         
 

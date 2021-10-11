@@ -181,10 +181,13 @@ class View(QMainWindow):
     def Timers_start(self):
         if isinstance(self.sender(),HoverButton):
             self.ui.settings_timer.start(15)
+            self.ui.settings_timer.setInterval(30)
         elif isinstance(self.sender(),QComboBox) or isinstance(self.sender(),QLineEdit):
             self.ui.connection_timer.start(15)
+            self.ui.connection_timer.setInterval(10)
         else:
             self.ui.powerbuttons_timer.start(15)
+            self.ui.powerbuttons_timer.setInterval(40)
         self.ui.PB_progress_value = 0
         
     
@@ -193,15 +196,15 @@ class View(QMainWindow):
     def Progress_bars_update(self):
         progressbar, timer_name = self.model.valid_trigged_progressbar(self,self.sender().objectName())
         emitter = self.model.valid_which_signal(timer_name)
-        
+
         if self.ui.PB_progress_value >= 100:
             self.sender().stop()
             self.ui.PB_progress_value = 0
             emitter.emit("PB_finished")
-            
-        
+ 
         progressbar.setValue(self.ui.PB_progress_value)
         self.ui.PB_progress_value += 1
+       
         
 
     def update_board_comlist(self):
@@ -215,8 +218,10 @@ class View(QMainWindow):
         
     def clear_board_comlist(self,status):
         if not status:
+           
             try:
                 board_number = self.sender().parentWidget().findChild(QLineEdit).text()
+                self.model.current_board_number = board_number
                 self.model.board_comlist.remove(board_number)
                 self.sender().parentWidget().findChild(QLineEdit).clear()
             except:
@@ -317,63 +322,99 @@ class View(QMainWindow):
         self.ui.console.insertPlainText(f'>>> {text}\n')
         
     
+    #test needed !!!!!
     def update_params_table(self,params):
         self.found = False
-        tableitems = self.model.simp_work_update_params[params[0]]
-        voltage = 0
-        if params[1][0] == 'Master':
-            voltage = tableitems[0]
-        elif params[1][0] == 'Slave':
-            voltage = tableitems[1]
-            
+        board_number = params[3]
+        mv, mt = params[1][0], params[1][1]
+        sv, st = params[2][0], params[2][1]
+        avetemp = int(( float(mt) + float(st)) / 2)
+        self.model.simp_work_params[board_number][2] = self.model.valid_temperature_from_raw_to_celc(avetemp)
+        self.update_temp_circ()
         
-        rdy_table_params = [params[0],params[1][0],'Running',voltage,tableitems[2]]
-            
-        where = self.ui.SIMP_details_table.findItems(params[0],Qt.MatchExactly)
-        if bool(where) :
-           
+        mt = str(self.model.valid_temperature_from_raw_to_celc(mt))
+        st = str(self.model.valid_temperature_from_raw_to_celc(st))
+        
+        mv = str(self.model.valid_voltage_from_raw(mv))
+        sv = str(self.model.valid_voltage_from_raw(sv))
+        
+        rdy_table_params_master = [board_number,'Master',mv,mt]
+        rdy_table_params_slave = [board_number,'Slave',sv,st]
+        
+        where = self.ui.SIMP_details_table.findItems(board_number,Qt.MatchExactly)
+        if where:
+            print('Znaleziono')
             for whererow in where:
-                if self.ui.SIMP_details_table.item(whererow.row(),1).text() == params[1][0]:
-                    itemv = QTableWidgetItem(str(voltage))
+                row = whererow.row()
+                if self.ui.SIMP_details_table.item(row,1).text() == 'Master':
+                    itemv = QTableWidgetItem(mv)
+                    itemt = QTableWidgetItem(mt)
                     itemv.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
-                    itemt = QTableWidgetItem(str(tableitems[2]))
                     itemt.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
-                    self.ui.SIMP_details_table.setItem(whererow.row(),3,itemv)
-                    self.ui.SIMP_details_table.setItem(whererow.row(),4,itemt)
+                    self.ui.SIMP_details_table.setItem(row,2,itemv)
+                    self.ui.SIMP_details_table.setItem(row,3,itemt)
+                    print("Update MASTER")
                     self.found = True
-                    
+                else: 
+                    itemv = QTableWidgetItem(sv)
+                    itemt = QTableWidgetItem(st)
+                    itemv.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    itemt.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    self.ui.SIMP_details_table.setItem(row,2,itemv)
+                    self.ui.SIMP_details_table.setItem(row,3,itemt)
+                    print("Update SLAVE")
+                    self.found = True
+            '''            
+          
             if not self.found:
+                print('Dodaje po tym jak znalazłem')
                 rowcounts = self.ui.SIMP_details_table.rowCount()
                 self.ui.SIMP_details_table.insertRow(rowcounts)
         
-                for i, value in enumerate(rdy_table_params):
-                    item = QTableWidgetItem(str(value))
+                for i, value in enumerate(rdy_table_params_master):
+                    item = QTableWidgetItem(value)
                     item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
                     self.ui.SIMP_details_table.setItem(rowcounts,i,item)
-                self.found = False
                 
-                    
+                rowcounts = self.ui.SIMP_details_table.rowCount()
+                self.ui.SIMP_details_table.insertRow(rowcounts)
+            
+                for i, value in enumerate(rdy_table_params_slave):
+                    item = QTableWidgetItem(value)
+                    item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                    self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+            '''
+                
         else:
+            print('Dodaje')
             rowcounts = self.ui.SIMP_details_table.rowCount()
             self.ui.SIMP_details_table.insertRow(rowcounts)
         
-            for i, value in enumerate(rdy_table_params):
-                item = QTableWidgetItem(str(value))
+            for i, value in enumerate(rdy_table_params_master):
+                item = QTableWidgetItem(value)
                 item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
                 self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+                
+            rowcounts = self.ui.SIMP_details_table.rowCount()
+            self.ui.SIMP_details_table.insertRow(rowcounts)
+            
+            for i, value in enumerate(rdy_table_params_slave):
+                item = QTableWidgetItem(value)
+                item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
+                self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+                
+            
+        
+        
+                    
+            
+            
+
             
         
     
-    
-                
-           
-           
-
-        
-       
-   
-        
-        
+            
+            
         
 
         

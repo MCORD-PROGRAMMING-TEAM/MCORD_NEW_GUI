@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1317</width>
-    <height>767</height>
+    <width>1199</width>
+    <height>716</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1228,7 +1228,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background-color: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="statistic_page">
                       <layout class="QVBoxLayout" name="verticalLayout">
@@ -1292,7 +1292,7 @@ p, li { white-space: pre-wrap; }
                              <bool>true</bool>
                             </attribute>
                             <attribute name="horizontalHeaderDefaultSectionSize">
-                             <number>200</number>
+                             <number>250</number>
                             </attribute>
                             <attribute name="horizontalHeaderHighlightSections">
                              <bool>true</bool>
@@ -1323,11 +1323,6 @@ p, li { white-space: pre-wrap; }
                             <column>
                              <property name="text">
                               <string>SiPM</string>
-                             </property>
-                            </column>
-                            <column>
-                             <property name="text">
-                              <string>Status</string>
                              </property>
                             </column>
                             <column>

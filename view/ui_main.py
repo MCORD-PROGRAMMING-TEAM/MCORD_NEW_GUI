@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainfShcvf.ui'
+## Form generated from reading UI file 'mainFfCtzW.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,13 +12,12 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
-\
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1317, 767)
+        MainWindow.resize(1199, 716)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -686,8 +685,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_17 = QVBoxLayout(self.statistic_page_content)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
         self.SIMP_details_table = QTableWidget(self.statistic_page_content)
-        if (self.SIMP_details_table.columnCount() < 5):
-            self.SIMP_details_table.setColumnCount(5)
+        if (self.SIMP_details_table.columnCount() < 4):
+            self.SIMP_details_table.setColumnCount(4)
         __qtablewidgetitem = QTableWidgetItem()
         self.SIMP_details_table.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
@@ -696,8 +695,6 @@ class Ui_MainWindow(object):
         self.SIMP_details_table.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.SIMP_details_table.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.SIMP_details_table.setHorizontalHeaderItem(4, __qtablewidgetitem4)
         self.SIMP_details_table.setObjectName(u"SIMP_details_table")
         sizePolicy2.setHeightForWidth(self.SIMP_details_table.sizePolicy().hasHeightForWidth())
         self.SIMP_details_table.setSizePolicy(sizePolicy2)
@@ -715,7 +712,7 @@ class Ui_MainWindow(object):
         self.SIMP_details_table.setGridStyle(Qt.CustomDashLine)
         self.SIMP_details_table.setSortingEnabled(False)
         self.SIMP_details_table.horizontalHeader().setVisible(True)
-        self.SIMP_details_table.horizontalHeader().setDefaultSectionSize(200)
+        self.SIMP_details_table.horizontalHeader().setDefaultSectionSize(250)
         self.SIMP_details_table.horizontalHeader().setHighlightSections(True)
         self.SIMP_details_table.horizontalHeader().setProperty("showSortIndicator", True)
         self.SIMP_details_table.horizontalHeader().setStretchLastSection(True)
@@ -2074,7 +2071,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(0)
+        self.stackedWidget.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2126,11 +2123,9 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem1 = self.SIMP_details_table.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"SiPM", None));
         ___qtablewidgetitem2 = self.SIMP_details_table.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Status", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Voltage", None));
         ___qtablewidgetitem3 = self.SIMP_details_table.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Voltage", None));
-        ___qtablewidgetitem4 = self.SIMP_details_table.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Will be diagnostic page here", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Will be graph here", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

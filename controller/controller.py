@@ -19,8 +19,8 @@ class Controller:
         self._frames_animation()
         self._connectionlogic()
         self._enable_shadow_effect()
-        self._lan_logic()
-        self._quit_software()
+        #self._lan_logic()
+        
     
         
         
@@ -37,6 +37,7 @@ class Controller:
         self._view.ui.usb_lan_button.stateChanged.connect(self._view.animated_changeUSB_IP)
         self._view.ui.connection_combox.currentIndexChanged.connect(self.usbcontroller.set_current_device)
         self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.allowed_only_lan)
+        self._view.ui.connection_edit.editingFinished.connect(self._lan_logic)
         self._model.up_or_down_powersupply_progressBar_frame.connect(self._view.animated_ProgressBar_PowerSuply_frame)
         self._model.up_or_down_settings_progressBar_frame.connect(self._view.animated_ProgressBar_Settings_frame)
         self._model.up_or_down_connection_progressBar_frame.connect(self._view.animated_ProgressBar_Connection_frame)
@@ -73,9 +74,11 @@ class Controller:
     def _connectionlogic(self):
         self._view.ui.connection_combox.currentIndexChanged.connect(self._view.Timers_start)
         self._view.ui.connection_combox.currentIndexChanged.connect(self._view.animated_ProgressBar_Connection_frame)
+        self._view.ui.connection_combox.currentIndexChanged.connect(self._model.get_active_connection_source)
         
         self._view.ui.connection_edit.editingFinished.connect(self._view.Timers_start)
         self._view.ui.connection_edit.editingFinished.connect(self._view.animated_ProgressBar_Connection_frame)
+        self._view.ui.connection_edit.editingFinished.connect(self._model.get_active_connection_source)
         
         
     def _powerbuttonslogic(self):
@@ -99,13 +102,13 @@ class Controller:
         self._view.ui.settings_button.clicked.connect(self._model.set_working_values)
         self._view.ui.settings_button.clicked.connect(self._view.Timers_start)
         self._view.ui.settings_button.clicked.connect(self._view.animated_ProgressBar_Settings_frame)
-        
-        
-        
-        
+        self._view.ui.settings_button.clicked.connect(lambda: self._view.ui.parameters_board_combo.setCurrentIndex(0))
+        self._view.ui.settings_button.clicked.connect(self._view.update_progress_circ)
+
+
     def _parameterslogic(self):
         self._view.ui.parameters_board_combo.activated.connect(self._view.update_progress_circ)
-            
+
 
     def _applybuttonspage(self):
         self._model.get_all_menu_buttons(self._view.ui.buttonsframe)
@@ -125,15 +128,20 @@ class Controller:
         self._model.up_or_down_settings_progressBar_frame.connect(self._view.expend_frames_Parameters)
         
     def _lan_logic(self):
-        self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.create_lan_client)
+        self.lancontroller.create_lan_client()
         for button, _ in self._model.all_power_buttons.values():
             button.stateChanged.connect(self.lancontroller.lan_send_start)
+        self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_voltage)
+        self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_update)
+       
      
         
         
     
-    def _quit_software(self):
-        del self.lancontroller.LAN
+   
+        
+        
+       
         
                
         

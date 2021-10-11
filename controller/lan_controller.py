@@ -1,10 +1,8 @@
-from PySide6.QtCore import QThread, Signal, QWaitCondition, QMutex
+from PySide6.QtCore import QThread, Signal
 
 import socket
 import json
-import time
-import csv
-from datetime import datetime, timedelta
+
 
 
 class LanController:
@@ -12,6 +10,7 @@ class LanController:
         self._view = view 
         self._model = model
         self.LAN = None
+
     
         
         
@@ -46,6 +45,27 @@ class LanController:
             self.lan_worker.start()
             self.lan_worker.start_response.connect(self.json_parser)
             self.lan_worker.finished.connect(self.lan_worker.quit)
+        else:
+            self.lan_worker = LanThread(self.LAN,'stop',self._model.current_board_number)
+            self.lan_worker.start()
+            self.lan_worker.start_response.connect(self.json_parser)
+            self.lan_worker.finished.connect(self.lan_worker.quit)
+            
+            
+    def lan_send_voltage(self):
+        command = [self._model.active_board, self._model.active_master_voltage, self._model.active_slave_voltage]
+        self.lan_worker = LanThread(self.LAN,'set',command)
+        self.lan_worker.start()
+        self.lan_worker.start_response.connect(self.json_parser)
+        self.lan_worker.finished.connect(self.lan_worker.quit)
+        
+    def lan_send_update(self):
+        self.lan_worker_update = LanThreadUpdate(self.LAN,self._model)
+        self.lan_worker_update.start()
+        self.lan_worker_update.response.connect(self.json_parser)
+        self.lan_worker_update.response.connect(self._view.update_params_table)
+       
+        
            
     
 
@@ -91,18 +111,43 @@ class LanThread(QThread):
         if self.func == 'connect':
             res = self.client.connect(self.command)
             res = res.decode('utf-8')
-     
             self.connection_response.emit(res)
         
         elif self.func == 'start':
-            
             res = self.client.do_cmd(['init',int(self.command)])
-        
             self.start_response.emit(res)
             res = self.client.do_cmd(['hvon',int(self.command)])
-         
             self.start_response.emit(res)
         
+        elif self.func == 'set':
+            res = self.client.do_cmd(['setdac',int(self.command[0]),int(self.command[1]),int(self.command[2])])
+            self.start_response.emit(res)
+        
+        elif self.func == 'stop':
+            res = self.client.do_cmd(['hvoff', int(self.command)])
+            self.start_response.emit(res)
+            
+class LanThreadUpdate(QThread):
+    response = Signal(list)
+    
+    def __init__(self,client,model):
+        super().__init__()
+        self.client = client
+        self.model = model 
+        self.run_status = True
+        
+    def run(self):
+        while self.run_status:
+            self.sleep(30)
+            for board in self.model.board_comlist:
+                res = self.client.do_cmd(['getVT',int(board)])
+                res.append(board)
+                self.response.emit(res)
+            
+                
+    
+   
+    
             
             
             
