@@ -36,6 +36,8 @@ class Controller:
         self._view.ui.minimizeButton.clicked.connect(self._view.showMinimized)
         self._view.ui.usb_lan_button.stateChanged.connect(self._view.animated_changeUSB_IP)
         self._view.ui.connection_combox.currentIndexChanged.connect(self.usbcontroller.set_current_device)
+        self._view.ui.connection_combox.currentIndexChanged.connect(self._usb_logic)
+        self._view.ui.connection_edit.textChanged.connect(self.lancontroller.set_current_device)
         self._view.ui.connection_edit.editingFinished.connect(self.lancontroller.allowed_only_lan)
         self._view.ui.connection_edit.editingFinished.connect(self._lan_logic)
         self._model.up_or_down_powersupply_progressBar_frame.connect(self._view.animated_ProgressBar_PowerSuply_frame)
@@ -74,11 +76,11 @@ class Controller:
     def _connectionlogic(self):
         self._view.ui.connection_combox.currentIndexChanged.connect(self._view.Timers_start)
         self._view.ui.connection_combox.currentIndexChanged.connect(self._view.animated_ProgressBar_Connection_frame)
-        self._view.ui.connection_combox.currentIndexChanged.connect(self._model.get_active_connection_source)
+    
         
         self._view.ui.connection_edit.editingFinished.connect(self._view.Timers_start)
         self._view.ui.connection_edit.editingFinished.connect(self._view.animated_ProgressBar_Connection_frame)
-        self._view.ui.connection_edit.editingFinished.connect(self._model.get_active_connection_source)
+   
         
         
     def _powerbuttonslogic(self):
@@ -131,8 +133,21 @@ class Controller:
         self.lancontroller.create_lan_client()
         for button, _ in self._model.all_power_buttons.values():
             button.stateChanged.connect(self.lancontroller.lan_send_start)
+            button.stateChanged.connect(self.lancontroller.lan_update_stop)
         self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_voltage)
         self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_update)
+        
+    
+    def _usb_logic(self):
+        self.usbcontroller.create_usb_connect()
+        for button, _ in self._model.all_power_buttons.values():
+            button.stateChanged.connect(self.usbcontroller.usb_send_start)
+            button.stateChanged.connect(self.usbcontroller.usb_update_stop)
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
+        self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
+    
        
      
         

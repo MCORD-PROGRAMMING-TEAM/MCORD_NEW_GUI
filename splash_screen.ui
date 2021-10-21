@@ -88,7 +88,7 @@ background-color: qlineargradient(spread:pad, x1:0.482955, y1:0.234, x2:0.489, y
 }</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
@@ -188,7 +188,7 @@ background-color: qlineargradient(spread:pad, x1:0.482955, y1:0.234, x2:0.489, y
       <string notr="true">image: url(:/images/images/nica.png);</string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>
@@ -233,7 +233,7 @@ background-color: qlineargradient(spread:pad, x1:0.482955, y1:0.234, x2:0.489, y
 }</string>
     </property>
     <property name="frameShape">
-     <enum>QFrame::StyledPanel</enum>
+     <enum>QFrame::NoFrame</enum>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
@@ -252,7 +252,7 @@ background-color: qlineargradient(spread:pad, x1:0.482955, y1:0.234, x2:0.489, y
 </string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::NoFrame</enum>
      </property>
      <property name="frameShadow">
       <enum>QFrame::Raised</enum>

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'splash_screenlpSFVA.ui'
+## Form generated from reading UI file 'splash_screenmBrOob.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -85,7 +85,7 @@ class Ui_MainWindow(object):
         self.main_frame.setStyleSheet(u"#main_frame{\n"
 "background-color: qlineargradient(spread:pad, x1:0.482955, y1:0.234, x2:0.489, y2:0.994318, stop:0.0454545 rgba(87, 101, 116, 248), stop:0.482955 rgba(114, 126, 138, 246), stop:1 rgba(255, 255, 255, 129));\n"
 "}")
-        self.main_frame.setFrameShape(QFrame.StyledPanel)
+        self.main_frame.setFrameShape(QFrame.NoFrame)
         self.main_frame.setFrameShadow(QFrame.Raised)
         self.label = QLabel(self.main_frame)
         self.label.setObjectName(u"label")
@@ -122,7 +122,7 @@ class Ui_MainWindow(object):
         self.logo_border.setObjectName(u"logo_border")
         self.logo_border.setGeometry(QRect(150, 170, 291, 111))
         self.logo_border.setStyleSheet(u"image: url(:/images/images/nica.png);")
-        self.logo_border.setFrameShape(QFrame.StyledPanel)
+        self.logo_border.setFrameShape(QFrame.NoFrame)
         self.logo_border.setFrameShadow(QFrame.Raised)
         self.credits = QLabel(self.main_frame)
         self.credits.setObjectName(u"credits")
@@ -139,14 +139,14 @@ class Ui_MainWindow(object):
         self.logo_frame.setStyleSheet(u"#logo_frame{\n"
 "	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(255, 159, 243, 228), stop:1 rgba(86, 221, 251, 215));\n"
 "}")
-        self.logo_frame.setFrameShape(QFrame.StyledPanel)
+        self.logo_frame.setFrameShape(QFrame.NoFrame)
         self.logo_frame.setFrameShadow(QFrame.Raised)
         self.frame = QFrame(self.logo_frame)
         self.frame.setObjectName(u"frame")
         self.frame.setGeometry(QRect(20, 100, 321, 311))
         self.frame.setStyleSheet(u"image: url(:/images/images/mcord.png);\n"
 "")
-        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
         MainWindow.setCentralWidget(self.centralwidget)
         self.logo_frame.raise_()

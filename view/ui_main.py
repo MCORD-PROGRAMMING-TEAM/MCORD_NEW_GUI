@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainFfCtzW.ui'
+## Form generated from reading UI file 'mainIvERAY.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -481,7 +481,7 @@ class Ui_MainWindow(object):
 
         self.sep_frame = QFrame(self.mainbuttonsframe)
         self.sep_frame.setObjectName(u"sep_frame")
-        self.sep_frame.setFrameShape(QFrame.StyledPanel)
+        self.sep_frame.setFrameShape(QFrame.NoFrame)
         self.sep_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_7 = QVBoxLayout(self.sep_frame)
         self.verticalLayout_7.setSpacing(0)
@@ -540,7 +540,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 0, 10, 0)
         self.titleframe = QFrame(self.topbarframe)
         self.titleframe.setObjectName(u"titleframe")
-        self.titleframe.setFrameShape(QFrame.StyledPanel)
+        self.titleframe.setFrameShape(QFrame.NoFrame)
         self.titleframe.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.titleframe)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
@@ -548,7 +548,7 @@ class Ui_MainWindow(object):
         self.appicon.setObjectName(u"appicon")
         self.appicon.setMaximumSize(QSize(16777215, 45))
         self.appicon.setStyleSheet(u"background-image: url(:/icons/icons/cil-terminal.png);")
-        self.appicon.setFrameShape(QFrame.StyledPanel)
+        self.appicon.setFrameShape(QFrame.NoFrame)
         self.appicon.setFrameShadow(QFrame.Raised)
         self.verticalLayout_10 = QVBoxLayout(self.appicon)
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
@@ -680,7 +680,7 @@ class Ui_MainWindow(object):
         self.verticalLayout.setObjectName(u"verticalLayout")
         self.statistic_page_content = QFrame(self.statistic_page)
         self.statistic_page_content.setObjectName(u"statistic_page_content")
-        self.statistic_page_content.setFrameShape(QFrame.StyledPanel)
+        self.statistic_page_content.setFrameShape(QFrame.NoFrame)
         self.statistic_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_17 = QVBoxLayout(self.statistic_page_content)
         self.verticalLayout_17.setObjectName(u"verticalLayout_17")
@@ -733,7 +733,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
         self.diagnostic_page_content = QFrame(self.diagnostic_page)
         self.diagnostic_page_content.setObjectName(u"diagnostic_page_content")
-        self.diagnostic_page_content.setFrameShape(QFrame.StyledPanel)
+        self.diagnostic_page_content.setFrameShape(QFrame.NoFrame)
         self.diagnostic_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_25 = QVBoxLayout(self.diagnostic_page_content)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
@@ -755,7 +755,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.setObjectName(u"verticalLayout_19")
         self.graph_page_content = QFrame(self.graph_page)
         self.graph_page_content.setObjectName(u"graph_page_content")
-        self.graph_page_content.setFrameShape(QFrame.StyledPanel)
+        self.graph_page_content.setFrameShape(QFrame.NoFrame)
         self.graph_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_20 = QVBoxLayout(self.graph_page_content)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
@@ -781,7 +781,7 @@ class Ui_MainWindow(object):
 "background-repeat :none;\n"
 "background-position: center;\n"
 "")
-        self.main_home_page.setFrameShape(QFrame.StyledPanel)
+        self.main_home_page.setFrameShape(QFrame.NoFrame)
         self.main_home_page.setFrameShadow(QFrame.Raised)
         self.verticalLayout_14 = QVBoxLayout(self.main_home_page)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
@@ -872,7 +872,7 @@ class Ui_MainWindow(object):
         self.connection_progressbar_frame.setMaximumSize(QSize(16777215, 0))
         self.connection_progressbar_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
 "")
-        self.connection_progressbar_frame.setFrameShape(QFrame.StyledPanel)
+        self.connection_progressbar_frame.setFrameShape(QFrame.NoFrame)
         self.connection_progressbar_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_16 = QVBoxLayout(self.connection_progressbar_frame)
         self.verticalLayout_16.setSpacing(0)
@@ -906,7 +906,7 @@ class Ui_MainWindow(object):
         self.connection_body.setObjectName(u"connection_body")
         self.connection_body.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
 "")
-        self.connection_body.setFrameShape(QFrame.StyledPanel)
+        self.connection_body.setFrameShape(QFrame.NoFrame)
         self.connection_body.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_7 = QHBoxLayout(self.connection_body)
         self.horizontalLayout_7.setSpacing(2)
@@ -939,7 +939,7 @@ class Ui_MainWindow(object):
 "border-bottom-left-radius:5px;\n"
 "border-bottom-right-radius:5px;\n"
 "}")
-        self.connection_selection.setFrameShape(QFrame.StyledPanel)
+        self.connection_selection.setFrameShape(QFrame.NoFrame)
         self.connection_selection.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_10 = QHBoxLayout(self.connection_selection)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
@@ -998,7 +998,7 @@ class Ui_MainWindow(object):
         self.connection_selection_lan.setObjectName(u"connection_selection_lan")
         self.connection_selection_lan.setMaximumSize(QSize(0, 16777215))
         self.connection_selection_lan.setStyleSheet(u"")
-        self.connection_selection_lan.setFrameShape(QFrame.StyledPanel)
+        self.connection_selection_lan.setFrameShape(QFrame.NoFrame)
         self.connection_selection_lan.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_9 = QHBoxLayout(self.connection_selection_lan)
         self.horizontalLayout_9.setSpacing(10)
@@ -1081,7 +1081,7 @@ class Ui_MainWindow(object):
 "background-color: #2f3542;\n"
 "}\n"
 "")
-        self.Setting_frame.setFrameShape(QFrame.StyledPanel)
+        self.Setting_frame.setFrameShape(QFrame.NoFrame)
         self.Setting_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_27 = QVBoxLayout(self.Setting_frame)
         self.verticalLayout_27.setSpacing(0)
@@ -1152,7 +1152,7 @@ class Ui_MainWindow(object):
 
         self.frame = QFrame(self.Setting_frame)
         self.frame.setObjectName(u"frame")
-        self.frame.setFrameShape(QFrame.StyledPanel)
+        self.frame.setFrameShape(QFrame.NoFrame)
         self.frame.setFrameShadow(QFrame.Raised)
 
         self.verticalLayout_27.addWidget(self.frame)
@@ -1161,7 +1161,7 @@ class Ui_MainWindow(object):
         self.Settings_progress_bar_frame.setObjectName(u"Settings_progress_bar_frame")
         self.Settings_progress_bar_frame.setMaximumSize(QSize(16777215, 0))
         self.Settings_progress_bar_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);")
-        self.Settings_progress_bar_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_progress_bar_frame.setFrameShape(QFrame.NoFrame)
         self.Settings_progress_bar_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_38 = QVBoxLayout(self.Settings_progress_bar_frame)
         self.verticalLayout_38.setObjectName(u"verticalLayout_38")
@@ -1224,7 +1224,7 @@ class Ui_MainWindow(object):
         self.Settings_set_both_master_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
 "border-bottom-left-radius:5px;\n"
 "border-bottom-right-radius:5px;")
-        self.Settings_set_both_master_slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_set_both_master_slave_frame.setFrameShape(QFrame.NoFrame)
         self.Settings_set_both_master_slave_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_14 = QHBoxLayout(self.Settings_set_both_master_slave_frame)
         self.horizontalLayout_14.setSpacing(0)
@@ -1271,7 +1271,7 @@ class Ui_MainWindow(object):
         self.Settings_set_slave_frame.setStyleSheet(u"background-color: rgb(68, 75, 89);\n"
 "border-bottom-left-radius:5px;\n"
 "border-bottom-right-radius:5px;")
-        self.Settings_set_slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Settings_set_slave_frame.setFrameShape(QFrame.NoFrame)
         self.Settings_set_slave_frame.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_13 = QHBoxLayout(self.Settings_set_slave_frame)
         self.horizontalLayout_13.setSpacing(20)
@@ -1299,7 +1299,7 @@ class Ui_MainWindow(object):
 
         self.Console_frame = QFrame(self.Up_frame)
         self.Console_frame.setObjectName(u"Console_frame")
-        self.Console_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_frame.setFrameShape(QFrame.NoFrame)
         self.Console_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_36 = QVBoxLayout(self.Console_frame)
         self.verticalLayout_36.setSpacing(0)
@@ -1337,7 +1337,7 @@ class Ui_MainWindow(object):
 "border-bottom-right-radius:5px;\n"
 "font: 700 12pt \"Terminal\";\n"
 "}")
-        self.Console_body_frame.setFrameShape(QFrame.StyledPanel)
+        self.Console_body_frame.setFrameShape(QFrame.NoFrame)
         self.Console_body_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_35 = QVBoxLayout(self.Console_body_frame)
         self.verticalLayout_35.setSpacing(0)
@@ -1462,7 +1462,7 @@ class Ui_MainWindow(object):
 "border: 2px solid #b793dc;\n"
 "background-color: #2f3542;\n"
 "}")
-        self.PowerButton_body.setFrameShape(QFrame.StyledPanel)
+        self.PowerButton_body.setFrameShape(QFrame.NoFrame)
         self.PowerButton_body.setFrameShadow(QFrame.Raised)
         self.PowerButton_layout = QVBoxLayout(self.PowerButton_body)
         self.PowerButton_layout.setSpacing(0)
@@ -1830,7 +1830,7 @@ class Ui_MainWindow(object):
         self.Parameters_dashinfo.setObjectName(u"Parameters_dashinfo")
         self.Parameters_dashinfo.setMaximumSize(QSize(16777215, 60))
         self.Parameters_dashinfo.setStyleSheet(u"background-color: rgb(68, 75, 89);")
-        self.Parameters_dashinfo.setFrameShape(QFrame.StyledPanel)
+        self.Parameters_dashinfo.setFrameShape(QFrame.NoFrame)
         self.Parameters_dashinfo.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_15 = QHBoxLayout(self.Parameters_dashinfo)
         self.horizontalLayout_15.setSpacing(50)
@@ -1865,7 +1865,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
         self.Master_frame = QFrame(self.Parameter_preview_frame)
         self.Master_frame.setObjectName(u"Master_frame")
-        self.Master_frame.setFrameShape(QFrame.StyledPanel)
+        self.Master_frame.setFrameShape(QFrame.NoFrame)
         self.Master_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_33 = QVBoxLayout(self.Master_frame)
         self.verticalLayout_33.setSpacing(0)
@@ -1896,7 +1896,7 @@ class Ui_MainWindow(object):
 
         self.Slave_frame = QFrame(self.Parameter_preview_frame)
         self.Slave_frame.setObjectName(u"Slave_frame")
-        self.Slave_frame.setFrameShape(QFrame.StyledPanel)
+        self.Slave_frame.setFrameShape(QFrame.NoFrame)
         self.Slave_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_30 = QVBoxLayout(self.Slave_frame)
         self.verticalLayout_30.setSpacing(0)
@@ -1927,7 +1927,7 @@ class Ui_MainWindow(object):
 
         self.Temperature_frame = QFrame(self.Parameter_preview_frame)
         self.Temperature_frame.setObjectName(u"Temperature_frame")
-        self.Temperature_frame.setFrameShape(QFrame.StyledPanel)
+        self.Temperature_frame.setFrameShape(QFrame.NoFrame)
         self.Temperature_frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout_31 = QVBoxLayout(self.Temperature_frame)
         self.verticalLayout_31.setSpacing(0)
@@ -1981,7 +1981,7 @@ class Ui_MainWindow(object):
         self.footer = QFrame(self.centralmainframe)
         self.footer.setObjectName(u"footer")
         self.footer.setMaximumSize(QSize(16777215, 22))
-        self.footer.setFrameShape(QFrame.StyledPanel)
+        self.footer.setFrameShape(QFrame.NoFrame)
         self.footer.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_5 = QHBoxLayout(self.footer)
         self.horizontalLayout_5.setSpacing(0)

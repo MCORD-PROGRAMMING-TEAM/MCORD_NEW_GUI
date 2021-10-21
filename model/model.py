@@ -1,9 +1,16 @@
 
-from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame,QComboBox
+from PySide6.QtWidgets import  QCheckBox, QLineEdit, QPushButton, QFrame
 from PySide6.QtCore import QObject,Signal,QMargins,QRegularExpression
 from PySide6.QtGui import QIntValidator,QRegularExpressionValidator
-from win10toast import ToastNotifier
 import ipaddress
+from sys import platform
+
+#import package only for windows
+try:
+    from win10toast import ToastNotifier
+except ImportError:
+    pass
+
 
 
 
@@ -25,10 +32,10 @@ class Model(QObject):
         self.all_menu_buttons = []
         self.all_power_buttons = {}
         self.simp_work_params = {}
+        self.active_source = None
         self.simp_work_update_params = {}
         self.board_comlist = []
         self.all_editline_simpframe = []
-        self.active_source = None
         self.comport = 'COM3'
         self.ip = 'None'
         self.active_board, self.active_simp, self.active_master_voltage, self.active_slave_voltage, self.active_temp = 0,0,0,0,0
@@ -41,23 +48,14 @@ class Model(QObject):
         self.preview_settings_frametrigged = False
         self.ip_passed_status = (0,0)
         self.board_changed, self.simp_voltage_changed = False, False
+        self.thread_update_run_status = False
    
   
-        
 
-    
         
         
         
     #### => Get Section (Storage as model attributes)
-    def get_active_connection_source(self):
-        
-        if isinstance(self.sender(),QComboBox):
-            self.active_source == 'USB'
-        elif isinstance(self.sender(),QLineEdit):
-            self.active_source == 'LAN'
-        else:
-            self.connection_error()
 
     def get_all_menu_buttons(self, obj):
         for button in obj.findChildren(QPushButton):
@@ -103,6 +101,10 @@ class Model(QObject):
         
     def get_changed_board(self):
         self.board_changed = True
+        
+    def get_thead_update_status(self,status):
+        self.thread_update_run_status = status
+        print("Thread is running (send from model)")
 
         
 
@@ -131,8 +133,7 @@ class Model(QObject):
             ipaddress.ip_address(text)
             return True
         except:
-            toaster = ToastNotifier()
-            toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
+            self.ip_error()
             return False
         
     def valid_Qtimer_sender(self,status):
@@ -202,6 +203,21 @@ class Model(QObject):
         b = 1.828380024
         return round(a*voltage+b,2)
     
+    def valid_timer_time(self):
+        print(self.active_source)
+        if self.active_source == 'USB':
+            return [85,60]
+        elif self.active_source == 'LAN':
+            return [40,30]
+        
+    def valid_powerbuttons_status(self):
+        checker = [button.isChecked() for button, _ in self.all_power_buttons.values()]
+        print(checker)
+        if any(checker):
+            return True
+        else:
+            return False
+            
     
     
     #### => Set section (semi valid and set sth)
@@ -221,13 +237,13 @@ class Model(QObject):
         if min(50.00, 65.00) < value < max(50.00, 65.00):
             self.get_simp_status(value)
         else:
-            toaster = ToastNotifier()
-            toaster.show_toast("Voltage value not in work range","Minimum voltage value (53.00 V) will be set ",threaded=True,duration=3)
+            self.error_voltage_range()
             self.sender().clear()
             self.get_simp_status(53.00)
         
     def set_working_values(self):
         self.simp_work_params[self.active_board] = [self.active_master_voltage,self.active_slave_voltage,self.active_temp]
+    
         
         
     def set_update_working_values(self,parameters):
@@ -240,12 +256,25 @@ class Model(QObject):
             
     ###### => Errors
     def error_no_voltage_set(self):
-        toaster = ToastNotifier()
-        toaster.show_toast("No voltage has been set","Please set a voltage value once again",threaded=True,duration=3)
+        if platform == 'win32':
+            toaster = ToastNotifier()
+            toaster.show_toast("No voltage has been set","Please set a voltage value once again",threaded=True,duration=3)
         
     def connection_error(self):
-        toaster = ToastNotifier()
-        toaster.show_toast("Sth went wrong with connection to device","Please try again",threaded=True,duration=3)
+        if platform == 'win32':
+            toaster = ToastNotifier()
+            toaster.show_toast("Sth went wrong with connection to device","Please try again",threaded=True,duration=3)
+        
+    def ip_error(self):
+        if platform == 'win32':
+            toaster = ToastNotifier()
+            toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
+            
+    def error_voltage_range(self):
+        if platform == 'win32':
+            toaster = ToastNotifier()
+            toaster.show_toast("Voltage value not in work range","Minimum voltage value (53.00 V) will be set ",threaded=True,duration=3)
+        
         
         
 

@@ -1,5 +1,5 @@
 from PySide6.QtCore import QThread, Signal
-
+import time
 import socket
 import json
 
@@ -11,17 +11,15 @@ class LanController:
         self._model = model
         self.LAN = None
 
-    
-        
-        
-    
     def allowed_only_lan(self):
         text = self._view.ui.connection_edit.text()
         result = self._model.valid_ipaddress(text)
         if result:
             self._model.ip = text
         self._view.change_if_ip_reponse(result)
-         
+    
+    def set_current_device(self):
+        self._model.active_source = 'LAN'
     
     def create_lan_client(self):
         self.LAN = LanClient()
@@ -53,19 +51,33 @@ class LanController:
             
             
     def lan_send_voltage(self):
-        command = [self._model.active_board, self._model.active_master_voltage, self._model.active_slave_voltage]
+        mv,sv = self._model.simp_work_params[self._model.active_board][0],self._model.simp_work_params[self._model.active_board][1]
+        command = [self._model.active_board, mv, sv]
+        print(command)
         self.lan_worker = LanThread(self.LAN,'set',command)
         self.lan_worker.start()
         self.lan_worker.start_response.connect(self.json_parser)
         self.lan_worker.finished.connect(self.lan_worker.quit)
         
     def lan_send_update(self):
+        if self._model.thread_update_run_status:
+            print("Not start another thread, one is running")
+            return
+        
         self.lan_worker_update = LanThreadUpdate(self.LAN,self._model)
-        self.lan_worker_update.start()
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
+        self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
+        self.lan_worker_update.finished.connect(self.test_end_thread)
+        self.lan_worker_update.start()
        
-        
+    def lan_update_stop(self,status):
+        if not status:
+            if not self._model.valid_powerbuttons_status():
+                self.lan_worker_update.easy_end_thread()
+    
+    def test_end_thread(self):
+        print('Thread stopped')
            
     
 
@@ -92,8 +104,7 @@ class LanClient:
     def __del__(self):
         self.sock.sendall((json.dumps(['!disconnect']).encode("utf8")))
         print("Disconnect from AFE")
-            
-            
+                   
             
 
 class LanThread(QThread):
@@ -126,23 +137,47 @@ class LanThread(QThread):
         elif self.func == 'stop':
             res = self.client.do_cmd(['hvoff', int(self.command)])
             self.start_response.emit(res)
+
             
 class LanThreadUpdate(QThread):
     response = Signal(list)
+    thread_start = Signal(bool)
     
     def __init__(self,client,model):
         super().__init__()
         self.client = client
         self.model = model 
         self.run_status = True
+        self.entire_wait_time = 30
+        self.wait_time = 2
+   
         
     def run(self):
+     
+        self.thread_start.emit(True) 
         while self.run_status:
-            self.sleep(30)
+            #wait loop
+            for i in range(self.entire_wait_time):
+                if self.run_status:
+                    print(i)
+                    self.sleep(self.wait_time)
+                else:
+                    break
+                
+            #to faster run thread
+            if not self.run_status:
+                break
+            
             for board in self.model.board_comlist:
                 res = self.client.do_cmd(['getVT',int(board)])
                 res.append(board)
+                
                 self.response.emit(res)
+            
+    
+    def easy_end_thread(self):
+        self.thread_start.emit(False)
+        self.run_status = False
             
                 
     

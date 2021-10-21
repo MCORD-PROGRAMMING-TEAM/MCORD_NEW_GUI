@@ -750,7 +750,7 @@ color: rgb(255, 255, 255);
              <item>
               <widget class="QFrame" name="sep_frame">
                <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
+                <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
@@ -910,7 +910,7 @@ color: rgb(255, 255, 255);
              <item>
               <widget class="QFrame" name="titleframe">
                <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
+                <enum>QFrame::NoFrame</enum>
                </property>
                <property name="frameShadow">
                 <enum>QFrame::Raised</enum>
@@ -928,7 +928,7 @@ color: rgb(255, 255, 255);
                    <string notr="true">background-image: url(:/icons/icons/cil-terminal.png);</string>
                   </property>
                   <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
+                   <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>
@@ -1235,7 +1235,7 @@ p, li { white-space: pre-wrap; }
                        <item>
                         <widget class="QFrame" name="statistic_page_content">
                          <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                          <enum>QFrame::NoFrame</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
@@ -1347,7 +1347,7 @@ p, li { white-space: pre-wrap; }
                        <item>
                         <widget class="QFrame" name="diagnostic_page_content">
                          <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                          <enum>QFrame::NoFrame</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
@@ -1377,7 +1377,7 @@ color: rgb(11, 255, 161);</string>
                        <item>
                         <widget class="QFrame" name="graph_page_content">
                          <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                          <enum>QFrame::NoFrame</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
@@ -1413,7 +1413,7 @@ background-position: center;
 </string>
                          </property>
                          <property name="frameShape">
-                          <enum>QFrame::StyledPanel</enum>
+                          <enum>QFrame::NoFrame</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
@@ -1649,7 +1649,7 @@ border-top-right-radius:5px;
 </string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -1709,7 +1709,7 @@ qlineargradient(spread:pad, x1:0, y1:0.483, x2:0.948864, y2:0.489, stop:0 rgba(1
 </string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -1770,7 +1770,7 @@ border-bottom-right-radius:5px;
 }</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -1860,7 +1860,7 @@ QComboBox QAbstractItemView {
                                       <string notr="true"/>
                                      </property>
                                      <property name="frameShape">
-                                      <enum>QFrame::StyledPanel</enum>
+                                      <enum>QFrame::NoFrame</enum>
                                      </property>
                                      <property name="frameShadow">
                                       <enum>QFrame::Raised</enum>
@@ -1979,7 +1979,7 @@ background-color: #2f3542;
 </string>
                                </property>
                                <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
+                                <enum>QFrame::NoFrame</enum>
                                </property>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
@@ -2106,7 +2106,7 @@ border-top-right-radius:5px;
                                 <item>
                                  <widget class="QFrame" name="frame">
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -2125,7 +2125,7 @@ border-top-right-radius:5px;
                                    <string notr="true">background-color: rgb(68, 75, 89);</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -2255,7 +2255,7 @@ border-bottom-left-radius:5px;
 border-bottom-right-radius:5px;</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -2361,7 +2361,7 @@ border-bottom-left-radius:5px;
 border-bottom-right-radius:5px;</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -2420,7 +2420,7 @@ border-bottom-right-radius:5px;</string>
                              <item>
                               <widget class="QFrame" name="Console_frame">
                                <property name="frameShape">
-                                <enum>QFrame::StyledPanel</enum>
+                                <enum>QFrame::NoFrame</enum>
                                </property>
                                <property name="frameShadow">
                                 <enum>QFrame::Raised</enum>
@@ -2504,7 +2504,7 @@ font: 700 12pt &quot;Terminal&quot;;
 }</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -2737,7 +2737,7 @@ background-color: #2f3542;
 }</string>
                                   </property>
                                   <property name="frameShape">
-                                   <enum>QFrame::StyledPanel</enum>
+                                   <enum>QFrame::NoFrame</enum>
                                   </property>
                                   <property name="frameShadow">
                                    <enum>QFrame::Raised</enum>
@@ -3552,7 +3552,7 @@ border-top-right-radius:5px;
                                       <string notr="true">background-color: rgb(68, 75, 89);</string>
                                      </property>
                                      <property name="frameShape">
-                                      <enum>QFrame::StyledPanel</enum>
+                                      <enum>QFrame::NoFrame</enum>
                                      </property>
                                      <property name="frameShadow">
                                       <enum>QFrame::Raised</enum>
@@ -3624,7 +3624,7 @@ border-bottom-right-radius:5px;
                                       <item>
                                        <widget class="QFrame" name="Master_frame">
                                         <property name="frameShape">
-                                         <enum>QFrame::StyledPanel</enum>
+                                         <enum>QFrame::NoFrame</enum>
                                         </property>
                                         <property name="frameShadow">
                                          <enum>QFrame::Raised</enum>
@@ -3703,7 +3703,7 @@ border-bottom-right-radius:5px;
                                       <item>
                                        <widget class="QFrame" name="Slave_frame">
                                         <property name="frameShape">
-                                         <enum>QFrame::StyledPanel</enum>
+                                         <enum>QFrame::NoFrame</enum>
                                         </property>
                                         <property name="frameShadow">
                                          <enum>QFrame::Raised</enum>
@@ -3782,7 +3782,7 @@ border-bottom-right-radius:5px;
                                       <item>
                                        <widget class="QFrame" name="Temperature_frame">
                                         <property name="frameShape">
-                                         <enum>QFrame::StyledPanel</enum>
+                                         <enum>QFrame::NoFrame</enum>
                                         </property>
                                         <property name="frameShadow">
                                          <enum>QFrame::Raised</enum>
@@ -3889,7 +3889,7 @@ border-bottom-right-radius:5px;
                    </size>
                   </property>
                   <property name="frameShape">
-                   <enum>QFrame::StyledPanel</enum>
+                   <enum>QFrame::NoFrame</enum>
                   </property>
                   <property name="frameShadow">
                    <enum>QFrame::Raised</enum>

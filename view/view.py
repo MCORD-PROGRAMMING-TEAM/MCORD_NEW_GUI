@@ -180,14 +180,17 @@ class View(QMainWindow):
             
     def Timers_start(self):
         if isinstance(self.sender(),HoverButton):
+            time = self.model.valid_timer_time()
             self.ui.settings_timer.start(15)
-            self.ui.settings_timer.setInterval(30)
+            self.ui.settings_timer.setInterval(time[1])
         elif isinstance(self.sender(),QComboBox) or isinstance(self.sender(),QLineEdit):
             self.ui.connection_timer.start(15)
             self.ui.connection_timer.setInterval(10)
         else:
+            time = self.model.valid_timer_time()
+            print(time)
             self.ui.powerbuttons_timer.start(15)
-            self.ui.powerbuttons_timer.setInterval(40)
+            self.ui.powerbuttons_timer.setInterval(time[0])
         self.ui.PB_progress_value = 0
         
     
@@ -212,13 +215,11 @@ class View(QMainWindow):
         self.ui.parameters_board_combo.clear()
         self.ui.board_combo.addItems(self.model.board_comlist)
         self.ui.parameters_board_combo.addItems(self.model.board_comlist)
-        self.ui.board_combo.setCurrentIndex(-1)
-        self.ui.parameters_board_combo.setCurrentIndex(-1)
+    
         
         
     def clear_board_comlist(self,status):
         if not status:
-           
             try:
                 board_number = self.sender().parentWidget().findChild(QLineEdit).text()
                 self.model.current_board_number = board_number
@@ -301,6 +302,7 @@ class View(QMainWindow):
     
     def update_progress_circ(self):
         board_combo = self.ui.parameters_board_combo.currentText()
+        print(self.model.simp_work_params[board_combo])
         if board_combo == '':
             board_combo = self.ui.board_combo.currentText()
         error = False
@@ -364,26 +366,7 @@ class View(QMainWindow):
                     self.ui.SIMP_details_table.setItem(row,3,itemt)
                     print("Update SLAVE")
                     self.found = True
-            '''            
-          
-            if not self.found:
-                print('Dodaje po tym jak znalazłem')
-                rowcounts = self.ui.SIMP_details_table.rowCount()
-                self.ui.SIMP_details_table.insertRow(rowcounts)
-        
-                for i, value in enumerate(rdy_table_params_master):
-                    item = QTableWidgetItem(value)
-                    item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
-                    self.ui.SIMP_details_table.setItem(rowcounts,i,item)
-                
-                rowcounts = self.ui.SIMP_details_table.rowCount()
-                self.ui.SIMP_details_table.insertRow(rowcounts)
-            
-                for i, value in enumerate(rdy_table_params_slave):
-                    item = QTableWidgetItem(value)
-                    item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
-                    self.ui.SIMP_details_table.setItem(rowcounts,i,item)
-            '''
+    
                 
         else:
             print('Dodaje')

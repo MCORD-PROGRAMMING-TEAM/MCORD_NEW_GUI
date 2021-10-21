@@ -2,12 +2,12 @@ import sys
 import os 
 from cx_Freeze import  setup, Executable
 
-files = ['resources/main.ico']
+files = ['resources/mcord_icon.ico']
 
 target = Executable(
     script="app.py",
     base = "WIN32GUI",
-    icon="resources/main.ico"
+    icon="resources/mcord_icon.ico"
 )
 
 
