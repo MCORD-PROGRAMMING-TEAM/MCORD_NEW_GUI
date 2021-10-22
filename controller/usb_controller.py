@@ -1,3 +1,4 @@
+from typing import Text
 from PySide6.QtCore import QThread, Signal
 import serial.tools.list_ports
 import time
@@ -38,11 +39,19 @@ class USBController:
             return
         
         self._view.update_console(text)
+        
+    def hub_setup_response_parser(self,response):
+        if isinstance(response,list):
+            res = response[-2]
+            res = res.decode('utf-8').replace('\n','')
+            self._view.update_console(f'OK : {res}')
+        else:
+            self._view.update_console(f'OK : {response}')
 
     def create_usb_connect(self):
         self.USB = USBClinet(self._model.comport)
         self.USB.connect()
-        self.response_parser('Connection has been open')
+        self._view.update_console('Connection has been open')
         
     def close_usb_connect(self,status):
         if self.USB:
@@ -53,21 +62,22 @@ class USBController:
         if status:
             self.usb_worker = USBThread(self.USB,'start',int(self._model.board_comlist[-1]))
             self.usb_worker.start()
-            self.usb_worker.reponse.connect(self.response_parser)
+            self.usb_worker.reponse.connect(self.hub_setup_response_parser)
             self.usb_worker.finished.connect(self.usb_worker.quit)
             
         else:
             
             self.usb_worker = USBThread(self.USB,'stop',self._model.current_board_number)
             self.usb_worker.start()
-            self.usb_worker.reponse.connect(self.response_parser)
+            self.usb_worker.reponse.connect(self.hub_setup_response_parser)
             self.usb_worker.finished.connect(self.usb_worker.quit)
             
     def usb_send_voltage(self):
-        params = [self._model.active_board, self._model.active_master_voltage, self._model.active_slave_voltage]
+        mv,sv = self._model.simp_work_params[self._model.active_board][0],self._model.simp_work_params[self._model.active_board][1]
+        params = [self._model.active_board, mv, sv]
         self.usb_worker = USBThread(self.USB,'set',params)
         self.usb_worker.start()
-        self.usb_worker.reponse.connect(self.response_parser)
+        self.usb_worker.reponse.connect(self.hub_setup_response_parser)
         self.usb_worker.finished.connect(self.usb_worker.quit)
         
         
@@ -78,7 +88,7 @@ class USBController:
             return 
         
         self.usb_worker_update = USBThreadUpdate(self.USB,self._model)
-        self.usb_worker_update.thread_status.connect(self.response_parser)
+        self.usb_worker_update.thread_status.connect(self.hub_setup_response_parser)
         self.usb_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.usb_worker_update.response.connect(self._view.update_params_table)
         self.usb_worker_update.finished.connect(self.test_end_thread)

@@ -24,6 +24,9 @@ class LanController:
     def create_lan_client(self):
         self.LAN = LanClient()
         self.lan_send_connect()
+    
+    def close_lan_client(self):
+        self.LAN.close_connection()
         
     
     def json_parser(self,obj):
@@ -52,9 +55,9 @@ class LanController:
             
     def lan_send_voltage(self):
         mv,sv = self._model.simp_work_params[self._model.active_board][0],self._model.simp_work_params[self._model.active_board][1]
-        command = [self._model.active_board, mv, sv]
-        print(command)
-        self.lan_worker = LanThread(self.LAN,'set',command)
+        params = [self._model.active_board, mv, sv]
+        print(f'command : {params}')
+        self.lan_worker = LanThread(self.LAN,'set',params)
         self.lan_worker.start()
         self.lan_worker.start_response.connect(self.json_parser)
         self.lan_worker.finished.connect(self.lan_worker.quit)
@@ -101,9 +104,9 @@ class LanClient:
         else:
             pass
         
-    def __del__(self):
+    def close_connection(self):
         self.sock.sendall((json.dumps(['!disconnect']).encode("utf8")))
-        print("Disconnect from AFE")
+        
                    
             
 

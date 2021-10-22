@@ -224,7 +224,11 @@ class View(QMainWindow):
                 board_number = self.sender().parentWidget().findChild(QLineEdit).text()
                 self.model.current_board_number = board_number
                 self.model.board_comlist.remove(board_number)
-                self.sender().parentWidget().findChild(QLineEdit).clear()
+                self.sender().parentWidget().findChildren(QLineEdit)
+                self.ui.settings_set_both_master_editline.clear()
+                self.ui.settings_set_both_slave_editline.clear()
+                self.ui.settings_master_linedit.clear()
+                self.ui.settings_slave_linedit.clear()
             except:
                 pass
 
@@ -302,7 +306,7 @@ class View(QMainWindow):
     
     def update_progress_circ(self):
         board_combo = self.ui.parameters_board_combo.currentText()
-        print(self.model.simp_work_params[board_combo])
+        print(f'What should be circ {self.model.simp_work_params[board_combo]}')
         if board_combo == '':
             board_combo = self.ui.board_combo.currentText()
         error = False

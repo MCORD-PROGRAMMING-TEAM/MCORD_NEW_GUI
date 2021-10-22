@@ -33,7 +33,6 @@ class Model(QObject):
         self.all_power_buttons = {}
         self.simp_work_params = {}
         self.active_source = None
-        self.simp_work_update_params = {}
         self.board_comlist = []
         self.all_editline_simpframe = []
         self.comport = 'COM3'
@@ -49,6 +48,10 @@ class Model(QObject):
         self.ip_passed_status = (0,0)
         self.board_changed, self.simp_voltage_changed = False, False
         self.thread_update_run_status = False
+        
+        
+        # when dubug_mode will be able, change it to true
+        self.debug_login = False
    
   
 
@@ -233,8 +236,15 @@ class Model(QObject):
             self.get_editline_list(combo)
             
     def set_voltage_range(self):
+        min_voltage = 50.00
+        max_voltage = 65.00
+        
+        if self.debug_login:
+            min_voltage = 00.00
+            max_voltage = 100.00
+        
         value = float(self.sender().text())
-        if min(50.00, 65.00) < value < max(50.00, 65.00):
+        if min(min_voltage, max_voltage) < value < max(min_voltage, max_voltage):
             self.get_simp_status(value)
         else:
             self.error_voltage_range()
@@ -243,16 +253,11 @@ class Model(QObject):
         
     def set_working_values(self):
         self.simp_work_params[self.active_board] = [self.active_master_voltage,self.active_slave_voltage,self.active_temp]
-    
+        self.active_master_voltage = 0
+        self.active_slave_voltage = 0
         
         
-    def set_update_working_values(self,parameters):
-        self.simp_work_params[parameters[0]][2] = parameters[3]
-        self.simp_work_update_params[parameters[0]] = [parameters[1],parameters[2],parameters[3]]
-
-
-    
-    
+        
             
     ###### => Errors
     def error_no_voltage_set(self):

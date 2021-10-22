@@ -89,8 +89,6 @@ class Controller:
             button.stateChanged.connect(self._view.animated_ProgressBar_PowerSuply_frame)
             linedit.editingFinished.connect(self._model.get_all_boards)
             linedit.editingFinished.connect(self._model.get_work_params)
-       
-        
             button.stateChanged.connect(self._view.clear_board_comlist)
             button.stateChanged.connect(self._view.update_board_comlist)
     
@@ -136,6 +134,7 @@ class Controller:
             button.stateChanged.connect(self.lancontroller.lan_update_stop)
         self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_voltage)
         self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_update)
+        self._view.ui.closeButton.clicked.connect(self.lancontroller.close_lan_client)
         
     
     def _usb_logic(self):
