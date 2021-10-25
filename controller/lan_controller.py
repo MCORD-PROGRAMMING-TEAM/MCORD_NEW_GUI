@@ -37,6 +37,7 @@ class LanController:
     def lan_send_connect(self):
         self.lan_worker = LanThread(self.LAN,'connect',(self._model.ip, 5555))
         self.lan_worker.start()
+        self.lan_worker.work_status.connect(self._model.connection_error)
         self.lan_worker.connection_response.connect(self._view.update_console)
         self.lan_worker.finished.connect(self.lan_worker.quit)
         
@@ -87,12 +88,18 @@ class LanController:
         
 
 class LanClient:
+    work_status = Signal(bool)
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         
     def connect(self,args):
-        self.sock.connect((args))
-        return self.sock.recv(1024)
+        try:
+            self.sock.connect((args))
+            return self.sock.recv(1024)
+        except:
+            self.work_status.emit(False)
+     
+            
         
     
     def do_cmd(self, obj):

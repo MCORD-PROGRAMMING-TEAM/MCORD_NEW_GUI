@@ -4,7 +4,7 @@ import serial.tools.list_ports
 import time
 import csv
 from datetime import datetime, timedelta
-import re
+import ast
 
 class USBController:
     def __init__(self,view,model) -> None:
@@ -28,17 +28,7 @@ class USBController:
         comport = self._view.ui.connection_combox.currentText()
         self._model.comport = comport
         self._model.active_source = 'USB'
-        
-    def response_parser(self,text):
-        print("PARSER ::: PARSER")
-        if isinstance(text,list):
-            text = [i.decode('utf-8').replace("\r\n","") for i in text]
-            print(text)
-            text = text[1:-1]
-            self._view.update_console(f'OK: {text[0]}')
-            return
-        
-        self._view.update_console(text)
+    
         
     def hub_setup_response_parser(self,response):
         if isinstance(response,list):
@@ -51,6 +41,7 @@ class USBController:
     def create_usb_connect(self):
         self.USB = USBClinet(self._model.comport)
         self.USB.connect()
+        self.USB.work_status.connect(self._model.connection_error)
         self._view.update_console('Connection has been open')
         
     def close_usb_connect(self,status):
@@ -111,6 +102,8 @@ class USBController:
 
 
 class USBClinet:
+    work_status = Signal(bool)
+    
     def __init__(self,COM_Port) -> None:
         self.COM_port = COM_Port
         self.boundrate = 115200
@@ -120,8 +113,12 @@ class USBClinet:
         self.connection.close()
               
     def connect(self):
-        self.connection = serial.Serial(self.COM_port,self.boundrate,timeout=1)
-        self.connection_status = self.connection.isOpen()
+        try:
+            self.connection = serial.Serial(self.COM_port,self.boundrate,timeout=1)
+            self.connection_status = self.connection.isOpen()
+        except:
+            self.work_status.emit(False)
+      
         
         
         
@@ -204,22 +201,30 @@ class USBThreadUpdate(QThread):
             for board in self.model.board_comlist:
                 command = f'afedrv.GetAdc({board},3)\r\n'
                 v1 = self.client.send_command(command.encode())
-                v1 = v1[1].decode()
-                print(v1)
+                v_1 = self.adc_temp_parser(v1)
                 command = f'afedrv.GetAdc({board},4)\r\n'
                 v2 = self.client.send_command(command.encode())
-                v2 = v2[1].decode()
-                print(v2)
+                v_2 = self.adc_temp_parser(v2)
                 command = f'afedrv.GetTemp({board})\r\n'
                 temps = self.client.send_command(command.encode())
-                temps = self.parser(temps)
-                t1,t2 = list(map(int, re.findall(r'\d+', temps)))
-                res = ["OK",(v1,t1),(v2,t2),board]
+                t1,t2 = self.adc_temp_parser(temps)
+                res = ["OK",(v_1,t1),(v_2,t2),board]
                 self.response.emit(res)
                 self.thread_status.emit("Update done")
             
             
-        
+    
+    def adc_temp_parser(self,response):
+        if isinstance(response,list):
+            res = response[-2]
+            res = res.decode('utf-8').replace('\n','')
+            if len(res) > 8:
+                temps = ast.literal_eval(res)
+                t1, t2 = str(temps[0]), str(temps[1])
+                return t1,t2
+            else:
+                return res 
+            
                 
     def parser(self,text):
         print("Thread ::: PARSER")

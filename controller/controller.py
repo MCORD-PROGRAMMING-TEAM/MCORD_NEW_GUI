@@ -91,6 +91,8 @@ class Controller:
             linedit.editingFinished.connect(self._model.get_work_params)
             button.stateChanged.connect(self._view.clear_board_comlist)
             button.stateChanged.connect(self._view.update_board_comlist)
+            button.stateChanged.connect(self._view.remove_from_table)
+            
     
     def _simpframesettingslogic(self):
         self._view.ui.board_combo.currentIndexChanged.connect(self._model.get_changed_board)

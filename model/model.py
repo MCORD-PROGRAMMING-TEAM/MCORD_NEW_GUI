@@ -11,6 +11,11 @@ try:
 except ImportError:
     pass
 
+try:
+    import notify2
+except ImportError:
+    pass
+
 
 
 
@@ -261,24 +266,36 @@ class Model(QObject):
             
     ###### => Errors
     def error_no_voltage_set(self):
-        if platform == 'win32':
-            toaster = ToastNotifier()
-            toaster.show_toast("No voltage has been set","Please set a voltage value once again",threaded=True,duration=3)
+        title = "No voltage has been set"
+        message = "Please set a voltage value once again"
+        self.display_error(title,message)
         
     def connection_error(self):
-        if platform == 'win32':
-            toaster = ToastNotifier()
-            toaster.show_toast("Sth went wrong with connection to device","Please try again",threaded=True,duration=3)
+        title = "Sth went wrong with connection to device"
+        message = "Please try again"
+        self.display_error(title,message)
         
     def ip_error(self):
-        if platform == 'win32':
-            toaster = ToastNotifier()
-            toaster.show_toast("Wrong IP address","Please try again!",threaded=True,duration=3)
+        title = "Wrong IP address"
+        message ="Please try again!"
+        self.display_error(title,message)
             
     def error_voltage_range(self):
+        title = "Voltage value not in work range"
+        message = "Minimum voltage value (53.00 V) will be set "
+        self.display_error(title,message)
+        
+    @staticmethod
+    def display_error(title,message):
         if platform == 'win32':
             toaster = ToastNotifier()
-            toaster.show_toast("Voltage value not in work range","Minimum voltage value (53.00 V) will be set ",threaded=True,duration=3)
+            toaster.show_toast(title, message,threaded=True,duration=3)
+        
+        elif platform == 'linux':
+            notify2.init("Test")
+            notice = notify2.Notification(title, message)
+            notice.show()
+        
         
         
         

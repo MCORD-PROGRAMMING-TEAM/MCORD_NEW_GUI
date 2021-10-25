@@ -328,7 +328,7 @@ class View(QMainWindow):
         self.ui.console.insertPlainText(f'>>> {text}\n')
         
     
-    #test needed !!!!!
+    
     def update_params_table(self,params):
         self.found = False
         board_number = params[3]
@@ -389,6 +389,15 @@ class View(QMainWindow):
                 item = QTableWidgetItem(value)
                 item.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
                 self.ui.SIMP_details_table.setItem(rowcounts,i,item)
+                
+    def remove_from_table(self,status):
+        if not status:
+            simp_off = self.sender().parentWidget().findChild(QLineEdit).text()
+            where = self.ui.SIMP_details_table.findItems(simp_off,Qt.MatchExactly)
+            for whe in where:
+                row = whe.row()
+                self.ui.SIMP_details_table.removeRow(row)
+        
                 
             
         
