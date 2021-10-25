@@ -37,7 +37,7 @@ class LanController:
     def lan_send_connect(self):
         self.lan_worker = LanThread(self.LAN,'connect',(self._model.ip, 5555))
         self.lan_worker.start()
-        self.lan_worker.work_status.connect(self._model.connection_error)
+        self.lan_worker.connection_status.connect(self._model.connection_error)
         self.lan_worker.connection_response.connect(self._view.update_console)
         self.lan_worker.finished.connect(self.lan_worker.quit)
         
@@ -88,7 +88,6 @@ class LanController:
         
 
 class LanClient:
-    work_status = Signal(bool)
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         
@@ -97,10 +96,7 @@ class LanClient:
             self.sock.connect((args))
             return self.sock.recv(1024)
         except:
-            self.work_status.emit(False)
-     
-            
-        
+            return 
     
     def do_cmd(self, obj):
         self.sock.sendall((json.dumps(obj)).encode("utf8"))
@@ -121,6 +117,7 @@ class LanThread(QThread):
     connection_response = Signal(str)
     start_response = Signal(list)
     progress = Signal(int)
+    connection_status = Signal()
     
     def __init__(self, client, func, command) -> None:
         super().__init__()
@@ -130,9 +127,12 @@ class LanThread(QThread):
         
     def run(self):
         if self.func == 'connect':
-            res = self.client.connect(self.command)
-            res = res.decode('utf-8')
-            self.connection_response.emit(res)
+            try:
+                res = self.client.connect(self.command)
+                res = res.decode('utf-8')
+                self.connection_response.emit(res)
+            except:
+                self.connection_status.emit()
         
         elif self.func == 'start':
             res = self.client.do_cmd(['init',int(self.command)])

@@ -7,7 +7,7 @@ from sys import platform
 
 #import package only for windows
 try:
-    from win10toast import ToastNotifier
+    from plyer import notification
 except ImportError:
     pass
 
@@ -285,11 +285,14 @@ class Model(QObject):
         message = "Minimum voltage value (53.00 V) will be set "
         self.display_error(title,message)
         
-    @staticmethod
-    def display_error(title,message):
+
+    def display_error(self,title,message):
         if platform == 'win32':
-            toaster = ToastNotifier()
-            toaster.show_toast(title, message,threaded=True,duration=3)
+            notification.notify(
+            title = title,
+            message = message,
+            timeout = 5
+            )
         
         elif platform == 'linux':
             notify2.init("Test")
