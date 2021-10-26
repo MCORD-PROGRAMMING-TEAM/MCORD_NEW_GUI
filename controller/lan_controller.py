@@ -23,7 +23,12 @@ class LanController:
     
     def create_lan_client(self):
         self.LAN = LanClient()
-        self.lan_send_connect()
+        print(self._model.valid_ip)
+        if self._model.valid_ip:
+            res = self.LAN.connect((self._model.ip,5555)).decode()
+            self._view.update_console(res)
+   
+        
     
     def close_lan_client(self):
         self.LAN.close_connection()
@@ -33,13 +38,7 @@ class LanController:
         res = f'{obj[0]} : {obj[1:]}'
         self._view.update_console(res)
     
-    
-    def lan_send_connect(self):
-        self.lan_worker = LanThread(self.LAN,'connect',(self._model.ip, 5555))
-        self.lan_worker.start()
-        self.lan_worker.connection_status.connect(self._model.connection_error)
-        self.lan_worker.connection_response.connect(self._view.update_console)
-        self.lan_worker.finished.connect(self.lan_worker.quit)
+
         
     def lan_send_start(self,status):
         if status:
@@ -90,13 +89,16 @@ class LanController:
 class LanClient:
     def __init__(self):
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        
+      
+  
     def connect(self,args):
-        try:
-            self.sock.connect((args))
-            return self.sock.recv(1024)
-        except:
-            return 
+            try:
+                self.sock.connect((args))
+                return self.sock.recv(1024)
+            except Exception as e:
+                print(e)
+       
+    
     
     def do_cmd(self, obj):
         self.sock.sendall((json.dumps(obj)).encode("utf8"))
@@ -117,7 +119,6 @@ class LanThread(QThread):
     connection_response = Signal(str)
     start_response = Signal(list)
     progress = Signal(int)
-    connection_status = Signal()
     
     def __init__(self, client, func, command) -> None:
         super().__init__()
@@ -127,13 +128,10 @@ class LanThread(QThread):
         
     def run(self):
         if self.func == 'connect':
-            try:
-                res = self.client.connect(self.command)
-                res = res.decode('utf-8')
-                self.connection_response.emit(res)
-            except:
-                self.connection_status.emit()
-        
+            res = self.client.connect(self.command)
+            res = res.decode('utf-8')
+            self.connection_response.emit(res)
+
         elif self.func == 'start':
             res = self.client.do_cmd(['init',int(self.command)])
             self.start_response.emit(res)

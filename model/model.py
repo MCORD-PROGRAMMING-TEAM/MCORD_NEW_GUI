@@ -38,6 +38,7 @@ class Model(QObject):
         self.all_power_buttons = {}
         self.simp_work_params = {}
         self.active_source = None
+        self.valid_ip = False
         self.board_comlist = []
         self.all_editline_simpframe = []
         self.comport = 'COM3'
@@ -139,8 +140,10 @@ class Model(QObject):
     def valid_ipaddress(self,text):
         try:
             ipaddress.ip_address(text)
+            self.valid_ip = True
             return True
         except:
+            self._valid_ip = False
             self.ip_error()
             return False
         
