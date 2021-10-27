@@ -148,7 +148,6 @@ class Controller:
             
         self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
         self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
-        self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
         self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
     
 

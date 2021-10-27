@@ -80,14 +80,12 @@ class USBController:
         
     def usb_send_update(self):
         if self._model.thread_update_run_status:
-            print("Not start another thread, one is running")
             return 
         self._model.temp_loop_status = True
         self.usb_worker_update = USBThreadUpdate(self.USB,self._model)
         self.usb_worker_update.thread_status.connect(self.hub_setup_response_parser)
         self.usb_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.usb_worker_update.response.connect(self._view.update_params_table)
-        self.usb_worker_update.finished.connect(self.test_end_thread)
         self.usb_worker_update.start()
         
     def usb_update_stop(self,status):
@@ -95,12 +93,8 @@ class USBController:
             if not self._model.valid_powerbuttons_status():
                 self.usb_worker_update.easy_end_thread()
     
-    def test_end_thread(self):
-        print('Thread stopped')
-        
-    def test_buttons(self):
-        checker = [button.isChecked() for button, _ in self._model.all_power_buttons.values()]
-        print(checker)
+
+     
        
         
         
@@ -113,7 +107,6 @@ class USBClinet:
         self.boundrate = 115200
     
     def __del__(self):
-        print("Connection has been closed")
         self.connection.close()
               
     def connect(self):
@@ -135,7 +128,6 @@ class USBClinet:
             except Exception as e:
                 print(e)
     def quit(self):
-        print("Connection has been closed")
         self.connection.close()
      
         
@@ -188,15 +180,13 @@ class USBThreadUpdate(QThread):
     def run(self):
         self.thread_start.emit(True)
         while self.run_status:
-            
-            print("Thread started and sleep")
             for i in range(self.entire_wait_time):
                     if self.run_status:
                         print(i)
                         self.sleep(self.wait_time)
                     else:
                         break
-            print("Thread woke up")
+                    
              #to faster run thread
             if not self.run_status:
                 break
@@ -231,7 +221,6 @@ class USBThreadUpdate(QThread):
             
                 
     def parser(self,text):
-        print("Thread ::: PARSER")
         if isinstance(text,list):
             text = [i.decode('utf-8').replace("\r\n","") for i in text]
             text = text[1:-1]

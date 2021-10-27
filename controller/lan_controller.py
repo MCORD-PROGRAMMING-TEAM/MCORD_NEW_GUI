@@ -61,7 +61,6 @@ class LanController:
     def lan_send_voltage(self):
         mv,sv = self._model.simp_work_params[self._model.active_board][0],self._model.simp_work_params[self._model.active_board][1]
         params = [self._model.active_board, mv, sv]
-        print(f'command : {params}')
         self.lan_worker = LanThread(self.LAN,'set',params)
         self.lan_worker.start()
         self.lan_worker.start_response.connect(self.json_parser)
@@ -69,14 +68,12 @@ class LanController:
         
     def lan_send_update(self):
         if self._model.thread_update_run_status:
-            print("Not start another thread, one is running")
             return
         self._model.temp_loop_status = True
         self.lan_worker_update = LanThreadUpdate(self.LAN,self._model)
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
         self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
-        self.lan_worker_update.finished.connect(self.test_end_thread)
         self.lan_worker_update.start()
        
     def lan_update_stop(self,status):
@@ -84,8 +81,6 @@ class LanController:
             if not self._model.valid_powerbuttons_status():
                 self.lan_worker_update.easy_end_thread()
     
-    def test_end_thread(self):
-        print('Thread stopped')
            
     
 
@@ -101,7 +96,7 @@ class LanClient:
                 self.sock.connect((args))
                 return self.sock.recv(1024)
             except Exception as e:
-                print(e)
+                pass
        
     
     

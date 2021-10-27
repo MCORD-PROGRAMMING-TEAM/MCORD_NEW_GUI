@@ -7,7 +7,8 @@ progressbar_counter = 0
 class Splashscreen(QMainWindow):
     def __init__(self,main_window) -> None:
         QMainWindow.__init__(self)
-
+        
+       
         self.sp = Ui_MainWindow()
         self.sp.setupUi(self)
         self.main = main_window

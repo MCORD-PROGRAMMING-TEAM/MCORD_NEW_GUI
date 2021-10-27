@@ -14,7 +14,7 @@ class View(QMainWindow):
 
         self.model = model
 
-        self.setWindowTitle("Kruksik QT Layout")
+        self.setWindowTitle("MCORD GUI Application")
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
 
@@ -189,7 +189,6 @@ class View(QMainWindow):
                 self.ui.connection_timer.setInterval(10)
         else:
             time = self.model.valid_timer_time()
-            print(time)
             self.ui.powerbuttons_timer.start(15)
             self.ui.powerbuttons_timer.setInterval(time[0])
         self.ui.PB_progress_value = 0
@@ -308,7 +307,6 @@ class View(QMainWindow):
     
     def update_progress_circ(self):
         board_combo = self.ui.parameters_board_combo.currentText()
-        print(f'What should be circ {self.model.simp_work_params[board_combo]}')
         if board_combo == '':
             board_combo = self.ui.board_combo.currentText()
         error = False
@@ -351,7 +349,6 @@ class View(QMainWindow):
         
         where = self.ui.SIMP_details_table.findItems(board_number,Qt.MatchExactly)
         if where:
-            print('Znaleziono')
             for whererow in where:
                 row = whererow.row()
                 if self.ui.SIMP_details_table.item(row,1).text() == 'Master':
@@ -361,7 +358,6 @@ class View(QMainWindow):
                     itemt.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
                     self.ui.SIMP_details_table.setItem(row,2,itemv)
                     self.ui.SIMP_details_table.setItem(row,3,itemt)
-                    print("Update MASTER")
                     self.found = True
                 else: 
                     itemv = QTableWidgetItem(sv)
@@ -370,12 +366,10 @@ class View(QMainWindow):
                     itemt.setTextAlignment(Qt.AlignHCenter|Qt.AlignVCenter|Qt.AlignCenter)
                     self.ui.SIMP_details_table.setItem(row,2,itemv)
                     self.ui.SIMP_details_table.setItem(row,3,itemt)
-                    print("Update SLAVE")
                     self.found = True
     
                 
         else:
-            print('Dodaje')
             rowcounts = self.ui.SIMP_details_table.rowCount()
             self.ui.SIMP_details_table.insertRow(rowcounts)
         

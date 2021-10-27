@@ -116,7 +116,7 @@ class Model(QObject):
         
     def get_thead_update_status(self,status):
         self.thread_update_run_status = status
-        print("Thread is running (send from model)")
+       
 
         
 
@@ -218,7 +218,6 @@ class Model(QObject):
         return round(a*voltage+b,2)
     
     def valid_timer_time(self):
-        print(self.active_source)
         if self.active_source == 'USB':
             return [85,60]
         elif self.active_source == 'LAN':
@@ -226,7 +225,6 @@ class Model(QObject):
         
     def valid_powerbuttons_status(self):
         checker = [button.isChecked() for button, _ in self.all_power_buttons.values()]
-        print(checker)
         if any(checker):
             return True
         else:
