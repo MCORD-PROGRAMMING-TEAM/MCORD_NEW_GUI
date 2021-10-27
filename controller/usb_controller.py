@@ -1,5 +1,5 @@
 from typing import Text
-from PySide6.QtCore import QThread, Signal
+from PySide6.QtCore import QThread, Signal,QObject
 import serial.tools.list_ports
 import time
 import csv
@@ -40,9 +40,14 @@ class USBController:
 
     def create_usb_connect(self):
         self.USB = USBClinet(self._model.comport)
-        self.USB.connect()
-        self.USB.work_status.connect(self._model.connection_error)
-        self._view.update_console('Connection has been open')
+        try:
+            self.USB.connect()
+            self._model.usb_status = True
+            self._view.update_console('Connection has been open')
+        except:
+            self._model.usb_status = False
+            self._model.connection_error()
+       
         
     def close_usb_connect(self,status):
         if self.USB:
@@ -102,7 +107,6 @@ class USBController:
 
 
 class USBClinet:
-    work_status = Signal(bool)
     
     def __init__(self,COM_Port) -> None:
         self.COM_port = COM_Port
@@ -117,7 +121,7 @@ class USBClinet:
             self.connection = serial.Serial(self.COM_port,self.boundrate,timeout=1)
             self.connection_status = self.connection.isOpen()
         except:
-            self.work_status.emit(False)
+            return
       
         
         

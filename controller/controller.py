@@ -142,15 +142,14 @@ class Controller:
     
     def _usb_logic(self):
         self.usbcontroller.create_usb_connect()
-        if self.usbcontroller.USB.connection_status:
-            for button, _ in self._model.all_power_buttons.values():
-                button.stateChanged.connect(self.usbcontroller.usb_send_start)
-                button.stateChanged.connect(self.usbcontroller.usb_update_stop)
-                
-            self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
-            self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
-            self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
-            self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
+        for button, _ in self._model.all_power_buttons.values():
+            button.stateChanged.connect(self.usbcontroller.usb_send_start)
+            button.stateChanged.connect(self.usbcontroller.usb_update_stop)
+            
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
+        self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
+        self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
     
        
      
