@@ -151,18 +151,7 @@ class Controller:
         self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
         self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
     
-       
-     
-        
-        
-    
-   
-        
-        
-       
-        
-               
-        
+
         
     def moveWindow(self,event):
         if self._view.isMaximized(): 

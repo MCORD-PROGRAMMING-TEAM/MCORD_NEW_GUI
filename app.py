@@ -3,6 +3,7 @@ from controller import *
 from model import *
 from view import *
 from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtGui import QFontDatabase
 import sys
 
 
@@ -17,5 +18,7 @@ class App(QMainWindow):
         
 if __name__ == '__main__':
     app = QApplication(sys.argv)
+    QFontDatabase.addApplicationFont('resources/fonts/segoeui.ttf')
+    QFontDatabase.addApplicationFont('resources/fonts/segoeuib.ttf')
     my_app = App()
     sys.exit(app.exec())

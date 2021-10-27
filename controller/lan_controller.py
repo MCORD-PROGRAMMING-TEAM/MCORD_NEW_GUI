@@ -35,7 +35,8 @@ class LanController:
         
     
     def close_lan_client(self):
-        self.LAN.close_connection()
+        if self._model.connected_lan:
+            self.LAN.close_connection()
         
     
     def json_parser(self,obj):
@@ -70,7 +71,7 @@ class LanController:
         if self._model.thread_update_run_status:
             print("Not start another thread, one is running")
             return
-        
+        self._model.temp_loop_status = True
         self.lan_worker_update = LanThreadUpdate(self.LAN,self._model)
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
@@ -79,7 +80,7 @@ class LanController:
         self.lan_worker_update.start()
        
     def lan_update_stop(self,status):
-        if not status:
+        if not status and self._model.temp_loop_status:
             if not self._model.valid_powerbuttons_status():
                 self.lan_worker_update.easy_end_thread()
     

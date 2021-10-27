@@ -82,7 +82,7 @@ class USBController:
         if self._model.thread_update_run_status:
             print("Not start another thread, one is running")
             return 
-        
+        self._model.temp_loop_status = True
         self.usb_worker_update = USBThreadUpdate(self.USB,self._model)
         self.usb_worker_update.thread_status.connect(self.hub_setup_response_parser)
         self.usb_worker_update.thread_start.connect(self._model.get_thead_update_status)
@@ -91,7 +91,7 @@ class USBController:
         self.usb_worker_update.start()
         
     def usb_update_stop(self,status):
-        if not status:
+        if not status and self._model.temp_loop_status:
             if not self._model.valid_powerbuttons_status():
                 self.usb_worker_update.easy_end_thread()
     

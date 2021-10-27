@@ -41,6 +41,7 @@ class Model(QObject):
         self.valid_ip = False #if tip IP then OK
         self.connected_lan = False # if declare IP is OK 
         self.usb_status = False
+        self.temp_loop_status = False
         self.board_comlist = []
         self.all_editline_simpframe = []
         self.comport = 'COM3'
