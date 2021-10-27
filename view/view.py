@@ -184,8 +184,9 @@ class View(QMainWindow):
             self.ui.settings_timer.start(15)
             self.ui.settings_timer.setInterval(time[1])
         elif isinstance(self.sender(),QComboBox) or isinstance(self.sender(),QLineEdit):
-            self.ui.connection_timer.start(15)
-            self.ui.connection_timer.setInterval(10)
+            if self.model.valid_ip:
+                self.ui.connection_timer.start(15)
+                self.ui.connection_timer.setInterval(10)
         else:
             time = self.model.valid_timer_time()
             print(time)
@@ -256,9 +257,10 @@ class View(QMainWindow):
         self.animationprogressbarsettings = self.apply_animation(self.ui.Settings_progress_bar_frame,b"maximumHeight",200,start,end)
         
     def animated_ProgressBar_Connection_frame(self,*state):
-        if not any(state): state = self.model.ip_passed_status
-        start,end = self.model.valid_Qtimer_sender(state[0])
-        self.animationprogressbarconnection = self.apply_animation(self.ui.connection_progressbar_frame,b"maximumHeight",200,start,end)
+        if self.model.valid_ip:
+            if not any(state): state = self.model.ip_passed_status
+            start,end = self.model.valid_Qtimer_sender(state[0])
+            self.animationprogressbarconnection = self.apply_animation(self.ui.connection_progressbar_frame,b"maximumHeight",200,start,end)
         
     
     def unlocked_settings_button(self):

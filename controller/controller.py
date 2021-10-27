@@ -131,23 +131,26 @@ class Controller:
         
     def _lan_logic(self):
         self.lancontroller.create_lan_client()
-        for button, _ in self._model.all_power_buttons.values():
-            button.stateChanged.connect(self.lancontroller.lan_send_start)
-            button.stateChanged.connect(self.lancontroller.lan_update_stop)
-        self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_voltage)
-        self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_update)
-        self._view.ui.closeButton.clicked.connect(self.lancontroller.close_lan_client)
+        if self._model.valid_ip and self._model.connected_lan:
+            for button, _ in self._model.all_power_buttons.values():
+                button.stateChanged.connect(self.lancontroller.lan_send_start)
+                button.stateChanged.connect(self.lancontroller.lan_update_stop)
+            self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_voltage)
+            self._view.ui.settings_button.clicked.connect(self.lancontroller.lan_send_update)
+            self._view.ui.closeButton.clicked.connect(self.lancontroller.close_lan_client)
         
     
     def _usb_logic(self):
         self.usbcontroller.create_usb_connect()
-        for button, _ in self._model.all_power_buttons.values():
-            button.stateChanged.connect(self.usbcontroller.usb_send_start)
-            button.stateChanged.connect(self.usbcontroller.usb_update_stop)
-        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
-        self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
-        self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
-        self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
+        if self.usbcontroller.USB.connection_status:
+            for button, _ in self._model.all_power_buttons.values():
+                button.stateChanged.connect(self.usbcontroller.usb_send_start)
+                button.stateChanged.connect(self.usbcontroller.usb_update_stop)
+                
+            self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
+            self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
+            self._view.ui.settings_button.clicked.connect(self.usbcontroller.test_buttons)
+            self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
     
        
      

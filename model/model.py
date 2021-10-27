@@ -38,7 +38,8 @@ class Model(QObject):
         self.all_power_buttons = {}
         self.simp_work_params = {}
         self.active_source = None
-        self.valid_ip = False
+        self.valid_ip = False #if tip IP then OK
+        self.connected_lan = False # if declare IP is OK 
         self.board_comlist = []
         self.all_editline_simpframe = []
         self.comport = 'COM3'

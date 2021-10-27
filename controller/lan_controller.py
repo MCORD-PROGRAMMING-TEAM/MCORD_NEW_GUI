@@ -23,10 +23,14 @@ class LanController:
     
     def create_lan_client(self):
         self.LAN = LanClient()
-        print(self._model.valid_ip)
-        if self._model.valid_ip:
+        try:
             res = self.LAN.connect((self._model.ip,5555)).decode()
             self._view.update_console(res)
+            self._model.connected_lan = True
+        except:
+            self._model.valid_ip = False
+            self._model.connection_error()
+    
    
         
     
