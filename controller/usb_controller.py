@@ -109,10 +109,7 @@ class USBClinet:
             self.connection_status = self.connection.isOpen()
         except:
             return
-      
-        
-        
-        
+
     def send_command(self,command):
         if self.connection_status:
             try:
