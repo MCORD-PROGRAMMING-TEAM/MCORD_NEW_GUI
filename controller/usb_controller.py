@@ -94,12 +94,6 @@ class USBController:
                 self.usb_worker_update.easy_end_thread()
     
 
-     
-       
-        
-        
-
-
 class USBClinet:
     
     def __init__(self,COM_Port) -> None:
