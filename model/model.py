@@ -219,7 +219,7 @@ class Model(QObject):
     
     def valid_timer_time(self):
         if self.active_source == 'USB':
-            return [85,60]
+            return [90,60]
         elif self.active_source == 'LAN':
             return [40,30]
         
@@ -239,7 +239,7 @@ class Model(QObject):
             editline.setValidator(onlyInt)
             
     def set_voltage_asNumber(self,obj):
-        onlyInt_fromRange = QRegularExpressionValidator(QRegularExpression("([1-6][0-9]?\.[0-9]+)|(65\.0+)"))
+        onlyInt_fromRange = QRegularExpressionValidator(QRegularExpression("([5-6][0-9]?\.[0-9]+)|(65\.0+)"))
         for combo in obj.findChildren(QLineEdit):
             combo.setValidator(onlyInt_fromRange)
             self.get_editline_list(combo)

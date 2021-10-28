@@ -114,7 +114,7 @@ class USBClinet:
         if self.connection_status:
             try:
                 self.connection.write(command)
-                time.sleep(2)
+                time.sleep(3)
                 return self.connection.readlines()
             except Exception as e:
                 print(e)
