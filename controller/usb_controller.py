@@ -3,7 +3,7 @@ from PySide6.QtCore import QThread, Signal,QObject
 import serial.tools.list_ports
 import time
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime
 import ast
 
 class USBController:
@@ -166,6 +166,7 @@ class USBThreadUpdate(QThread):
         self.run_status = True
         self.entire_wait_time = 30
         self.wait_time = 2
+        self.csv = False
    
         
     def run(self):
@@ -194,6 +195,7 @@ class USBThreadUpdate(QThread):
                 temps = self.client.send_command(command.encode())
                 t1,t2 = self.adc_temp_parser(temps)
                 res = ["OK",(v_1,t1),(v_2,t2),board]
+                self._csvwriter('output.csv',res)
                 self.response.emit(res)
                 self.thread_status.emit("Update done")
             
@@ -222,6 +224,28 @@ class USBThreadUpdate(QThread):
     def easy_end_thread(self):
         self.thread_start.emit(False)
         self.run_status = False
+        
+    @staticmethod
+    def _getTime():
+        now = datetime.now()
+        return now.strftime("%d/%m/%Y"), now.strftime("%H:%M:%S")
+    
+  
+    def _csvwriter(self,filename, *args):
+        if not self.csv:
+            labels = ('Data','Time','Board',
+                            'Master_voltage','Slave_voltage','Master_Temp','Slave_Temp')
+            self.csv = True
+            with open(filename, 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(labels)
+     
+        currdata, currtime = self._getTime()
+        row = (currdata,currtime,int(args[0][-1]), args[0][1][0], args[0][2][0], args[0][1][1], args[0][2][1])
+    
+        with open(filename, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(row)
             
         
     

@@ -1,8 +1,8 @@
 from PySide6.QtCore import QThread, Signal
-import time
 import socket
 import json
-
+from datetime import datetime
+import csv
 
 
 class LanController:
@@ -158,6 +158,7 @@ class LanThreadUpdate(QThread):
         self.run_status = True
         self.entire_wait_time = 30
         self.wait_time = 2
+        self.csv = False
    
         
     def run(self):
@@ -178,15 +179,44 @@ class LanThreadUpdate(QThread):
             
             for board in self.model.board_comlist:
                 res = self.client.do_cmd(['getVT',int(board)])
+                print(res)
                 res.append(board)
-                
+                self._csvwriter('output.csv',res)
                 self.response.emit(res)
             
     
     def easy_end_thread(self):
         self.thread_start.emit(False)
         self.run_status = False
-            
+        
+    
+    @staticmethod
+    def _getTime():
+        now = datetime.now()
+        return now.strftime("%d/%m/%Y"), now.strftime("%H:%M:%S")
+    
+  
+    def _csvwriter(self,filename, *args):
+        if not self.csv:
+            labels = ('Data','Time','Board',
+                            'Master_voltage','Slave_voltage','Master_Temp','Slave_Temp')
+            self.csv = True
+            with open(filename, 'a', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(labels)
+     
+        currdata, currtime = self._getTime()
+        row = (currdata,currtime,int(args[0][-1]), args[0][1][0], args[0][2][0], args[0][1][1], args[0][2][1])
+    
+        with open(filename, 'a', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(row)
+        
+        
+        
+    
+    
+    
                 
     
    

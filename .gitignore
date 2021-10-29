@@ -5,3 +5,4 @@ test_app.py
 .vscode
 .qt_for_python
 build
+*output*
