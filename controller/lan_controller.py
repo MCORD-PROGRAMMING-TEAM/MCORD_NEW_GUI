@@ -181,7 +181,7 @@ class LanThreadUpdate(QThread):
                 res = self.client.do_cmd(['getVT',int(board)])
                 print(res)
                 res.append(board)
-                self._csvwriter('output.csv',res)
+                self._csvwriter('outputlog.csv',res)
                 self.response.emit(res)
             
     

@@ -195,7 +195,7 @@ class USBThreadUpdate(QThread):
                 temps = self.client.send_command(command.encode())
                 t1,t2 = self.adc_temp_parser(temps)
                 res = ["OK",(v_1,t1),(v_2,t2),board]
-                self._csvwriter('output.csv',res)
+                self._csvwriter('outputlog.csv',res)
                 self.response.emit(res)
                 self.thread_status.emit("Update done")
             
