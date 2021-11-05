@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1199</width>
+    <width>1030</width>
     <height>716</height>
    </rect>
   </property>
@@ -1228,7 +1228,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background-color: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>4</number>
+                      <number>2</number>
                      </property>
                      <widget class="QWidget" name="statistic_page">
                       <layout class="QVBoxLayout" name="verticalLayout">
@@ -1384,17 +1384,57 @@ color: rgb(11, 255, 161);</string>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_20">
                           <item>
-                           <widget class="QLabel" name="label_4">
-                            <property name="styleSheet">
-                             <string notr="true">font: 700 36pt &quot;Segoe UI&quot;;
-color: rgb(85, 170, 255);</string>
+                           <widget class="QFrame" name="voltagegraphframe">
+                            <property name="frameShape">
+                             <enum>QFrame::NoFrame</enum>
                             </property>
-                            <property name="text">
-                             <string>Will be graph here</string>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
                             </property>
-                            <property name="alignment">
-                             <set>Qt::AlignCenter</set>
+                            <layout class="QVBoxLayout" name="voltage_graph_layout">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>9</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                            </layout>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QFrame" name="tempgraphframe">
+                            <property name="frameShape">
+                             <enum>QFrame::NoFrame</enum>
                             </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QVBoxLayout" name="temp_graph_layout">
+                             <property name="spacing">
+                              <number>0</number>
+                             </property>
+                             <property name="leftMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="rightMargin">
+                              <number>0</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>0</number>
+                             </property>
+                            </layout>
                            </widget>
                           </item>
                          </layout>
@@ -3926,7 +3966,7 @@ border-bottom-right-radius:5px;
                    <item>
                     <widget class="QLabel" name="version">
                      <property name="text">
-                      <string>v1.0.0</string>
+                      <string>v1.0.1</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
