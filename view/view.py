@@ -3,7 +3,7 @@ from view.ui_main import Ui_MainWindow
 from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWindow, QGraphicsDropShadowEffect, QPushButton, QSizeGrip, QTableWidgetItem
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
 from PySide6.QtGui import QColor, QIcon
-from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress
+from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress,Plot_Canvas
 
 
 class View(QMainWindow):
@@ -98,6 +98,19 @@ class View(QMainWindow):
         self.ui.pushre_1.deleteLater()
         self.ui.usb_lan_button = QtCustomSlideButton("Usb_Lan_Button",None,80,None,'#48dbfb','#1dd1a1','#f7f7f7')
         self.ui.horizontalLayout_7.insertWidget(1,self.ui.usb_lan_button)
+        
+        # add plots spaces
+        self.ui.voltage_graph = Plot_Canvas()
+        self.ui.voltage_graph.create_y_axis(5,' Average SiMP voltage [V] ',52,66)
+        self.ui.voltage_graph.create_series('Test')
+        self.ui.voltage_graph.create_series('Test 2')
+        self.ui.voltage_graph.add_data_to_series()
+        self.ui.temperature_graph = Plot_Canvas()
+        
+        self.ui.voltage_graph_layout.addWidget(self.ui.voltage_graph.chart_view)
+        self.ui.temp_graph_layout.addWidget(self.ui.temperature_graph.chart_view)
+        
+        
         
         #replace buttons to powersupplyframe
         for number,button in enumerate(self.ui.PowerButton_body.findChildren(QPushButton),start=1):

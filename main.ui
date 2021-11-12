@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1030</width>
+    <width>1194</width>
     <height>716</height>
    </rect>
   </property>
@@ -1382,59 +1382,177 @@ color: rgb(11, 255, 161);</string>
                          <property name="frameShadow">
                           <enum>QFrame::Raised</enum>
                          </property>
-                         <layout class="QVBoxLayout" name="verticalLayout_20">
+                         <layout class="QVBoxLayout" name="verticalLayout_41">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>0</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>0</number>
+                          </property>
                           <item>
-                           <widget class="QFrame" name="voltagegraphframe">
-                            <property name="frameShape">
-                             <enum>QFrame::NoFrame</enum>
+                           <widget class="QTabWidget" name="tabWidget">
+                            <property name="styleSheet">
+                             <string notr="true">
+QTabWidget::pane {
+
+  border-radius: 10px;
+  top:-5px;
+} 
+
+QTabBar::tab {
+  padding: 7px;
+  margin-right: 1px;
+
+  border-top-left-radius:5px;
+  border-top-right-radius:5px;
+ background: #2e86de;
+ color: #fff;
+ font: 700 ;
+
+} 
+
+QTabBar::tab:selected { 
+  background: #10ac84; 
+  margin-bottom: -1px; 
+}</string>
                             </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
+                            <property name="tabPosition">
+                             <enum>QTabWidget::North</enum>
                             </property>
-                            <layout class="QVBoxLayout" name="voltage_graph_layout">
-                             <property name="spacing">
-                              <number>0</number>
-                             </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>9</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                            </layout>
-                           </widget>
-                          </item>
-                          <item>
-                           <widget class="QFrame" name="tempgraphframe">
-                            <property name="frameShape">
-                             <enum>QFrame::NoFrame</enum>
+                            <property name="tabShape">
+                             <enum>QTabWidget::Rounded</enum>
                             </property>
-                            <property name="frameShadow">
-                             <enum>QFrame::Raised</enum>
+                            <property name="currentIndex">
+                             <number>0</number>
                             </property>
-                            <layout class="QVBoxLayout" name="temp_graph_layout">
-                             <property name="spacing">
-                              <number>0</number>
+                            <property name="elideMode">
+                             <enum>Qt::ElideRight</enum>
+                            </property>
+                            <property name="documentMode">
+                             <bool>false</bool>
+                            </property>
+                            <property name="movable">
+                             <bool>false</bool>
+                            </property>
+                            <property name="tabBarAutoHide">
+                             <bool>true</bool>
+                            </property>
+                            <widget class="QWidget" name="voltage_tab">
+                             <property name="styleSheet">
+                              <string notr="true">border:none;</string>
                              </property>
-                             <property name="leftMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="topMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="rightMargin">
-                              <number>0</number>
-                             </property>
-                             <property name="bottomMargin">
-                              <number>0</number>
-                             </property>
-                            </layout>
+                             <attribute name="title">
+                              <string>Voltage</string>
+                             </attribute>
+                             <layout class="QVBoxLayout" name="verticalLayout_20">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>4</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="voltagegraphframe">
+                                <property name="styleSheet">
+                                 <string notr="true">background-color:  #2f3542;</string>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::NoFrame</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QVBoxLayout" name="voltage_graph_layout">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
+                            <widget class="QWidget" name="temp_tab">
+                             <attribute name="title">
+                              <string>Temperature</string>
+                             </attribute>
+                             <layout class="QVBoxLayout" name="verticalLayout_39" stretch="0">
+                              <property name="spacing">
+                               <number>0</number>
+                              </property>
+                              <property name="leftMargin">
+                               <number>0</number>
+                              </property>
+                              <property name="topMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="rightMargin">
+                               <number>4</number>
+                              </property>
+                              <property name="bottomMargin">
+                               <number>4</number>
+                              </property>
+                              <item>
+                               <widget class="QFrame" name="tempgraphframe">
+                                <property name="styleSheet">
+                                 <string notr="true">background-color:  #2f3542;</string>
+                                </property>
+                                <property name="frameShape">
+                                 <enum>QFrame::NoFrame</enum>
+                                </property>
+                                <property name="frameShadow">
+                                 <enum>QFrame::Raised</enum>
+                                </property>
+                                <layout class="QVBoxLayout" name="temp_graph_layout">
+                                 <property name="spacing">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="leftMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="topMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="rightMargin">
+                                  <number>0</number>
+                                 </property>
+                                 <property name="bottomMargin">
+                                  <number>0</number>
+                                 </property>
+                                </layout>
+                               </widget>
+                              </item>
+                             </layout>
+                            </widget>
                            </widget>
                           </item>
                          </layout>

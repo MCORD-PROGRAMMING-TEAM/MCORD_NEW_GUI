@@ -4,3 +4,4 @@ from .splashscreen import Splashscreen
 from .customhoverbutton import HoverButton
 from .customslidebutton import QtCustomSlideButton
 from .customprogressbar import QtCustomCirculateProgress
+from .customplotbar import Plot_Canvas

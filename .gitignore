@@ -6,3 +6,6 @@ test_app.py
 .qt_for_python
 build
 *output*
+dist
+setup.bat
+MCORD_GUI_APP.spec

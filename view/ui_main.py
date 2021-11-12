@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainIvERAY.ui'
+## Form generated from reading UI file 'mainmHICzk.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1199, 716)
+        MainWindow.resize(1194, 716)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -757,15 +757,82 @@ class Ui_MainWindow(object):
         self.graph_page_content.setObjectName(u"graph_page_content")
         self.graph_page_content.setFrameShape(QFrame.NoFrame)
         self.graph_page_content.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_20 = QVBoxLayout(self.graph_page_content)
+        self.verticalLayout_41 = QVBoxLayout(self.graph_page_content)
+        self.verticalLayout_41.setSpacing(0)
+        self.verticalLayout_41.setObjectName(u"verticalLayout_41")
+        self.verticalLayout_41.setContentsMargins(0, 0, 0, 0)
+        self.tabWidget = QTabWidget(self.graph_page_content)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tabWidget.setStyleSheet(u"\n"
+"QTabWidget::pane {\n"
+"\n"
+"  border-radius: 10px;\n"
+"  top:-5px;\n"
+"} \n"
+"\n"
+"QTabBar::tab {\n"
+"  padding: 7px;\n"
+"  margin-right: 1px;\n"
+"\n"
+"  border-top-left-radius:5px;\n"
+"  border-top-right-radius:5px;\n"
+" background: #2e86de;\n"
+" color: #fff;\n"
+" font: 700 ;\n"
+"\n"
+"} \n"
+"\n"
+"QTabBar::tab:selected { \n"
+"  background: #10ac84; \n"
+"  margin-bottom: -1px; \n"
+"}")
+        self.tabWidget.setTabPosition(QTabWidget.North)
+        self.tabWidget.setTabShape(QTabWidget.Rounded)
+        self.tabWidget.setElideMode(Qt.ElideRight)
+        self.tabWidget.setDocumentMode(False)
+        self.tabWidget.setMovable(False)
+        self.tabWidget.setTabBarAutoHide(True)
+        self.voltage_tab = QWidget()
+        self.voltage_tab.setObjectName(u"voltage_tab")
+        self.voltage_tab.setStyleSheet(u"border:none;")
+        self.verticalLayout_20 = QVBoxLayout(self.voltage_tab)
+        self.verticalLayout_20.setSpacing(0)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.label_4 = QLabel(self.graph_page_content)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
-"color: rgb(85, 170, 255);")
-        self.label_4.setAlignment(Qt.AlignCenter)
+        self.verticalLayout_20.setContentsMargins(0, 4, 4, 4)
+        self.voltagegraphframe = QFrame(self.voltage_tab)
+        self.voltagegraphframe.setObjectName(u"voltagegraphframe")
+        self.voltagegraphframe.setStyleSheet(u"background-color:  #2f3542;")
+        self.voltagegraphframe.setFrameShape(QFrame.NoFrame)
+        self.voltagegraphframe.setFrameShadow(QFrame.Raised)
+        self.voltage_graph_layout = QVBoxLayout(self.voltagegraphframe)
+        self.voltage_graph_layout.setSpacing(0)
+        self.voltage_graph_layout.setObjectName(u"voltage_graph_layout")
+        self.voltage_graph_layout.setContentsMargins(0, 0, 0, 0)
 
-        self.verticalLayout_20.addWidget(self.label_4)
+        self.verticalLayout_20.addWidget(self.voltagegraphframe)
+
+        self.tabWidget.addTab(self.voltage_tab, "")
+        self.temp_tab = QWidget()
+        self.temp_tab.setObjectName(u"temp_tab")
+        self.verticalLayout_39 = QVBoxLayout(self.temp_tab)
+        self.verticalLayout_39.setSpacing(0)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.verticalLayout_39.setContentsMargins(0, 4, 4, 4)
+        self.tempgraphframe = QFrame(self.temp_tab)
+        self.tempgraphframe.setObjectName(u"tempgraphframe")
+        self.tempgraphframe.setStyleSheet(u"background-color:  #2f3542;")
+        self.tempgraphframe.setFrameShape(QFrame.NoFrame)
+        self.tempgraphframe.setFrameShadow(QFrame.Raised)
+        self.temp_graph_layout = QVBoxLayout(self.tempgraphframe)
+        self.temp_graph_layout.setSpacing(0)
+        self.temp_graph_layout.setObjectName(u"temp_graph_layout")
+        self.temp_graph_layout.setContentsMargins(0, 0, 0, 0)
+
+        self.verticalLayout_39.addWidget(self.tempgraphframe)
+
+        self.tabWidget.addTab(self.temp_tab, "")
+
+        self.verticalLayout_41.addWidget(self.tabWidget)
 
 
         self.verticalLayout_19.addWidget(self.graph_page_content)
@@ -2071,7 +2138,8 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(4)
+        self.stackedWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2127,7 +2195,8 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3 = self.SIMP_details_table.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"Will be diagnostic page here", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"Will be graph here", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.voltage_tab), QCoreApplication.translate("MainWindow", u"Voltage", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.temp_tab), QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
@@ -2215,6 +2284,6 @@ class Ui_MainWindow(object):
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.credits.setText("")
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.0", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.1", None))
     # retranslateUi
 

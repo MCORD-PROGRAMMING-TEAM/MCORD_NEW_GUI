@@ -70,7 +70,8 @@ class Controller:
         self._view.enable_shadow_effect(self._view.ui.powersupply_progressbar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.Settings_progess_bar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.connection_progressbar,10,5,5,80)
-        self._view.enable_shadow_effect(self._view.ui.SIMP_details_table,30,0,0,80)
+        self._view.enable_shadow_effect(self._view.ui.tabWidget,30,0,0,80)
+     
     
   
     def _connectionlogic(self):
