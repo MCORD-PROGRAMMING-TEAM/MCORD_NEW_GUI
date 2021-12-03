@@ -1414,14 +1414,14 @@ QTabBar::tab {
 
   border-top-left-radius:5px;
   border-top-right-radius:5px;
- background: #2e86de;
+ background: #10ac84;
  color: #fff;
  font: 700 ;
 
 } 
 
 QTabBar::tab:selected { 
-  background: #10ac84; 
+  background: #1dd1a1; 
   margin-bottom: -1px; 
 }</string>
                             </property>

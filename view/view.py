@@ -102,10 +102,8 @@ class View(QMainWindow):
         # add plots spaces
         self.ui.voltage_graph = Plot_Canvas()
         self.ui.voltage_graph.create_y_axis(5,' Average SiMP voltage [V] ',52,66)
-        self.ui.voltage_graph.create_series('Test')
-        self.ui.voltage_graph.create_series('Test 2')
-        self.ui.voltage_graph.add_data_to_series()
         self.ui.temperature_graph = Plot_Canvas()
+        self.ui.temperature_graph.create_y_axis(5,' Average Temperature [\N{DEGREE SIGN}C] ',15,25)
         
         self.ui.voltage_graph_layout.addWidget(self.ui.voltage_graph.chart_view)
         self.ui.temp_graph_layout.addWidget(self.ui.temperature_graph.chart_view)
@@ -344,9 +342,7 @@ class View(QMainWindow):
     
     def update_params_table(self,params):
         self.found = False
-        board_number = params[3]
-        mv, mt = params[1][0], params[1][1]
-        sv, st = params[2][0], params[2][1]
+        board_number, mv, mt, sv, st = self.model.valid_received_params_from_update_thread(params)
         avetemp = int(( float(mt) + float(st)) / 2)
         self.model.simp_work_params[board_number][2] = self.model.valid_temperature_from_raw_to_celc(avetemp)
         self.update_temp_circ()
@@ -406,7 +402,10 @@ class View(QMainWindow):
             for whe in where:
                 row = whe.row()
                 self.ui.SIMP_details_table.removeRow(row)
-        
+    
+    
+
+      
                 
             
         

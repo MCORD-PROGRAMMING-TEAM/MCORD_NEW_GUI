@@ -229,7 +229,12 @@ class Model(QObject):
             return True
         else:
             return False
-            
+        
+    def valid_received_params_from_update_thread(self,params):
+        board_number = params[3]
+        mv, mt = params[1][0], params[1][1]
+        sv, st = params[2][0], params[2][1]
+        return board_number, mv, mt, sv, st 
     
     
     #### => Set section (semi valid and set sth)

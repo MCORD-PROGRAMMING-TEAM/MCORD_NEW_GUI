@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainmHICzk.ui'
+## Form generated from reading UI file 'mainyEorAL.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -776,14 +776,14 @@ class Ui_MainWindow(object):
 "\n"
 "  border-top-left-radius:5px;\n"
 "  border-top-right-radius:5px;\n"
-" background: #2e86de;\n"
+" background: #10ac84;\n"
 " color: #fff;\n"
 " font: 700 ;\n"
 "\n"
 "} \n"
 "\n"
 "QTabBar::tab:selected { \n"
-"  background: #10ac84; \n"
+"  background: #1dd1a1; \n"
 "  margin-bottom: -1px; \n"
 "}")
         self.tabWidget.setTabPosition(QTabWidget.North)

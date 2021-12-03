@@ -49,9 +49,9 @@ class Plot_Canvas(QWidget):
         self.axis_y.setLabelsBrush(Qt.white)
         self.chart.addAxis(self.axis_y, Qt.AlignLeft)
         
-    def create_series(self,name):
+    def create_series(self,number):
         series = QLineSeries()
-        series.setName(name)
+        series.setName(f'Board {number}')
         series.setPointsVisible(True)
         series.setMarkerSize(4)
         
@@ -59,13 +59,37 @@ class Plot_Canvas(QWidget):
         series.attachAxis(self.axis_x)
         series.attachAxis(self.axis_y)
         
-    def add_data_to_series(self):
+    def remove_series(self,number):
         for series in self.chart.series():
-            print(series)
+            if series.name() == f'Board {number}':
+                print(series.name())
+                self.chart.removeSeries(series)
+    
+        
+    def add_data_to_series(self,number):
+        for series in self.chart.series():
+            if series.name() == f'Board {number}':
+                pass
                 
         
         
-        
+    def resize_axis(self,x,y,times_on_plot):
+        if x > self.max_xrange:
+            t_m, t_M = min(x, self.axis_x.min()), max(x, self.axis_x.max())
+            self.max_xrange = t_M.addSecs(5)
+            if self.firsttime > times_on_plot:
+                self.min_xrange = t_m.addSecs(5)
+            else:
+                self.min_xrange = t_m
+                
+        if y > self.max_yrange  or y < self.min_yrange:
+            m, M = min(y, self.axis_y.min()), max(y, self.axis_y.max())
+            self.max_yrange = M + 1
+            self.min_yrange = m - 1
+            
+        self.axis_x.setRange(self.min_xrange,self.max_xrange)
+        self.axis_y.setRange(self.min_yrange ,self.max_yrange)
+        self.firsttime += 1
         
         
         

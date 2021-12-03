@@ -51,11 +51,15 @@ class LanController:
             self.lan_worker.start()
             self.lan_worker.start_response.connect(self.json_parser)
             self.lan_worker.finished.connect(self.lan_worker.quit)
+            self.lan_worker.finished.connect(self._view.ui.voltage_graph.create_series(self._model.board_comlist[-1]))
+            self.lan_worker.finished.connect(self._view.ui.temperature_graph.create_series(self._model.board_comlist[-1]))
         else:
             self.lan_worker = LanThread(self.LAN,'stop',self._model.current_board_number)
             self.lan_worker.start()
             self.lan_worker.start_response.connect(self.json_parser)
             self.lan_worker.finished.connect(self.lan_worker.quit)
+            self.lan_worker.finished.connect(self._view.ui.voltage_graph.remove_series(self._model.current_board_number))
+            self.lan_worker.finished.connect(self._view.ui.temperature_graph.create_series(self._model.board_comlist[-1]))
             
             
     def lan_send_voltage(self):
