@@ -31,5 +31,5 @@ Install required packages and run the main program
 ![App Screenshot](https://user-images.githubusercontent.com/77121786/140067106-55baafde-8616-4686-804a-b0c61be696b1.png)
 
 ## 🚀 About Me
-I'm not even a software developer ... but what a nuclear physicist who doesn't like to code in python
+I'm not even a software developer ... but what's a nuclear physicist who doesn't like to code in python
 
