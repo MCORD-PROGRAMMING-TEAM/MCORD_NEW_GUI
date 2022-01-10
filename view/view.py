@@ -4,7 +4,7 @@ from PySide6.QtWidgets import QCheckBox, QComboBox, QFrame, QLineEdit, QMainWind
 from PySide6.QtCore import QPropertyAnimation, QEasingCurve, QTimer, Qt
 from PySide6.QtGui import QColor, QIcon
 from view.custom_modules import SlidingStackedWidget, Splashscreen ,QtCustomSlideButton,HoverButton,QtCustomCirculateProgress,Plot_Canvas
-
+from statistics import fmean
 
 class View(QMainWindow):
     def __init__(self, model) -> None:
@@ -235,14 +235,24 @@ class View(QMainWindow):
                 board_number = self.sender().parentWidget().findChild(QLineEdit).text()
                 self.model.current_board_number = board_number
                 self.model.board_comlist.remove(board_number)
-                self.sender().parentWidget().findChildren(QLineEdit)
+                self.sender().parentWidget().findChildren(QLineEdit)[0].clear()
                 self.ui.settings_set_both_master_editline.clear()
                 self.ui.settings_set_both_slave_editline.clear()
                 self.ui.settings_master_linedit.clear()
                 self.ui.settings_slave_linedit.clear()
             except:
                 pass
-
+    
+    def error_board_detected(self,board_number):
+        #Thread is sending message bout ERR so this is walkaround how to get into which lindeedit and button should be clear 
+        for button,linedit in self.model.all_power_buttons.values():
+            if linedit.text() == str(board_number):
+                button.setCheckState(Qt.Unchecked)
+                self.model.board_error = False
+                linedit.clear()
+ 
+           
+            
     def update_simp_comlist(self):
         self.ui.simp_combo.addItems(['Master','Slave','Both'])
         self.ui.simp_combo.setCurrentIndex(-1)
@@ -402,7 +412,21 @@ class View(QMainWindow):
             for whe in where:
                 row = whe.row()
                 self.ui.SIMP_details_table.removeRow(row)
+                
     
+    def update_graphs(self,params):
+        board_number, mv, mt, sv, st = self.model.valid_received_params_from_update_thread(params)
+        voltage_params = self.model.valid_voltage_from_raw(fmean([mv,sv]))
+        temp_params = self.model.valid_temperature_from_raw_to_celc(fmean([mt,st]))
+         # add data to plots
+         
+        self.ui.voltage_graph.add_data_to_series(5,board_number,voltage_params)
+        self.ui.temperature_graph.add_data_to_series(5,board_number,temp_params)
+   
+        
+        
+        
+        
     
 
       

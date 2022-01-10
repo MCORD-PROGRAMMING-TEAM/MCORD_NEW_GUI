@@ -30,9 +30,7 @@ class LanController:
         except:
             self._model.valid_ip = False
             self._model.connection_error()
-    
-   
-        
+
     
     def close_lan_client(self):
         if self._model.connected_lan:
@@ -43,13 +41,16 @@ class LanController:
         res = f'{obj[0]} : {obj[1:]}'
         self._view.update_console(res)
     
-
+    def detect_error(self):
+        self._model.board_error = True
         
     def lan_send_start(self,status):
         if status:
             self.lan_worker = LanThread(self.LAN,'start',int(self._model.board_comlist[-1]))
             self.lan_worker.start()
             self.lan_worker.start_response.connect(self.json_parser)
+            self.lan_worker.error_response.connect(self._model.error_board_number)
+            self.lan_worker.error_response.connect(self._view.error_board_detected)
             self.lan_worker.finished.connect(self.lan_worker.quit)
             self.lan_worker.finished.connect(self._view.ui.voltage_graph.create_series(self._model.board_comlist[-1]))
             self.lan_worker.finished.connect(self._view.ui.temperature_graph.create_series(self._model.board_comlist[-1]))
@@ -59,7 +60,7 @@ class LanController:
             self.lan_worker.start_response.connect(self.json_parser)
             self.lan_worker.finished.connect(self.lan_worker.quit)
             self.lan_worker.finished.connect(self._view.ui.voltage_graph.remove_series(self._model.current_board_number))
-            self.lan_worker.finished.connect(self._view.ui.temperature_graph.create_series(self._model.board_comlist[-1]))
+            self.lan_worker.finished.connect(self._view.ui.temperature_graph.remove_series(self._model.current_board_number))
             
             
     def lan_send_voltage(self):
@@ -77,6 +78,7 @@ class LanController:
         self.lan_worker_update = LanThreadUpdate(self.LAN,self._model)
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
+        self.lan_worker_update.response.connect(self._view.update_graphs)
         self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.lan_worker_update.start()
        
@@ -96,12 +98,12 @@ class LanClient:
       
   
     def connect(self,args):
-            try:
-                self.sock.connect((args))
-                return self.sock.recv(1024)
-            except Exception as e:
-                pass
-       
+        try:
+            self.sock.connect((args))
+            return self.sock.recv(1024)
+        except:
+            return 
+    
     
     
     def do_cmd(self, obj):
@@ -117,11 +119,12 @@ class LanClient:
         self.sock.sendall((json.dumps(['!disconnect']).encode("utf8")))
         
                    
-            
+
 
 class LanThread(QThread):
     connection_response = Signal(str)
     start_response = Signal(list)
+    error_response = Signal(int)
     progress = Signal(int)
     
     def __init__(self, client, func, command) -> None:
@@ -131,13 +134,12 @@ class LanThread(QThread):
         self.func = func
         
     def run(self):
-        if self.func == 'connect':
-            res = self.client.connect(self.command)
-            res = res.decode('utf-8')
-            self.connection_response.emit(res)
-
-        elif self.func == 'start':
+    
+        if self.func == 'start':
             res = self.client.do_cmd(['init',int(self.command)])
+            if self.check_ERR(res):
+                self.error_response.emit(int(self.command))
+                return 
             self.start_response.emit(res)
             res = self.client.do_cmd(['hvon',int(self.command)])
             self.start_response.emit(res)
@@ -149,6 +151,10 @@ class LanThread(QThread):
         elif self.func == 'stop':
             res = self.client.do_cmd(['hvoff', int(self.command)])
             self.start_response.emit(res)
+    
+    def check_ERR(self,res):
+        if res[0] == 'ERR':
+            return True
 
             
 class LanThreadUpdate(QThread):

@@ -20,6 +20,12 @@ class Plot_Canvas(QWidget):
         self.chart_view.setRenderHint(QPainter.Antialiasing)
         self.chart_view.setRubberBand(QChartView.ClickThroughRubberBand)
         
+        self.firsttime = 0
+        self.max_xrange = QDateTime.currentDateTime() 
+        self.min_xrange = 0
+        self.max_yrange = 0
+        self.min_yrange = 0
+        
     
         
         
@@ -48,6 +54,8 @@ class Plot_Canvas(QWidget):
         self.axis_y.setRange(minv,maxv)
         self.axis_y.setLabelsBrush(Qt.white)
         self.chart.addAxis(self.axis_y, Qt.AlignLeft)
+        self.max_yrange = maxv
+        self.min_yrange = minv
         
     def create_series(self,number):
         series = QLineSeries()
@@ -66,26 +74,37 @@ class Plot_Canvas(QWidget):
                 self.chart.removeSeries(series)
     
         
-    def add_data_to_series(self,number):
+    def add_data_to_series(self,scale,number,value):
         for series in self.chart.series():
             if series.name() == f'Board {number}':
-                pass
+                data_x = QDateTime.currentDateTime()
+                series.append(float(data_x.toMSecsSinceEpoch()),float(value))
+                self.resize_axis(data_x,value,scale)
+                
+    
+    def rescale_x_axis(self,down_time,up_time):
+        self.axis_x.setMax(QDateTime.currentDateTime().addSecs(up_time))
+        self.axis_x.setMin(QDateTime.currentDateTime().addSecs(down_time))
                 
         
         
     def resize_axis(self,x,y,times_on_plot):
         if x > self.max_xrange:
+            if not self.firsttime: self.rescale_x_axis(-20,300) 
             t_m, t_M = min(x, self.axis_x.min()), max(x, self.axis_x.max())
-            self.max_xrange = t_M.addSecs(5)
+            self.max_xrange = t_M.addSecs(120)
             if self.firsttime > times_on_plot:
                 self.min_xrange = t_m.addSecs(5)
             else:
                 self.min_xrange = t_m
                 
-        if y > self.max_yrange  or y < self.min_yrange:
-            m, M = min(y, self.axis_y.min()), max(y, self.axis_y.max())
+        if y > self.max_yrange:
+            M = max(y, self.axis_y.max())
             self.max_yrange = M + 1
-            self.min_yrange = m - 1
+            
+        elif y < self.min_yrange:
+            m = min(y, self.axis_y.min())
+            self.min_yrange = m + 1
             
         self.axis_x.setRange(self.min_xrange,self.max_xrange)
         self.axis_y.setRange(self.min_yrange ,self.max_yrange)

@@ -57,6 +57,7 @@ class Model(QObject):
         self.ip_passed_status = (0,0)
         self.board_changed, self.simp_voltage_changed = False, False
         self.thread_update_run_status = False
+        self.board_error = False
         
         
         # when dubug_mode will be able, change it to true
@@ -221,7 +222,7 @@ class Model(QObject):
         if self.active_source == 'USB':
             return [90,60]
         elif self.active_source == 'LAN':
-            return [40,30]
+            return [50,30]
         
     def valid_powerbuttons_status(self):
         checker = [button.isChecked() for button, _ in self.all_power_buttons.values()]
@@ -280,8 +281,8 @@ class Model(QObject):
         self.display_error(title,message)
         
     def connection_error(self):
-        title = "Sth went wrong with connection to device"
-        message = "Please try again"
+        title = "Connection to HUB cannot be established"
+        message = "Device is busy or ip address is incorrect"
         self.display_error(title,message)
         
     def ip_error(self):
@@ -292,6 +293,11 @@ class Model(QObject):
     def error_voltage_range(self):
         title = "Voltage value not in work range"
         message = "Minimum voltage value (53.00 V) will be set "
+        self.display_error(title,message)
+        
+    def error_board_number(self):
+        title = "Board with provided ID is not connected to HUB"
+        message = "Please check ID and try again"
         self.display_error(title,message)
         
 
