@@ -37,6 +37,9 @@ class USBController:
             self._view.update_console(f'OK : {res}')
         else:
             self._view.update_console(f'OK : {response}')
+    
+    def error_msg(self,info):
+        self._view.update_console(f'ERROR: {info}')
 
     def create_usb_connect(self):
         self.USB = USBClinet(self._model.comport)
@@ -50,14 +53,16 @@ class USBController:
        
         
     def close_usb_connect(self,status):
-        if self.USB:
-            if not status:
-                self.USB.quit()
+        if self.USB and not status:
+            self.USB.quit()
         
     def usb_send_start(self,status):
         if status:
             self.usb_worker = USBThread(self.USB,'start',int(self._model.board_comlist[-1]))
             self.usb_worker.start()
+            self.usb_worker.error_board.connect(self._model.error_board_number)
+            self.usb_worker.error_board.connect(self._view.error_board_detected)
+            self.usb_worker.error_message.connect(self.error_msg)
             self.usb_worker.reponse.connect(self.hub_setup_response_parser)
             self.usb_worker.finished.connect(self.usb_worker.quit)
             
@@ -124,6 +129,8 @@ class USBClinet:
         
 class USBThread(QThread):
     reponse = Signal(list)
+    error_board = Signal(int)
+    error_message = Signal(str)
     
     def __init__(self, client, func, bn) -> None:
         super().__init__()
@@ -135,7 +142,10 @@ class USBThread(QThread):
         if self.func == 'start':
             rdy_command = f'misc.init({self.bn})\r\n'
             res = self.client.send_command(rdy_command.encode())
-            print(res.decode())
+            if self.check_if_error(res): 
+                self.error_message.emit('Board not found')
+                self.error_board.emit(self.bn)
+                return 
             self.reponse.emit(res)
             rdy_command = f'misc.HVon({self.bn})\r\n'
             res = self.client.send_command(rdy_command.encode())
@@ -153,6 +163,10 @@ class USBThread(QThread):
             
         else:
             return 
+    
+    def check_if_error(self,res):
+        if len(res) <= 4:
+            return True 
         
         
 class USBThreadUpdate(QThread):
