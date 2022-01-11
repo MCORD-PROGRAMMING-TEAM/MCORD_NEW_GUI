@@ -135,6 +135,7 @@ class USBThread(QThread):
         if self.func == 'start':
             rdy_command = f'misc.init({self.bn})\r\n'
             res = self.client.send_command(rdy_command.encode())
+            print(res.decode())
             self.reponse.emit(res)
             rdy_command = f'misc.HVon({self.bn})\r\n'
             res = self.client.send_command(rdy_command.encode())
