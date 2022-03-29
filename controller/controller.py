@@ -19,8 +19,8 @@ class Controller:
         self._frames_animation()
         self._connectionlogic()
         self._enable_shadow_effect()
-        #self._lan_logic()
-        
+        self._diagnosticlogic()
+  
     
         
         
@@ -71,6 +71,7 @@ class Controller:
         self._view.enable_shadow_effect(self._view.ui.Settings_progess_bar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.connection_progressbar,10,5,5,80)
         self._view.enable_shadow_effect(self._view.ui.tabWidget,30,0,0,80)
+        self._view.enable_shadow_effect(self._view.ui.Diagionstic_frame,30,0,0,80)
      
     
   
@@ -150,6 +151,11 @@ class Controller:
         self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_update)
         self._view.ui.settings_button.clicked.connect(self.usbcontroller.usb_send_voltage)
         self._view.ui.closeButton.clicked.connect(self.usbcontroller.close_usb_connect)
+        
+    def _diagnosticlogic(self):
+        self._view.ui.calibration_button.stateChanged.connect(self.lancontroller.lan_calibration)
+        self._view.ui.recalib_button.stateChanged.connect(self.lancontroller.lan_autorun)
+
     
 
         

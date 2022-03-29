@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'splash_screenmFjFDg.ui'
+## Form generated from reading UI file 'splash_screenSVIdkn.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,7 +12,7 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
-from .. rc_icons import *
+from .. import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -118,12 +118,6 @@ class Ui_MainWindow(object):
         font2.setItalic(False)
         self.loading.setFont(font2)
         self.loading.setAlignment(Qt.AlignCenter)
-        self.logo_border = QFrame(self.main_frame)
-        self.logo_border.setObjectName(u"logo_border")
-        self.logo_border.setGeometry(QRect(180, 200, 291, 111))
-        self.logo_border.setStyleSheet(u"image: url(:/images/images/nica.png);")
-        self.logo_border.setFrameShape(QFrame.NoFrame)
-        self.logo_border.setFrameShadow(QFrame.Raised)
         self.credits = QLabel(self.main_frame)
         self.credits.setObjectName(u"credits")
         self.credits.setGeometry(QRect(250, 480, 151, 20))
@@ -143,7 +137,7 @@ class Ui_MainWindow(object):
         self.logo_frame.setFrameShadow(QFrame.Raised)
         self.frame = QFrame(self.logo_frame)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(20, 90, 321, 311))
+        self.frame.setGeometry(QRect(20, 100, 321, 311))
         self.frame.setStyleSheet(u"image: url(:/images/images/mcord.png);\n"
 "")
         self.frame.setFrameShape(QFrame.NoFrame)
@@ -162,6 +156,6 @@ class Ui_MainWindow(object):
         self.label.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p><span style=\" font-weight:700;\">MCORD </span>service </p></body></html>", None))
         self.desc.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>Service GUI for manage <span style=\" font-weight:700;\">MCORD HUB</span></p></body></html>", None))
         self.loading.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>loading ...</p></body></html>", None))
-        self.credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>created by: kruksik v1.0.1</p></body></html>", None))
+        self.credits.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p>created by: kruksik v1.0.2</p></body></html>", None))
     # retranslateUi
 

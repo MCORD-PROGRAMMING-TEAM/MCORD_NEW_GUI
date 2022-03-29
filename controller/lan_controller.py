@@ -3,13 +3,15 @@ import socket
 import json
 from datetime import datetime
 import csv
-
+import numpy as np 
+import sqlite3
 
 class LanController:
     def __init__(self,view,model) -> None:
         self._view = view 
         self._model = model
         self.LAN = None
+        self.db = DB()
 
     def allowed_only_lan(self):
         text = self._view.ui.connection_edit.text()
@@ -71,6 +73,32 @@ class LanController:
         self.lan_worker.start_response.connect(self.json_parser)
         self.lan_worker.finished.connect(self.lan_worker.quit)
         
+    def lan_calibration(self):
+        self.lan_worker = LanThread(self.LAN,'calib',int(self._view.ui.diagnostic_combo.currentText()))
+        self.lan_worker.start()
+        self.lan_worker.calib_response.connect(self.test)
+        self.lan_worker.error_response.connect(self._model.error_board_number)
+        self.lan_worker.error_response.connect(self._view.error_board_detected)
+        self.lan_worker.finished.connect(self.lan_worker.quit)
+    
+    def test(self,params):
+        print(params)
+    
+    def lan_calibration_handle(self,params):
+        print("Start calibration curve")
+        volt,curr_m,curr_s = params
+        volt_master = self._model.valid_breakdown_voltage(volt,curr_m)
+        volt_slave = self._model.valid_breakdown_voltage(volt,curr_s)
+        self.update_database_calib(int(self._view.ui.diagnostic_combo.currentText()), volt_master, volt_slave, volt_master + 2 ,volt_slave + 2)
+        ready_params = [int(self._view.ui.diagnostic_combo.currentText()), volt_master + 2 ,volt_slave + 2]
+        self.lan_worker = LanThread(self.LAN,'set', ready_params) 
+        self.lan_worker.start()
+        self.lan_worker.start_response.connect(self.json_parser)
+        self.lan_worker.finished.connect(self.lan_worker.quit)
+    
+        
+
+        
     def lan_send_update(self):
         if self._model.thread_update_run_status:
             return
@@ -79,9 +107,33 @@ class LanController:
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
         self.lan_worker_update.response.connect(self._view.update_graphs)
+        self.lan_worker_update.response.connect(self.update_database_fetch)
         self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.lan_worker_update.start()
-       
+    
+    def update_database_fetch(self,params):
+        board_id = int(params[-1])
+        master_v,slave_v = params[1][0], params[1][1]
+        master_temp, slave_temp = params[2][0], params[2][1]
+        print(f"Fetched data: {[board_id,master_v,slave_v,master_temp,slave_temp]}")
+        self.db.insert_values_from_fetch(None,board_id,master_v,slave_v,master_temp,slave_temp)
+    
+    def update_database_calib(self,id,mbr,sbr,mv,sv):
+        self.db.update_value_calibration(id,mbr,sbr,mv,sv)
+        print("Database updated !!!")
+        
+    def lan_autorun(self):
+        board_id = int(self._view.ui.diagnostic_combo.currentText())
+        master_v, slave_v = self.db.get_voltage_from_db(board_id)
+        ready_params = [board_id, float(master_v), float(slave_v)]
+        self.lan_worker = LanThread(self.LAN,'set', ready_params)
+        self.lan_worker.start()
+        self.lan_worker.finished.connect(self.lan_worker.quit)
+        
+        
+
+        
+        
     def lan_update_stop(self,status):
         if not status and self._model.temp_loop_status:
             if not self._model.valid_powerbuttons_status():
@@ -126,6 +178,7 @@ class LanThread(QThread):
     start_response = Signal(list)
     error_response = Signal(int)
     progress = Signal(int)
+    calib_response = Signal(list)
     
     def __init__(self, client, func, command) -> None:
         super().__init__()
@@ -146,11 +199,31 @@ class LanThread(QThread):
         
         elif self.func == 'set':
             res = self.client.do_cmd(['setdac',int(self.command[0]),int(self.command[1]),int(self.command[2])])
+            print(res)
             self.start_response.emit(res)
         
         elif self.func == 'stop':
             res = self.client.do_cmd(['hvoff', int(self.command)])
             self.start_response.emit(res)
+            
+        elif self.func == 'calib':
+            volt,curr_m,curr_s = [],[],[]
+            self.client.do_cmd(['init',int(self.command)])
+            self.client.do_cmd(['hvon',int(self.command)])
+            
+            for voltage in np.arange(52.0,66.0,0.1):
+                self.client.do_cmd(['setdac',int(self.command),voltage,voltage])
+                res_master = self.client.do_cmd(['adc',int(self.command),5])
+                res_slave = self.client.do_cmd(['adc',int(self.command),6])
+                print([int(self.command),voltage,res_master[1],res_slave[1]])
+                volt.append(voltage)
+                curr_m.append(res_master[1])
+                curr_s.append(res_slave[1])
+                
+            self.calib_response.emit([volt,curr_m,curr_s])
+        
+       
+                
     
     def check_ERR(self,res):
         if res[0] == 'ERR':
@@ -221,6 +294,33 @@ class LanThreadUpdate(QThread):
         with open(filename, 'a', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(row)
+            
+class DB:
+    def __init__(self) -> None:
+        self.dbname = "MCORD_startDetectorTest.sqlite" 
+        self.conn = sqlite3.connect(self.dbname)
+        self.cursor = self.conn.cursor()
+        
+    def __del__(self):
+        self.conn.close()
+    
+    def get_voltage_from_db(self,id):
+        self.cursor.execute(f"SELECT master_work_v, slave_work_v  FROM  Bar_Parameters WHERE board_id = {id}")
+        result =  self.cursor.fetchall()
+        print(f'Got results:{result[0][0]} {result[0][1]} ')
+        return result[0][0], result[0][1]
+    
+    def update_value_calibration(self,id,master_br,slave_br,master_v,slave_v):
+        self.cursor.execute(f"UPDATE Calibration_Parameters SET master_v_br = {master_br}, slace_v_br = {slave_br}, master_work_v = {master_v}, slave_work_v = {slave_v} WHERE board_id = {id}  ")
+        self.conn.commit()
+        print("Values edited")
+    
+    def insert_values_from_fetch(self,*params):
+        self.cursor.execute(f"INSERT INTO fetcheddata VALUES ({','.join(['?' for _ in params])})", params)
+        self.conn.commit()
+        print(f"Values added: {params}")
+    
+     
         
         
         

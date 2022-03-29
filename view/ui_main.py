@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainyEorAL.ui'
+## Form generated from reading UI file 'mainjdDETZ.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.1.1
 ##
@@ -12,12 +12,13 @@ from PySide6.QtCore import *  # type: ignore
 from PySide6.QtGui import *  # type: ignore
 from PySide6.QtWidgets import *  # type: ignore
 
+from . import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1194, 716)
+        MainWindow.resize(1211, 770)
         MainWindow.setMinimumSize(QSize(1030, 716))
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
@@ -413,6 +414,19 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_6.addWidget(self.btn_hub)
 
+        self.btn_diagnostic = QPushButton(self.buttonsframe)
+        self.btn_diagnostic.setObjectName(u"btn_diagnostic")
+        self.btn_diagnostic.setEnabled(True)
+        sizePolicy.setHeightForWidth(self.btn_diagnostic.sizePolicy().hasHeightForWidth())
+        self.btn_diagnostic.setSizePolicy(sizePolicy)
+        self.btn_diagnostic.setMinimumSize(QSize(0, 60))
+        self.btn_diagnostic.setFont(font)
+        self.btn_diagnostic.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_diagnostic.setLayoutDirection(Qt.LeftToRight)
+        self.btn_diagnostic.setStyleSheet(u"background-image: url(:/icons/icons/diagnostic.png);")
+
+        self.verticalLayout_6.addWidget(self.btn_diagnostic)
+
         self.btn_statistic = QPushButton(self.buttonsframe)
         self.btn_statistic.setObjectName(u"btn_statistic")
         sizePolicy.setHeightForWidth(self.btn_statistic.sizePolicy().hasHeightForWidth())
@@ -436,19 +450,6 @@ class Ui_MainWindow(object):
         self.btn_plot.setStyleSheet(u"background-image: url(:/icons/icons/graph2.png);")
 
         self.verticalLayout_6.addWidget(self.btn_plot)
-
-        self.btn_diagnostic = QPushButton(self.buttonsframe)
-        self.btn_diagnostic.setObjectName(u"btn_diagnostic")
-        self.btn_diagnostic.setEnabled(True)
-        sizePolicy.setHeightForWidth(self.btn_diagnostic.sizePolicy().hasHeightForWidth())
-        self.btn_diagnostic.setSizePolicy(sizePolicy)
-        self.btn_diagnostic.setMinimumSize(QSize(0, 60))
-        self.btn_diagnostic.setFont(font)
-        self.btn_diagnostic.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_diagnostic.setLayoutDirection(Qt.LeftToRight)
-        self.btn_diagnostic.setStyleSheet(u"background-image: url(:/icons/icons/diagnostic.png);")
-
-        self.verticalLayout_6.addWidget(self.btn_diagnostic)
 
         self.btn_exit = QPushButton(self.buttonsframe)
         self.btn_exit.setObjectName(u"btn_exit")
@@ -737,13 +738,153 @@ class Ui_MainWindow(object):
         self.diagnostic_page_content.setFrameShadow(QFrame.Raised)
         self.verticalLayout_25 = QVBoxLayout(self.diagnostic_page_content)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.label_16 = QLabel(self.diagnostic_page_content)
-        self.label_16.setObjectName(u"label_16")
-        self.label_16.setStyleSheet(u"font: 700 36pt \"Segoe UI\";\n"
-"color: rgb(11, 255, 161);")
-        self.label_16.setAlignment(Qt.AlignCenter)
+        self.Diagionstic_frame = QFrame(self.diagnostic_page_content)
+        self.Diagionstic_frame.setObjectName(u"Diagionstic_frame")
+        self.Diagionstic_frame.setMaximumSize(QSize(16777215, 100))
+        self.Diagionstic_frame.setStyleSheet(u"QComboBox{\n"
+"	border-radius: 5px;\n"
+"	border: 1px solid rgb(33, 37, 43);\n"
+"	padding: 5px;\n"
+"	padding-left: 10px;\n"
+"	background-color: #444b59;\n"
+"}\n"
+"QComboBox:hover{\n"
+"	border: 2px solid #3bb6cf;\n"
+"}\n"
+"QComboBox::drop-down {\n"
+"	subcontrol-origin: padding;\n"
+"	subcontrol-position: top right;\n"
+"	width: 25px; \n"
+"	border-left-width: 3px;\n"
+"	\n"
+"	border-left-color: #3bb6cf;\n"
+"	border-left-style: solid;\n"
+"	border-top-right-radius: 3px;\n"
+"	border-bottom-right-radius: 3px;	\n"
+"	background-image: url(:/icons/icons/cil-chevron-double-down.png);\n"
+"	background-position: center;\n"
+"	background-repeat: no-reperat;\n"
+" }\n"
+"QComboBox QAbstractItemView {\n"
+"	color: #3bb6cf;\n"
+"	background-color: #2f3542;\n"
+"	padding: 10px;\n"
+"}\n"
+"QLineEdit {\n"
+"border-radius:5px;\n"
+"border: 2px solid #363c47;\n"
+"padding-left: 10px;\n"
+"padding-right: 10px;\n"
+"color: #fff;\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid #39afc7;\n"
+"background-color: #2f3542;\n"
+"}")
+        self.Diagionstic_frame.setFrameShape(QFrame.NoFrame)
+        self.Diagionstic_frame.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_42 = QVBoxLayout(self.Diagionstic_frame)
+        self.verticalLayout_42.setSpacing(0)
+        self.verticalLayout_42.setObjectName(u"verticalLayout_42")
+        self.verticalLayout_42.setContentsMargins(0, 0, 0, 0)
+        self.Diagnostic_title = QFrame(self.Diagionstic_frame)
+        self.Diagnostic_title.setObjectName(u"Diagnostic_title")
+        self.Diagnostic_title.setMaximumSize(QSize(16777215, 50))
+        self.Diagnostic_title.setStyleSheet(u"background-color: #42cce8;\n"
+"border-top-left-radius:5px;\n"
+"border-top-right-radius:5px;\n"
+"")
+        self.Diagnostic_title.setFrameShape(QFrame.NoFrame)
+        self.Diagnostic_title.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_43 = QVBoxLayout(self.Diagnostic_title)
+        self.verticalLayout_43.setObjectName(u"verticalLayout_43")
+        self.Diagnostic_title_text = QLabel(self.Diagnostic_title)
+        self.Diagnostic_title_text.setObjectName(u"Diagnostic_title_text")
+        self.Diagnostic_title_text.setMaximumSize(QSize(16777215, 50))
+        self.Diagnostic_title_text.setStyleSheet(u"font: 700 12pt \"Segoe UI\";\n"
+"color: rgb(255, 255, 255);")
+        self.Diagnostic_title_text.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_25.addWidget(self.label_16)
+        self.verticalLayout_43.addWidget(self.Diagnostic_title_text)
+
+
+        self.verticalLayout_42.addWidget(self.Diagnostic_title)
+
+        self.Diagnostic_body = QFrame(self.Diagionstic_frame)
+        self.Diagnostic_body.setObjectName(u"Diagnostic_body")
+        self.Diagnostic_body.setMaximumSize(QSize(16777215, 50))
+        self.Diagnostic_body.setStyleSheet(u"background-color: rgb(68, 75, 89);")
+        self.Diagnostic_body.setFrameShape(QFrame.NoFrame)
+        self.Diagnostic_body.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_18 = QHBoxLayout(self.Diagnostic_body)
+        self.horizontalLayout_18.setSpacing(20)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.horizontalLayout_18.setContentsMargins(16, -1, 15, -1)
+        self.label_26 = QLabel(self.Diagnostic_body)
+        self.label_26.setObjectName(u"label_26")
+
+        self.horizontalLayout_18.addWidget(self.label_26)
+
+        self.diagnostic_combo = QComboBox(self.Diagnostic_body)
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.addItem("")
+        self.diagnostic_combo.setObjectName(u"diagnostic_combo")
+        self.diagnostic_combo.setStyleSheet(u"")
+
+        self.horizontalLayout_18.addWidget(self.diagnostic_combo)
+
+        self.horizontalSpacer_2 = QSpacerItem(182, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_18.addItem(self.horizontalSpacer_2)
+
+        self.label_28 = QLabel(self.Diagnostic_body)
+        self.label_28.setObjectName(u"label_28")
+
+        self.horizontalLayout_18.addWidget(self.label_28)
+
+        self.calibration_button = QPushButton(self.Diagnostic_body)
+        self.calibration_button.setObjectName(u"calibration_button")
+
+        self.horizontalLayout_18.addWidget(self.calibration_button)
+
+        self.horizontalSpacer_4 = QSpacerItem(181, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_18.addItem(self.horizontalSpacer_4)
+
+        self.label_31 = QLabel(self.Diagnostic_body)
+        self.label_31.setObjectName(u"label_31")
+
+        self.horizontalLayout_18.addWidget(self.label_31)
+
+        self.recalib_button = QPushButton(self.Diagnostic_body)
+        self.recalib_button.setObjectName(u"recalib_button")
+
+        self.horizontalLayout_18.addWidget(self.recalib_button)
+
+
+        self.verticalLayout_42.addWidget(self.Diagnostic_body)
+
+
+        self.verticalLayout_25.addWidget(self.Diagionstic_frame)
+
+        self.frame_2 = QFrame(self.diagnostic_page_content)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
+
+        self.verticalLayout_25.addWidget(self.frame_2)
 
 
         self.verticalLayout_24.addWidget(self.diagnostic_page_content)
@@ -844,10 +985,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.main_home_page = QFrame(self.home_page)
         self.main_home_page.setObjectName(u"main_home_page")
-        self.main_home_page.setStyleSheet(u"background-image: url(:/images/images/nica.png);\n"
-"background-repeat :none;\n"
-"background-position: center;\n"
-"")
+        self.main_home_page.setStyleSheet(u"")
         self.main_home_page.setFrameShape(QFrame.NoFrame)
         self.main_home_page.setFrameShadow(QFrame.Raised)
         self.verticalLayout_14 = QVBoxLayout(self.main_home_page)
@@ -1203,6 +1341,7 @@ class Ui_MainWindow(object):
 
         self.simp_combo = QComboBox(self.Setting_choice_frame)
         self.simp_combo.setObjectName(u"simp_combo")
+        self.simp_combo.setInsertPolicy(QComboBox.InsertAlphabetically)
 
         self.settings_choice_layout.addWidget(self.simp_combo)
 
@@ -2097,14 +2236,12 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         QWidget.setTabOrder(self.btn_statistic, self.btn_plot)
         QWidget.setTabOrder(self.btn_plot, self.connection_edit)
-        QWidget.setTabOrder(self.connection_edit, self.btn_diagnostic)
-        QWidget.setTabOrder(self.btn_diagnostic, self.board_combo)
+        QWidget.setTabOrder(self.connection_edit, self.board_combo)
         QWidget.setTabOrder(self.board_combo, self.btn_exit)
         QWidget.setTabOrder(self.btn_exit, self.SettingsButton)
         QWidget.setTabOrder(self.SettingsButton, self.minimizeButton)
         QWidget.setTabOrder(self.minimizeButton, self.maximizeButton)
-        QWidget.setTabOrder(self.maximizeButton, self.closeButton)
-        QWidget.setTabOrder(self.closeButton, self.extralefttext)
+        QWidget.setTabOrder(self.maximizeButton, self.extralefttext)
         QWidget.setTabOrder(self.extralefttext, self.textEdit)
         QWidget.setTabOrder(self.textEdit, self.textEdit_2)
         QWidget.setTabOrder(self.textEdit_2, self.pushre_1)
@@ -2126,8 +2263,7 @@ class Ui_MainWindow(object):
         QWidget.setTabOrder(self.button_edit_7, self.pushre_8)
         QWidget.setTabOrder(self.pushre_8, self.button_edit_8)
         QWidget.setTabOrder(self.button_edit_8, self.pushre_9)
-        QWidget.setTabOrder(self.pushre_9, self.btn_hub)
-        QWidget.setTabOrder(self.btn_hub, self.simp_combo)
+        QWidget.setTabOrder(self.pushre_9, self.simp_combo)
         QWidget.setTabOrder(self.simp_combo, self.settings_button)
         QWidget.setTabOrder(self.settings_button, self.settings_master_linedit)
         QWidget.setTabOrder(self.settings_master_linedit, self.settings_slave_linedit)
@@ -2149,9 +2285,9 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.ToggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_hub.setText(QCoreApplication.translate("MainWindow", u"     Hub Management", None))
+        self.btn_diagnostic.setText(QCoreApplication.translate("MainWindow", u"     Diagnostics", None))
         self.btn_statistic.setText(QCoreApplication.translate("MainWindow", u"     SiMP's Info", None))
         self.btn_plot.setText(QCoreApplication.translate("MainWindow", u"     Graph", None))
-        self.btn_diagnostic.setText(QCoreApplication.translate("MainWindow", u"     Diagnostics", None))
         self.btn_exit.setText("")
         self.btn_exit_2.setText("")
         self.SettingsButton.setText("")
@@ -2194,7 +2330,27 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Voltage", None));
         ___qtablewidgetitem3 = self.SIMP_details_table.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
-        self.label_16.setText(QCoreApplication.translate("MainWindow", u"Will be diagnostic page here", None))
+        self.Diagnostic_title_text.setText(QCoreApplication.translate("MainWindow", u"Diagnostic", None))
+        self.label_26.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
+        self.diagnostic_combo.setItemText(0, QCoreApplication.translate("MainWindow", u"1", None))
+        self.diagnostic_combo.setItemText(1, QCoreApplication.translate("MainWindow", u"2", None))
+        self.diagnostic_combo.setItemText(2, QCoreApplication.translate("MainWindow", u"3", None))
+        self.diagnostic_combo.setItemText(3, QCoreApplication.translate("MainWindow", u"4", None))
+        self.diagnostic_combo.setItemText(4, QCoreApplication.translate("MainWindow", u"5", None))
+        self.diagnostic_combo.setItemText(5, QCoreApplication.translate("MainWindow", u"6", None))
+        self.diagnostic_combo.setItemText(6, QCoreApplication.translate("MainWindow", u"7", None))
+        self.diagnostic_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"8", None))
+        self.diagnostic_combo.setItemText(8, QCoreApplication.translate("MainWindow", u"9", None))
+        self.diagnostic_combo.setItemText(9, QCoreApplication.translate("MainWindow", u"10", None))
+        self.diagnostic_combo.setItemText(10, QCoreApplication.translate("MainWindow", u"11", None))
+        self.diagnostic_combo.setItemText(11, QCoreApplication.translate("MainWindow", u"12", None))
+        self.diagnostic_combo.setItemText(12, QCoreApplication.translate("MainWindow", u"13", None))
+        self.diagnostic_combo.setItemText(13, QCoreApplication.translate("MainWindow", u"14", None))
+
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"Start Calibration: ", None))
+        self.calibration_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.label_31.setText(QCoreApplication.translate("MainWindow", u"Calibration setter:", None))
+        self.recalib_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.voltage_tab), QCoreApplication.translate("MainWindow", u"Voltage", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.temp_tab), QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -2284,6 +2440,6 @@ class Ui_MainWindow(object):
         self.label_24.setText(QCoreApplication.translate("MainWindow", u"Slave SiMP voltage", None))
         self.label_25.setText(QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.credits.setText("")
-        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.1", None))
+        self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.2", None))
     # retranslateUi
 

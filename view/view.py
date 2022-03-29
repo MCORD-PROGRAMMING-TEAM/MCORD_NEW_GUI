@@ -119,12 +119,19 @@ class View(QMainWindow):
             # Add buttons to dict in model 
             self.model.get_all_power_buttons(button.parentWidget().findChildren(QCheckBox),button.parentWidget().findChildren(QLineEdit))
             
-        #replace pushbutton to hover button
+        #replace pushbutton to hover button in settings 
         self.ui.settings_button.deleteLater()
         self.ui.settings_button = HoverButton("Set Voltage")
         self.ui.settings_button.setEnabled(False)
         self.ui.settings_choice_layout.insertWidget(4,self.ui.settings_button)
         
+        #replace pushbutton to hover button in diagnostic
+        self.ui.calibration_button.deleteLater()
+        self.ui.recalib_button.deleteLater()
+        self.ui.recalib_button = QtCustomSlideButton("Set Calibration", None, 80, None, '#48dbfb','#4882fb','#f7f7f7' )
+        self.ui.calibration_button = QtCustomSlideButton("Run Calibration", None, 80, None, '#48dbfb','#4882fb','#f7f7f7' )
+        self.ui.horizontalLayout_18.insertWidget(5, self.ui.calibration_button)
+        self.ui.horizontalLayout_18.insertWidget(8, self.ui.recalib_button)        
         
         # Add progressbars to frames
         self.ui.master_progressbar = QtCustomCirculateProgress(progress_color='#f368e0',max_value=100,suffix=' V',value=0)
@@ -222,11 +229,10 @@ class View(QMainWindow):
         
 
     def update_board_comlist(self):
-        self.ui.board_combo.clear()
-        self.ui.parameters_board_combo.clear()
-        self.ui.board_combo.addItems(self.model.board_comlist)
-        self.ui.parameters_board_combo.addItems(self.model.board_comlist)
-    
+        for item in [self.ui.board_combo, self.ui.parameters_board_combo]:
+            item.clear()
+            item.addItems(self.model.board_comlist)
+        
         
         
     def clear_board_comlist(self,status):
@@ -422,7 +428,8 @@ class View(QMainWindow):
          
         self.ui.voltage_graph.add_data_to_series(5,board_number,voltage_params)
         self.ui.temperature_graph.add_data_to_series(5,board_number,temp_params)
-   
+        
+
         
         
         

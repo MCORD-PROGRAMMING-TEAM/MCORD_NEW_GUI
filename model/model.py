@@ -4,6 +4,7 @@ from PySide6.QtCore import QObject,Signal,QMargins,QRegularExpression
 from PySide6.QtGui import QIntValidator,QRegularExpressionValidator
 import ipaddress
 from sys import platform
+import numpy as np 
 
 #import package only for windows
 try:
@@ -238,6 +239,13 @@ class Model(QObject):
         return board_number, mv, mt, sv, st 
     
     
+    def valid_breakdown_voltage(self,volt,curr):
+        volt = np.array(volt)
+        curr = np.array(curr)
+        vbr = volt[curr>0][0]   
+        print(f"Vbr found at: {vbr}, operation voltage will be set: {vbr +2 }")
+        return vbr + 2  
+    
     #### => Set section (semi valid and set sth)
     def set_board_number_asNumber(self):
         onlyInt = QIntValidator()
@@ -251,7 +259,7 @@ class Model(QObject):
             self.get_editline_list(combo)
             
     def set_voltage_range(self):
-        min_voltage = 50.00
+        min_voltage = 53.00
         max_voltage = 65.00
         
         if self.debug_login:
