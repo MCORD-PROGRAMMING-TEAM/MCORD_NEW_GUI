@@ -1,18 +1,27 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'mainjdDETZ.ui'
+## Form generated from reading UI file 'main.ui'
 ##
-## Created by: Qt User Interface Compiler version 6.1.1
+## Created by: Qt User Interface Compiler version 6.2.4
 ##
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 
-from PySide6.QtCore import *  # type: ignore
-from PySide6.QtGui import *  # type: ignore
-from PySide6.QtWidgets import *  # type: ignore
-
-from . import resources_rc
+from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
+    QMetaObject, QObject, QPoint, QRect,
+    QSize, QTime, QUrl, Qt)
+from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
+    QFont, QFontDatabase, QGradient, QIcon,
+    QImage, QKeySequence, QLinearGradient, QPainter,
+    QPalette, QPixmap, QRadialGradient, QTransform)
+from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QComboBox,
+    QFrame, QHBoxLayout, QHeaderView, QLabel,
+    QLayout, QLineEdit, QMainWindow, QProgressBar,
+    QPushButton, QSizePolicy, QSpacerItem, QStackedWidget,
+    QTabWidget, QTableWidget, QTableWidgetItem, QTextBrowser,
+    QTextEdit, QVBoxLayout, QWidget)
+# import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -402,6 +411,7 @@ class Ui_MainWindow(object):
         self.btn_hub.setSizePolicy(sizePolicy)
         self.btn_hub.setMinimumSize(QSize(0, 60))
         font = QFont()
+        font.setFamilies([u"Segoe UI"])
         font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
@@ -595,12 +605,7 @@ class Ui_MainWindow(object):
         self.maximizeButton.setObjectName(u"maximizeButton")
         self.maximizeButton.setMinimumSize(QSize(28, 28))
         self.maximizeButton.setMaximumSize(QSize(28, 28))
-        font1 = QFont()
-        font1.setPointSize(10)
-        font1.setBold(False)
-        font1.setItalic(False)
-        font1.setStyleStrategy(QFont.PreferDefault)
-        self.maximizeButton.setFont(font1)
+        self.maximizeButton.setFont(font)
         self.maximizeButton.setCursor(QCursor(Qt.PointingHandCursor))
         self.maximizeButton.setStyleSheet(u"")
         icon1 = QIcon()
@@ -712,7 +717,7 @@ class Ui_MainWindow(object):
         self.SIMP_details_table.setShowGrid(True)
         self.SIMP_details_table.setGridStyle(Qt.CustomDashLine)
         self.SIMP_details_table.setSortingEnabled(False)
-        self.SIMP_details_table.horizontalHeader().setVisible(True)
+        self.SIMP_details_table.horizontalHeader().setVisible(False)
         self.SIMP_details_table.horizontalHeader().setDefaultSectionSize(250)
         self.SIMP_details_table.horizontalHeader().setHighlightSections(True)
         self.SIMP_details_table.horizontalHeader().setProperty("showSortIndicator", True)
@@ -826,22 +831,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.addWidget(self.label_26)
 
         self.diagnostic_combo = QComboBox(self.Diagnostic_body)
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
-        self.diagnostic_combo.addItem("")
         self.diagnostic_combo.setObjectName(u"diagnostic_combo")
-        self.diagnostic_combo.setStyleSheet(u"")
+        self.diagnostic_combo.setStyleSheet(u"color: rgb(255, 170, 0);")
 
         self.horizontalLayout_18.addWidget(self.diagnostic_combo)
 
@@ -2274,7 +2265,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
+        self.stackedWidget.setCurrentIndex(1)
         self.tabWidget.setCurrentIndex(0)
 
 
@@ -2305,20 +2296,20 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.closeButton.setText("")
         self.extralefttext.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-lef"
-                        "t:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -"
+                        "qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An application created by</span><span style=\" color:#ffaaff;\"> kruksik </span></p>\n"
-"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right"
-                        ":0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">for the management and servicing of AFE</span></p>\n"
+"<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; "
+                        "text-indent:0px;\"><span style=\" color:#ffffff;\">for the management and servicing of AFE</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; color:#ffaaff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">Additional software settings may </span></p>\n"
 "<p align=\"center\" style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">appear in this panel in the future</span></p></body></html>", None))
@@ -2332,21 +2323,6 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
         self.Diagnostic_title_text.setText(QCoreApplication.translate("MainWindow", u"Diagnostic", None))
         self.label_26.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
-        self.diagnostic_combo.setItemText(0, QCoreApplication.translate("MainWindow", u"1", None))
-        self.diagnostic_combo.setItemText(1, QCoreApplication.translate("MainWindow", u"2", None))
-        self.diagnostic_combo.setItemText(2, QCoreApplication.translate("MainWindow", u"3", None))
-        self.diagnostic_combo.setItemText(3, QCoreApplication.translate("MainWindow", u"4", None))
-        self.diagnostic_combo.setItemText(4, QCoreApplication.translate("MainWindow", u"5", None))
-        self.diagnostic_combo.setItemText(5, QCoreApplication.translate("MainWindow", u"6", None))
-        self.diagnostic_combo.setItemText(6, QCoreApplication.translate("MainWindow", u"7", None))
-        self.diagnostic_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"8", None))
-        self.diagnostic_combo.setItemText(8, QCoreApplication.translate("MainWindow", u"9", None))
-        self.diagnostic_combo.setItemText(9, QCoreApplication.translate("MainWindow", u"10", None))
-        self.diagnostic_combo.setItemText(10, QCoreApplication.translate("MainWindow", u"11", None))
-        self.diagnostic_combo.setItemText(11, QCoreApplication.translate("MainWindow", u"12", None))
-        self.diagnostic_combo.setItemText(12, QCoreApplication.translate("MainWindow", u"13", None))
-        self.diagnostic_combo.setItemText(13, QCoreApplication.translate("MainWindow", u"14", None))
-
         self.label_28.setText(QCoreApplication.translate("MainWindow", u"Start Calibration: ", None))
         self.calibration_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.label_31.setText(QCoreApplication.translate("MainWindow", u"Calibration setter:", None))
@@ -2354,25 +2330,25 @@ class Ui_MainWindow(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.voltage_tab), QCoreApplication.translate("MainWindow", u"Voltage", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.temp_tab), QCoreApplication.translate("MainWindow", u"Temperature", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:24pt; color:#2bd6df;\">Graphical User Interface for MCORD HUB management</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#ffffff;\">The program was created to facilitate the "
-                        "work and servicing of hubs and AFEs located on the boards of the MCORD system</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:14pt; color:#ffffff;\">The program was created to facilitate the work and servicing of hubs"
+                        " and AFEs located on the boards of the MCORD system</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:14pt; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#bd93f9;\">Created by: kruksik</span></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.textEdit_2.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
-"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-"
-                        "top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
+"<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12"
+                        "px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:12pt; color:#ffffff;\"><br /></p>\n"
 "<p align=\"center\" style=\"-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; color:#ffffff;\">To start using this software, please click   </span><img src=\":/icons/icons/icon_menu.png\" />  <span style=\" font-size:12pt; color:#ffffff;\"> icon on the top right corner and then select an option from the menu </span></p></body></html>", None))
@@ -2398,7 +2374,7 @@ class Ui_MainWindow(object):
         self.settings_slave_linedit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"eg. 58.5", None))
         self.Consol_label.setText(QCoreApplication.translate("MainWindow", u"Console", None))
         self.console.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))

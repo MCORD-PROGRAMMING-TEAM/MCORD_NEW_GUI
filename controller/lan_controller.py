@@ -13,6 +13,7 @@ class LanController:
         self._model = model
         self.LAN = None
         self.db = DB()
+        self._view.ui.diagnostic_combo.addItems([101, 102])
 
     def allowed_only_lan(self):
         text = self._view.ui.connection_edit.text()
