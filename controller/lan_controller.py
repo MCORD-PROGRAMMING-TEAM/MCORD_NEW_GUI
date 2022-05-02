@@ -92,8 +92,8 @@ class LanController:
         volt, curr_m, curr_s = params
         volt_master = self._model.valid_breakdown_voltage(volt, curr_m)
         volt_slave = self._model.valid_breakdown_voltage(volt, curr_s)
-        self.update_database_calib(int(self._view.ui.diagnostic_combo.currentText()), volt_master, volt_slave,
-                                   volt_master + 2, volt_slave + 2)
+        # self.update_database_calib(int(self._view.ui.diagnostic_combo.currentText()), volt_master, volt_slave,
+        #                            volt_master + 2, volt_slave + 2)
         ready_params = [int(self._view.ui.diagnostic_combo.currentText()), volt_master + 2, volt_slave + 2]
         self.lan_worker = LanThread(self.LAN, 'set', ready_params)
         self.lan_worker.start()
@@ -119,9 +119,9 @@ class LanController:
     #     print(f"Fetched data: {[board_id, master_v, slave_v, master_temp, slave_temp]}")
     #     self.db.insert_values_from_fetch(None, board_id, master_v, slave_v, master_temp, slave_temp)
 
-    def update_database_calib(self, id, mbr, sbr, mv, sv):
-        self.db.update_value_calibration(id, mbr, sbr, mv, sv)
-        print("Database updated !!!")
+    # def update_database_calib(self, id, mbr, sbr, mv, sv):
+    #     self.db.update_value_calibration(id, mbr, sbr, mv, sv)
+    #     print("Database updated !!!")
 
     def lan_autorun(self):
         board_id = int(self._view.ui.diagnostic_combo.currentText())
@@ -292,11 +292,11 @@ class DB:
         print(f'Got results:{result[0][0]} {result[0][1]} ')
         return result[0][0], result[0][1]
 
-    def update_value_calibration(self, id, master_br, slave_br, master_v, slave_v):
-        self.cursor.execute(
-            f"UPDATE Calibration_Parameters SET master_v_br = {master_br}, slace_v_br = {slave_br}, master_work_v = {master_v}, slave_work_v = {slave_v} WHERE board_id = {id}  ")
-        self.conn.commit()
-        print("Values edited")
+    # def update_value_calibration(self, id, master_br, slave_br, master_v, slave_v):
+    #     self.cursor.execute(
+    #         f"UPDATE Calibration_Parameters SET master_v_br = {master_br}, slace_v_br = {slave_br}, master_work_v = {master_v}, slave_work_v = {slave_v} WHERE board_id = {id}  ")
+    #     self.conn.commit()
+    #     print("Values edited")
 
     # def insert_values_from_fetch(self, *params):
     #     self.cursor.execute(f"INSERT INTO fetcheddata VALUES ({','.join(['?' for _ in params])})", params)
