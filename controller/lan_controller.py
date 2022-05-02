@@ -108,16 +108,16 @@ class LanController:
         self.lan_worker_update.response.connect(self.json_parser)
         self.lan_worker_update.response.connect(self._view.update_params_table)
         self.lan_worker_update.response.connect(self._view.update_graphs)
-        self.lan_worker_update.response.connect(self.insert_database_fetch)
+        # self.lan_worker_update.response.connect(self.insert_database_fetch)
         self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.lan_worker_update.start()
 
-    def insert_database_fetch(self, params):
-        board_id = int(params[-1])
-        master_v, slave_v = params[1][0], params[1][1]
-        master_temp, slave_temp = params[2][0], params[2][1]
-        print(f"Fetched data: {[board_id, master_v, slave_v, master_temp, slave_temp]}")
-        self.db.insert_values_from_fetch(None, board_id, master_v, slave_v, master_temp, slave_temp)
+    # def insert_database_fetch(self, params):
+    #     board_id = int(params[-1])
+    #     master_v, slave_v = params[1][0], params[1][1]
+    #     master_temp, slave_temp = params[2][0], params[2][1]
+    #     print(f"Fetched data: {[board_id, master_v, slave_v, master_temp, slave_temp]}")
+    #     self.db.insert_values_from_fetch(None, board_id, master_v, slave_v, master_temp, slave_temp)
 
     def update_database_calib(self, id, mbr, sbr, mv, sv):
         self.db.update_value_calibration(id, mbr, sbr, mv, sv)
@@ -199,7 +199,7 @@ class LanThread(QThread):
             self.client.do_cmd(['init', int(self.command)])
             self.client.do_cmd(['hvon', int(self.command)])
 
-            for voltage in np.arange(52.0, 66.0, 0.1):
+            for voltage in np.arange(49.0, 63.0, 0.1):
                 self.client.do_cmd(['setdac', int(self.command), voltage, voltage])
                 res_master = self.client.do_cmd(['adc', int(self.command), 5])
                 res_slave = self.client.do_cmd(['adc', int(self.command), 6])
@@ -298,7 +298,7 @@ class DB:
         self.conn.commit()
         print("Values edited")
 
-    def insert_values_from_fetch(self, *params):
-        self.cursor.execute(f"INSERT INTO fetcheddata VALUES ({','.join(['?' for _ in params])})", params)
-        self.conn.commit()
-        print(f"Values added: {params}")
+    # def insert_values_from_fetch(self, *params):
+    #     self.cursor.execute(f"INSERT INTO fetcheddata VALUES ({','.join(['?' for _ in params])})", params)
+    #     self.conn.commit()
+    #     print(f"Values added: {params}")
