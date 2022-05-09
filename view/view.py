@@ -215,6 +215,7 @@ class View(QMainWindow):
         
   
     def Progress_bars_update(self):
+        print("in progress_bars_update")
         progressbar, timer_name = self.model.valid_trigged_progressbar(self,self.sender().objectName())
         emitter = self.model.valid_which_signal(timer_name)
 

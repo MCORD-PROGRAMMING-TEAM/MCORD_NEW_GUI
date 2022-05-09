@@ -13,7 +13,8 @@ class LanController:
         self._model = model
         self.LAN = None
         self.db = DB()
-        self._view.ui.diagnostic_combo.addItems([101, 102])
+        # self._view.ui.diagnostic_combo.addItems([101, 102])
+        # self._view.ui.diagnostic_combo.setStyleSheet("QComboBox {background: white;}")
 
     def allowed_only_lan(self):
         text = self._view.ui.connection_edit.text()
@@ -77,7 +78,7 @@ class LanController:
         self.lan_worker.finished.connect(self.lan_worker.quit)
 
     def lan_calibration(self):
-        self.lan_worker = LanThread(self.LAN, 'calib', int(self._view.ui.diagnostic_combo.currentText()))
+        self.lan_worker = LanThread(self.LAN, 'calib', None) # int(self._view.ui.diagnostic_combo.currentText()))
         self.lan_worker.start()
         self.lan_worker.calib_response.connect(self.test)
         self.lan_worker.error_response.connect(self._model.error_board_number)
@@ -94,7 +95,8 @@ class LanController:
         volt_slave = self._model.valid_breakdown_voltage(volt, curr_s)
         # self.update_database_calib(int(self._view.ui.diagnostic_combo.currentText()), volt_master, volt_slave,
         #                            volt_master + 2, volt_slave + 2)
-        ready_params = [int(self._view.ui.diagnostic_combo.currentText()), volt_master + 2, volt_slave + 2]
+        # ready_params = [int(self._view.ui.diagnostic_combo.currentText()), volt_master + 2, volt_slave + 2]
+        ready_params = [None, volt_master + 2, volt_slave + 2]
         self.lan_worker = LanThread(self.LAN, 'set', ready_params)
         self.lan_worker.start()
         self.lan_worker.start_response.connect(self.json_parser)
@@ -123,13 +125,13 @@ class LanController:
     #     self.db.update_value_calibration(id, mbr, sbr, mv, sv)
     #     print("Database updated !!!")
 
-    def lan_autorun(self):
-        board_id = int(self._view.ui.diagnostic_combo.currentText())
-        master_v, slave_v = self.db.get_voltage_from_db(board_id)
-        ready_params = [board_id, float(master_v), float(slave_v)]
-        self.lan_worker = LanThread(self.LAN, 'set', ready_params)
-        self.lan_worker.start()
-        self.lan_worker.finished.connect(self.lan_worker.quit)
+    # def lan_autorun(self):
+    #     board_id = int(self._view.ui.diagnostic_combo.currentText())
+    #     master_v, slave_v = self.db.get_voltage_from_db(board_id)
+    #     ready_params = [board_id, float(master_v), float(slave_v)]
+    #     self.lan_worker = LanThread(self.LAN, 'set', ready_params)
+    #     self.lan_worker.start()
+    #     self.lan_worker.finished.connect(self.lan_worker.quit)
 
     def lan_update_stop(self, status):
         if not status and self._model.temp_loop_status:

@@ -12,7 +12,7 @@ class App(QMainWindow):
         super(App,self).__init__()
         self.model = Model()
         self.view = View(self.model)
-        self.controller = Controller(view=self.view,model=self.model)
+        self.controller = Controller(view=self.view, model=self.model)
         
     
         

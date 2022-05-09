@@ -138,7 +138,7 @@ class Controller:
 
     def _diagnosticlogic(self):
         self._view.ui.calibration_button.stateChanged.connect(self.lanController.lan_calibration)
-        self._view.ui.recalib_button.stateChanged.connect(self.lanController.lan_autorun)
+        # self._view.ui.recalib_button.stateChanged.connect(self.lanController.lan_autorun)
 
     def moveWindow(self, event):
         if self._view.isMaximized():

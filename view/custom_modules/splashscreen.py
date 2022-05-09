@@ -25,7 +25,8 @@ class Splashscreen(QMainWindow):
     def progress(self):
         global progressbar_counter
         self.sp.progressBar.setValue(progressbar_counter)
-        
+
+        print('progress: ' + str(progressbar_counter))
         if progressbar_counter == 5:
             self.sp.loading.setText("Preparation for creating a layout ...")
             
