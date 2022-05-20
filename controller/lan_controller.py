@@ -1,3 +1,5 @@
+import time
+
 from PySide6.QtCore import QThread, Signal
 import socket
 import json
@@ -8,13 +10,18 @@ import sqlite3
 
 
 class LanController:
+    LIMIT_BIT_CURRENT = 16
+    INITIAL_VOLTAGE = 48.5
+    FINAL_VOLTAGE = 63.0
+    EPSILON = 0.0000001
+    VOLTAGE_STEP = 2.0
+    SLEEP_TIME = 10
+
     def __init__(self, view, model) -> None:
         self._view = view
         self._model = model
         self.LAN = None
         self.db = DB()
-        # self._view.ui.diagnostic_combo.addItems([101, 102])
-        # self._view.ui.diagnostic_combo.setStyleSheet("QComboBox {background: white;}")
 
     def allowed_only_lan(self):
         text = self._view.ui.connection_edit.text()
@@ -77,30 +84,88 @@ class LanController:
         self.lan_worker.start_response.connect(self.json_parser)
         self.lan_worker.finished.connect(self.lan_worker.quit)
 
-    def lan_calibration(self):
-        self.lan_worker = LanThread(self.LAN, 'calib', None) # int(self._view.ui.diagnostic_combo.currentText()))
-        self.lan_worker.start()
-        self.lan_worker.calib_response.connect(self.test)
-        self.lan_worker.error_response.connect(self._model.error_board_number)
-        self.lan_worker.error_response.connect(self._view.error_board_detected)
-        self.lan_worker.finished.connect(self.lan_worker.quit)
-
     def test(self, params):
         print(params)
 
-    def lan_calibration_handle(self, params):
-        print("Start calibration curve")
-        volt, curr_m, curr_s = params
-        volt_master = self._model.valid_breakdown_voltage(volt, curr_m)
-        volt_slave = self._model.valid_breakdown_voltage(volt, curr_s)
-        # self.update_database_calib(int(self._view.ui.diagnostic_combo.currentText()), volt_master, volt_slave,
-        #                            volt_master + 2, volt_slave + 2)
-        # ready_params = [int(self._view.ui.diagnostic_combo.currentText()), volt_master + 2, volt_slave + 2]
-        ready_params = [None, volt_master + 2, volt_slave + 2]
-        self.lan_worker = LanThread(self.LAN, 'set', ready_params)
-        self.lan_worker.start()
-        self.lan_worker.start_response.connect(self.json_parser)
-        self.lan_worker.finished.connect(self.lan_worker.quit)
+    @staticmethod
+    def calculate_breakdown_voltage(voltage_current_curve):
+        for voltage_current in voltage_current_curve:
+            if voltage_current[1] > LanController.LIMIT_BIT_CURRENT:
+                return voltage_current[0]
+        return -1
+
+    def get_voltage_current_curve(self, bar_id):
+        voltage = LanController.INITIAL_VOLTAGE
+        end_voltage = LanController.FINAL_VOLTAGE
+        self.LAN.do_cmd(['init', bar_id])
+        self.LAN.do_cmd(['hvon', bar_id])
+        curve_master = []
+        curve_slave = []
+        while voltage < end_voltage + LanController.EPSILON:
+            self.LAN.do_cmd(['setdac', bar_id, voltage, voltage])
+            time.sleep(LanController.SLEEP_TIME)
+            current_master = self.LAN.do_cmd(['adc', bar_id, 5])
+            current_slave = self.LAN.do_cmd(['adc', bar_id, 6])
+            curve_master.append((voltage, current_master[1]))
+            curve_slave.append((voltage, current_slave[1]))
+            voltage += LanController.VOLTAGE_STEP
+        return curve_master, curve_slave
+
+    def start_calibration_hub_detectors(self):
+        ip_address = self._view.ui.connection_edit.text()
+        bar_and_sipm_ids_list = self.db.get_bar_and_sipm_ids_to_calibration(ip_address)
+        for bar_and_sipm_ids in bar_and_sipm_ids_list:
+            bar_id = int(bar_and_sipm_ids[0])
+
+            initial_temp_master, initial_temp_slave = self.LAN.do_cmd(['gettemp', bar_id])[1] #zgaduje ze indeks 0 wskazuje na temperature z afe master, a 1 ze slave
+
+            beginning_date = datetime.now().timestamp() * 1000
+
+            voltage_current_curves = self.get_voltage_current_curve(bar_id)
+
+            final_temp_master, final_temp_slave = self.LAN.do_cmd(['gettemp', bar_id])[1]
+            end_date = datetime.now().timestamp() * 1000
+
+            breakdown_voltage_master = LanController.calculate_breakdown_voltage(voltage_current_curves[0])
+            breakdown_voltage_slave = LanController.calculate_breakdown_voltage(voltage_current_curves[1])
+
+            parameters_master = {'breakdownVoltage': breakdown_voltage_master,
+                                 'initialTemperature': initial_temp_master,
+                                 'beginningDate': beginning_date,
+                                 'finalTemperature': final_temp_master,
+                                 'endDate': end_date,
+                                 'isRecent': 1,
+                                 'sipmId': bar_and_sipm_ids[1],
+                                 'sipmDateFrom': bar_and_sipm_ids[2]
+                                 }
+
+            parameters_slave = {'breakdownVoltage': breakdown_voltage_slave,
+                                'initialTemperature': initial_temp_slave,
+                                'beginningDate': beginning_date,
+                                'finalTemperature': final_temp_slave,
+                                'endDate': end_date,
+                                'isRecent': 1,
+                                'sipmId': bar_and_sipm_ids[3],
+                                'sipmDateFrom': bar_and_sipm_ids[4]
+                                }
+
+            calibration_parameter_master_id = self.db.create_calibration_parameter_record(parameters_master)
+            calibration_parameter_slave_id = self.db.create_calibration_parameter_record(parameters_slave)
+
+            for point in voltage_current_curves[0]:
+                self.db.create_calibration_curve_record(point[0], point[1], calibration_parameter_master_id)
+
+            self.db.update_is_recent(bar_and_sipm_ids[1], bar_and_sipm_ids[2], calibration_parameter_master_id)
+
+            for point in voltage_current_curves[1]:
+                self.db.create_calibration_curve_record(point[0], point[1], calibration_parameter_slave_id)
+
+            self.db.update_is_recent(bar_and_sipm_ids[3], bar_and_sipm_ids[4], calibration_parameter_slave_id)
+
+        self.db.conn.commit()
+
+
+
 
     def lan_send_update(self):
         if self._model.thread_update_run_status:
@@ -114,24 +179,13 @@ class LanController:
         self.lan_worker_update.thread_start.connect(self._model.get_thead_update_status)
         self.lan_worker_update.start()
 
-    # def insert_database_fetch(self, params):
-    #     board_id = int(params[-1])
-    #     master_v, slave_v = params[1][0], params[1][1]
-    #     master_temp, slave_temp = params[2][0], params[2][1]
-    #     print(f"Fetched data: {[board_id, master_v, slave_v, master_temp, slave_temp]}")
-    #     self.db.insert_values_from_fetch(None, board_id, master_v, slave_v, master_temp, slave_temp)
-
-    # def update_database_calib(self, id, mbr, sbr, mv, sv):
-    #     self.db.update_value_calibration(id, mbr, sbr, mv, sv)
-    #     print("Database updated !!!")
-
-    # def lan_autorun(self):
-    #     board_id = int(self._view.ui.diagnostic_combo.currentText())
-    #     master_v, slave_v = self.db.get_voltage_from_db(board_id)
-    #     ready_params = [board_id, float(master_v), float(slave_v)]
-    #     self.lan_worker = LanThread(self.LAN, 'set', ready_params)
-    #     self.lan_worker.start()
-    #     self.lan_worker.finished.connect(self.lan_worker.quit)
+    def start_hub_detectors(self):
+        ip_address = self._view.ui.connection_edit.text()
+        bar_voltage_list = self.db.get_voltage_list_from_db(ip_address)
+        for voltage in bar_voltage_list:
+            self.LAN.do_cmd(['init', int(voltage[0])])
+            self.LAN.do_cmd(['hvon', int(voltage[0])])
+            self.LAN.do_cmd(['setdac', int(voltage[0]), voltage[1], voltage[2]])
 
     def lan_update_stop(self, status):
         if not status and self._model.temp_loop_status:
@@ -288,19 +342,33 @@ class DB:
     def __del__(self):
         self.conn.close()
 
-    def get_voltage_from_db(self, id):
-        self.cursor.execute(f"SELECT master_voltage, slave_voltage FROM breakdown_voltage_view WHERE bar_id = {id}")
-        result = self.cursor.fetchall()
-        print(f'Got results:{result[0][0]} {result[0][1]} ')
-        return result[0][0], result[0][1]
+    def get_voltage_list_from_db(self, ip_address):
+        self.cursor.execute(f"SELECT bar_id, master_voltage, slave_voltage "
+                            f"FROM all_optimal_voltage_view "
+                            f"WHERE ip_address = \'{ip_address}\' "
+                            f"AND calibration_master_is_recent = 1 AND calibration_slave_is_recent = 1")
+        return self.cursor.fetchall()
 
-    # def update_value_calibration(self, id, master_br, slave_br, master_v, slave_v):
-    #     self.cursor.execute(
-    #         f"UPDATE Calibration_Parameters SET master_v_br = {master_br}, slace_v_br = {slave_br}, master_work_v = {master_v}, slave_work_v = {slave_v} WHERE board_id = {id}  ")
-    #     self.conn.commit()
-    #     print("Values edited")
+    def get_bar_and_sipm_ids_to_calibration(self, ip_address):
+        self.cursor.execute(
+            f"SELECT bar_serial_number, sipm_master_id, sipm_master_date_from, sipm_ext_master_id, sipm_ext_date_from "
+            f"FROM bar_and_sipm_ids_to_calibration_view "
+            f"WHERE ip_address = \'{ip_address}\' ")
+        return self.cursor.fetchall()
 
-    # def insert_values_from_fetch(self, *params):
-    #     self.cursor.execute(f"INSERT INTO fetcheddata VALUES ({','.join(['?' for _ in params])})", params)
-    #     self.conn.commit()
-    #     print(f"Values added: {params}")
+    def create_calibration_parameter_record(self, parameters):
+        return self.cursor.execute(f"INSERT INTO calibration_parameters (breakdown_voltage, initial_temperature,"
+                                   f" beggining_date, final_temperature, end_date, is_recent, sipm_id, sipm_date_from)"
+                                   f"VALUES ( {parameters['breakdownVoltage']}, {parameters['initialTemperature']}, {parameters['beginningDate']}, "
+                                   f"{parameters['finalTemperature']}, {parameters['endDate']}, "
+                                   f"{parameters['isRecent']}, {parameters['sipmId']}, {parameters['sipmDateFrom']})").lastrowid
+
+    def create_calibration_curve_record(self, voltage, current, calibration_parameters_id):
+        self.cursor.execute(f"INSERT INTO calibration_curve(voltage, current, callibration_parameters_id)"
+                            f"VALUES({voltage}, {current}, {calibration_parameters_id})")
+
+    def update_is_recent(self, sipm_id, sipm_date_from, recent_id):
+        self.cursor.execute(f"UPDATE calibration_parameters "
+                            f"SET is_recent = 0 "
+                            f"WHERE sipm_id = {sipm_id} AND sipm_date_from = {sipm_date_from} AND id <> {recent_id}")
+

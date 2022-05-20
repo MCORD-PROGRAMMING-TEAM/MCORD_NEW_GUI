@@ -825,17 +825,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout_18.setSpacing(20)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.horizontalLayout_18.setContentsMargins(16, -1, 15, -1)
-        self.label_26 = QLabel(self.Diagnostic_body)
-        self.label_26.setObjectName(u"label_26")
-
-        self.horizontalLayout_18.addWidget(self.label_26)
-
-        self.diagnostic_combo = QComboBox(self.Diagnostic_body)
-        self.diagnostic_combo.setObjectName(u"diagnostic_combo")
-        self.diagnostic_combo.setStyleSheet(u"color: rgb(255, 170, 0);")
-
-        self.horizontalLayout_18.addWidget(self.diagnostic_combo)
-
         self.horizontalSpacer_2 = QSpacerItem(182, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
 
         self.horizontalLayout_18.addItem(self.horizontalSpacer_2)
@@ -2322,10 +2311,9 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem3 = self.SIMP_details_table.horizontalHeaderItem(3)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("MainWindow", u"Temperature", None));
         self.Diagnostic_title_text.setText(QCoreApplication.translate("MainWindow", u"Diagnostic", None))
-        self.label_26.setText(QCoreApplication.translate("MainWindow", u"Select Board:", None))
         self.label_28.setText(QCoreApplication.translate("MainWindow", u"Start Calibration: ", None))
         self.calibration_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.label_31.setText(QCoreApplication.translate("MainWindow", u"Calibration setter:", None))
+        self.label_31.setText(QCoreApplication.translate("MainWindow", u"Start detectors:", None))
         self.recalib_button.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.voltage_tab), QCoreApplication.translate("MainWindow", u"Voltage", None))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.temp_tab), QCoreApplication.translate("MainWindow", u"Temperature", None))

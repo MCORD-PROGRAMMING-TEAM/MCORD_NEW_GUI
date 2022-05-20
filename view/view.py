@@ -130,8 +130,8 @@ class View(QMainWindow):
         self.ui.recalib_button.deleteLater()
         self.ui.recalib_button = QtCustomSlideButton("Set Calibration", None, 80, None, '#48dbfb','#4882fb','#f7f7f7' )
         self.ui.calibration_button = QtCustomSlideButton("Run Calibration", None, 80, None, '#48dbfb','#4882fb','#f7f7f7' )
-        self.ui.horizontalLayout_18.insertWidget(5, self.ui.calibration_button)
-        self.ui.horizontalLayout_18.insertWidget(8, self.ui.recalib_button)        
+        self.ui.horizontalLayout_18.insertWidget(3, self.ui.calibration_button)
+        self.ui.horizontalLayout_18.insertWidget(6, self.ui.recalib_button)
         
         # Add progressbars to frames
         self.ui.master_progressbar = QtCustomCirculateProgress(progress_color='#f368e0',max_value=100,suffix=' V',value=0)
