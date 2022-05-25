@@ -137,9 +137,8 @@ class Controller:
         self._view.ui.closeButton.clicked.connect(self.usbController.close_usb_connect)
 
     def _diagnosticlogic(self):
-        self._view.ui.calibration_button.clicked.connect(self.lanController.start_calibration_hub_detectors)
-        self._view.ui.recalib_button.clicked.connect(self.lanController.start_hub_detectors)
-
+        self._view.ui.calibration_button.clicked.connect(self.lanController.start_calibration_bars_detectors)
+        self._view.ui.recalib_button.clicked.connect(self.lanController.start_bars_detectors)
 
     def moveWindow(self, event):
         if self._view.isMaximized():

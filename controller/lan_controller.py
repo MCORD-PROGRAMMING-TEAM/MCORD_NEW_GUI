@@ -164,7 +164,58 @@ class LanController:
 
         self.db.conn.commit()
 
+    def start_calibration_bars_detectors(self):
+        ip_bars = self._model.board_comlist
+        bar_and_sipm_ids_list = self.db.get_bar_and_sipm_ids_to_calibration(ip_bars)
+        for bar_and_sipm_ids in bar_and_sipm_ids_list:
+            bar_id = int(bar_and_sipm_ids[0])
 
+            initial_temp_master, initial_temp_slave = self.LAN.do_cmd(['gettemp', bar_id])[1]
+
+            beginning_date = datetime.now().timestamp() * 1000
+
+            voltage_current_curves = self.get_voltage_current_curve(bar_id)
+
+            final_temp_master, final_temp_slave = self.LAN.do_cmd(['gettemp', bar_id])[1]
+            end_date = datetime.now().timestamp() * 1000
+
+            breakdown_voltage_master = LanController.calculate_breakdown_voltage(voltage_current_curves[0])
+            breakdown_voltage_slave = LanController.calculate_breakdown_voltage(voltage_current_curves[1])
+
+            parameters_master = {'breakdownVoltage': breakdown_voltage_master,
+                                 'initialTemperature': initial_temp_master,
+                                 'beginningDate': beginning_date,
+                                 'finalTemperature': final_temp_master,
+                                 'endDate': end_date,
+                                 'isRecent': 1,
+                                 'sipmId': bar_and_sipm_ids[1],
+                                 'sipmDateFrom': bar_and_sipm_ids[2]
+                                 }
+
+            parameters_slave = {'breakdownVoltage': breakdown_voltage_slave,
+                                'initialTemperature': initial_temp_slave,
+                                'beginningDate': beginning_date,
+                                'finalTemperature': final_temp_slave,
+                                'endDate': end_date,
+                                'isRecent': 1,
+                                'sipmId': bar_and_sipm_ids[3],
+                                'sipmDateFrom': bar_and_sipm_ids[4]
+                                }
+
+            calibration_parameter_master_id = self.db.create_calibration_parameter_record(parameters_master)
+            calibration_parameter_slave_id = self.db.create_calibration_parameter_record(parameters_slave)
+
+            for point in voltage_current_curves[0]:
+                self.db.create_calibration_curve_record(point[0], point[1], calibration_parameter_master_id)
+
+            self.db.update_is_recent(bar_and_sipm_ids[1], bar_and_sipm_ids[2], calibration_parameter_master_id)
+
+            for point in voltage_current_curves[1]:
+                self.db.create_calibration_curve_record(point[0], point[1], calibration_parameter_slave_id)
+
+            self.db.update_is_recent(bar_and_sipm_ids[3], bar_and_sipm_ids[4], calibration_parameter_slave_id)
+
+        self.db.conn.commit()
 
 
     def lan_send_update(self):
@@ -182,6 +233,14 @@ class LanController:
     def start_hub_detectors(self):
         ip_address = self._view.ui.connection_edit.text()
         bar_voltage_list = self.db.get_voltage_list_from_db(ip_address)
+        for voltage in bar_voltage_list:
+            self.LAN.do_cmd(['init', int(voltage[0])])
+            self.LAN.do_cmd(['hvon', int(voltage[0])])
+            self.LAN.do_cmd(['setdac', int(voltage[0]), voltage[1], voltage[2]])
+
+    def start_bars_detectors(self):
+        ip_bars = self._model.board_comlist
+        bar_voltage_list = self.db.get_voltage_list_from_db(ip_bars)
         for voltage in bar_voltage_list:
             self.LAN.do_cmd(['init', int(voltage[0])])
             self.LAN.do_cmd(['hvon', int(voltage[0])])
@@ -342,18 +401,34 @@ class DB:
     def __del__(self):
         self.conn.close()
 
-    def get_voltage_list_from_db(self, ip_address):
-        self.cursor.execute(f"SELECT bar_id, master_voltage, slave_voltage "
-                            f"FROM all_optimal_voltage_view "
-                            f"WHERE ip_address = \'{ip_address}\' "
-                            f"AND calibration_master_is_recent = 1 AND calibration_slave_is_recent = 1")
+    def get_voltage_list_from_db(self, param):
+        if isinstance(param, list):
+            bar_ids = ', '.join(param)
+            self.cursor.execute(f"SELECT bar_id, master_voltage, slave_voltage "
+                                f"FROM optimal_voltage_view "
+                                f"WHERE bar_id IN ({bar_ids}) " 
+                                f"AND calibration_master_is_recent = 1 AND calibration_slave_is_recent = 1")
+        else:
+            self.cursor.execute(f"SELECT bar_id, master_voltage, slave_voltage "
+                                f"FROM all_optimal_voltage_view "
+                                f"WHERE ip_address = \'{param}\' "
+                                f"AND calibration_master_is_recent = 1 AND calibration_slave_is_recent = 1")
         return self.cursor.fetchall()
 
-    def get_bar_and_sipm_ids_to_calibration(self, ip_address):
-        self.cursor.execute(
-            f"SELECT bar_serial_number, sipm_master_id, sipm_master_date_from, sipm_ext_master_id, sipm_ext_date_from "
-            f"FROM bar_and_sipm_ids_to_calibration_view "
-            f"WHERE ip_address = \'{ip_address}\' ")
+    def get_bar_and_sipm_ids_to_calibration(self, param):
+        if isinstance(param, list):
+            bar_ids = ', '.join(param)
+            self.cursor.execute(
+                f"SELECT bar_serial_number, sipm_master_id, sipm_master_date_from, sipm_ext_master_id, sipm_ext_date_from "
+                f"FROM bar_and_sipm_id_list_to_calibration_view "
+                f"WHERE bar_serial_number IN ({bar_ids})"
+            )
+        else:
+            self.cursor.execute(
+                f"SELECT bar_serial_number, sipm_master_id, sipm_master_date_from, sipm_ext_master_id, sipm_ext_date_from "
+                f"FROM bar_and_sipm_ids_to_calibration_view "
+                f"WHERE ip_address = \'{param}\' "
+            )
         return self.cursor.fetchall()
 
     def create_calibration_parameter_record(self, parameters):

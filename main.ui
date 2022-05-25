@@ -1241,7 +1241,7 @@ p, li { white-space: pre-wrap; }
                       <string notr="true">background-color: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>4</number>
                      </property>
                      <widget class="QWidget" name="statistic_page">
                       <layout class="QVBoxLayout" name="verticalLayout">
